@@ -1,0 +1,97 @@
+.user-board-listing {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: row;
+    column-gap: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.board-name {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-header {
+    display: flex;
+    background-color: #D9C4B7;
+    height: 200px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.user-spot {
+    height: 150px;
+    width: 150px;
+    background-color: whitesmoke;
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.fl-div{
+    font-size: 60px;
+}
+
+.profile-div-left {
+    display: grid;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+}
+
+
+.active-option {
+    background-color: #ff914d;
+    border: none;
+    height: 100%;
+    font-size: 20px;
+
+
+}
+
+.inactive-option {
+    background-color: white;
+    border: none;
+    height: 100%;
+    font-size: 20px;
+
+
+}
+
+.board-button {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    padding: 5px;
+}
+
+.pins-button {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding: 5px;
+}
+
+.view-type-button-div {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    margin-bottom: 20px;
+    font-size: 20px;
+    align-items: center;
+}
+
+.view-type-buttons {
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 10px;
+
+}

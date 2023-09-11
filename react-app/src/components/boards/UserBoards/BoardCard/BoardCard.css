@@ -1,0 +1,79 @@
+.board-cover-photo {
+    width: 250px;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.board-cover-photo-div {
+    height: 250px;
+    width: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-name {
+    background-color: white;
+}
+
+
+/* .board-sub-one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-sub-two {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+} */
+
+.edit-delete-buttons {
+    border-radius: 15px;
+    background-color: #ff914D;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+
+}
+
+.board-sub-one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-sub-two {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    opacity: 0.0;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+.board-sub-one:hover+.board-sub-two {
+    opacity: 1.0;
+}
+
+.board-sub-two:hover {
+    opacity: 1.0;
+}
+
+.board-cover-photo-div:hover+.board-sub-two {
+    opacity: 1.0;
+}
