@@ -12,8 +12,8 @@ const DeletePinModal = ({ pinId }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(deletePin(pinId))
-            .then(closeModal)
-        history.push("/boards")
+        closeModal()
+        history.push("/pins")
     }
 
 

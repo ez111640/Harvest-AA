@@ -93,6 +93,7 @@ export const addBoardThunk = (board) => async (dispatch) => {
         console.log("BOARDRESPONSE", boardResponse)
         dispatch(addNewBoard(boardResponse))
         if (res.ok) {
+            return boardResponse;
         } else {
             const errors = await res.json();
             return errors;
@@ -123,7 +124,7 @@ export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
     const res = await fetch(`/api/boards/${boardId}/pins`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify( pin )
+        body: JSON.stringify(pin)
     })
     const response = await res.json()
     console.log(response)
@@ -131,19 +132,21 @@ export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
 }
 
 const initialState = {
+    boards: {},
+    board: {}
 
 };
 export const boardsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_BOARDS:
-            let loadState = { ...state, boards: { ...state.boards } }
+            let loadState = { ...state, boards: { ...state.boards }, board: {...state.board} }
             action.boards.forEach((board) =>
                 loadState.boards[board.id] = board
             )
             return loadState
         case LOAD_BOARD:
             let singleState = { ...state, boards: { ...state.boards } }
-            singleState.boards[action.board.id] = action.board
+            singleState.board = action.board
             return singleState;
         case ADD_BOARD:
             let boardState = { ...state, boards: { ...state.boards } }

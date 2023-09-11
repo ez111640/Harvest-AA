@@ -11,9 +11,11 @@ comment_routes = Blueprint("comments", __name__)
 @comment_routes.route("/<int:id>", methods=["DELETE"])
 def delete_comment(id):
     comment = Comment.query.get(id)
+    print("========>COMMENT", comment)
     db.session.delete(comment)
     db.session.commit()
     return "DELETED"
+
 
 
 @comment_routes.route("/")

@@ -47,7 +47,7 @@ export const getAllComments = () => async (dispatch) => {
         console.log("ALLCOMMENTS", allComments)
         dispatch(loadAllComments(allComments.Comments))
     } else {
-        const errors = await res.jsson();
+        const errors = await res.json();
         return errors;
     }
 }
@@ -88,7 +88,7 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
 
 const initialState = {}
 export const commentsReducer = (state = initialState, action) => {
-    let newState
+    let newState;
     switch (action.type) {
         case LOAD_PIN_COMMENTS:
             return { ...state, comments: { ...action.comments } }
@@ -99,9 +99,9 @@ export const commentsReducer = (state = initialState, action) => {
             )
             return commentState
         case ADD_NEW_COMMENT:
-            newState = { ...state, comments: { ...state.comments } }
-            newState.comments.Comments[action.comment.id - 1] = action.comment
-            return newState
+            let addState = { ...state, comments: { ...state.comments } }
+            addState[action.comment.id - 1] = action.comment
+            return addState
         case DELETE_COMMENT:
             let newState = { ...state }
             delete newState[action.commentId]

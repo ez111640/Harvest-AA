@@ -69,6 +69,13 @@ def add_board_topic(id):
     db.session.commit()
     return topicToBoard.to_dict()
 
+    
+
+@board_routes.route("/<int:id>/topics")
+def get_board_topics(id):
+    topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
+    return {"Board_Topics": [ttb.to_dict() for ttb in topics]}
+
 
 
 @board_routes.route("/<int:id>", methods=["PUT"])

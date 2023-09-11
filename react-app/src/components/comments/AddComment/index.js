@@ -1,23 +1,28 @@
 import { useDispatch } from "react-redux"
-import { addCommentThunk } from "../../../store/commentsReducer"
+import { addCommentThunk, getAllComments } from "../../../store/commentsReducer"
 import { useState } from "react"
 
 export const AddComment = ({ pinId }) => {
     const [commentText, setCommentText] = useState("")
     const dispatch = useDispatch()
 
+    console.log("COMMENTTEXT", commentText)
 
     const handleSubmit = (e) => {
+
         e.preventDefault()
         console.log("COMMENTTEXT", commentText)
         console.log(pinId, pinId)
         let comment = { commentText, pinId }
         dispatch(addCommentThunk(comment))
+        dispatch(getAllComments())
 
     }
 
+
+
     return (
-        <div><form onSubmit={handleSubmit}>
+        <div>
             <label className='comment-text-field'>
                 <input
                     type="textarea"
@@ -26,7 +31,7 @@ export const AddComment = ({ pinId }) => {
                     required
                 />
             </label>
-            <button type="Submit">Submit</button>
-        </form></div>
+            <button onClick={handleSubmit} type="Submit">Submit</button>
+        </div>
     )
 }

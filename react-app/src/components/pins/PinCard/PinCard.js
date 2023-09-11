@@ -14,12 +14,20 @@ export const PinCard = (pin) => {
     if (!thisPin.url) return null;
     return (
         <div className="pin-photo">
-            <NavLink to={`/pins/${thisPin.id}`}><img alt="pin" src={thisPin.url}></img></NavLink>
-            {/* <OpenModalButton
+            {thisPin.url ?
+                <div>
+                    <NavLink to={`/pins/${thisPin.id}`}><img alt="pin" src={thisPin.url}></img></NavLink>
+                    {/* <OpenModalButton
                 buttonText="Update"
                 modalComponent={<UpdatePinModal pinId={thisPin.id} />}
 
             /> */}
+                </div> :
+                <div>
+                    This pin has no photo
+                </div>
+            }
+
         </div>
     )
 }

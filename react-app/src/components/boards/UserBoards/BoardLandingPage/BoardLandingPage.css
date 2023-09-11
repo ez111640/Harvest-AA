@@ -46,3 +46,41 @@
     background-color: #E4E4E4;
     font-size: 12px;
 }
+
+
+.tagged {
+    background-color: tan;
+}
+
+.untagged {
+    background-color: whitesmoke;
+}
+
+.topic-option {
+    padding: 10px 10px;
+    border-radius: 20px;
+    width: max-content;
+    border: none;
+}
+
+.topics-container {
+    display: flex;
+    width: fit-content;
+    min-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.topics-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 30px;
+    row-gap: 15px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}

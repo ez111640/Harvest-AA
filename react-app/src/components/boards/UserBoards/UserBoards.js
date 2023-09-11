@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { getUserBoards } from "../../../store/boardsReducer"
+import { getBoardDetails, getUserBoards } from "../../../store/boardsReducer"
 import { BoardCard } from "./BoardCard/BoardCard";
 import { getAllPins } from "../../../store/pinsReducer";
 import { Link } from 'react-router-dom'
@@ -88,7 +88,7 @@ export const UserBoards = () => {
                 <div className="user-board-listing">
                     {userBoardArray?.length ? userBoardArray.map(
                         (board) => (
-                            <div>
+                            <div  value={board.id}>
 
                                 <BoardCard board={board} />
                             </div>

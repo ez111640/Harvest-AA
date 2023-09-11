@@ -6,7 +6,7 @@ import { addBoardThunk, getUserBoards } from "../../../../store/boardsReducer";
 import { addNewBoardTopicThunk, getAllTopics } from "../../../../store/topicsReducer";
 
 function CreateBoardModal() {
-	const topics = useSelector((state) => state.topicsReducer.topics)
+	const topics = useSelector((state) => state.topicsReducer.allTopics)
 	console.log("TOPICS", topics)
 
 	const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function CreateBoardModal() {
 		e.preventDefault();
 		const data = await dispatch(addBoardThunk({ name }));
 		setNewBoard(data)
+		console.log("NEWBOARD", data)
 		await dispatch(getUserBoards())
 
 		setPage(2)
@@ -29,10 +30,23 @@ function CreateBoardModal() {
 			console.log(errors)
 		}
 	};
+
+
 	const handleSubmitPageTwo = async (e) => {
-		let topic = document.getElementById("topic-selector")
 		e.preventDefault();
-		const data = await dispatch(addNewBoardTopicThunk(topic, newBoard));
+		let topic = document.getElementById("topic-selector")
+		let value = topic.value
+		let text = topic.options[topic.selectedIndex].text
+
+		console.log("TOPICHERE", value)
+		console.log("text", text)
+		console.log("NEWBOARD", newBoard)
+
+		let newBT = {
+			"id": value,
+			"name": text
+		}
+		const data = await dispatch(addNewBoardTopicThunk(newBT, newBoard.id));
 
 		if (data) {
 			setErrors(data);
@@ -64,7 +78,7 @@ function CreateBoardModal() {
 				<label className='board-name-field'>
 					Topic:
 					<select id="topic-selector">{topicArr.map((topic) =>
-						<option value={topic}>{topic.name}</option>)}
+						<option value={topic.id}>{topic.name}</option>)}
 					</select>
 				</label>
 				<button type="submit">Create</button>

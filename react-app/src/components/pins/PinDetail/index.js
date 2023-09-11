@@ -104,19 +104,19 @@ export const PinDetail = () => {
 	return (
 		<div >
 			<div>{
-				user.id === thisPin.userId ?
-					<div>
-						<div className="pin-detail-buttons">
-							<button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
-							<OpenModalButton
-								type="button"
-								buttonText={<i className="fa-solid fa-trash"></i>}
-								modalComponent={<DeletePinModal pinId={thisPin.id} />}
+				<div className="button-container">
+					<div></div>
+					<div className="pin-detail-buttons">
+						<button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
+						<OpenModalButton
+							type="button"
+							buttonText={<i className="fa-solid fa-trash"></i>}
+							modalComponent={<DeletePinModal pinId={thisPin.id} />}
 
-							/>
-							<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
-						</div>
-					</div> : <div><OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} /></div>
+						/>
+						<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+					</div>
+				</div>
 
 			}</div>
 

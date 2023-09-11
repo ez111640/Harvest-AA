@@ -14,6 +14,7 @@ export const BoardCard = ({ board }) => {
 
 
     const boards = useSelector((state) => state.boardsReducer.boards)
+    const detailedBoard = useSelector((state) => state.boardsReducer.board)
 
     useEffect(() => {
         dispatch(getBoardDetails(board))
@@ -39,7 +40,7 @@ export const BoardCard = ({ board }) => {
                     />
                     <OpenModalButton className="edit-delete-buttons"
                         buttonText="Delete Board"
-                        modalComponent={<DeleteBoardModal boardId={board} />}
+                        modalComponent={<DeleteBoardModal boardId={board.id} />}
                     />
                 </div>
             </div>

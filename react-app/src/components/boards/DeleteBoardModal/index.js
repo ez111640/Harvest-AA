@@ -6,6 +6,7 @@ import { deleteBoard } from "../../../store/boardsReducer"
 
 
 const DeleteBoardModal = ({ boardId }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
@@ -13,6 +14,7 @@ const DeleteBoardModal = ({ boardId }) => {
         e.preventDefault();
         dispatch(deleteBoard(boardId))
             .then(closeModal)
+        history.pushState("/boards")
     }
 
     const onNoSubmit = (e) => {

@@ -69,7 +69,7 @@ export const updatePinThunk = (updatedPin) => async (dispatch) => {
 }
 
 export const addPinThunk = (pin) => async (dispatch) => {
-
+    console.log("PININTHUNK", pin)
     try {
         const res = await fetch(`/api/pins`, {
             method: "POST",

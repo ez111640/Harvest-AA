@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getBoardPins } from "../../../../store/pinsReducer"
 import { useParams } from "react-router-dom"
@@ -9,27 +9,56 @@ import { NavLink, Link } from "react-router-dom"
 import "./BoardLandingPage.css"
 import OpenModalButton from "../../../OpenModalButton"
 import UpdateBoardModal from "../../UpdateBoardModal"
+import { getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
+import { EditBoardTopics } from "../../EditBoardTopics/EditBoardTopics"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
     const { boardId } = useParams()
+    const [showEditTopics, setShowEditTopics] = useState(false)
     const boards = useSelector((state) => state.boardsReducer.boards)
-
+    const allTopics = useSelector((state) => state.topicsReducer.allTopics)
+    const topics = useSelector((state) => state.topicsReducer.boardTopics)
+    console.log("TOPICS", topics)
     const user = useSelector((state) => state.session.user)
     const firstLetter = user.username[0]
 
+
+    window.onbeforeunload = function () {
+        window.setTimeout(function () {
+            window.location = '/boards';
+        }, 0);
+        window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser
+    }
+
     useEffect(() => {
+        console.log("SENDING TO THUNK", boardId)
+
         dispatch(getBoardDetails(boardId))
+        dispatch(getAllTopics())
+        dispatch(getBoardTopicsThunk(boardId))
 
     }, [dispatch, boardId])
 
     let updatedBoard
+    let boardTopics;
+    let topicIds = []
 
     if (!boards) return null;
     if (boards) updatedBoard = boards[boardId]
-    let pins;
+    if (topics) boardTopics = Object.values(topics)
+    if (boardTopics) {
+        boardTopics.forEach((topic) => {
+            topicIds.push(topic.id)
+        })
+    }
+    console.log("TOPICIDS", topicIds)
 
-    console.log("UPDATEDBOARDHERE", updatedBoard)
+    let allTopArr
+    console.log("ALLTOPICS", boardTopics)
+    if (allTopics) allTopArr = Object.values(allTopics)
+    console.log("TOPARR", allTopArr)
+    let pins;
 
 
 
@@ -51,14 +80,30 @@ export const BoardLandingPage = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="user-spot">
-                <div className="board-name">
-                        {updatedBoard.name}
-                        <
+            <div className="topics-container">
+                {/* {showEditTopics === false ?
+                    <div className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}</div> : */}
+                <div >{allTopArr.length && <EditBoardTopics boardTopics={boardTopics} topicIds={topicIds} allTopArr={allTopArr} />}</div>
+                {/* } */}
+                {/* {
+                    allTopArr ?
+                        <div className="topics-div">
+                            {
+                                allTopArr.map((topic) => (
+                                    <div >
+                                        {topicIds[0] == topic.id || (topicIds.indexOf(topic.id) !== -1) ?
 
+                                            <div className="topic-option tagged">{topic.name}</div> :
+                                            <div className="topic-option untagged">{topic.name}</div>
 
-                    </div>
-            </div> */}
+                                        }
+                                    </div>
+                                ))
+                            }
+                        </div> :
+                        <div></div>
+                } */}
+            </div>
             <div>
                 {updatedBoard.pins ?
                     <div id="all-pins">
