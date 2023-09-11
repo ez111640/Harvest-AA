@@ -106,8 +106,8 @@ export const PinDetail = () => {
 			<div>{
 				user.id === thisPin.userId ?
 					<div>
-						<button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
-						<div>
+						<div className="pin-detail-buttons">
+							<button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
 							<OpenModalButton
 								type="button"
 								buttonText={<i className="fa-solid fa-trash"></i>}

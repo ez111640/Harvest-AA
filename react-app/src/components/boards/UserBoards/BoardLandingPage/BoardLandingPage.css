@@ -18,14 +18,31 @@
     border-radius: 10px;
 }
 
+.header-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
 .board-name {
     background-color: transparent;
-    font-size: 40px;
+    font-size: 32px;
     display: flex;
     column-gap: 20px;
 }
 
 
+.header-main>button {
+    background-color: transparent;
+    border: none;
+}
+
+
 .fa-ellipsis {
-    border: 1px solid;
+    padding: 5px;
+    border-radius: 20px;
+    color: black;
+    background-color: #E4E4E4;
+    font-size: 12px;
 }

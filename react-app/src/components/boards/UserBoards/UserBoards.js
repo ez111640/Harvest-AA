@@ -9,6 +9,7 @@ import "./UserBoards.css"
 import OpenModalButton from "../../OpenModalButton";
 import { PinCard } from "../../pins/PinCard/PinCard";
 import CreateBoardModal from "./CreateBoardModal";
+import { PageHeader } from "../../auth/User/PageHeader";
 
 
 
@@ -59,25 +60,23 @@ export const UserBoards = () => {
     if (!pins) return null
     return (
         <div>
-            <div className="profile-header">
+            {/* <div className="profile-header">
                 <div className="profile-div-left">
                     <div className="user-spot">
                         <div className="fl-div">{firstLetter}</div>
                     </div>
                     <div className="profile-div-left-buttons">
                         <OpenModalButton
-                            buttonText="Create a Pin"
+                            buttonText="New Pin"
                             modalComponent={<CreatePinModal />}
                         />
                         <OpenModalButton
-                            buttonText="Create a Board"
+                            buttonText="New Board"
                             modalComponent={<CreateBoardModal />} />
                     </div>
                 </div>
-                <div className="profile-div-right">
-                </div>
-            </div>
-
+            </div> */}
+            <PageHeader />
             <div className="view-type-button-div">
                 <div>View</div>
                 <div className="view-type-buttons">

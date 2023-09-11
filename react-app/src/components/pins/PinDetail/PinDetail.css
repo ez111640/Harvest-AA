@@ -13,7 +13,19 @@
     grid-template-rows: repeat(6, 1fr);
     padding: 10px;
     width: inherit;
+    margin-top: 30px;
 
+}
+
+.pin-detail-buttons{
+    position: relative;
+    top: 30px;
+    left: 670px;
+}
+
+.pin-detail-buttons>button {
+    background-color: transparent;
+    border: none;
 }
 
 .clear-right {
