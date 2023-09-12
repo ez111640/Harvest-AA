@@ -68,25 +68,53 @@ export const updatePinThunk = (updatedPin) => async (dispatch) => {
     }
 }
 
+// export const addPinThunk = (pin) => async (dispatch) => {
+//     console.log("PININTHUNK", pin)
+//     try {
+//         const res = await fetch(`/api/pins`, {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(pin)
+//         });
+
+
+//         const pinResponse = await res.json()
+//         dispatch(addNewPin(pinResponse))
+//     } catch (error) {
+//         const errors = await error.json();
+//         return errors;
+//     }
+// }
+
 export const addPinThunk = (pin) => async (dispatch) => {
-    console.log("PININTHUNK", pin)
-    try {
-        const res = await fetch(`/api/pins`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(pin)
-        });
+    console.log("MADEITTOTHUNK", pin)
+    const formData = new FormData()
 
 
-        const pinResponse = await res.json()
-        dispatch(addNewPin(pinResponse))
-    } catch (error) {
-        const errors = await error.json();
+    formData.append('url', pin.url)
+    formData.append('description', pin.description)
+    formData.append('link', pin.link)
+    formData.append('title', pin.title)
+
+    console.log("FORMDATA", formData)
+    const response = await fetch(`/api/pins`, {
+        method: "POST",
+        body: formData
+    })
+    if (response.ok) {
+        const newPin = await response.json();
+        dispatch(addNewPin(newPin))
+        return newPin
+    } else {
+        const errors = await response.json()
         return errors;
     }
+
 }
 
 export const deletePin = (pinId) => async (dispatch) => {
+
+    console.log("PD", pinId)
     const res = await fetch(`/api/pins/${pinId}`, {
         method: 'DELETE'
     })

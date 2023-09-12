@@ -69,7 +69,7 @@ def add_board_topic(id):
     db.session.commit()
     return topicToBoard.to_dict()
 
-    
+
 
 @board_routes.route("/<int:id>/topics")
 def get_board_topics(id):

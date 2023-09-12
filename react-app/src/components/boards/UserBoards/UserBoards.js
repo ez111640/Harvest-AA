@@ -16,10 +16,10 @@ import { PageHeader } from "../../auth/User/PageHeader";
 export const UserBoards = () => {
     const user = useSelector((state) => state.session.user)
     const pins = useSelector((state) => state.pinsReducer.pins)
-
-
-
     const userBoards = useSelector((state) => state.boardsReducer.boards)
+
+
+    
     console.log("USERBOARDS", userBoards)
     const dispatch = useDispatch();
     const firstLetter = user.username[0]

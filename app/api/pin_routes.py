@@ -3,9 +3,11 @@ from ..models.pin import Pin
 import json
 from ..forms.pin_form import PinForm
 from ..forms.comment_form import CommentForm
+from ..forms.pin_aws_form import PinAWSForm
 from flask_login import login_required, current_user # current_user.id
 from ..models import db
 from ..models.comment import Comment
+from app.s3_helpers import (upload_file_to_s3, get_unique_filename)
 
 pin_routes = Blueprint("pins", __name__)
 
@@ -53,26 +55,66 @@ def get_all_pins():
     return {'Pins': [pin.to_dict() for pin in all_pins]}
 
 
+# @pin_routes.route("", methods=["POST"])
+# def add_new_pin():
+#     """
+#     ADD A NEW PIN
+#     """
+#     form = PinForm()
+#     form["csrf_token"].data = request.cookies["csrf_token"]
+#     if form.validate_on_submit ():
+#         pin = Pin(
+#             url = form.data["url"],
+#             link=form.data["link"],
+#             description=form.data["description"],
+#             title = form.data["title"],
+#             creatorId = current_user.id
+#         )
+
+#         db.session.add(pin)
+#         db.session.commit()
+
+#     return pin.to_dict()
+
+
 @pin_routes.route("", methods=["POST"])
 def add_new_pin():
     """
     ADD A NEW PIN
     """
-    form = PinForm()
+    form = PinAWSForm()
+
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit ():
-        pin = Pin(
-            url = form.data["url"],
+        url = request.files["url"]
+        print("@@@@@@@", request.files)
+        url.filename = get_unique_filename(url.filename)
+        upload = upload_file_to_s3(url)
+        print(upload)
+
+        if "url" not in upload:
+            return {"Errors": [upload]}
+
+        photoUrl = upload["url"]
+        new_pin = Pin(
+            url = photoUrl,
             link=form.data["link"],
             description=form.data["description"],
             title = form.data["title"],
             creatorId = current_user.id
         )
+        print("HERES THE NEW PIN", new_pin)
 
-        db.session.add(pin)
+        db.session.add(new_pin)
         db.session.commit()
 
-    return pin.to_dict()
+        return new_pin.to_dict()
+
+    if(form.errors):
+        print(form.errors)
+        return {"Errors": form.errors}
+
+    return {"Errors": None}
 
 
 @pin_routes.route("/<int:id>", methods=["PUT"])

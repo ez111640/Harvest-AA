@@ -1,6 +1,7 @@
 import OpenModalButton from "../../OpenModalButton"
 import CreateBoardModal from "../../boards/UserBoards/CreateBoardModal"
 import CreatePinModal from "../../pins/CreatePinModal"
+import CreatePinAWSModal from "../../pins/CreatePinAWSModal"
 import "./UserBoards.css"
 import { useSelector } from "react-redux"
 
@@ -19,6 +20,10 @@ export const PageHeader = () => {
                     <OpenModalButton
                         buttonText="New Pin"
                         modalComponent={<CreatePinModal />}
+                    />
+                     <OpenModalButton
+                        buttonText="New AWS Pin"
+                        modalComponent={<CreatePinAWSModal />}
                     />
                     <OpenModalButton
                         buttonText="New Board"
