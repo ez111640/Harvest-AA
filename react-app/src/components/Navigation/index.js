@@ -12,8 +12,11 @@ function Navigation({ isLoaded }) {
   const history = useHistory()
   let searchPins = []
   let pinArray = []
-  if(pins) pinArray = Object.values(pins)
 
+  // if(pins) pinArray = Object.values(pins)
+  let sortedPins = []
+  if (pinArray.length) pins.map((pin) => sortedPins[pin.id] = pin)
+  console.log(sortedPins)
 
 
   const handleChange = (e) => {

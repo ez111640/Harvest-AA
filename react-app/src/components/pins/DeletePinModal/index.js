@@ -1,20 +1,22 @@
 import { useDispatch } from "react-redux"
-import { useHistory, useNavigate } from "react-router-dom/cjs/react-router-dom.min"
+import { Redirect, useHistory } from "react-router-dom"
+
 import { useModal } from "../../../context/Modal"
-import { deletePin } from "../../../store/pinsReducer"
+import { deletePin, getAllPins } from "../../../store/pinsReducer"
 import "./deletePinModal.css"
 
-const DeletePinModal = ({ pinId }) => {
+const DeletePinModal = ({ pinId, lastPage }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("PINID in MODAL", pinId)
         dispatch(deletePin(pinId))
+        dispatch(getAllPins())
+        history.push("/")
+        window.location.reload();
         closeModal()
-        history.goBack()
 
 
     }

@@ -18,15 +18,38 @@ board_routes = Blueprint("boards", __name__)
 @board_routes.route("/<int:id>/pins")
 def get_board_pins(id):
     """
-    get all pins by board
+    get one pin by board
     """
     print("ID", id)
-    pin_to_board = Pins_To_Boards.query.filter(Pins_To_Boards.boardId == id).all()
+    pin_to_board = Pins_To_Boards.query.filter(Pins_To_Boards.boardId == id).first()
     if pin_to_board:
-        first_pin = Pin.query.filter(Pin.id == pin_to_board.pinId)
+        first_pin = Pin.query.filter(Pin.id == pin_to_board.pinId).first()
         return first_pin.to_dict()
     else:
         return "No pins"
+
+
+@board_routes.route("/<int:id>/pins/all")
+def get_all_board_pins(id):
+    """
+    get all pin by board
+    """
+    boardPins = {}
+    print("ID", id)
+    pins_to_board = Pins_To_Boards.query.filter(Pins_To_Boards.boardId == id).all()
+    pins_dict = [pin.to_dict() for pin in pins_to_board]
+
+    boardPins[id] = [Pin.query.filter(Pin.id == pin.pinId).all() for pin in pins_to_board]
+    print("boardpins", boardPins)
+    bp_to_dict = {}
+    bp_to_dict[id] = [pin[0].id  for pin in boardPins[id]]
+
+    print(bp_to_dict)
+
+    return {"boardPins": bp_to_dict}
+
+
+
 
 
 @board_routes.route("/<int:id>", methods=["DELETE"])
@@ -34,6 +57,8 @@ def delete_board(id):
     """
     delete a board
     """
+    all_board = Board.query.all()
+    print("ALLBOARDS", all_board)
     board_to_delete = Board.query.get(id)
     print("BTR", board_to_delete)
     db.session.delete(board_to_delete)

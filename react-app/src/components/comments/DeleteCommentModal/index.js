@@ -6,6 +6,7 @@ import "./DeleteCommentModal.css"
 import { useEffect } from "react"
 
 const DeleteCommentModal = ({ commentId }) => {
+    console.log("COMMENTIDINMIDAL", commentId)
     const allComments = useSelector((state) => state.commentsReducer)
     const dispatch = useDispatch();
     const history = useHistory();
@@ -17,11 +18,9 @@ const DeleteCommentModal = ({ commentId }) => {
         e.preventDefault();
         dispatch(deleteCommentThunk(commentId))
         closeModal()
+        history.push()
     }
 
-    useEffect(() => {
-        dispatch(getAllComments())
-    }, [dispatch])
 
     const commentArr = Object.values(allComments)
     const thisComment = commentArr.find((comment) => comment.id === commentId)

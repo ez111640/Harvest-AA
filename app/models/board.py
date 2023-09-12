@@ -15,8 +15,8 @@ class Board(db.Model, UserMixin):
     name = db.Column(db.String(), nullable=False)
 
     users = db.relationship("User", back_populates="boards")
-    pins_to_boards = db.relationship("Pins_To_Boards", back_populates="boards")
-    topics_to_boards = db.relationship("Topics_To_Boards", back_populates="boards")
+    pins_to_boards = db.relationship("Pins_To_Boards", back_populates="boards", cascade="all, delete")
+    topics_to_boards = db.relationship("Topics_To_Boards", back_populates="boards", cascade="all, delete")
 
 
     def to_dict(self):

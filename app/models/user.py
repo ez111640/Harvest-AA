@@ -19,10 +19,10 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(40))
     state = db.Column(db.String(20))
 
-    pins = db.relationship("Pin", back_populates="users")
-    boards = db.relationship("Board", back_populates="users")
-    comments = db.relationship("Comment", back_populates="users")
-    follows = db.relationship("Follow", back_populates="users")
+    pins = db.relationship("Pin", back_populates="users", cascade="all, delete")
+    boards = db.relationship("Board", back_populates="users", cascade="all, delete")
+    comments = db.relationship("Comment", back_populates="users", cascade="all, delete")
+    follows = db.relationship("Follow", back_populates="users", cascade="all, delete")
 
     @property
     def password(self):

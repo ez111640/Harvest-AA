@@ -139,7 +139,11 @@ def delete_pin(id):
     """
     delete a pin
     """
+    print("IDINROUTE", id)
+    all_pins = Pin.query.all()
+    print("ALLPINS", all_pins)
     pin_to_delete = Pin.query.get(id)
+    print("PINTODELETE", pin_to_delete)
     db.session.delete(pin_to_delete)
     db.session.commit()
-    return "Deleted"
+    return "DELETED"

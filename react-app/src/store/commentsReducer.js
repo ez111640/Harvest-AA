@@ -72,7 +72,7 @@ export const addCommentThunk = (comment) => async (dispatch) => {
 }
 
 export const deleteCommentThunk = (commentId) => async (dispatch) => {
-    console.log("IN DELETE COMMENT THUNK")
+    console.log("IN DELETE COMMENT THUNK", commentId)
     const res = await fetch(`/api/comments/${commentId}`, {
         method: 'DELETE'
     })

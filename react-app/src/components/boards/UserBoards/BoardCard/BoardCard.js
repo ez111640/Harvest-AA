@@ -21,16 +21,14 @@ export const BoardCard = ({ board }) => {
     }, [dispatch])
 
 
-    let updatedBoard
-    if (boards) updatedBoard = Object.values(boards).find((thisBoard) => thisBoard.id === board.id)
-
-    if (updatedBoard.pins) console.log(updatedBoard.pins[0][0].pin.url)
+    console.log("BOARDS", boards[board.id].first_pin)
+    console.log("detailedBoard", detailedBoard.first_pin)
 
 
     return (
         <div>
             <div className="board-cover-photo-div">
-                {updatedBoard.pins ? <Link to={`/boards/${board.id}`}><img alt="board" className="board-cover-photo" src={updatedBoard.pins[0][0].pin.url}></img></Link>
+            {boards[board.id]?.first_pin ? <Link to={`/boards/${board.id}`}><img alt="board" className="board-cover-photo" src={boards[board.id].first_pin}></img></Link>
                     : <div> <Link to={`/boards/${board.id}`}><img alt="board" className="board-cover-photo" src={"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}></img></Link> </div>
                 }<div className="board-sub-one">{board.name}</div>
                 <div className="board-sub-two ">

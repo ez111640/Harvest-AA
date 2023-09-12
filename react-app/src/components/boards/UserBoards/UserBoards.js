@@ -11,6 +11,9 @@ import { PinCard } from "../../pins/PinCard/PinCard";
 import CreateBoardModal from "./CreateBoardModal";
 import { PageHeader } from "../../auth/User/PageHeader";
 
+import { NavLink } from "react-router-dom"
+
+
 
 
 export const UserBoards = () => {
@@ -19,7 +22,7 @@ export const UserBoards = () => {
     const userBoards = useSelector((state) => state.boardsReducer.boards)
 
 
-    
+
     console.log("USERBOARDS", userBoards)
     const dispatch = useDispatch();
     const firstLetter = user.username[0]
@@ -54,8 +57,10 @@ export const UserBoards = () => {
     let userBoardArray;
     if (userBoards) userBoardArray = Object.values(userBoards)
     const pinArray = Object.values(pins)
+    console.log("PINARRAY", pinArray)
     let userPins = pinArray.filter((pin) => pin.userId === user.id)
     console.log(userBoardArray)
+    console.log("userPins", userPins)
 
     if (!pins) return null
     return (
@@ -88,7 +93,7 @@ export const UserBoards = () => {
                 <div className="user-board-listing">
                     {userBoardArray?.length ? userBoardArray.map(
                         (board) => (
-                            <div  value={board.id}>
+                            <div value={board.id}>
 
                                 <BoardCard board={board} />
                             </div>
@@ -100,7 +105,7 @@ export const UserBoards = () => {
                     {
                         userPins.map((pin) => (
                             <div id={pin.id}>
-                                <PinCard pin={pin} />
+                                <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" src={pin.url}></img></NavLink>
                             </div>
                         ))
                     }

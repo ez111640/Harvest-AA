@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./PinDetail.css"
 import { useEffect, useState } from "react";
-import { getAllPins, updatePinThunk } from "../../../store/pinsReducer";
+import { getAllPins, getOnePin, getOnePinThunk, updatePinThunk } from "../../../store/pinsReducer";
 import OpenModalButton from "../../OpenModalButton";
 import UpdatePinModal from "../UpdatePinModal";
 import DeletePinModal from "../DeletePinModal";
@@ -15,8 +15,10 @@ export const PinDetail = () => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)
 	const user = useSelector((state) => state.session.user)
 	const comments = useSelector((state) => state.commentsReducer)
+	const thisPin = useSelector((state) => state.pinsReducer.pin)
 	const dispatch = useDispatch()
 	const { pinId } = useParams()
+	console.log("PINID", pinId)
 	const [showEditForm, setShowEditForm] = useState(false)
 	const [editUrlValue, setEditUrlValue] = useState(false)
 	const [editTitleValue, setEditTitleValue] = useState(false)
@@ -32,8 +34,8 @@ export const PinDetail = () => {
 
 
 	useEffect(() => {
-		dispatch(getAllPins())
 		dispatch(getAllComments())
+		dispatch(getOnePinThunk(pinId))
 	}, [dispatch])
 
 	const enterEditForm = (e) => {
@@ -48,17 +50,19 @@ export const PinDetail = () => {
 
 	if (!allPins) return null
 	const allPinArray = Object.values(allPins)
-	const thisPin = allPinArray[pinId - 1]
+	// const thisPin = allPinArray[pinId]
 	if (!comments) return null
 	const commentArr = Object.values(comments)
+
+	if(!thisPin) return null
+	if(!thisPin.link) return null;
 	if (thisPin) {
 		const url = thisPin?.link
-		const splitUrl = url.split("/")
+		let splitUrl
+		if(url) splitUrl = url.split("/")
 		if (splitUrl[0] === "https:") {
 			domain = splitUrl[2].split(".")[0]
 		}
-	} else {
-		return null
 	}
 	const pinComments = commentArr.filter((comment) => comment.pinId == pinId)
 	console.log(pinComments)
@@ -84,8 +88,15 @@ export const PinDetail = () => {
 		setEditLinkValue(!editLinkValue)
 	}
 
+
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setShowEditForm(false)
+		setEditTitleValue(false)
+		setEditUrlValue(false)
+		setEditDescValue(false)
+		setEditLinkValue(false)
 		const updatedPin = {}
 
 		photoUrl ? updatedPin.url = photoUrl : updatedPin.url = thisPin.url
@@ -132,7 +143,7 @@ export const PinDetail = () => {
 							/>
 						</label>
 						<div>
-							<button type="button" onClick={clickEditUrlButton}><i className="fa-solid fa-check"></i></button>
+							<button type="button" onClick={clickEditUrlButton} value={editUrlValue}><i className="fa-solid fa-check"></i></button>
 							<button type="button" onClick={clickEditUrlButton}><i className="fa-solid fa-xmark"></i></button>
 						</div>
 					</div>
@@ -150,13 +161,14 @@ export const PinDetail = () => {
 					{editTitleValue ? <div className="pin-details pin-detail-title">
 						<label className='url-field'>
 							<input className="no-placeholder"
+								id="title-input"
 								type="text"
+								value={photoTitle ? photoTitle : ""}
 								placeholder={thisPin.title}
 								onChange={(e) => setPhotoTitle(e.target.value)}
 							/>
 						</label>
 						<div>
-							<button type="button" ><i className="fa-solid fa-check"></i></button>
 							<button type="button" onClick={clickEditTitleButton}><i className="fa-solid fa-xmark"></i></button>
 						</div>
 					</div> : <div className="pin-details pin-detail-title">
@@ -172,11 +184,11 @@ export const PinDetail = () => {
 								<input className="no-placeholder"
 									type="textarea"
 									placeholder={thisPin.description}
+									value={photoDesc ? photoDesc : ""}
 									onChange={(e) => setPhotoDesc(e.target.value)}
 								/>
 							</label>
 							<div>
-								<button type="button" onClick={clickEditDescButton}><i className="fa-solid fa-check"></i></button>
 								<button type="button" onClick={clickEditDescButton}><i className="fa-solid fa-xmark"></i></button>
 							</div>
 						</div>
@@ -193,7 +205,7 @@ export const PinDetail = () => {
 							<button type="submit">Save Changes</button>
 						}
 					</div>
-					<div>
+					{!showEditForm && <div>
 						<div>
 							<div>Comments: </div>
 							{pinComments.length ?
@@ -219,7 +231,7 @@ export const PinDetail = () => {
 
 
 						</div>
-					</div>
+					</div>}
 				</div>
 
 			</form>

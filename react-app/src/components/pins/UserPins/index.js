@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllPins } from "../../../store/pinsReducer"
 import { PinCard } from "../PinCard/PinCard"
 import "./LandingPage.css"
+import { NavLink } from "react-router-dom"
+
 
 export const UserPins = () => {
     const pins = useSelector((state) => state.pinsReducer.pins)
@@ -24,11 +26,10 @@ export const UserPins = () => {
         <div id="all-pins">
             {
                 userPins.map((pin) => (
-                    <div id={pin.id}>
-                    <PinCard pin={pin} />
-                </div>
+                    <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" src={pin.url}></img></NavLink>
+
                 ))
             }
-        </div>
+        </div >
     )
 }

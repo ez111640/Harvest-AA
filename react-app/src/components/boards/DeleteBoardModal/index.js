@@ -14,7 +14,7 @@ const DeleteBoardModal = ({ boardId }) => {
         e.preventDefault();
         dispatch(deleteBoard(boardId))
             .then(closeModal)
-        history.pushState("/boards")
+        history.push("/boards")
     }
 
     const onNoSubmit = (e) => {

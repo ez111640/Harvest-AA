@@ -15,8 +15,8 @@ class Topics_To_Boards (db.Model, UserMixin):
     boardId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("boards.id"))
 )
 
-    topics = db.relationship("Topic", back_populates="topics_to_boards",  cascade="all, delete")
-    boards = db.relationship("Board", back_populates="topics_to_boards",  cascade="all, delete")
+    topics = db.relationship("Topic", back_populates="topics_to_boards")
+    boards = db.relationship("Board", back_populates="topics_to_boards")
 
     def to_dict(self):
             return {

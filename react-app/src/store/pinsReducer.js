@@ -5,15 +5,21 @@ export const LOAD_BOARD_PINS = '/pinsReducer/loadBoardPins'
 export const ADD_PIN = "/pinsReducer/addNewPin"
 export const UPDATE_PIN = "/pinsReducer/putPin"
 export const DELETE_PIN = "/pinsReducer/deletePins"
+export const GET_ONE_PIN = "/pinsReducer/getOnePin"
 
 export const loadPins = (pins) => ({
     type: LOAD_PINS,
     pins
 })
 
-export const loadBoardPins = (boardPin) => ({
+export const loadBoardPins = (boardPins) => ({
     type: LOAD_BOARD_PINS,
-    boardPin
+    boardPins
+})
+
+export const getOnePin = (pin) => ({
+    type: GET_ONE_PIN,
+    pin
 })
 
 export const addNewPin = (pin) => ({
@@ -37,14 +43,29 @@ export const getAllPins = () => async (dispatch) => {
     const res = await fetch(`/api/pins`)
 
     const allPins = await res.json();
+
+    console.log("GETALLPINS", allPins)
     dispatch(loadPins(allPins.Pins))
 }
 
+export const getOnePinThunk = (pinId) => async (dispatch) => {
+    const res = await fetch(`/api/pins/${pinId}`)
+
+    const pin = await res.json()
+    console.log(pin)
+    if (res.ok) dispatch(getOnePin(pin))
+    else {
+        console.log("PROBLEM WITH RESPONSE FROM BACKEND")
+    }
+
+
+}
+
 export const getBoardPins = (id) => async (dispatch) => {
-    const res = await fetch(`/api/boards/${id}/pins`)
+    const res = await fetch(`/api/boards/${id}/pins/all`)
 
     const btps = await res.json();
-    console.log(btps)
+    console.log("BTPS", btps)
     if (btps == "No pins") {
         console.log("NO PINS FOR THAT BOARD")
     } else {
@@ -120,7 +141,7 @@ export const deletePin = (pinId) => async (dispatch) => {
     })
     console.log("RESPONSE FROM THUNK", res)
     if (res.ok) {
-        await dispatch(deletePin(pinId))
+        //     await dispatch(deletePin(pinId))
         return null
     } else {
         const errors = await res.json()
@@ -130,19 +151,24 @@ export const deletePin = (pinId) => async (dispatch) => {
 
 const initialState = {
     pins: {},
-    boardPins: {}
+    boardPins: {},
+    pin: {}
 };
 export const pinsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_PINS:
-            newState = { ...state }
+            newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }
             action.pins.forEach((pin) =>
                 newState.pins[pin.id] = pin)
             return newState
         case LOAD_BOARD_PINS:
-            newState = { ...state, boardPins: { ...state.boardPins } }
+            newState = { ...state, ...action.boardPins }
             return newState;
+        case GET_ONE_PIN:
+            newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }
+            newState.pin = action.pin
+            return newState
         case ADD_PIN:
             newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }
             newState.pins[action.pin.id] = action.pin
@@ -154,6 +180,8 @@ export const pinsReducer = (state = initialState, action) => {
         case DELETE_PIN:
             newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }
             delete newState.pins[action.pinId];
+            newState.pins.forEach((pin) =>
+                newState.pins[pin.id] = pin)
             return newState
         default:
             return state;

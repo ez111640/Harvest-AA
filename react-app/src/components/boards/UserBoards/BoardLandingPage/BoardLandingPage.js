@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getBoardPins } from "../../../../store/pinsReducer"
+import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
 import { useParams } from "react-router-dom"
 import { getAllComments } from "../../../../store/commentsReducer"
 import { PinCard } from "../../../pins/PinCard/PinCard"
@@ -19,9 +19,30 @@ export const BoardLandingPage = () => {
     const boards = useSelector((state) => state.boardsReducer.boards)
     const allTopics = useSelector((state) => state.topicsReducer.allTopics)
     const topics = useSelector((state) => state.topicsReducer.boardTopics)
+    const pins = useSelector((state) => state.pinsReducer.boardPins)
+    const allPins = useSelector((state) => state.pinsReducer.pins)
     console.log("TOPICS", topics)
     const user = useSelector((state) => state.session.user)
     const firstLetter = user.username[0]
+
+    let this_board_pinIds
+    let allPinArray = []
+    if (pins) this_board_pinIds = Object.values(pins)[0]
+    if (allPins) allPinArray = Object.values(allPins)
+
+    let thisBoardPins = []
+
+    if (this_board_pinIds && allPinArray) {
+        for (let i = 0; i < this_board_pinIds.length; i++) {
+            console.log(this_board_pinIds[i])
+            for (let j = 0; j < allPinArray.length; j++) {
+                console.log((allPinArray[j]))
+                if (this_board_pinIds[i] === allPinArray[j].id) {
+                    thisBoardPins.push(allPinArray[j])
+                }
+            }
+        }
+    }
 
 
     window.onbeforeunload = function () {
@@ -32,20 +53,18 @@ export const BoardLandingPage = () => {
     }
 
     useEffect(() => {
-        console.log("SENDING TO THUNK", boardId)
 
-        dispatch(getBoardDetails(boardId))
+        // dispatch(getBoardDetails(boardId))
         dispatch(getAllTopics())
         dispatch(getBoardTopicsThunk(boardId))
+        dispatch(getBoardPins(boardId))
 
     }, [dispatch, boardId])
 
-    let updatedBoard
+
     let boardTopics;
     let topicIds = []
 
-    if (!boards) return null;
-    if (boards) updatedBoard = boards[boardId]
     if (topics) boardTopics = Object.values(topics)
     if (boardTopics) {
         boardTopics.forEach((topic) => {
@@ -58,11 +77,10 @@ export const BoardLandingPage = () => {
     console.log("ALLTOPICS", boardTopics)
     if (allTopics) allTopArr = Object.values(allTopics)
     console.log("TOPARR", allTopArr)
-    let pins;
 
 
 
-    if (updatedBoard?.pins) pins = (updatedBoard.pins)
+
 
     return (
         <div>
@@ -73,9 +91,9 @@ export const BoardLandingPage = () => {
                     </div>
 
                     <div className="header-main">
-                        <div className="board-name">{updatedBoard.name}</div>
-                        <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<UpdateBoardModal board={updatedBoard} />} />
+                        {/* <div className="board-name">{updatedBoard.name}</div> */}
+                        {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+                            modalComponent={<UpdateBoardModal board={updatedBoard} />} /> */}
                         {/* <div><i className="fa-solid fa-ellipsis"></i></div> */}
                     </div>
                 </div>
@@ -105,11 +123,11 @@ export const BoardLandingPage = () => {
                 } */}
             </div>
             <div>
-                {updatedBoard.pins ?
+                {thisBoardPins ?
                     <div id="all-pins">
-                        {pins[0].map((pin) => (
-                            <div id={pin.pinId} className="pin-photo">
-                                <NavLink to={`/pins/${pin.id}`}><img alt="pin" src={pin.pin.url}></img></NavLink>
+                        {thisBoardPins.map((pin) => (
+                            <div id={pin.id} className="pin-photo">
+                                <NavLink to={`/pins/${pin.id}`}><img alt="pin" src={pin.url}></img></NavLink>
                             </div>
                         ))}
                     </div>

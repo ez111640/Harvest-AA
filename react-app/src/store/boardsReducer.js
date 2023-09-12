@@ -70,8 +70,8 @@ export const getBoardDetails = (board) => async (dispatch) => {
         if (res.ok) {
             const pins = await res.json()
             const pinArray = Object.values(pins)
-            console.log("PINARR", pinArray)
-            board.pins = [...pinArray]
+            console.log("PINARR", pins)
+            board.first_pin = pins.url
             console.log("BOARD", board)
             dispatch(loadBoard(board))
         } else {

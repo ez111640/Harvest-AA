@@ -19,8 +19,8 @@ class Pin(db.Model, UserMixin):
     creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
     users = db.relationship("User", back_populates="pins")
-    pins_to_boards = db.relationship("Pins_To_Boards", back_populates="pins")
-    comments = db.relationship("Comment", back_populates="pins")
+    pins_to_boards = db.relationship("Pins_To_Boards", back_populates="pins", cascade="all, delete")
+    comments = db.relationship("Comment", back_populates="pins", cascade="all, delete")
 
     def to_dict(self):
         return {
