@@ -21,9 +21,10 @@ def get_board_pins(id):
     get all pins by board
     """
     print("ID", id)
-    pins_to_boards = Pins_To_Boards.query.filter(Pins_To_Boards.boardId == id).all()
-    if len(pins_to_boards) > 0:
-        return {id: [ptb.to_dict() for ptb in pins_to_boards]}
+    pin_to_board = Pins_To_Boards.query.filter(Pins_To_Boards.boardId == id).all()
+    if pin_to_board:
+        first_pin = Pin.query.filter(Pin.id == pin_to_board.pinId)
+        return first_pin.to_dict()
     else:
         return "No pins"
 
