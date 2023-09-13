@@ -46,7 +46,7 @@ def get_all_board_pins(id):
 
     print(bp_to_dict)
 
-    return {"boardPins": bp_to_dict}
+    return {"boardPins"[id]: bp_to_dict}
 
 
 
@@ -91,13 +91,32 @@ def add_board_topic(id):
         topicId = req["id"],
         boardId = id
     )
+    checkDuplicates = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == topicToBoard.boardId, Topics_To_Boards.topicId ==topicToBoard.topicId).all()
     topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
     print("@@@@@@@@@@@@@@topics", topics)
-    db.session.add(topicToBoard)
-    db.session.commit()
-    return topicToBoard.to_dict()
+    if checkDuplicates:
+        db.session.commit()
+        return "Attempted to add duplicated board"
+    else:
+        db.session.add(topicToBoard)
+        db.session.commit()
+        return topicToBoard.to_dict()
 
-
+@board_routes.route("/<int:id>/topics", methods=["DELETE"])
+def delete_board_topic(id):
+    req = request.get_json(force=True)
+    topicToBoard = Topics_To_Boards(
+        topicId = req["id"],
+        boardId = id
+    )
+    checkDuplicates = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == topicToBoard.boardId, Topics_To_Boards.topicId ==topicToBoard.topicId).all()
+    topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).first()
+    print("@@@@@@@@@@@@@@topics", topics)
+    if checkDuplicates:
+        db.session.delete(checkDuplicates)
+        db.session.commit()
+    else:
+        return "Topic wasn't found and couldn't be deleted"
 
 @board_routes.route("/<int:id>/topics")
 def get_board_topics(id):

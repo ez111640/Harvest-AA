@@ -31,22 +31,22 @@ function App() {
           <Route path='/sign-up' exact={true}>
             <SignupFormPage />
           </Route>
-          <Route path="/boards/:boardId">
+          <Route exact path="/boards/:boardId">
             <BoardLandingPage />
           </Route>
           <Route exact path="/boards">
             <UserBoards />
           </Route>
-          <Route path="/comments">
+          <Route exact path="/comments">
             <AllComments />
           </Route>
-          <Route path="/pins/current">
+          <Route exact path="/pins/current">
             <UserPins />
           </Route>
-          <Route path="/pins/:pinId">
+          <Route exact path="/pins/:pinId">
             <PinDetail />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <LandingPage />
           </Route>
           <ProtectedRoute path='/' exact={true} >

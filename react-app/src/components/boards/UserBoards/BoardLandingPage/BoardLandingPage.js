@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getBoardPins } from "../../../../store/pinsReducer"
+import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
 import { useParams, NavLink } from "react-router-dom"
 import "./BoardLandingPage.css"
-import { addNewBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
-import { EditBoardTopics } from "../../EditBoardTopics/EditBoardTopics"
+import { addNewBoardTopicThunk, deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
+import EditBoardTopics from "../../EditBoardTopics"
+import OpenModalButton from "../../../OpenModalButton"
+
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
@@ -52,6 +54,7 @@ export const BoardLandingPage = () => {
     useEffect(() => {
 
         // dispatch(getBoardDetails(boardId))
+        dispatch(getAllPins())
         dispatch(getAllTopics())
         dispatch(getBoardTopicsThunk(boardId))
         dispatch(getBoardPins(boardId))
@@ -65,7 +68,7 @@ export const BoardLandingPage = () => {
     if (topics) boardTopics = Object.values(topics)
     if (boardTopics) {
         boardTopics.forEach((topic) => {
-            topicIds.push(topic.id)
+            topicIds.push(topic.topicId)
         })
     }
     console.log("TOPICIDS", topicIds)
@@ -75,15 +78,6 @@ export const BoardLandingPage = () => {
     if (allTopics) allTopArr = Object.values(allTopics)
     console.log("TOPARR", allTopArr)
 
-    const addRemoveFromTopics = (topic) => {
-        if (topicIds.indexOf(topic.id) !== -1) {
-            console.log("topic not selected")
-        } else {
-            console.log("topic selected")
-            dispatch(addNewBoardTopicThunk(topic, boardId))
-        }
-
-    }
 
 
 
@@ -96,29 +90,21 @@ export const BoardLandingPage = () => {
                     </div>
 
                     <div className="header-main">
-                        {/* <div className="board-name">{updatedBoard.name}</div> */}
-                        {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<UpdateBoardModal board={updatedBoard} />} /> */}
-                        {/* <div><i className="fa-solid fa-ellipsis"></i></div> */}
+                        {/* <div className="board-name">{updatedBoard.name}</div>
+                        <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+                            modalComponent={<UpdateBoardModal board={updatedBoard} />} />
+                        <div><i className="fa-solid fa-ellipsis"></i></div> */}
                     </div>
                 </div>
             </div>
             <div className="topics-container">
-                {showEditTopics === false ?
-                    <div onClick={onClick} className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}</div> :
-                    <div>
-                        {
-                            allTopArr.map((topic) => (
-                                topicIds[0] === topic.id || topicIds.indexOf(topic.id) !== -1 ?
-                                    <button type="button" className="topic-option tagged " onClick={addRemoveFromTopics(topic)}>{topic.name}</button> :
-                                    <button type="button" className="topic-option untagged " onClick={addRemoveFromTopics(topic)}>{topic.name}</button>
-                            ))
-                        }
+                <div className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}
+                    <OpenModalButton
+                        buttonText="Edit Topics"
+                        modalComponent={<EditBoardTopics boardId={boardId}  />}
+                    />
+                </div>
 
-                    </div>
-
-
-                }
             </div>
             <div>
                 {thisBoardPins ?
