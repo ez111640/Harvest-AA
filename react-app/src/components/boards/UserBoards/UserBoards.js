@@ -34,9 +34,9 @@ export const UserBoards = () => {
 
     window.onbeforeunload = function () {
         window.setTimeout(function () {
-            window.location = '/';
+            window.location = '/boards';
         }, 0);
-        window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser
+        window.onbeforeunload = null;
     }
 
 
@@ -57,7 +57,6 @@ export const UserBoards = () => {
     let userBoardArray;
     if (userBoards) userBoardArray = Object.values(userBoards)
     const pinArray = Object.values(pins)
-    console.log("PINARRAY", pinArray)
     let userPins = pinArray.filter((pin) => pin.userId === user.id)
     console.log(userBoardArray)
     console.log("userPins", userPins)

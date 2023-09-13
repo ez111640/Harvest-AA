@@ -28,7 +28,7 @@ export const BoardCard = ({ board }) => {
             <div className="board-cover-photo-div">
             {boards[board.id]?.first_pin ? <Link to={`/boards/${board.id}`}><img alt="board" className="board-cover-photo" src={boards[board.id].first_pin}></img></Link>
                     : <div> <Link to={`/boards/${board.id}`}><img alt="board" className="board-cover-photo" src={"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"}></img></Link> </div>
-                }<div className="board-sub-one">{board.name}</div>
+                }<div className="board-sub-one">{board.name}<i className="fa-solid fa-pen-to-square shrink-edit-symbol"></i></div>
                 <div className="board-sub-two ">
                     <OpenModalButton
                         buttonText="Update Board"

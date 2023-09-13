@@ -1,8 +1,7 @@
-import { bindActionCreators } from "redux"
-
 export const LOAD_TOPICS = "/topicsReducer/loadTopics"
 export const ADD_NEW_BOARD_TOPIC = "/topicsReducer/addNewBoardTopic"
 export const GET_BOARD_TOPICS = "/topicsReducer/getBoardTopics"
+export const DELETE_BOARD_TOPIC = "/topicsReducer/deleteBoardTopic"
 
 export const loadTopics = (topics) => ({
     type: LOAD_TOPICS,
@@ -19,12 +18,23 @@ export const getBoardTopics = (topics) => ({
     topics
 })
 
+export const deleteBoardTopic = (topicId) => ({
+    type: GET_BOARD_TOPICS,
+    topicId
+})
+
 export const getAllTopics = () => async (dispatch) => {
     const res = await fetch(`/api/topics`)
 
     const allTopics = await res.json();
     dispatch(loadTopics(allTopics.Topics))
 }
+
+// export const getAllBoardTopicDataThunk = () => async (dispatch) => {
+//     const res = await fetch(`/boardtopics`)
+//     const response = await res.json()
+//     if (response.ok)
+// }
 
 
 
@@ -36,12 +46,23 @@ export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(topic)
         })
-    const topicResponse = await res.json()
-    dispatch(addNewBoardTopic(topicResponse))
+    const response = await res.json()
+    if (response.ok) {
+        await dispatch(addNewBoardTopic(response))
+
+        return null
+    }
+    else {
+        const errors = res
+        return errors;
+    }
 
 }
 
 export const deleteBoardTopicThunk = (topic, boardId) => async (dispatch) => {
+    console.log("IN DELETEBOARDTOPIC THUNK")
+    console.log("TOPIC", topic)
+    console.log("BOARDID", boardId)
     const res = await fetch(`/api/boards/${boardId}/topics`,
         {
             method: "DELETE",
@@ -50,18 +71,23 @@ export const deleteBoardTopicThunk = (topic, boardId) => async (dispatch) => {
         }
     )
     const response = await res.json()
+    if (response.ok) {
+        await dispatch(deleteBoardTopic(topic.id))
+        return null
 
+    }
 }
 
 export const getBoardTopicsThunk = (boardId) => async (dispatch) => {
     console.log("BOARDID", boardId)
     const res = await fetch(`/api/boards/${boardId}/topics`)
-    if (res.ok) {
-        let topics = await res.json()
-        console.log("========TOPICS", topics)
+    let topics = await res.json()
+    console.log("TOPICS", topics)
+    if (topics.ok) {
         dispatch(getBoardTopics(topics.Board_Topics))
+        return null
     } else {
-        console.log("Something went wrong in the thunk")
+        console.log("RESPONSE FROM THUNK", topics)
     }
 
 }
@@ -76,16 +102,20 @@ export const topicsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_TOPICS:
-            newState = { ...state, allTopics: { ...state.allTopics } }
+            newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics } }
             action.topics.forEach((topic) => {
                 newState.allTopics[topic.id] = topic
             })
             return newState
         case GET_BOARD_TOPICS:
-            newState = { ...state, boardTopics: {} }
+            newState = { ...state, boardTopics: {}, allTopics: { ...state.allTopics } }
             action.topics.forEach((topic) => (
                 newState.boardTopics[topic.id] = topic
             ))
+            return newState;
+        case DELETE_BOARD_TOPIC:
+            newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics } }
+            delete newState.boardTopics[action.topicId]
             return newState;
         default:
             return state;

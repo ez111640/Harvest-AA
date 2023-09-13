@@ -18,6 +18,23 @@
     border-radius: 10px;
 }
 
+.each-option {
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.topic-delete-button {
+    margin-bottom: 12px;
+    font-size: 18px;
+    position:relative;
+    background-color: transparent;
+    right: 25px;
+
+}
+
 .header-main {
     display: flex;
     justify-content: center;

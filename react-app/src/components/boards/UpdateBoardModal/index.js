@@ -5,7 +5,6 @@ import "./SignupForm.css";
 import { updateBoardThunk, getUserBoards } from "../../../store/boardsReducer";
 
 function UpdateBoardModal({ board }) {
-	console.log("BOARD", board.id)
 	const dispatch = useDispatch();
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -21,7 +20,6 @@ function UpdateBoardModal({ board }) {
 		await dispatch(getUserBoards())
 		if (data) {
 			setErrors(data);
-			console.log(errors)
 		} else {
 			closeModal();
 		}

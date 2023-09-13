@@ -6,6 +6,10 @@ import "./BoardLandingPage.css"
 import { addNewBoardTopicThunk, deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
 import EditBoardTopics from "../../EditBoardTopics"
 import OpenModalButton from "../../../OpenModalButton"
+import UpdateBoardModal from "../../UpdateBoardModal"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { getUserBoards } from "../../../../store/boardsReducer"
+import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
 
 
 export const BoardLandingPage = () => {
@@ -17,9 +21,30 @@ export const BoardLandingPage = () => {
     const topics = useSelector((state) => state.topicsReducer.boardTopics)
     const pins = useSelector((state) => state.pinsReducer.boardPins)
     const allPins = useSelector((state) => state.pinsReducer.pins)
-    console.log("TOPICS", topics)
+    console.log("TOPICS", boardId)
     const user = useSelector((state) => state.session.user)
-    const firstLetter = user.username[0]
+    const history = useHistory()
+    let firstLetter
+    if (user) firstLetter = user.username[0]
+    if (!user) history.push("/")
+    useEffect(() => {
+
+        // dispatch(getBoardDetails(boardId))
+
+        dispatch(getUserBoards())
+        dispatch(getAllTopics())
+        dispatch(getBoardTopicsThunk(boardId))
+        dispatch(getAllPins())
+        dispatch(getBoardPins(boardId))
+
+    }, [dispatch, boardId])
+
+    const [editBoard, setEditBoard] = useState(false)
+
+    const thisBoard = Object.values(boards).find((board) => board.id == boardId)
+    console.log("THISBOARD", thisBoard)
+
+
 
     let this_board_pinIds
     let allPinArray = []
@@ -39,27 +64,12 @@ export const BoardLandingPage = () => {
     }
 
 
-    window.onbeforeunload = function () {
-        window.setTimeout(function () {
-            window.location = '/boards';
-        }, 0);
-        window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser
-    }
 
     const onClick = (e) => {
         e.preventDefault()
         setShowEditTopics(!showEditTopics)
     }
 
-    useEffect(() => {
-
-        // dispatch(getBoardDetails(boardId))
-        dispatch(getAllPins())
-        dispatch(getAllTopics())
-        dispatch(getBoardTopicsThunk(boardId))
-        dispatch(getBoardPins(boardId))
-
-    }, [dispatch, boardId])
 
 
     let boardTopics;
@@ -75,9 +85,29 @@ export const BoardLandingPage = () => {
     let allTopArr
     if (allTopics) allTopArr = Object.values(allTopics)
 
+    const clickEditBoardButton = (e) => {
+        e.preventDefault()
+        setEditBoard(!editBoard)
+    }
 
+    const deleteButtonClick = async (e) => {
+        e.preventDefault()
+        console.log("E", e.target.value)
+        console.log("BOARDTOPICS", boardTopics)
+        let topic = allTopArr.filter((topic) => topic.id == e.target.value)
+        console.log("E", topic)
+        const data = dispatch(deleteBoardTopicThunk(topic[0], boardId))
+        console.log("DATA", data)
+        dispatch(getBoardTopicsThunk(boardId))
 
+    }
 
+    if (!boards) return null
+    if (!boardTopics) return null
+    if (!allTopics) return null
+    if (!topics) return null
+    if (!pins) return null
+    if (!allPins) return null
     return (
         <div>
             <div className="profile-header">
@@ -87,18 +117,24 @@ export const BoardLandingPage = () => {
                     </div>
 
                     <div className="header-main">
-                        {/* <div className="board-name">{updatedBoard.name}</div>
-                        <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<UpdateBoardModal board={updatedBoard} />} />
-                        <div><i className="fa-solid fa-ellipsis"></i></div> */}
+                        {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> : <div>Edit board name under construction. Please test this feature <NavLink to="/boards">here</NavLink> by hovering over the board you'd like to edit</div>}
+                        <button onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button>
+                        {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+                            modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
                     </div>
                 </div>
             </div>
             <div className="topics-container">
-                <div className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}
+                <div className="topics-div">{boardTopics?.map((topic) =>
+                    <div className="each-option">
+                        < IndividualTopic topic={topic} editBoard={editBoard} boardId={boardId} />
+                        {/* <div className="topic-option tagged">{topic.topicName}</div> */}
+                        {editBoard && <button type="button" onClick={deleteButtonClick} value={topic.topicId} className="topic-delete-button hide-that-button" >X</button>}
+                    </div>)}
+
                     <OpenModalButton
                         buttonText="Add Topics"
-                        modalComponent={<EditBoardTopics boardId={boardId}  />}
+                        modalComponent={<EditBoardTopics boardId={thisBoard.id} />}
                     />
                 </div>
 

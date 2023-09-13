@@ -176,6 +176,7 @@ export const pinsReducer = (state = initialState, action) => {
         case UPDATE_PIN:
             newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }
             newState.pins[action.pin.id] = action.pin
+            newState.pin = action.pin
             return newState
         case DELETE_PIN:
             newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }

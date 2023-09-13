@@ -7,7 +7,6 @@ import { addNewBoardTopicThunk, getAllTopics } from "../../../../store/topicsRed
 
 function CreateBoardModal() {
 	const topics = useSelector((state) => state.topicsReducer.allTopics)
-	console.log("TOPICS", topics)
 
 	const dispatch = useDispatch();
 	const [name, setName] = useState("");
@@ -21,13 +20,11 @@ function CreateBoardModal() {
 		e.preventDefault();
 		const data = await dispatch(addBoardThunk({ name }));
 		setNewBoard(data)
-		console.log("NEWBOARD", data)
 		await dispatch(getUserBoards())
 
 		setPage(2)
 		if (data) {
 			setErrors(data);
-			console.log(errors)
 		}
 	};
 
@@ -38,10 +35,6 @@ function CreateBoardModal() {
 		let value = topic.value
 		let text = topic.options[topic.selectedIndex].text
 
-		console.log("TOPICHERE", value)
-		console.log("text", text)
-		console.log("NEWBOARD", newBoard)
-
 		let newBT = {
 			"id": value,
 			"name": text
@@ -50,7 +43,6 @@ function CreateBoardModal() {
 
 		if (data) {
 			setErrors(data);
-			console.log(errors)
 		}
 	};
 

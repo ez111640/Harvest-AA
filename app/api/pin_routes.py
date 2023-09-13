@@ -87,7 +87,6 @@ def add_new_pin():
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit ():
         url = request.files["url"]
-        print("@@@@@@@", request.files)
         url.filename = get_unique_filename(url.filename)
         upload = upload_file_to_s3(url)
         print(upload)
@@ -103,7 +102,6 @@ def add_new_pin():
             title = form.data["title"],
             creatorId = current_user.id
         )
-        print("HERES THE NEW PIN", new_pin)
 
         db.session.add(new_pin)
         db.session.commit()
@@ -129,6 +127,7 @@ def update_pin(id):
 
     pin.title = req['title']
     pin.link = req['link']
+    pin.description = req["description"]
     pin.url = req['url']
 
     db.session.commit()
@@ -139,11 +138,8 @@ def delete_pin(id):
     """
     delete a pin
     """
-    print("IDINROUTE", id)
     all_pins = Pin.query.all()
-    print("ALLPINS", all_pins)
     pin_to_delete = Pin.query.get(id)
-    print("PINTODELETE", pin_to_delete)
     db.session.delete(pin_to_delete)
     db.session.commit()
     return "DELETED"

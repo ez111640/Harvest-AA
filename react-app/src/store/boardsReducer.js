@@ -43,7 +43,6 @@ export const deleteBoard = (boardId) => async (dispatch) => {
     const res = await fetch(`/api/boards/${boardId}`, {
         method: 'DELETE'
     })
-    console.log("RESPONSE FROM THUNK", res)
     if (res.ok) {
         await dispatch(deleteBoards(boardId))
         return null
@@ -70,9 +69,7 @@ export const getBoardDetails = (board) => async (dispatch) => {
         if (res.ok) {
             const pins = await res.json()
             const pinArray = Object.values(pins)
-            console.log("PINARR", pins)
             board.first_pin = pins.url
-            console.log("BOARD", board)
             dispatch(loadBoard(board))
         } else {
             const errors = await res.json();
@@ -82,7 +79,6 @@ export const getBoardDetails = (board) => async (dispatch) => {
 }
 
 export const addBoardThunk = (board) => async (dispatch) => {
-    console.log(board)
     try {
         const res = await fetch(`/api/boards`, {
             method: "POST",
@@ -90,7 +86,6 @@ export const addBoardThunk = (board) => async (dispatch) => {
             body: JSON.stringify(board)
         });
         const boardResponse = await res.json()
-        console.log("BOARDRESPONSE", boardResponse)
         dispatch(addNewBoard(boardResponse))
         if (res.ok) {
             return boardResponse;
@@ -119,15 +114,12 @@ export const updateBoardThunk = (updatedBoard) => async (dispatch) => {
 }
 
 export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
-    console.log("BOARDID", boardId)
-    console.log("PINID", pin.id)
     const res = await fetch(`/api/boards/${boardId}/pins`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(pin)
     })
     const response = await res.json()
-    console.log(response)
 
 }
 

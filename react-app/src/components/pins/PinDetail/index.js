@@ -18,7 +18,6 @@ export const PinDetail = () => {
 	const thisPin = useSelector((state) => state.pinsReducer.pin)
 	const dispatch = useDispatch()
 	const { pinId } = useParams()
-	console.log("PINID", pinId)
 	const [showEditForm, setShowEditForm] = useState(false)
 	const [editUrlValue, setEditUrlValue] = useState(false)
 	const [editTitleValue, setEditTitleValue] = useState(false)
@@ -54,18 +53,17 @@ export const PinDetail = () => {
 	if (!comments) return null
 	const commentArr = Object.values(comments)
 
-	if(!thisPin) return null
-	if(!thisPin.link) return null;
+	if (!thisPin) return null
+	if (!thisPin.link) return null;
 	if (thisPin) {
 		const url = thisPin?.link
 		let splitUrl
-		if(url) splitUrl = url.split("/")
+		if (url) splitUrl = url.split("/")
 		if (splitUrl[0] === "https:") {
 			domain = splitUrl[2].split(".")[0]
 		}
 	}
 	const pinComments = commentArr.filter((comment) => comment.pinId == pinId)
-	console.log(pinComments)
 	const clickEditUrlButton = (e) => {
 		e.preventDefault()
 		setEditUrlValue(!editUrlValue)
@@ -99,6 +97,7 @@ export const PinDetail = () => {
 		setEditLinkValue(false)
 		const updatedPin = {}
 
+
 		photoUrl ? updatedPin.url = photoUrl : updatedPin.url = thisPin.url
 		photoLink ? updatedPin.link = photoLink : updatedPin.link = thisPin.link
 		photoTitle ? updatedPin.title = photoTitle : updatedPin.title = thisPin.title
@@ -108,8 +107,9 @@ export const PinDetail = () => {
 		if (data) {
 			setErrors(data);
 		} else {
-			console.log("NOERRORS")
+			dispatch(getOnePinThunk(pinId))
 		}
+
 	}
 
 	return (
@@ -179,9 +179,9 @@ export const PinDetail = () => {
 						}
 					</div>}
 					{editDescValue ?
-						<div className=" clear-right pin-details pin-detail-description">
+						<div className=" clear-right pin-details" >
 							<label className='url-field'>
-								<input className="no-placeholder"
+								<input className="no-placeholder pin-detail-input" id="pin-detail-description"
 									type="textarea"
 									placeholder={thisPin.description}
 									value={photoDesc ? photoDesc : ""}

@@ -8,7 +8,9 @@ import { useHistory, useParams } from "react-router-dom";
 function EditBoardTopics(boardId) {
 	const topics = useSelector((state) => state.topicsReducer.allTopics)
 	const boardTopics = useSelector((state) => state.topicsReducer.boardTopics)
+
 	const history = useHistory();
+	const [topic, setTopic] = useState()
 
 	// const boardId = useParams()
 	const thisBoardId = boardId.boardId
@@ -33,39 +35,24 @@ function EditBoardTopics(boardId) {
 	const [errors, setErrors] = useState([]);
 	const [page, setPage] = useState(1)
 	const { closeModal } = useModal();
-	const [newBoard, setNewBoard] = useState("")
-	const [chooseGardening, setChooseGardening] = useState("unselected")
-	const [chooseWoodworking, setChooseWoodworking] = useState(false)
-	const [chooseCookingBaking, setChooseCookingBaking] = useState(false)
-	const [chooseSelfCare, setChooseSelfCare] = useState(false)
-	const [chooseLivestock, setChooseLivestock] = useState(false)
-	const [chooseHouseholdProducts, setChooseHouseholdProducts] = useState(false)
-	const [chooseCanningPreserving, setChooseCanningPreserving] = useState(false)
-	const [chooseEnergy, setChooseEnergy] = useState(false)
 
 	const [checked, setChecked] = useState("")
 
 	console.log("TOPARR", topArr)
 
+	let topicId = null;
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		for (let i = 0; i < topArr.length; i++) {
-			if (document.getElementById(topArr[i].id).checked) {
-				console.log("it's checked")
-				dispatch(addNewBoardTopicThunk(topArr[i], thisBoardId))
-			}
-			if (!document.getElementById(topArr[i].id).checked) {
-				dispatch(deleteBoardTopicThunk(topArr[i], thisBoardId))
-			}
-		}
+		console.log("E", e.target)
+		console.log("TOPICID", topic)
+		dispatch(addNewBoardTopicThunk(topic, thisBoardId))
+		dispatch(getBoardTopicsThunk(thisBoardId))
 		closeModal()
-		history.push(`/boards/${thisBoardId}`)
 
 	};
 
 	useEffect(() => {
 		dispatch(getAllTopics())
-		dispatch(getBoardTopicsThunk(thisBoardId))
 	}, [dispatch])
 
 	if (!topics) return null
@@ -82,20 +69,26 @@ function EditBoardTopics(boardId) {
 		<div>
 
 			<form onSubmit={handleSubmit}>
+				<div>Select an Existing Topic: </div>
 				{
 					topicArr && topicArr.map((topic) => (
 						<div>
 							{checkBoardTopics(topic.id) ?
 								<div>
-									<input type="checkbox" value={topic} id={topic.id} checked></input>
-									<label>{topic.name}</label>
 								</div> :
-								<div><input type="checkbox" value={topic} id={topic.id}></input>
-									<label>{topic.name}</label></div>}
+								<div>
+									<input type="radio" value={topic} onClick={() => setTopic(topic)} id={topic.id} name="select-topic" ></input>
+									<label>{topic.name}</label>
+								</div>}
 						</div>
+
 					))
 				}
-				<button type="submit">Save</button>
+				<div><input type="radio" name="select-topic" onChange={(e) => setTopic(e.target.value)} ></input>Enter a new topic</div>
+				<label><textarea></textarea></label>
+				<div>
+					<button type="submit">Save</button>
+				</div>
 			</form>
 		</div>
 	);
