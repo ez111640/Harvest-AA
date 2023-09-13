@@ -46,7 +46,7 @@ def get_all_board_pins(id):
 
     print(bp_to_dict)
 
-    return {"boardPins"[id]: bp_to_dict}
+    return {"boardPins": bp_to_dict}
 
 
 
@@ -93,7 +93,6 @@ def add_board_topic(id):
     )
     checkDuplicates = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == topicToBoard.boardId, Topics_To_Boards.topicId ==topicToBoard.topicId).all()
     topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
-    print("@@@@@@@@@@@@@@topics", topics)
     if checkDuplicates:
         db.session.commit()
         return "Attempted to add duplicated board"

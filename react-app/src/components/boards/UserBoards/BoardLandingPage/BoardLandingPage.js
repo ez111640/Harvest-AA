@@ -71,12 +71,9 @@ export const BoardLandingPage = () => {
             topicIds.push(topic.topicId)
         })
     }
-    console.log("TOPICIDS", topicIds)
 
     let allTopArr
-    console.log("BOARDTOPICS", boardTopics)
     if (allTopics) allTopArr = Object.values(allTopics)
-    console.log("TOPARR", allTopArr)
 
 
 
@@ -100,7 +97,7 @@ export const BoardLandingPage = () => {
             <div className="topics-container">
                 <div className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}
                     <OpenModalButton
-                        buttonText="Edit Topics"
+                        buttonText="Add Topics"
                         modalComponent={<EditBoardTopics boardId={boardId}  />}
                     />
                 </div>
