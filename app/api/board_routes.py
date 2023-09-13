@@ -91,6 +91,8 @@ def add_board_topic(id):
         topicId = req["id"],
         boardId = id
     )
+    topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
+    print("@@@@@@@@@@@@@@topics", topics)
     db.session.add(topicToBoard)
     db.session.commit()
     return topicToBoard.to_dict()

@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
-import { useParams } from "react-router-dom"
-import { getAllComments } from "../../../../store/commentsReducer"
-import { PinCard } from "../../../pins/PinCard/PinCard"
-import { getBoardDetails, getUserBoards } from "../../../../store/boardsReducer"
-import { NavLink, Link } from "react-router-dom"
+import { getBoardPins } from "../../../../store/pinsReducer"
+import { useParams, NavLink } from "react-router-dom"
 import "./BoardLandingPage.css"
-import OpenModalButton from "../../../OpenModalButton"
-import UpdateBoardModal from "../../UpdateBoardModal"
-import { getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
+import { addNewBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
 import { EditBoardTopics } from "../../EditBoardTopics/EditBoardTopics"
 
 export const BoardLandingPage = () => {
@@ -34,9 +28,7 @@ export const BoardLandingPage = () => {
 
     if (this_board_pinIds && allPinArray) {
         for (let i = 0; i < this_board_pinIds.length; i++) {
-            console.log(this_board_pinIds[i])
             for (let j = 0; j < allPinArray.length; j++) {
-                console.log((allPinArray[j]))
                 if (this_board_pinIds[i] === allPinArray[j].id) {
                     thisBoardPins.push(allPinArray[j])
                 }
@@ -50,6 +42,11 @@ export const BoardLandingPage = () => {
             window.location = '/boards';
         }, 0);
         window.onbeforeunload = null; // necessary to prevent infinite loop, that kills your browser
+    }
+
+    const onClick = (e) => {
+        e.preventDefault()
+        setShowEditTopics(!showEditTopics)
     }
 
     useEffect(() => {
@@ -74,11 +71,19 @@ export const BoardLandingPage = () => {
     console.log("TOPICIDS", topicIds)
 
     let allTopArr
-    console.log("ALLTOPICS", boardTopics)
+    console.log("BOARDTOPICS", boardTopics)
     if (allTopics) allTopArr = Object.values(allTopics)
     console.log("TOPARR", allTopArr)
 
+    const addRemoveFromTopics = (topic) => {
+        if (topicIds.indexOf(topic.id) !== -1) {
+            console.log("topic not selected")
+        } else {
+            console.log("topic selected")
+            dispatch(addNewBoardTopicThunk(topic, boardId))
+        }
 
+    }
 
 
 
@@ -99,28 +104,21 @@ export const BoardLandingPage = () => {
                 </div>
             </div>
             <div className="topics-container">
-                {/* {showEditTopics === false ?
-                    <div className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}</div> : */}
-                <div >{allTopArr.length && <EditBoardTopics boardTopics={boardTopics} topicIds={topicIds} allTopArr={allTopArr} />}</div>
-                {/* } */}
-                {/* {
-                    allTopArr ?
-                        <div className="topics-div">
-                            {
-                                allTopArr.map((topic) => (
-                                    <div >
-                                        {topicIds[0] == topic.id || (topicIds.indexOf(topic.id) !== -1) ?
+                {showEditTopics === false ?
+                    <div onClick={onClick} className="topics-div">{boardTopics?.map((topic) => <div className="topic-option tagged">{topic.topicName}</div>)}</div> :
+                    <div>
+                        {
+                            allTopArr.map((topic) => (
+                                topicIds[0] === topic.id || topicIds.indexOf(topic.id) !== -1 ?
+                                    <button type="button" className="topic-option tagged " onClick={addRemoveFromTopics(topic)}>{topic.name}</button> :
+                                    <button type="button" className="topic-option untagged " onClick={addRemoveFromTopics(topic)}>{topic.name}</button>
+                            ))
+                        }
 
-                                            <div className="topic-option tagged">{topic.name}</div> :
-                                            <div className="topic-option untagged">{topic.name}</div>
+                    </div>
 
-                                        }
-                                    </div>
-                                ))
-                            }
-                        </div> :
-                        <div></div>
-                } */}
+
+                }
             </div>
             <div>
                 {thisBoardPins ?

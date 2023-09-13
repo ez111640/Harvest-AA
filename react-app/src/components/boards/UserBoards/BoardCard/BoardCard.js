@@ -1,8 +1,6 @@
 import { useEffect } from "react"
-import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
 import { useDispatch, useSelector } from "react-redux"
 import "./BoardCard.css"
-import { getUserBoards } from "../../../../store/boardsReducer"
 import { Link } from 'react-router-dom'
 import OpenModalButton from "../../../OpenModalButton"
 import DeleteBoardModal from "../../DeleteBoardModal"
@@ -18,7 +16,7 @@ export const BoardCard = ({ board }) => {
 
     useEffect(() => {
         dispatch(getBoardDetails(board))
-    }, [dispatch])
+    }, [dispatch, board])
 
 
     console.log("BOARDS", boards[board.id].first_pin)

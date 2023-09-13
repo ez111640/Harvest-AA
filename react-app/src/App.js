@@ -12,11 +12,8 @@ import { UserBoards } from './components/boards/UserBoards/UserBoards';
 import { BoardLandingPage } from './components/boards/UserBoards/BoardLandingPage/BoardLandingPage';
 import { UserPins } from './components/pins/UserPins';
 import { AllComments } from "./components/comments/AllComments";
-import { getAllPins } from "./store/pinsReducer";
-
 function App() {
   const dispatch = useDispatch();
-  const allPins = useSelector((state) => state.pinsReducer.pins)
 
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {

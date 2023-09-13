@@ -10,7 +10,6 @@ function UpdateBoardModal({ board }) {
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState([]);
 
-	const boards = useSelector((state) => state.session.boards)
 
 	const { closeModal } = useModal();
 	const handleSubmit = async (e) => {
