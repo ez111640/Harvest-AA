@@ -11,6 +11,7 @@ export const LandingPage = () => {
     const dispatch = useDispatch()
     const allPins = useSelector((state) => state.pinsReducer.pins)
     const boards = useSelector((state) => state.boardsReducer.boards)
+    const user = useSelector((state) => state.session.user)
 
 
     let allPinArray = []
@@ -31,6 +32,7 @@ export const LandingPage = () => {
 
     return (
         <div>
+            {user && <div className = "greeting-banner" >Welcome back, {user.firstName ? user.firstName : user.username}!</div>}
             {allPinArray ? <div id="all-pins">
                 {sortedPins.map((pin) => (
                     <div id={pin.id}>

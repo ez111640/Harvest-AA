@@ -46,6 +46,9 @@ function App() {
           <Route exact path="/pins/:pinId">
             <PinDetail />
           </Route>
+          {/* <Route exact path="/pins/search/:searchInput">
+            <SearchResults />
+          </Route> */}
           <Route exact path="/">
             <LandingPage />
           </Route>

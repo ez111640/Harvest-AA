@@ -117,16 +117,18 @@ export const PinDetail = () => {
 			<div>{
 				<div className="button-container">
 					<div></div>
-					<div className="pin-detail-buttons">
-						<button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
-						<OpenModalButton
+					{user && <div className="pin-detail-buttons">
+						{thisPin.userId === user.id && <button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
+						}
+						{ thisPin.userId === user.id &&
+							<OpenModalButton
 							type="button"
 							buttonText={<i className="fa-solid fa-trash"></i>}
 							modalComponent={<DeletePinModal pinId={thisPin.id} />}
 
-						/>
-						<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
-					</div>
+						/>}
+						<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i> } modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+					</div>}
 				</div>
 
 			}</div>
@@ -213,7 +215,7 @@ export const PinDetail = () => {
 									{pinComments.map((comment) =>
 										<div id={comment.id}>
 											<div>{comment.commentText}</div>
-											{comment.userId === user.id &&
+											{user && comment.userId === user.id &&
 												<OpenModalButton
 													buttonText="Delete"
 													modalComponent={<DeleteCommentModal commentId={comment.id} />}
@@ -235,6 +237,6 @@ export const PinDetail = () => {
 				</div>
 
 			</form>
-		</div>
+		</div >
 	);
 }

@@ -12,20 +12,21 @@ import CreateBoardModal from "./CreateBoardModal";
 import { PageHeader } from "../../auth/User/PageHeader";
 
 import { NavLink } from "react-router-dom"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
 
 export const UserBoards = () => {
+    const history = useHistory()
     const user = useSelector((state) => state.session.user)
+    if (!user) history.push("/")
     const pins = useSelector((state) => state.pinsReducer.pins)
     const userBoards = useSelector((state) => state.boardsReducer.boards)
 
 
 
     console.log("USERBOARDS", userBoards)
-    const dispatch = useDispatch();
-    const firstLetter = user.username[0]
     const [viewType, setViewType] = useState('boards')
     const [pinsActive, setPinsActive] = useState('inactive-option')
     const [boardsActive, setBoardsActive] = useState('inactive-option')

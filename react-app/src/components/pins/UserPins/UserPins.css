@@ -1,0 +1,20 @@
+#all-user-pins {
+    width: 80%;
+    margin: auto;
+    column-count: 4;
+    column-gap: 15px;
+}
+
+
+.pin-photo {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 15px;
+
+}
+
+.pin-photo img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+}

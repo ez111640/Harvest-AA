@@ -18,6 +18,9 @@
 
 }
 
+.fa-solid {
+    cursor: pointer
+}
 
 .button-container {
     display: grid;

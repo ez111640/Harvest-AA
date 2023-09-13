@@ -4,10 +4,15 @@ import CreatePinModal from "../../pins/CreatePinModal"
 import CreatePinAWSModal from "../../pins/CreatePinAWSModal"
 import "./UserBoards.css"
 import { useSelector } from "react-redux"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 export const PageHeader = () => {
     const user = useSelector((state) => state.session.user)
-    const firstLetter = user.username[0]
+    const history = useHistory()
+    if (!user) history.push("/login")
+    let firstLetter;
+
+    if (user) firstLetter = user.username[0]
 
 
     return (
@@ -21,7 +26,7 @@ export const PageHeader = () => {
                         buttonText="New Pin"
                         modalComponent={<CreatePinModal />}
                     />
-                     <OpenModalButton
+                    <OpenModalButton
                         buttonText="New AWS Pin"
                         modalComponent={<CreatePinAWSModal />}
                     />

@@ -125,17 +125,18 @@ export const BoardLandingPage = () => {
                 </div>
             </div>
             <div className="topics-container">
-                <div className="topics-div">{boardTopics?.map((topic) =>
+                <div className="topics-div">
+                    {boardTopics?.map((topic) =>
                     <div className="each-option">
                         < IndividualTopic topic={topic} editBoard={editBoard} boardId={boardId} />
                         {/* <div className="topic-option tagged">{topic.topicName}</div> */}
                         {editBoard && <button type="button" onClick={deleteButtonClick} value={topic.topicId} className="topic-delete-button hide-that-button" >X</button>}
                     </div>)}
 
-                    <OpenModalButton
+                    {/* <OpenModalButton
                         buttonText="Add Topics"
                         modalComponent={<EditBoardTopics boardId={thisBoard.id} />}
-                    />
+                    /> */}
                 </div>
 
             </div>

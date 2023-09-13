@@ -13,26 +13,25 @@ function Navigation({ isLoaded }) {
   let searchPins = []
   let pinArray = []
 
-  // if(pins) pinArray = Object.values(pins)
-  let sortedPins = []
-  if (pinArray.length) pins.map((pin) => sortedPins[pin.id] = pin)
-  console.log(sortedPins)
+  if (pins) pinArray = Object.values(pins)
+  console.log("PINARRAY", pinArray)
 
 
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
-    // if (searchInput.length) {
-    //   pinArray?.filter((pin) => {
-    //     if (pin.description.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
-    //       searchPins.push(pin)
-    //     } else if (pin.name.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
-    //       searchPins.push(pin)
-    //     } else {
+    if (searchInput.length > 0) {
+      console.log(searchInput)
+      pinArray?.filter((pin) => {
+        if (pin.description.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
+          searchPins.push(pin)
+        } else if (pin.title.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
+          searchPins.push(pin)
+        } else {
 
-    //     }
-    //   })
-    // }
+        }
+      })
+    }
   }
   const onClick = (e) => {
     e.preventDefault();
@@ -56,12 +55,14 @@ function Navigation({ isLoaded }) {
         <input
           className="search-bar-input"
           type="text"
-          placeholder="Search"
+          placeholder="Feature coming soon"
           onChange={handleChange}
           value={searchInput}
           onKeyDown={(e) => (e.key === "Enter" ? onEnter() : false)}
         />
-        <button className="hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
+        {/* <button className="hide-that-button" onClick={onClick} > */}
+          <i className="fa-solid fa-magnifying-glass" ></i>
+          {/* </button> */}
       </div>
       <div>
         <ProfileButton className="nav-link profile-button" user={sessionUser} />
