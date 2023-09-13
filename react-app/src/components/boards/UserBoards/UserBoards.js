@@ -13,6 +13,7 @@ import { PageHeader } from "../../auth/User/PageHeader";
 
 import { NavLink } from "react-router-dom"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { UserPins } from "../../pins/UserPins";
 
 
 
@@ -101,15 +102,16 @@ export const UserBoards = () => {
 
                     ) : <div></div>}
                 </div> :
-                <div id="all-pins">
-                    {
-                        userPins.map((pin) => (
-                            <div id={pin.id}>
-                                <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" src={pin.url}></img></NavLink>
-                            </div>
-                        ))
-                    }
-                </div>
+                <UserPins />
+                // <div id="all-pins">
+                //     {
+                //         userPins.map((pin) => (
+                //             <div id={pin.id}>
+                //                 <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" src={pin.url}></img></NavLink>
+                //             </div>
+                //         ))
+                //     }
+                // </div>
             }
         </div>
     )
