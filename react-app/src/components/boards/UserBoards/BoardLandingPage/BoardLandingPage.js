@@ -10,12 +10,14 @@ import UpdateBoardModal from "../../UpdateBoardModal"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { getUserBoards } from "../../../../store/boardsReducer"
 import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
-
+import DeletePinModal from "../../../pins/DeletePinModal"
+import { updateBoardThunk } from "../../../../store/boardsReducer"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
     const { boardId } = useParams()
     const [showEditTopics, setShowEditTopics] = useState(false)
+    const [errors, setErrors] = useState([]);
     const boards = useSelector((state) => state.boardsReducer.boards)
     const allTopics = useSelector((state) => state.topicsReducer.allTopics)
     const topics = useSelector((state) => state.topicsReducer.boardTopics)
@@ -44,7 +46,7 @@ export const BoardLandingPage = () => {
     const thisBoard = Object.values(boards).find((board) => board.id == boardId)
     console.log("THISBOARD", thisBoard)
 
-
+    const [name, setName] = useState(thisBoard.name);
 
     let this_board_pinIds
     let allPinArray = []
@@ -102,6 +104,20 @@ export const BoardLandingPage = () => {
 
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let newBoard = {}
+        name ? newBoard.name = name : newBoard.name = thisBoard.name
+        newBoard.id = thisBoard.id
+        const data = await dispatch(updateBoardThunk(newBoard));
+        await dispatch(getUserBoards())
+        if (data) {
+            setErrors(data);
+        } else {
+            setEditBoard(false)
+        }
+    };
+
     if (!boards) return null
     if (!boardTopics) return null
     if (!allTopics) return null
@@ -117,7 +133,25 @@ export const BoardLandingPage = () => {
                     </div>
 
                     <div className="header-main">
-                        {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> : <div>Edit board name under construction. Please test this feature <NavLink to="/boards">here</NavLink> by hovering over the board you'd like to edit</div>}
+                        {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :
+
+                            <div>
+                                {/* Edit board name under construction. Please test this feature
+                            <NavLink to="/boards">here</NavLink>
+                            by hovering over the board you'd like to edit */}
+                                <form onSubmit={handleSubmit}>
+                                    <label className='board-name-field'>
+                                        Name:
+                                        <input
+                                            type="text"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            required
+                                        />
+                                    </label>
+                                    <button type="submit">Save Changes</button>
+                                </form>
+                            </div>}
                         <button onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button>
                         {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
                             modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
@@ -127,11 +161,11 @@ export const BoardLandingPage = () => {
             <div className="topics-container">
                 <div className="topics-div">
                     {boardTopics?.map((topic) =>
-                    <div className="each-option">
-                        < IndividualTopic topic={topic} editBoard={editBoard} boardId={boardId} />
-                        {/* <div className="topic-option tagged">{topic.topicName}</div> */}
-                        {editBoard && <button type="button" onClick={deleteButtonClick} value={topic.topicId} className="topic-delete-button hide-that-button" >X</button>}
-                    </div>)}
+                        <div className="each-option">
+                            < IndividualTopic topic={topic} editBoard={editBoard} boardId={boardId} />
+                            {/* <div className="topic-option tagged">{topic.topicName}</div> */}
+                            {editBoard && <button type="button" onClick={deleteButtonClick} value={topic.topicId} className="topic-delete-button hide-that-button" >X</button>}
+                        </div>)}
 
                     {/* <OpenModalButton
                         buttonText="Add Topics"
@@ -145,6 +179,9 @@ export const BoardLandingPage = () => {
                     <div id="all-pins">
                         {thisBoardPins.map((pin) => (
                             <div id={pin.id} className="pin-photo">
+                                {editBoard && <div className="edit-board-delete-pin">
+                                    <OpenModalButton buttonText="X" modalComponent={<DeletePinModal pinId={pin.id} lastPage={`/boards/`} boardId={boardId} />} />
+                                </div>}
                                 <NavLink to={`/pins/${pin.id}`}><img alt="pin" src={pin.url}></img></NavLink>
                             </div>
                         ))}

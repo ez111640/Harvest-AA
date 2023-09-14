@@ -25,6 +25,23 @@
 }
 
 
+.edit-board-delete-pin {
+    background-color: rgba(0,0,0,.1);
+    position: relative;
+    display: flex;
+    float: right;
+    width: fit-content;
+    top: 10px;
+    left: 10px;
+    padding: 0px 5px;
+    border-radius: 20px;
+}
+
+.edit-board-delete-pin>button {
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+}
 
 .topic-delete-button {
     margin-bottom: 12px;

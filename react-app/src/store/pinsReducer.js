@@ -45,7 +45,7 @@ export const getAllPins = () => async (dispatch) => {
     const allPins = await res.json();
 
     console.log("GETALLPINS", allPins)
-    dispatch(loadPins(allPins.Pins))
+    await dispatch(loadPins(allPins.Pins))
 }
 
 export const getOnePinThunk = (pinId) => async (dispatch) => {
@@ -53,7 +53,7 @@ export const getOnePinThunk = (pinId) => async (dispatch) => {
 
     const pin = await res.json()
     console.log(pin)
-    if (res.ok) dispatch(getOnePin(pin))
+    if (res.ok) await dispatch(getOnePin(pin))
     else {
         console.log("PROBLEM WITH RESPONSE FROM BACKEND")
     }
@@ -69,7 +69,7 @@ export const getBoardPins = (id) => async (dispatch) => {
     if (btps == "No pins") {
         console.log("NO PINS FOR THAT BOARD")
     } else {
-        dispatch(loadBoardPins(btps))
+        await dispatch(loadBoardPins(btps))
     }
 
 }
@@ -89,25 +89,25 @@ export const updatePinThunk = (updatedPin) => async (dispatch) => {
     }
 }
 
-// export const addPinThunk = (pin) => async (dispatch) => {
-//     console.log("PININTHUNK", pin)
-//     try {
-//         const res = await fetch(`/api/pins`, {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify(pin)
-//         });
-
-
-//         const pinResponse = await res.json()
-//         dispatch(addNewPin(pinResponse))
-//     } catch (error) {
-//         const errors = await error.json();
-//         return errors;
-//     }
-// }
-
 export const addPinThunk = (pin) => async (dispatch) => {
+    console.log("PININTHUNK", pin)
+    try {
+        const res = await fetch(`/api/pins`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(pin)
+        });
+
+
+        const pinResponse = await res.json()
+        dispatch(addNewPin(pinResponse))
+    } catch (error) {
+        const errors = await error.json();
+        return errors;
+    }
+}
+
+export const addPinAWSThunk = (pin) => async (dispatch) => {
     console.log("MADEITTOTHUNK", pin)
     const formData = new FormData()
 
@@ -118,13 +118,13 @@ export const addPinThunk = (pin) => async (dispatch) => {
     formData.append('title', pin.title)
 
     console.log("FORMDATA", formData)
-    const response = await fetch(`/api/pins`, {
+    const response = await fetch(`/api/pins/upload`, {
         method: "POST",
         body: formData
     })
     if (response.ok) {
         const newPin = await response.json();
-        dispatch(addNewPin(newPin))
+        await dispatch(addNewPin(newPin))
         return newPin
     } else {
         const errors = await response.json()

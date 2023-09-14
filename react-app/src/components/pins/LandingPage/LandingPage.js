@@ -6,6 +6,9 @@ import { PinCard } from "../PinCard/PinCard"
 import { getAllComments } from "../../../store/commentsReducer"
 import { getUserBoards } from "../../../store/boardsReducer"
 import { NavLink } from "react-router-dom"
+import OpenModalButton from "../../OpenModalButton"
+import AddPinToBoardModal from "../AddPinToBoardModal"
+import { PinDetailModal } from "../PinDetailModal"
 
 export const LandingPage = () => {
     const dispatch = useDispatch()
@@ -32,14 +35,15 @@ export const LandingPage = () => {
 
     return (
         <div>
-            {user && <div className = "greeting-banner" >Welcome back, {user.firstName ? user.firstName : user.username}!</div>}
+            {user && <div className="greeting-banner" >Welcome back, {user.firstName ? user.firstName : user.username}!</div>}
             {allPinArray ? <div id="all-pins">
                 {sortedPins.map((pin) => (
                     <div id={pin.id}>
                         <div className="pin-photo">
                             {pin?.url ?
-                                <div>
-                                    <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" src={pin.url}></img></NavLink>
+                                <div className="pin-from-home">
+                                    <OpenModalButton buttonText={<img alt="pin" className="landing-page-photo" src={pin.url}></img>} modalComponent={<PinDetailModal pinId={pin.id} />} />
+                                    {/* <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" className="landing-page-photo" src={pin.url}></img></NavLink> */}
                                     {/* <OpenModalButton
                 buttonText="Update"
                 modalComponent={<UpdatePinModal pinId={thisPin.id} />}

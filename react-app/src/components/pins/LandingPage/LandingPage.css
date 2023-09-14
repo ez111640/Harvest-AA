@@ -6,6 +6,7 @@
 }
 
 
+
 .greeting-banner {
     font-size: 36px;
     margin-top: 40px;
@@ -16,4 +17,16 @@
     width: 80%;
     align-items: center;
     justify-content: center;
+}
+
+.pin-from-home>button {
+    background-color: transparent;
+    border: none;
+
+}
+
+
+
+.pin-from-home {
+    background-color: transparent;
 }

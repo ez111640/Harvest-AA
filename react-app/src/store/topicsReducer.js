@@ -27,7 +27,7 @@ export const getAllTopics = () => async (dispatch) => {
     const res = await fetch(`/api/topics`)
 
     const allTopics = await res.json();
-    dispatch(loadTopics(allTopics.Topics))
+    await dispatch(loadTopics(allTopics.Topics))
 }
 
 // export const getAllBoardTopicDataThunk = () => async (dispatch) => {
@@ -84,7 +84,7 @@ export const getBoardTopicsThunk = (boardId) => async (dispatch) => {
     let topics = await res.json()
     console.log("TOPICS", topics)
     if (topics.ok) {
-        dispatch(getBoardTopics(topics.Board_Topics))
+        await dispatch(getBoardTopics(topics.Board_Topics))
         return null
     } else {
         console.log("RESPONSE FROM THUNK", topics)

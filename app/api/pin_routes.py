@@ -55,30 +55,30 @@ def get_all_pins():
     return {'Pins': [pin.to_dict() for pin in all_pins]}
 
 
-# @pin_routes.route("", methods=["POST"])
-# def add_new_pin():
-#     """
-#     ADD A NEW PIN
-#     """
-#     form = PinForm()
-#     form["csrf_token"].data = request.cookies["csrf_token"]
-#     if form.validate_on_submit ():
-#         pin = Pin(
-#             url = form.data["url"],
-#             link=form.data["link"],
-#             description=form.data["description"],
-#             title = form.data["title"],
-#             creatorId = current_user.id
-#         )
-
-#         db.session.add(pin)
-#         db.session.commit()
-
-#     return pin.to_dict()
-
-
 @pin_routes.route("", methods=["POST"])
 def add_new_pin():
+    """
+    ADD A NEW PIN
+    """
+    form = PinForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit ():
+        pin = Pin(
+            url = form.data["url"],
+            link=form.data["link"],
+            description=form.data["description"],
+            title = form.data["title"],
+            creatorId = current_user.id
+        )
+
+        db.session.add(pin)
+        db.session.commit()
+
+    return pin.to_dict()
+
+
+@pin_routes.route("/upload", methods=["POST"])
+def add_new_aws_pin():
     """
     ADD A NEW PIN
     """

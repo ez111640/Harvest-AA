@@ -5,6 +5,7 @@ import CreatePinAWSModal from "../../pins/CreatePinAWSModal"
 import "./UserBoards.css"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import SelectImageSourceModal from "../../pins/SelectImageSourceModal"
 
 export const PageHeader = () => {
     const user = useSelector((state) => state.session.user)
@@ -22,14 +23,18 @@ export const PageHeader = () => {
                     <div className="fl-div">{firstLetter}</div>
                 </div>
                 <div className="profile-div-left-buttons">
-                    <OpenModalButton
+                    {/* <OpenModalButton
                         buttonText="New Pin"
                         modalComponent={<CreatePinModal />}
-                    />
+                    /> */}
                     <OpenModalButton
+                        buttonText="New Pin!"
+                        modalComponent={<SelectImageSourceModal />}
+                    />
+                    {/* <OpenModalButton
                         buttonText="New AWS Pin"
                         modalComponent={<CreatePinAWSModal />}
-                    />
+                    /> */}
                     <OpenModalButton
                         buttonText="New Board"
                         modalComponent={<CreateBoardModal />} />

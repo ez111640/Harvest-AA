@@ -23,7 +23,7 @@
 }
 
 .header-new-buttons {
-    background-color: red;
+    background-color: goldenrod;
     padding: 0px 10px;
     border: none;
 }
@@ -58,7 +58,7 @@
 
 
 .active-option {
-    background-color: #ff914d;
+    background-color: goldenrod; 
     border: none;
     height: 100%;
     font-size: 20px;

@@ -56,7 +56,7 @@ export const getUserBoards = () => async (dispatch) => {
     let res = await fetch(`/api/boards`)
     if (res.ok) {
         const allBoards = await res.json();
-        dispatch(loadBoards(allBoards))
+        await dispatch(loadBoards(allBoards))
     } else {
         const errors = await res.json();
         return errors;
@@ -70,7 +70,7 @@ export const getBoardDetails = (board) => async (dispatch) => {
             const pins = await res.json()
             const pinArray = Object.values(pins)
             board.first_pin = pins.url
-            dispatch(loadBoard(board))
+            await dispatch(loadBoard(board))
         } else {
             const errors = await res.json();
             return errors;
@@ -86,7 +86,7 @@ export const addBoardThunk = (board) => async (dispatch) => {
             body: JSON.stringify(board)
         });
         const boardResponse = await res.json()
-        dispatch(addNewBoard(boardResponse))
+        await dispatch(addNewBoard(boardResponse))
         if (res.ok) {
             return boardResponse;
         } else {

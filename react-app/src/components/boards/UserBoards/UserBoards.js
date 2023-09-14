@@ -34,12 +34,12 @@ export const UserBoards = () => {
 
     // const { closeModal } = useModal()
 
-    window.onbeforeunload = function () {
-        window.setTimeout(function () {
-            window.location = '/boards';
-        }, 0);
-        window.onbeforeunload = null;
-    }
+    // window.onbeforeunload = function () {
+    //     window.setTimeout(function () {
+    //         window.location = '/boards';
+    //     }, 0);
+    //     window.onbeforeunload = null;
+    // }
 
 
 

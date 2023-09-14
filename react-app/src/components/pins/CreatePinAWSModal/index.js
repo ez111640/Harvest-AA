@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import "./SignupForm.css";
-import { addPinThunk } from "../../../store/pinsReducer";
+import { addPinAWSThunk } from "../../../store/pinsReducer";
 
 function CreatePinAWSModal() {
 	const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function CreatePinAWSModal() {
 			"description": description
 		}
 		setImageLoading(true);
-		await dispatch(addPinThunk(newPin))
+		await dispatch(addPinAWSThunk(newPin))
 	};
 
 	return (
@@ -46,7 +46,7 @@ function CreatePinAWSModal() {
 						required
 					/>
 				</label>
-				<label className='url-field'>
+				 <label className='url-field'>
 					URL
 					<input
 						type="file"
@@ -55,6 +55,7 @@ function CreatePinAWSModal() {
 						required
 					/>
 				</label>
+
 				<label className='link-field'>
 					Link
 					<input

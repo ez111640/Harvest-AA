@@ -32,7 +32,7 @@ export const getPinComments = (pinId) => async (dispatch) => {
         console.log("RES", res)
         const pinComments = await res.json();
         const pcArray = Object.values(pinComments)
-        dispatch(loadPinComments(pcArray))
+        await dispatch(loadPinComments(pcArray))
     } else {
         const errors = await res.json();
         return errors;
@@ -45,7 +45,7 @@ export const getAllComments = () => async (dispatch) => {
     if (res.ok) {
         const allComments = await res.json();
         console.log("ALLCOMMENTS", allComments)
-        dispatch(loadAllComments(allComments.Comments))
+        await dispatch(loadAllComments(allComments.Comments))
     } else {
         const errors = await res.json();
         return errors;
@@ -64,7 +64,7 @@ export const addCommentThunk = (comment) => async (dispatch) => {
 
         const commentResponse = await res.json()
         console.log("COMMENTRESPONSE", commentResponse)
-        dispatch(addNewComment(commentResponse))
+        await dispatch(addNewComment(commentResponse))
     } catch (error) {
         const errors = await error.json();
         return errors;
