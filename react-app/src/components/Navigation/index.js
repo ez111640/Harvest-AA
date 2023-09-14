@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
   const history = useHistory()
   let searchPins = []
   let pinArray = []
-
+  console.log("PINS", pins)
   if (pins) pinArray = Object.values(pins)
   console.log("PINARRAY", pinArray)
 
@@ -20,18 +20,7 @@ function Navigation({ isLoaded }) {
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
-    if (searchInput.length > 0) {
-      console.log(searchInput)
-      pinArray?.filter((pin) => {
-        if (pin.description.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
-          searchPins.push(pin)
-        } else if (pin.title.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
-          searchPins.push(pin)
-        } else {
 
-        }
-      })
-    }
   }
   const onClick = (e) => {
     e.preventDefault();
@@ -55,14 +44,14 @@ function Navigation({ isLoaded }) {
         <input
           className="search-bar-input"
           type="text"
-          placeholder="Feature coming soon"
+          placeholder="Search"
           onChange={handleChange}
           value={searchInput}
           onKeyDown={(e) => (e.key === "Enter" ? onEnter() : false)}
         />
-        {/* <button className="hide-that-button" onClick={onClick} > */}
+        <button className="hide-that-button" onClick={onClick} >
           <i className="fa-solid fa-magnifying-glass" ></i>
-          {/* </button> */}
+          </button>
       </div>
       <div>
         <ProfileButton className="nav-link profile-button" user={sessionUser} />

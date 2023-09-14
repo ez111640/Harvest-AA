@@ -40,6 +40,8 @@ export const PinDetailModal = ({ pinId }) => {
 		if (url) splitUrl = url.split("/")
 		if (splitUrl[0] === "https:") {
 			domain = splitUrl[2].split(".")[0]
+			if(domain ==="www")
+				domain = splitUrl[2].split(".")[1]
 		}
 	}
 

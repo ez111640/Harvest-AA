@@ -13,20 +13,25 @@ export const PageHeader = () => {
     if (!user) history.push("/login")
     let firstLetter;
 
-    if (user) firstLetter = user.username[0]
-
+    if(user.firstName) firstLetter = user.firstName[0]
+    else firstLetter = user.username[0]
 
     return (
         <div className="profile-header">
             <div className="profile-div-left">
+                <div>,_</div>
                 <div className="user-spot">
                     <div className="fl-div">{firstLetter}</div>
                 </div>
                 <div className="profile-div-left-buttons">
+                    <div>@{user.username}</div>
                     {/* <OpenModalButton
                         buttonText="New Pin"
                         modalComponent={<CreatePinModal />}
                     /> */}
+                        <OpenModalButton
+                            buttonText="New Board"
+                            modalComponent={<CreateBoardModal />} />
                     <OpenModalButton
                         buttonText="New Pin!"
                         modalComponent={<SelectImageSourceModal />}
@@ -35,9 +40,6 @@ export const PageHeader = () => {
                         buttonText="New AWS Pin"
                         modalComponent={<CreatePinAWSModal />}
                     /> */}
-                    <OpenModalButton
-                        buttonText="New Board"
-                        modalComponent={<CreateBoardModal />} />
                 </div>
             </div>
         </div>

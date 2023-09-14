@@ -12,6 +12,7 @@ import { UserBoards } from './components/boards/UserBoards/UserBoards';
 import { BoardLandingPage } from './components/boards/UserBoards/BoardLandingPage/BoardLandingPage';
 import { UserPins } from './components/pins/UserPins';
 import { AllComments } from "./components/comments/AllComments";
+import { SearchResultsPage } from "./components/pins/SearchResultsPage";
 function App() {
   const dispatch = useDispatch();
 
@@ -46,9 +47,10 @@ function App() {
           <Route exact path="/pins/:pinId">
             <PinDetail />
           </Route>
-          {/* <Route exact path="/pins/search/:searchInput">
-            <SearchResults />
-          </Route> */}
+          <Route exact path="/pins/search/:searchInput">
+            <SearchResultsPage />
+          </Route>
+
           <Route exact path="/">
             <LandingPage />
           </Route>

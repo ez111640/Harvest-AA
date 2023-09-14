@@ -54,17 +54,20 @@ function CreateBoardModal() {
 	const topicArr = Object.values(topics)
 	return (
 		<div>
-			{page === 1 && <form onSubmit={handleSubmitPageOne}>
+			{page === 1 && <form className="new-board-form" onSubmit={handleSubmitPageOne}>
 				<label className='board-name-field'>
-					Name:
-					<input
+					Create Board
+				</label>
+				<div className="board-name-div">
+					<div>Name</div>
+				</div>
+					<input className="create-board-input"
 						type="text"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>
-				</label>
-				<button type="submit">Create</button>
+				{name.length > 0 && <button className="create-board-button font-bold" type="submit">Create</button>}
 			</form>}
 			{page === 2 && <form onSubmit={handleSubmitPageTwo}>
 				<label className='board-name-field'>

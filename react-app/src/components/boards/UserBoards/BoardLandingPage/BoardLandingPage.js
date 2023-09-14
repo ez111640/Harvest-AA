@@ -29,6 +29,9 @@ export const BoardLandingPage = () => {
     let firstLetter
     if (user) firstLetter = user.username[0]
     if (!user) history.push("/")
+
+    const thisBoard = Object.values(boards).find((board) => board.id == boardId)
+
     useEffect(() => {
 
         // dispatch(getBoardDetails(boardId))
@@ -43,10 +46,10 @@ export const BoardLandingPage = () => {
 
     const [editBoard, setEditBoard] = useState(false)
 
-    const thisBoard = Object.values(boards).find((board) => board.id == boardId)
     console.log("THISBOARD", thisBoard)
 
-    const [name, setName] = useState(thisBoard.name);
+    const [name, setName] = useState("");
+    if(!thisBoard) return null
 
     let this_board_pinIds
     let allPinArray = []
@@ -124,6 +127,7 @@ export const BoardLandingPage = () => {
     if (!topics) return null
     if (!pins) return null
     if (!allPins) return null
+    if (!thisBoard) return null;
     return (
         <div>
             <div className="profile-header">
@@ -135,7 +139,7 @@ export const BoardLandingPage = () => {
                     <div className="header-main">
                         {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :
 
-                            <div>
+                            <div className="edit-boart-name">
                                 {/* Edit board name under construction. Please test this feature
                             <NavLink to="/boards">here</NavLink>
                             by hovering over the board you'd like to edit */}

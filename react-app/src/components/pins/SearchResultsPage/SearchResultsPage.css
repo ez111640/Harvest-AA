@@ -1,0 +1,32 @@
+#all-pins {
+    width: 80%;
+    margin: auto;
+    column-count: 4;
+    column-gap: 15px;
+}
+
+
+
+.greeting-banner {
+    font-size: 36px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-from-home>button {
+    background-color: transparent;
+    border: none;
+
+}
+
+
+
+.pin-from-home {
+    background-color: transparent;
+}

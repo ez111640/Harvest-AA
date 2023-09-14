@@ -17,9 +17,11 @@
 .profile-header {
     display: flex;
     height: 200px;
-    width: 100%;
-    padding: 20px;
-
+    width: 80%;
+    padding: 20px 20px 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
 }
 
 .header-new-buttons {
@@ -43,10 +45,13 @@
     margin-right: auto;
     align-items: center;
     justify-content: center;
+    position: relative;
+    left: 10px;
 }
 
 .fl-div {
     font-size: 60px;
+    color: black;
 }
 
 .profile-div-left {
@@ -56,34 +61,22 @@
     justify-content: center;
 }
 
-
-.active-option {
-    background-color: goldenrod; 
+.profile-div-left-buttons>button{
     border: none;
-    height: 100%;
-    font-size: 20px;
+    padding: 10px 10px;
+    margin-left: 10px;
+    border-radius: 20px;
 }
 
-.inactive-option {
-    background-color: white;
-    border: none;
-    height: 100%;
-    font-size: 20px;
-
-
+.profile-div-left-buttons>div{
+    width: fit-content;
+    margin: 20px auto;
 }
 
-.board-button {
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
-    padding: 5px;
+.profile-div-left-buttons{
+    column-gap: 10px;
 }
 
-.pins-button {
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-    padding: 5px;
-}
 
 .view-type-button-div {
     display: flex;
@@ -93,11 +86,4 @@
     margin-bottom: 20px;
     font-size: 20px;
     align-items: center;
-}
-
-.view-type-buttons {
-    border: 1px solid black;
-    border-radius: 20px;
-    margin-left: 10px;
-
 }

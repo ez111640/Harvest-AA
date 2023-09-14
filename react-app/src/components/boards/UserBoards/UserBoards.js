@@ -30,7 +30,7 @@ export const UserBoards = () => {
     console.log("USERBOARDS", userBoards)
     const [viewType, setViewType] = useState('boards')
     const [pinsActive, setPinsActive] = useState('inactive-option')
-    const [boardsActive, setBoardsActive] = useState('inactive-option')
+    const [boardsActive, setBoardsActive] = useState('active-option')
 
     // const { closeModal } = useModal()
 
@@ -84,7 +84,6 @@ export const UserBoards = () => {
             </div> */}
             <PageHeader />
             <div className="view-type-button-div">
-                <div>View</div>
                 <div className="view-type-buttons">
                     <button type="button" className={"board-button " + boardsActive} onClick={showBoards}>Boards</button>
                     <button type="button" className={"pins-button " + pinsActive} onClick={showPins}>Pins</button>
