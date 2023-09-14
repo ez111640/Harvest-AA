@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { useModal } from "../../../context/Modal"
 import { deletePin } from "../../../store/pinsReducer"
-import "./deletePinModal.css"
+import "./AddPinToBoardModal.css"
 import { addPinToBoardThunk, getUserBoards } from "../../../store/boardsReducer"
 import { useEffect, useState } from "react"
 
@@ -32,16 +32,16 @@ const AddPinToBoardModal = ({ pin }) => {
     if (!boardArr) return null;
     return (
 
-        <div className="confirm-delete">
+        <div className="select-board">
             <form onSubmit={handleSubmit}>
                 <select id="board-selector">
                     {
                         boardArr.map((board) =>
-                            <option value={board.id}>{board.name}</option>
+                            <option id="board-selector-input" value={board.id}>{board.name}</option>
                         )
                     }
                 </select>
-                <button type="submit">Submit</button>
+                <button className="submit-button" type="submit">Save</button>
             </form>
         </div>
     )

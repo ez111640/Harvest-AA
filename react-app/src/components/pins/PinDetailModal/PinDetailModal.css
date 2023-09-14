@@ -28,13 +28,14 @@
 .link-area>div {
     background-color: rgba(0, 0, 0, .3);
     display: flex;
+    flex-wrap: nowrap;
     column-gap: 10px;
     padding: 10px;
     border-radius: 20px;
     font-size: 12px;
 }
 
-.link-area>div:hover{
+.link-area>div:hover {
     background-color: rgba(0, 0, 0, .5);
 }
 
@@ -50,6 +51,14 @@
 }
 
 
+.photo-link>a {
+    text-decoration: none;
+    color: white;
+}
+
+.fa-square-arrow-up-right{
+    margin-left: 10px;
+}
 
 
 .pin-detail-modal-right {

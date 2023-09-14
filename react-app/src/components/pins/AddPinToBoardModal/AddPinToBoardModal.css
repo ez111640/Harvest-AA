@@ -1,0 +1,32 @@
+.select-board {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin: 10px;
+}
+
+.submit-button {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.submit-button:hover {
+    background-color: goldenrod;
+}
+
+.select-board>form {
+    display: flex;
+    column-gap: 10px;
+}
+
+#board-selector-input {
+    border: none;
+}
+
+select#board-selector {
+    border: none;
+    outline: none;
+}
+

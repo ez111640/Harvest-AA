@@ -50,9 +50,9 @@ export const PinDetailModal = ({ pinId }) => {
 			<div className="pin-detail-modal-left">
 				<img className="pin-detail-modal-image" src={thisPin.url}></img>
 				<div className="link-area">
-					<div>
-						<div>{domain}</div>
-						<i className="fa-solid fa-square-arrow-up-right"></i>
+					<div className="photo-link" >
+						<a href={`${thisPin.link}`} ><div className="domain-link">{domain}<i className="fa-solid fa-square-arrow-up-right"></i></div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -66,6 +66,6 @@ export const PinDetailModal = ({ pinId }) => {
 				</div>
 			</div>
 
-		</div>
+		</div >
 	);
 }
