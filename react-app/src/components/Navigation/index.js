@@ -46,6 +46,9 @@ function Navigation({ isLoaded }) {
         </div>
       </div>
       <div className="search-bar">
+        <button className="hide-that-button" onClick={onClick} >
+          <i className="fa-solid fa-magnifying-glass" ></i>
+        </button>
         <input
           className="search-bar-input"
           type="text"
@@ -54,9 +57,6 @@ function Navigation({ isLoaded }) {
           value={searchInput}
           onKeyDown={(e) => (e.key === "Enter" ? onEnter() : false)}
         />
-        <button className="hide-that-button" onClick={onClick} >
-          <i className="fa-solid fa-magnifying-glass" ></i>
-        </button>
       </div>
       <div>
         <ProfileButton className="nav-link profile-button" user={sessionUser} />

@@ -24,9 +24,7 @@ function LoginFormModal() {
   const handleDemoUser = async (e) => {
 
     e.preventDefault()
-    setEmail("demo@aa.io")
-    setPassword("password")
-    await dispatch(login(email, password))
+    await dispatch(login('demo@aa.io', 'password'))
     closeModal()
   }
 
