@@ -14,12 +14,18 @@
     justify-content: center;
 }
 
+.back-arrow{
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+
 .profile-header {
     display: flex;
     height: fit-content;
     width: 80%;
     padding: 20px 20px 10px 20px;
-    margin: 50px auto 0px auto;
+    margin: 70px auto 0px auto;
 }
 
 .profile-div-left-buttons>div{

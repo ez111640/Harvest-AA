@@ -12,6 +12,7 @@ import { getUserBoards } from "../../../../store/boardsReducer"
 import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
 import DeletePinModal from "../../../pins/DeletePinModal"
 import { updateBoardThunk } from "../../../../store/boardsReducer"
+import { PageHeader } from "../../../auth/User/PageHeader"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
@@ -49,7 +50,7 @@ export const BoardLandingPage = () => {
     console.log("THISBOARD", thisBoard)
 
     const [name, setName] = useState("");
-    if(!thisBoard) return null
+    if (!thisBoard) return null
 
     let this_board_pinIds
     let allPinArray = []
@@ -130,21 +131,22 @@ export const BoardLandingPage = () => {
     if (!thisBoard) return null;
     return (
         <div>
-            <div className="profile-header">
-                <div className="profile-div-left">
-                    <div className="user-spot">
+            <PageHeader />
+            {/* <div className="profile-header"> */}
+            {/* <div className="profile-div-left"> */}
+            {/* <div className="user-spot">
                         <div className="fl-div">{firstLetter}</div>
-                    </div>
+                    </div> */}
 
-                    <div className="header-main">
-                        {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :
+            {/* <div className="header-main"> */}
+            {/*      {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :
 
-                            <div className="edit-board-name">
+                            // <div className="edit-board-name">
                                 {/* Edit board name under construction. Please test this feature
                             <NavLink to="/boards">here</NavLink>
                             by hovering over the board you'd like to edit */}
-                                <form onSubmit={handleSubmit}>
-                                    <label className='board-name-field'>
+            {/* <form onSubmit={handleSubmit}> */}
+            {/* <label className='board-name-field'>
                                         Board Name:
                                         </label>
                                         <input
@@ -153,19 +155,19 @@ export const BoardLandingPage = () => {
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             required
-                                        />
-                                    <button className="edit-confirm-button submit-button" type="submit">Save</button>
-                                </form>
-                            </div>}
-                       {!editBoard && <button  onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button>
+                                        /> */}
+            {/* <button className="edit-confirm-button submit-button" type="submit">Save</button>
+                                </form> */}
+            {/* </div>} */}
+            {/* {!editBoard && <button  onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button> */}
 
 
-                    }
-                        {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+            {/* } */}
+            {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
                             modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
-                    </div>
-                </div>
-            </div>
+            {/* </div> */}
+            {/* </div> */}
+            {/* </div> */}
             <div className="topics-container">
                 <div className="topics-div">
                     {boardTopics?.map((topic) =>

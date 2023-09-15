@@ -122,7 +122,7 @@ export const PinDetail = () => {
 	}
 
 	return (
-		<div >
+		<div className="pin-detail-div" >
 			<div>{
 				<div className="button-container">
 					<div></div>

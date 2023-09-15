@@ -28,10 +28,15 @@ export const PageHeader = () => {
     if (user.firstName) firstLetter = user.firstName[0]
     else firstLetter = user.username[0]
 
+    const goBack = (e) => {
+        e.preventDefault();
+        window.location = ("/boards")
+    }
+
     return (
         <div className="profile-header">
+            <div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
             <div className="profile-div-left">
-                <div>,_</div>
                 <div className="user-spot">
                     <div className="fl-div">{firstLetter}</div>
                 </div>

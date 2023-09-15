@@ -14,11 +14,12 @@ import { UserPins } from "../../pins/UserPins";
 
 export const UserBoards = () => {
     const history = useHistory()
+    const board = useSelector((state) => state.boardsReducer.boards)
     const user = useSelector((state) => state.session.user)
     if (!user) history.push("/")
     const pins = useSelector((state) => state.pinsReducer.pins)
     const userBoards = useSelector((state) => state.boardsReducer.boards)
-
+    const dispatch = useDispatch()
 
 
     console.log("USERBOARDS", userBoards)
@@ -50,6 +51,10 @@ export const UserBoards = () => {
         setPinsActive("inactive-option")
     }
 
+    useEffect(() => {
+        dispatch(getUserBoards())
+    }, [dispatch])
+
     let userBoardArray;
     if (userBoards) userBoardArray = Object.values(userBoards)
     const pinArray = Object.values(pins)
@@ -58,6 +63,7 @@ export const UserBoards = () => {
     console.log("userPins", userPins)
 
     if (!pins) return null
+    if (!userBoardArray.length) return null;
     return (
         <div>
             <PageHeader />
