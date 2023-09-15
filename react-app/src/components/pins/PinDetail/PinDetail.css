@@ -4,18 +4,20 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
     width: fit-content;
     max-width: 880px;
     height: fit-content;
-    
+
 }
 
 #pin-detail-right {
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto auto auto 1fr 1fr 1fr;
     padding: 10px;
     width: inherit;
-    margin-top: 30px;
+    margin-top: 40px;
+    row-gap: 10px;
 
 }
 
@@ -26,20 +28,29 @@
 .button-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 40%;
+    width: 87%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    top: 85px;
     column-gap: 60px;
 }
 
 .pin-detail-buttons {
-    position: relative;
-    top: 30px;
+    justify-self: flex-end;
 }
 
 .pin-detail-buttons>button {
     background-color: transparent;
     border: none;
+    font-size: 20px;
+}
+
+.pin-detail-buttons>button:hover {
+    background-color: transparent;
+    border: none;
+    color: goldenrod;
+    font-size: 20px;
 }
 
 .clear-right {
@@ -52,19 +63,99 @@
     height: 10px;
 }
 
+.background-light-grey{
+    background-color: lightgray;
+}
+
 .photo-edit-button {
     position: absolute;
-    bottom: 200px;
-    left: 540px;
-    background-color: white;
+    left: 20px;
+    background-color: rgba(255, 255, 255, .7);
+    color: black;
     padding: 20px;
     border: none;
     justify-content: center;
     display: flex;
     align-items: center;
     border-radius: 40px;
+    margin-top: 10px;
 }
 
+.editing-description {
+    display: grid;
+    width: 100%;
+}
+
+.edit-description-field {
+    display: flex;
+    align-self: center;
+}
+
+.edit-url-close {
+    position: relative;
+}
+
+.pin-detail-input::placeholder {
+    white-space: pre-line;
+    position: relative;
+    top: -7px;
+}
+
+.exit-edit-desc{
+    margin-top: 28px;
+    font-size: 20px;
+}
+
+.exit-edit-title{
+    font-size: 20px;
+    align-self: flex-start;
+
+}
+
+.pin-detail-input {
+    margin-bottom: 10px;
+    display: flex;
+    white-space: pre-line;
+    position: relative;
+    top: -7px;
+    padding-top: 10px;
+}
+
+.photo-link-edit{
+    color: black;
+}
+
+.photo-link-edit>a{
+    color: black;
+    text-decoration: none;
+}
+
+.domain-link-from-main{
+    width: max-content;
+background-color: black;
+font-size: 12px;
+    padding: 5px 5px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.goldenrod-on-hover:hover{
+    background-color: goldenrod;
+}
+
+#pin-detail-left>label {
+    position: fixed;
+    top: 80px;
+    left: 60px;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+        rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+
+}
 
 #pin-detail-left>img {
     width: auto;
@@ -87,20 +178,48 @@
 
 }
 
-.pin-detail-title {
+.edit-title-div{
     display: flex;
-    font-size: 20px;
+}
+.pin-detail-title-sub{
+    display: flex;
+}
+
+.pin-detail-title-bottom {
+    display: flex;
+}
+
+.title-edit-area{
+    width: 91%
+}
+
+.pin-detail-title {
+    display: grid;
 }
 
 .pin-detail-description {
-    font-size: 14px;
+    font-size: 12px;
+    height: fit-content
 }
 
 .regular-edit-button {
-    background-color: white;
+    background-color: lightgray;
     border: none;
+    padding: 15px 15px;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
 }
 
+.save-edits{
+    width: 30%;
+    height: 40%;
+    padding: 0px;
+    justify-self: flex-end;
+    margin-right: 20px;
+}
 
 .no-placeholder::placeholder {
     color: black;
@@ -108,4 +227,57 @@
 
 .leave-a-comment-area {
     margin-bottom: 20px;
+    display: flex;
+    margin-left: 10px;
+    column-gap: 5px;
+}
+
+.leave-a-comment-area>div{
+    font-size: 24px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sticky-comment{
+    position: fixed;
+    bottom: 30px;
+    right: 0px;
+}
+
+.sticky-comment>div{
+    margin: 0px 20px 20px 20px;
+    font-size: 20px;
+}
+
+.comment-div{
+    margin: 5px 10px 0px 10px ;
+    padding: 10px 20px 10px 20px;
+    background-color: whitesmoke;
+}
+
+.comment-user-name{
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+
+
+.comment-div>button{
+    float: right;
+    border: none;
+    font-size: 14px;
+}
+
+.comment-content{
+    display: flex;
+    column-gap: 5px;
+    font-size: 14px;
+    align-items: center;
+}
+
+.make-bold{
+    font-weight: bold;
 }

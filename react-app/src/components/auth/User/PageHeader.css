@@ -18,10 +18,12 @@
     display: flex;
     height: fit-content;
     width: 80%;
-    padding: 20px 20px 20px 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
+    padding: 20px 20px 10px 20px;
+    margin: 50px auto 0px auto;
+}
+
+.profile-div-left-buttons>div{
+    font-size: 12px;
 }
 
 .user-stats {
@@ -38,17 +40,10 @@
     align-items: center;
     font-size: 20px;
     position: relative;
-    bottom: 8px;
+    bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
-
-.header-new-buttons {
-    background-color: goldenrod;
-    padding: 0px 10px;
-    border: none;
-}
-
 .profile-div-left {
     margin-left: auto;
     margin-right: auto;
@@ -86,6 +81,13 @@
     margin-left: 10px;
     border-radius: 20px;
 }
+
+.page-header-modals>button:hover{
+    background-color: goldenrod;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 .profile-div-left-buttons>div{
     width: fit-content;

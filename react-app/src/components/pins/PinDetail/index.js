@@ -10,6 +10,8 @@ import { getAllComments } from "../../../store/commentsReducer";
 import { AddComment } from "../../comments/AddComment";
 import DeleteCommentModal from "../../comments/DeleteCommentModal";
 import AddPinToBoardModal from "../AddPinToBoardModal";
+import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
+import { AllComments } from "../../comments/AllComments";
 
 export const PinDetail = () => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)
@@ -86,6 +88,12 @@ export const PinDetail = () => {
 		setEditLinkValue(!editLinkValue)
 	}
 
+	let firstLetter
+	if (user) {
+		if (user.firstName) firstLetter = user.firstName[0]
+		else firstLetter = user.username[0]
+	}
+
 
 
 	const handleSubmit = async (e) => {
@@ -110,6 +118,7 @@ export const PinDetail = () => {
 			dispatch(getOnePinThunk(pinId))
 		}
 
+		if (!user) return null;
 	}
 
 	return (
@@ -118,24 +127,27 @@ export const PinDetail = () => {
 				<div className="button-container">
 					<div></div>
 					{user && <div className="pin-detail-buttons">
+
 						{thisPin.userId === user.id && <button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
 						}
-						{ thisPin.userId === user.id &&
+						{thisPin.userId === user.id &&
 							<OpenModalButton
-							type="button"
-							buttonText={<i className="fa-solid fa-trash"></i>}
-							modalComponent={<DeletePinModal pinId={thisPin.id} />}
+								type="button"
+								buttonText={<i className="fa-solid fa-trash"></i>}
+								modalComponent={<DeletePinModal pinId={thisPin.id} />}
 
-						/>}
-						<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i> } modalComponent={<AddPinToBoardModal pin={thisPin} />} />
-					</div>}
+							/>}
+						<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+					</div>
+
+					}
 				</div>
 
 			}</div>
 
 			<form id="pin-detail-container" onSubmit={handleSubmit}>
 				{editUrlValue ?
-					<div id="pin-detail-left"><img alt="pin" src={thisPin?.url}></img>
+					<div id="pin-detail-left">
 						<label className='url-field'>
 							Edit photo URL:
 							<input className="no-placeholder"
@@ -143,37 +155,41 @@ export const PinDetail = () => {
 								placeholder={thisPin.url}
 								onChange={(e) => setPhotoUrl(e.target.value)}
 							/>
+							<button className="hide-that-button edit-url-close" type="button" onClick={clickEditUrlButton}><i className="fa-solid fa-xmark"></i></button>
 						</label>
+						<img alt="pin" src={thisPin?.url}></img>
 						<div>
-							<button type="button" onClick={clickEditUrlButton} value={editUrlValue}><i className="fa-solid fa-check"></i></button>
-							<button type="button" onClick={clickEditUrlButton}><i className="fa-solid fa-xmark"></i></button>
+							{/* <button type="button" onClick={clickEditUrlButton} value={editUrlValue}><i className="fa-solid fa-check"></i></button> */}
 						</div>
 					</div>
 					:
 					<div id="pin-detail-left">
-						<img alt="pin" src={thisPin?.url}></img>
 						{
 							showEditForm &&
 							<button type="button" onClick={clickEditUrlButton} className="photo-edit-button entered-edit-form"><i className="fa-solid fa-pen-to-square"></i></button>
 						}
+						<img alt="pin" src={thisPin?.url}></img>
 
 					</div>}
 				<div id="pin-detail-right">
 
 					{editTitleValue ? <div className="pin-details pin-detail-title">
 						<label className='url-field'>
-							<input className="no-placeholder"
+							Edit Title:
+						</label>
+						<div className="pin-detail-title-sub">
+							<textarea className="no-placeholder title-edit-area"
 								id="title-input"
 								type="text"
 								value={photoTitle ? photoTitle : ""}
 								placeholder={thisPin.title}
-								onChange={(e) => setPhotoTitle(e.target.value)}
-							/>
-						</label>
-						<div>
-							<button type="button" onClick={clickEditTitleButton}><i className="fa-solid fa-xmark"></i></button>
+								onChange={(e) => setPhotoTitle(e.target.value)}>
+							</textarea>
+							<button className="exit-edit-title hide-that-button" type="button" onClick={clickEditTitleButton}><i className="fa-solid fa-xmark"></i></button>
 						</div>
-					</div> : <div className="pin-details pin-detail-title">
+						<div>
+						</div>
+					</div> : <div className="pin-details pin-detail-title-bottom">
 						<div className="clear-right">{thisPin.title}</div>
 						{
 							showEditForm &&
@@ -182,16 +198,19 @@ export const PinDetail = () => {
 					</div>}
 					{editDescValue ?
 						<div className=" clear-right pin-details" >
-							<label className='url-field'>
-								<input className="no-placeholder pin-detail-input" id="pin-detail-description"
+							<div className="editing-description">
+								<label className='edit-description-field'>Edit description:
+								</label>
+								<textarea className="no-placeholder pin-detail-input" id="pin-detail-description"
 									type="textarea"
 									placeholder={thisPin.description}
 									value={photoDesc ? photoDesc : ""}
-									onChange={(e) => setPhotoDesc(e.target.value)}
-								/>
-							</label>
+									onChange={(e) => setPhotoDesc(e.target.value)}>
+
+								</textarea>
+							</div>
 							<div>
-								<button type="button" onClick={clickEditDescButton}><i className="fa-solid fa-xmark"></i></button>
+								<button className="hide-that-button exit-edit-desc" type="button" onClick={clickEditDescButton}><i className="fa-solid fa-xmark"></i></button>
 							</div>
 						</div>
 						:
@@ -202,31 +221,45 @@ export const PinDetail = () => {
 								<button type="button" onClick={clickEditDescButton} className="regular-edit-button entered-edit-form"><i className="fa-solid fa-pen-to-square"></i></button>
 							}
 						</div>}
-					<div className="pin-details">{domain}.com
-						{showEditForm &&
-							<button type="submit">Save Changes</button>
-						}
+					<div className="pin-details">{domain === "www" ? "Visit Site" :
+						// <div>{ domain }</div>
+						<div>
+							<div className="photo-link-edit" >
+								<a href={`${thisPin.link}`} ><div className=" goldenrod-on-hover domain-link-from-main">{domain}<i className="fa-solid fa-square-arrow-up-right"></i></div>
+								</a>
+							</div>
+						</div>
+					}
 					</div>
+					{showEditForm &&
+						<button className="submit-button save-edits" type="submit">Save Changes</button>
+					}
 					{!showEditForm && <div>
 						<div>
 							<div>Comments: </div>
 							{pinComments.length ?
 								<div>
 									{pinComments.map((comment) =>
-										<div id={comment.id}>
-											<div>{comment.commentText}</div>
+										<div className="comment-div" id={comment.id}>
 											{user && comment.userId === user.id &&
 												<OpenModalButton
-													buttonText="Delete"
+													buttonText="X"
 													modalComponent={<DeleteCommentModal commentId={comment.id} />}
 												/>}
+											<div className="comment-content">
+												<div className="make-bold">{comment.user.firstName? comment.user.firstName : comment.user.username}</div>
+												{comment.commentText}
+
+												</div>
 										</div>)}
 
 								</div>
 								: <div>Be the first to leave a comment!</div>}
-							<div>
+							<div className="sticky-comment">
+								<div>{pinComments?.length} comment{pinComments.length > 1? "s":""}</div>
+
 								<div className="leave-a-comment-area">
-									<div>What do you think?</div>
+									<div className="user-letter">{firstLetter}</div>
 									<AddComment pinId={thisPin.id} />
 								</div>
 							</div>

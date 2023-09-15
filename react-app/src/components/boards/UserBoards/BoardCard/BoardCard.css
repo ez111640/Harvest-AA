@@ -44,13 +44,18 @@
     justify-content: space-between;
 } */
 
-.edit-delete-buttons {
-    border-radius: 15px;
-    background-color: #ff914D;
-    color: white;
-    padding: 5px 10px;
+.board-sub-two>button{
     border: none;
+    background-color: black;
+    color: white;
+    padding: 5px 5px;
+    border-radius: 10px;
 
+}
+
+
+.board-sub-two>button:hover{
+    background-color: goldenrod;
 }
 
 .board-sub-one {
@@ -61,8 +66,7 @@
 
 .board-sub-two {
     display: flex;
-    align-items: space-between;
-    justify-content: space-between;
+    justify-content: space-around;
     opacity: 0.0;
     -webkit-transition: all 500ms ease-in-out;
     -moz-transition: all 500ms ease-in-out;

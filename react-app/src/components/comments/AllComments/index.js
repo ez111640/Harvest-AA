@@ -13,7 +13,16 @@ export const AllComments = () => {
     }, [dispatch])
 
     return (
+        <>
 
-        <div>HERE</div>
+            <ul >
+                    <div id='profile-dropdown-profile-butt'>
+                        <div className="profile-dropdown-li"></div>
+                        <div className="profile-dropdown-li view-profile-button"></div>
+                        <div className="profile-dropdown-li">
+                        </div>
+                    </div>
+            </ul>
+        </>
     )
 }

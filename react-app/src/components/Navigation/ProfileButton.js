@@ -7,14 +7,11 @@ import SignupFormModal from "../SignupFormModal";
 import { Link } from "react-router-dom/";
 import './navigation.css'
 import { getUserBoards } from "../../store/boardsReducer";
-import { getAllTopics } from "../../store/topicsReducer";
-import { getAllPins } from "../../store/pinsReducer";
 
-function ProfileButton({user}) {
+function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-
 
   const boards = useSelector((state) => state.boardsReducer.boards)
 
@@ -24,14 +21,14 @@ function ProfileButton({user}) {
     setShowMenu(true);
   };
 
-  let firstLetter;
+  let firstLetter
   if (user) {
     if (user.firstName) firstLetter = user.firstName[0]
     else firstLetter = user.username[0]
   }
 
   useEffect(() => {
-    dispatch(getAllPins())
+
     if (!showMenu) return;
 
     const closeMenu = (e) => {
@@ -53,20 +50,22 @@ function ProfileButton({user}) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
-  if(!user) return null
-
   return (
     <>
-      <button className="user-button" onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-        HI
-      </button>
+      {!user ?
+        <button className="user-button" onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+        </button> :
+        <button className="user-button" onClick={openMenu}>
+
+          <div className="user-letter">{firstLetter}</div>
+        </button>
+      }
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <div id='profile-dropdown-profile-butt'>
-            <div className="profile-dropdown-li">{user.username}</div>
-            <div className="profile-dropdown-li">{user.email}</div>
-            <div className="profile-dropdown-li"><Link to="/boards">Profile</Link></div>
+            <div className="profile-dropdown-li">Hello, {user.username}!</div>
+            <div className="profile-dropdown-li view-profile-button"><Link to="/boards">View Profile</Link></div>
             <div className="profile-dropdown-li">
               <button onClick={handleLogout}>Log Out</button>
             </div>

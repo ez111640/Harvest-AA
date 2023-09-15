@@ -31,11 +31,11 @@ export const BoardCard = ({ board }) => {
                 }<div className="board-sub-one">{board.name}<i className="fa-solid fa-pen-to-square shrink-edit-symbol"></i></div>
                 <div className="board-sub-two ">
                     <OpenModalButton
-                        buttonText="Update Board"
+                        buttonText="Update"
                         modalComponent={<UpdateBoardModal board={board} />}
                     />
                     <OpenModalButton className="edit-delete-buttons"
-                        buttonText="Delete Board"
+                        buttonText="Delete"
                         modalComponent={<DeleteBoardModal boardId={board.id} />}
                     />
                 </div>

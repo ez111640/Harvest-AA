@@ -23,6 +23,10 @@ class Comment(db.Model, UserMixin):
         return {
             'id': self.id,
             'userId': self.userId,
+            'user': {
+                "firstName":self.users.firstName,
+                "username":self.users.username
+            },
             'pinId': self.pinId,
             'commentText': self.commentText
         }

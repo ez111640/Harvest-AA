@@ -20,7 +20,28 @@
 
 
 .board-name-field{
-    margin: 20px;
+    margin: 10px;
+}
+
+.edit-board-name>form{
+    display: flex;
+    margin-right: 80px;
+}
+
+.edit-board-name-input{
+    height: 20px;
+    align-self: center;
+    justify-self: center;
+    margin: 0px 10px;
+}
+
+
+.edit-confirm-button{
+    border-radius: 20px;
+    font-size: 12px;
+    padding: 10px 10px;
+    height: 60%;
+    align-self: center;
 }
 
 .each-option {

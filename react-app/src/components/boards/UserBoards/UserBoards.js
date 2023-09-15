@@ -2,13 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getBoardDetails, getUserBoards } from "../../../store/boardsReducer"
 import { BoardCard } from "./BoardCard/BoardCard";
-import { getAllPins } from "../../../store/pinsReducer";
-import { Link } from 'react-router-dom'
-import CreatePinModal from "../../pins/CreatePinModal"
 import "./UserBoards.css"
-import OpenModalButton from "../../OpenModalButton";
-import { PinCard } from "../../pins/PinCard/PinCard";
-import CreateBoardModal from "./CreateBoardModal";
 import { PageHeader } from "../../auth/User/PageHeader";
 
 import { NavLink } from "react-router-dom"
@@ -66,22 +60,6 @@ export const UserBoards = () => {
     if (!pins) return null
     return (
         <div>
-            {/* <div className="profile-header">
-                <div className="profile-div-left">
-                    <div className="user-spot">
-                        <div className="fl-div">{firstLetter}</div>
-                    </div>
-                    <div className="profile-div-left-buttons">
-                        <OpenModalButton
-                            buttonText="New Pin"
-                            modalComponent={<CreatePinModal />}
-                        />
-                        <OpenModalButton
-                            buttonText="New Board"
-                            modalComponent={<CreateBoardModal />} />
-                    </div>
-                </div>
-            </div> */}
             <PageHeader />
             <div className="view-type-button-div">
                 <div className="view-type-buttons">
@@ -102,15 +80,6 @@ export const UserBoards = () => {
                     ) : <div></div>}
                 </div> :
                 <UserPins />
-                // <div id="all-pins">
-                //     {
-                //         userPins.map((pin) => (
-                //             <div id={pin.id}>
-                //                 <NavLink to={`/pins/${pin.id}`} pinId={pin.id}><img alt="pin" src={pin.url}></img></NavLink>
-                //             </div>
-                //         ))
-                //     }
-                // </div>
             }
         </div>
     )

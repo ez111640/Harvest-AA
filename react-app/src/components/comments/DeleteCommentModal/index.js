@@ -14,17 +14,18 @@ const DeleteCommentModal = ({ commentId }) => {
 
 
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        dispatch(deleteCommentThunk(commentId))
+        await dispatch(deleteCommentThunk(commentId))
+        dispatch(getAllComments())
         closeModal()
-        history.back();
         // history.push()
     }
 
 
     const commentArr = Object.values(allComments)
     const thisComment = commentArr.find((comment) => comment.id === commentId)
+
 
     return (
 

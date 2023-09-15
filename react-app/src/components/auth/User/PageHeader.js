@@ -2,7 +2,7 @@ import OpenModalButton from "../../OpenModalButton"
 import CreateBoardModal from "../../boards/UserBoards/CreateBoardModal"
 import CreatePinModal from "../../pins/CreatePinModal"
 import CreatePinAWSModal from "../../pins/CreatePinAWSModal"
-import "./UserBoards.css"
+import "./PageHeader.css"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import SelectImageSourceModal from "../../pins/SelectImageSourceModal"
@@ -48,10 +48,10 @@ export const PageHeader = () => {
                         modalComponent={<CreatePinModal />}
                     /> */}
                     <div className="page-header-modals">
-                        <OpenModalButton 
+                        <OpenModalButton
                             buttonText="New Board"
                             modalComponent={<CreateBoardModal />} />
-                        <OpenModalButton 
+                        <OpenModalButton
                             buttonText="New Pin!"
                             modalComponent={<SelectImageSourceModal />}
                         />

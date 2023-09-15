@@ -22,7 +22,6 @@ const SelectImageSourceModal = ({ pinId, lastPage }) => {
     const [page, setPage] = useState(1)
     const [imageLoading, setImageLoading] = useState(false)
 
-    console.log("HERE", page)
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(getAllPins())

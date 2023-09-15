@@ -13,7 +13,9 @@
   background-color: white;
   width: 100%;
   padding: 10px 0px;
+  z-index: 3;
 }
+
 
 .nav-bar-left {
   display: flex;
@@ -89,6 +91,16 @@
   color: black;
 }
 
+.user-letter{
+  background-color: #E9E9E9;
+  padding: 5px 9px;
+  border-radius: 20px;
+}
+
+.greeting-banner{
+  padding-top: 40px;
+}
+
 .user-button:hover {
   cursor: pointer;
 }
@@ -106,6 +118,8 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+
+
 .profile-dropdown button {
   color: white;
   background-color: black;
@@ -114,7 +128,7 @@
   padding: 10px 20px;
   border: none;
   margin-right: 10px;
-  margin-top: 20px;
+  margin-top: 8px;
   margin-bottom: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   font-weight: 600;
@@ -122,13 +136,29 @@
 }
 
 .profile-dropdown button:hover {
-  background-color: #bf7e56;
+  background-color: goldenrod;
   transform: translateY(-2px);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #profile-dropdown-profile-butt {
   padding: 12px 9px 12px 0px;
+
+}
+
+.profile-dropdown-li{
+  margin-top: 10px;
+}
+
+
+.view-profile-button>a:hover{
+  transform: translateY(-2px  );
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.profile-dropdown-li>a{
+  text-decoration: none;
+  color: black;
 }
 
 .fa-user-circle {
@@ -141,12 +171,9 @@
   display: flex;
 }
 
-/* profile modal */
-.profile-dropdown {
-  position: absolute;
-}
 
 .profile-dropdown {
+  position: absolute;
   background-color: white;
   position: absolute;
   padding-right: 20px;

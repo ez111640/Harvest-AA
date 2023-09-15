@@ -1,11 +1,19 @@
 .yes-delete-button {
-    background-color: red;
+    background-color: darkgray;
     color: white;
 }
 
 .no-delete-button {
     background-color: darkgray;
     color: white;
+}
+
+.yes-delete-button:hover{
+    background-color: goldenrod;
+}
+
+.no-delete-button:hover{
+    background-color: goldenrod;
 }
 
 .confirm-delete {

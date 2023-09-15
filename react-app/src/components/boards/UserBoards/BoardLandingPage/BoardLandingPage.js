@@ -139,24 +139,28 @@ export const BoardLandingPage = () => {
                     <div className="header-main">
                         {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :
 
-                            <div className="edit-boart-name">
+                            <div className="edit-board-name">
                                 {/* Edit board name under construction. Please test this feature
                             <NavLink to="/boards">here</NavLink>
                             by hovering over the board you'd like to edit */}
                                 <form onSubmit={handleSubmit}>
                                     <label className='board-name-field'>
-                                        Name:
+                                        Board Name:
+                                        </label>
                                         <input
+                                        className="edit-board-name-input"
                                             type="text"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             required
                                         />
-                                    </label>
-                                    <button type="submit">Save Changes</button>
+                                    <button className="edit-confirm-button submit-button" type="submit">Save</button>
                                 </form>
                             </div>}
-                        <button onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button>
+                       {!editBoard && <button  onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button>
+
+
+                    }
                         {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
                             modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
                     </div>
