@@ -14,13 +14,6 @@
     justify-content: center;
 }
 
-.profile-header {
-    display: flex;
-    height: 200px;
-    width: 100%;
-    padding: 20px;
-
-}
 
 .header-new-buttons {
     background-color: red;

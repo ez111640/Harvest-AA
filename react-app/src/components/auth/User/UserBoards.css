@@ -16,12 +16,31 @@
 
 .profile-header {
     display: flex;
-    height: 200px;
+    height: fit-content;
     width: 80%;
     padding: 20px 20px 20px 20px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
+}
+
+.user-stats {
+    display: flex;
+    font-size: 14px;
+}
+
+.user-stats>div{
+    display: flex;
+}
+
+.center-dot{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    position: relative;
+    bottom: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .header-new-buttons {
@@ -61,7 +80,7 @@
     justify-content: center;
 }
 
-.profile-div-left-buttons>button{
+.page-header-modals>button{
     border: none;
     padding: 10px 10px;
     margin-left: 10px;
@@ -70,10 +89,11 @@
 
 .profile-div-left-buttons>div{
     width: fit-content;
-    margin: 20px auto;
+    margin: 5px auto;
 }
 
 .profile-div-left-buttons{
+    display: grid;
     column-gap: 10px;
 }
 

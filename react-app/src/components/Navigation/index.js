@@ -3,6 +3,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
+import CreateButton from "./CreateButton";
 
 function Navigation({ isLoaded }) {
   // const dispatch = useDispatch()
@@ -35,10 +36,14 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className="main-nav-bar">
-      <div>
+      <div className="nav-bar-left">
         <NavLink exact to="/">
           <img src="https://i.ibb.co/rbztcLh/HAR-1.png" className="harvest-logo" alt="HAR-1" border="0"></img>
         </NavLink>
+        <div className="nav-bar-text-links">
+          <NavLink exact to="/">Home</NavLink>
+          <CreateButton />
+        </div>
       </div>
       <div className="search-bar">
         <input
@@ -51,7 +56,7 @@ function Navigation({ isLoaded }) {
         />
         <button className="hide-that-button" onClick={onClick} >
           <i className="fa-solid fa-magnifying-glass" ></i>
-          </button>
+        </button>
       </div>
       <div>
         <ProfileButton className="nav-link profile-button" user={sessionUser} />
