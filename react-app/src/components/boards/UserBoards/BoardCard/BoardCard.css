@@ -1,8 +1,9 @@
 .board-cover-photo {
-    width: 100px;
+    width: 250px;
     height: auto;
     max-height: 200px;
     object-fit: cover;
+    object-position: 100% 20%;
     overflow: hidden;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -50,6 +51,7 @@
     color: white;
     padding: 5px 5px;
     border-radius: 10px;
+    cursor: pointer;
 
 }
 

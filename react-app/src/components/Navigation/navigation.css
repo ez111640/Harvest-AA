@@ -13,7 +13,6 @@
   background-color: white;
   width: 100%;
   padding: 10px 0px;
-  z-index: 3;
 }
 
 
@@ -36,6 +35,7 @@
   align-items: center;
   column-gap: 10px;
   padding-left: 10px;
+  font-size: 14px;
 }
 
 .fa-chevron-down {
@@ -151,9 +151,8 @@
 }
 
 
-.view-profile-button>a:hover{
-  transform: translateY(-2px  );
-  background-color: rgba(0, 0, 0, 0.1);
+.view-profile-button:hover{
+  transform: scale(1.1);
 }
 
 .profile-dropdown-li>a{

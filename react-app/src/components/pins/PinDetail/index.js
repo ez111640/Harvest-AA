@@ -263,14 +263,14 @@ export const PinDetail = () => {
 
 								</div>
 								: <div>Be the first to leave a comment!</div>}
-							<div className="sticky-comment">
+							{user && <div className="sticky-comment">
 								<div>{pinComments?.length} comment{pinComments.length > 1 ? "s" : ""}</div>
 
 								<div className="leave-a-comment-area">
 									<div className="user-letter">{firstLetter}</div>
 									<div><AddComment pinId={thisPin.id} /></div>
 								</div>
-							</div>
+							</div>}
 
 
 						</div>

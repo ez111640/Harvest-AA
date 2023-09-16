@@ -35,9 +35,18 @@ export const PageHeader = () => {
         window.location = ("/boards")
     }
 
+let currentPage =  window.location.href.split("/")
+let showArrow = true;
+
+if(currentPage[currentPage.length-1] === "boards"){
+    showArrow = false;
+}
+
     return (
         <div className="profile-header">
+{   showArrow &&
             <div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
+            }
             <div className="profile-div-left">
                 <div className="user-spot">
                     <div className="fl-div">{firstLetter}</div>

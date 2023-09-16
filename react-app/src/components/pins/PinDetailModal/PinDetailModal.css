@@ -78,7 +78,7 @@
 
 .pin-detail-modal-right {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr auto 1fr;
     row-gap: 5px;
     position: relative;
     top: -50px;
@@ -90,6 +90,11 @@
     align-items: flex-start;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.pin-detail-modal-right>div{
+    height: fit-content;
+    margin: 10px 20px 0px 20px
 }
 
 .font-bold {
@@ -164,4 +169,33 @@
     margin-bottom: 20px;
 
 
+}
+
+
+.leave-a-comment-area{
+    position: fixed;
+    bottom: 130px;
+}
+
+.comment-div-container{
+    height: fit-content;
+    max-height: 170px;
+    overflow: auto;
+}
+
+
+.fix-z{
+    z-index: 4;
+}
+
+.delete-comment{
+    position: fixed;
+    z-index: 3;
+    background-color: white;
+    right: 10px;
+    font-size: 10px;
+}
+
+.delete-comment>button{
+    font-size: 10px;
 }

@@ -27,6 +27,7 @@ export const UserBoards = () => {
     const [pinsActive, setPinsActive] = useState('inactive-option')
     const [boardsActive, setBoardsActive] = useState('active-option')
 
+
     // const { closeModal } = useModal()
 
     // window.onbeforeunload = function () {
@@ -54,6 +55,7 @@ export const UserBoards = () => {
     useEffect(() => {
         dispatch(getUserBoards())
     }, [dispatch])
+    
 
     let userBoardArray;
     if (userBoards) userBoardArray = Object.values(userBoards)

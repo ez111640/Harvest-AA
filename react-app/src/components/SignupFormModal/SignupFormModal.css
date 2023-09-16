@@ -1,0 +1,99 @@
+.harvest-symbol {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+}
+
+.symbol-div {
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-modal-container {
+    display: grid;
+}
+
+
+.signup-modal-divs {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-form {}
+
+.signup-form-button-field>button {
+    border: none;
+
+    background-color: transparent;
+}
+
+.signup-form-field {
+    width: 60%;
+    display: grid;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.signup-form-button-field {
+    width: 300px;
+    background-color: whitesmoke;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: grid;
+    height: auto;
+    font-weight: bold;
+}
+
+.signup-form-button-field:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.signup-form-button-field>button:hover {
+    color: white;
+
+}
+
+
+.signup-modal-div-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.signup-form-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    grid-row-gap: 10px;
+    row-gap: 10px;
+    margin-top: 20px;
+}
+
+.signup-form-field>label{
+    font-size: 12px;
+}
+
+.signup-form-field>input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+
+.error-li{
+    list-style-type: none;
+}
+
+.error-ul{
+    width: 70%;
+    margin: 0px auto;
+    margin-top: 10px;
+}

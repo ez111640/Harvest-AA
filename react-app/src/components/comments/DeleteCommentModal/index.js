@@ -14,11 +14,11 @@ const DeleteCommentModal = ({ commentId }) => {
 
 
 
-    const onSubmit = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        await dispatch(deleteCommentThunk(commentId))
-        dispatch(getAllComments())
+        dispatch(deleteCommentThunk(commentId))
         closeModal()
+        history.back();
         // history.push()
     }
 
@@ -26,14 +26,12 @@ const DeleteCommentModal = ({ commentId }) => {
     const commentArr = Object.values(allComments)
     const thisComment = commentArr.find((comment) => comment.id === commentId)
 
-
     return (
 
-        <div className="confirm-delete">
-            <h1>Confirm Delete</h1>
-            <p>Are you sure you want to remove this comment? This action cannot be undone</p>
-            <button className="yes-delete-button" onClick={onSubmit} type="submit">Yes (Delete Comment)</button>
-            <button className="no-delete-button">No (Keep Comment)</button>
+        <div className="confirm-delete-comment">
+            <p>Are you sure you want to remove this comment?</p>
+            <button className="yes-delete-button-comment" onClick={onSubmit} type="submit">Yes (Delete Comment)</button>
+            <button className="no-delete-button-comment">No (Keep Comment)</button>
         </div>
     )
 }
