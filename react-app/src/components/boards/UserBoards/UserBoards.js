@@ -8,6 +8,7 @@ import { PageHeader } from "../../auth/User/PageHeader";
 import { NavLink } from "react-router-dom"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { UserPins } from "../../pins/UserPins";
+import { getAllPins } from "../../../store/pinsReducer";
 
 
 
@@ -54,8 +55,9 @@ export const UserBoards = () => {
 
     useEffect(() => {
         dispatch(getUserBoards())
+        dispatch(getAllPins())
     }, [dispatch])
-    
+
 
     let userBoardArray;
     if (userBoards) userBoardArray = Object.values(userBoards)

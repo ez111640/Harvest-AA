@@ -58,6 +58,7 @@ const CreatePinModal = () => {
             }
             setImageLoading(true);
             await dispatch(addPinAWSThunk(newPin))
+            history.push("/pins/current")
 
         } else {
             const data = await dispatch(addPinThunk({ url, link, description, title }));
@@ -65,8 +66,8 @@ const CreatePinModal = () => {
                 setErrors(data);
                 console.log(data)
             } else {
-                history.push("/")
             }
+            history.push("/pins/current")
         }
     }
 
@@ -193,10 +194,11 @@ const CreatePinModal = () => {
                         />
 
                     </div>
-                    <div className={link ? "" : isUrl(link) ? "no-error" : "error"}>{link ? isUrl(link) ? "Hey" : "Invalid url entered" : ""}</div>
+                    <div className={link ? "" : isUrl(link) ? "no-error" : "error"}>{link ? isUrl(link) ? "" : "Invalid url entered" : ""}</div>
+                    {url && isUrl(link) ?
                     <div>
                         <button type="submit">Create</button>
-                    </div>
+                    </div> : <div><button disabled type="submit">Create</button></div>}
                 </div>
             </form>
 

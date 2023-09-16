@@ -32,7 +32,7 @@ export const AddComment = ({ pinId }) => {
                         onChange={(e) => setCommentText(e.target.value)}
                         required
                     />
-                    <button  onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>
+                    <button  onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button>
                 </div>
             </label>
         </div>

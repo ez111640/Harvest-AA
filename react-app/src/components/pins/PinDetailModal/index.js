@@ -54,7 +54,7 @@ export const PinDetailModal = ({ pinId }) => {
 	// const thisPin = allPinArray[pinId]
 	if (!comments) return null
 	const commentArr = Object.values(comments)
-	const userComments = commentArr.filter((comment) => comment.pinId === thisPin.id)
+	const pinComments = commentArr.filter((comment) => comment.pinId === thisPin.id)
 
 	if (!thisPin) return null
 	if (!thisPin.link) return null;
@@ -112,14 +112,19 @@ export const PinDetailModal = ({ pinId }) => {
 				</div>
 				<div className="pin-detail-modal-grid-right comments">
 					<div className="pin-comment-header">Comments: </div>
-					{userComments.length ?
+					{pinComments.length ?
 						<div className="comment-div-container" id="comment-list">
-							{userComments.map((comment) =>
+							{pinComments.map((comment) =>
 
 								<div className="comment-div" id={comment.id}>
+									<div className="pin-detail-comment-content">
+										<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
+										{comment.commentText}
+
+									</div>
 									{user && comment.userId === user.id &&
 										<div>
-											{!deleteOption && <button type="button"
+											{!deleteOption && <button className="hide-that-button delete-comment-button" type="button"
 												onClick={() => {
 													setDeleteOption(!deleteOption)
 													setCommentId(comment.id)
@@ -133,20 +138,16 @@ export const PinDetailModal = ({ pinId }) => {
 
 											{deleteOption === true && <div className="delete-comment">
 												<div>Are you sure you want to remove this comment?</div>
-												<button onClick={
-													onSubmit}>Yes (Delete)</button>
-												<button onClick={()=>setDeleteOption(false)}>No (Keep)</button>
+												<button className="hide-that-button" onClick={() => setDeleteOption(false)}><i className="fa-solid fa-x"> No (keep comment)</i></button>
+												<button className="hide-that-button" onClick={
+													onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
 											</div>}
 										</div>
 										// <div>
 										// 	<DeleteCommentModal className="fix-z" commentId={comment.id} />
 										// </div>
 									}
-									<div className="pin-detail-comment-content">
-										<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
-										{comment.commentText}
 
-									</div>
 								</div>)}
 
 						</div>
@@ -155,7 +156,7 @@ export const PinDetailModal = ({ pinId }) => {
 					< hr />
 				</div>
 
-				{user && <div className="leave-a-comment-area">
+				{user && !pinComments.find((comment) => comment.userId === user.id) && <div className="leave-a-comment-area">
 					<div className="user-letter">{firstLetter}</div>
 					<label className='comment-text-fields'>
 						<div className="enter-comment-input">

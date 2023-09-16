@@ -14,6 +14,8 @@ import { UserPins } from './components/pins/UserPins';
 import { AllComments } from "./components/comments/AllComments";
 import { SearchResultsPage } from "./components/pins/SearchResultsPage";
 import CreatePinModal from "./components/pins/CreatePinModal";
+import { Footer } from "./components/Navigation/Footer/Footer";
+
 function App() {
   const dispatch = useDispatch();
 
@@ -63,6 +65,7 @@ function App() {
           </ProtectedRoute>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
