@@ -13,6 +13,7 @@ import { BoardLandingPage } from './components/boards/UserBoards/BoardLandingPag
 import { UserPins } from './components/pins/UserPins';
 import { AllComments } from "./components/comments/AllComments";
 import { SearchResultsPage } from "./components/pins/SearchResultsPage";
+import CreatePinModal from "./components/pins/CreatePinModal";
 function App() {
   const dispatch = useDispatch();
 
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route exact path="/pins/current">
             <UserPins />
+          </Route>
+          <Route exact path="/pins/new">
+            <CreatePinModal />
           </Route>
           <Route exact path="/pins/:pinId">
             <PinDetail />

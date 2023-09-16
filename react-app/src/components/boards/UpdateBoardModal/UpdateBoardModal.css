@@ -1,0 +1,19 @@
+.edit-board-modal{
+    margin: 20px;
+    display: grid;
+}
+
+.signup-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 10px 10px;
+}
+
+
+.signup-button:hover {
+    background-color: goldenrod;
+    cursor: pointer;
+}

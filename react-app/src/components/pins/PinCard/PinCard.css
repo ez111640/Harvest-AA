@@ -1,7 +1,7 @@
 .pin-photo {
     display: inline-block;
     width: 100%;
-    padding-bottom: 15px;
+    padding-left: 10px
 
 }
 
@@ -9,4 +9,5 @@
     display: block;
     width: 100%;
     border-radius: 10px;
+    padding-bottom: 5px;
 }

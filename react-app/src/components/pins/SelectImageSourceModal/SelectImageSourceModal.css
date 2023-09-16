@@ -1,0 +1,18 @@
+.create-pin-page-one{
+    margin: 20px;
+}
+
+.create-pin-option{
+    background-color: black;
+    color: white;
+
+}
+
+.create-pin-option:hover{
+    background-color: goldenrod;
+}
+
+.create-pin-option-div{
+    display: grid;
+    row-gap: 10px;
+}

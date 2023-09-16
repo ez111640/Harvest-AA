@@ -1,9 +1,30 @@
-#all-pins {
+/* #all-pins {
     width: 80%;
     margin: auto;
     column-count: 4;
     column-gap: 15px;
+} */
+
+.update-board-button {
+    position: relative;
+    left: 150px;
+    top: -200px;
+    display: flex;
+    justify-content: center;
 }
+
+.update-board-button>button {
+    border: none;
+    background-color: transparent;
+}
+
+.select-edit-board-type-dropdown {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 300px;
+    padding-left: 10px;
+}
+
 
 
 .board-header {
@@ -19,16 +40,16 @@
 }
 
 
-.board-name-field{
+.board-name-field {
     margin: 10px;
 }
 
-.edit-board-name>form{
+.edit-board-name>form {
     display: flex;
     margin-right: 80px;
 }
 
-.edit-board-name-input{
+.edit-board-name-input {
     height: 20px;
     align-self: center;
     justify-self: center;
@@ -36,7 +57,7 @@
 }
 
 
-.edit-confirm-button{
+.edit-confirm-button {
     border-radius: 20px;
     font-size: 12px;
     padding: 10px 10px;
@@ -52,7 +73,7 @@
 
 
 .edit-board-delete-pin {
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(0, 0, 0, .1);
     position: relative;
     display: flex;
     float: right;
@@ -72,7 +93,7 @@
 .topic-delete-button {
     margin-bottom: 12px;
     font-size: 18px;
-    position:relative;
+    position: relative;
     background-color: transparent;
     right: 25px;
 
@@ -104,7 +125,7 @@
     border-radius: 20px;
     color: black;
     background-color: #E4E4E4;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 
@@ -131,6 +152,8 @@
     min-width: 500px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    top: -20px;
 }
 
 
@@ -141,8 +164,8 @@
     justify-content: space-evenly;
     column-gap: 30px;
     row-gap: 15px;
-    width: 70%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }

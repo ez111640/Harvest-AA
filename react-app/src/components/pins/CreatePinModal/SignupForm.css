@@ -43,3 +43,172 @@
 .grow:hover {
     transform: scale(1.1);
 }
+
+/*Redoing the create pin page */
+
+.create-pin-page-div{
+    display: grid;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    width: 700px;
+    max-width: 900px;
+    height: fit-content;
+}
+
+.create-pin-page-sub {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.create-pin-aws-option{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    height: 380px;
+    width: 260px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.create-pin-add-border {
+    background-color: transparent;
+    border-radius: 10px;
+    border: 2px dashed lightgray;
+    margin: 10px;
+}
+
+.upload-photo-image{
+    width: min-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.file-input{
+    margin-left: 50px;
+
+}
+
+
+.file-input>input{
+    font-size: 10px;
+    margin-top: 40px;
+}
+
+.image-prompt{
+    font-size: 10px;
+    display: table;
+
+    width: 250px;
+    height: 180px;
+    text-align: center;
+}
+
+.span-image-prompt{
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    top: 70px;
+}
+
+.create-pin-page-header{
+    background-color: white;
+    width: 100%;
+    height: 40px;
+}
+
+.create-pin-page-left{
+    margin: 0px 20px 20px 20px;
+}
+
+
+.create-pin-url-option{
+    font-size: 22px;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    position: relative;
+    left: -6px;
+}
+
+.create-pin-url-option>input{
+
+    border-radius: 20px;
+    border: none;
+    background-color: whitesmoke;
+    color: black;
+    width: 300px;
+    margin-left: 5px;
+    font-size: 14px;
+    padding: 10px 10px
+
+}
+
+.create-pin-user-info{
+    display: flex;
+    column-gap: 20px;
+    font-size: 12px;
+}
+
+.create-pin-user-spot{
+    height: 40px;
+    width: 40px;
+    background-color: whitesmoke;
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 10px;
+    bottom: 5px;
+}
+
+.create-pin-page-right {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 20px;
+}
+
+.create-pin-add-description{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    width: 90%
+}
+
+.create-pin-add-link, .create-pin-add-description, .create-pin-add-title {
+    border-bottom: 1px solid grey;
+    width: 90%;
+    height: fit-content;
+}
+
+
+.create-pin-form-field>input{
+    border: none;
+}
+
+.create-pin-add-title>input{
+    font-size: 28px;
+    font-weight: bold;
+    width: 90%;
+}
+
+
+.create-pin-page-right>input[type="text"]{
+    border: none;
+}
+
+
+input[type="text"]:focus{
+    outline: none;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+}
+

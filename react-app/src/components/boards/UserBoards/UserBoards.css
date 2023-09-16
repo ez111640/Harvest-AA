@@ -92,21 +92,22 @@
 
 
 #all-user-pins {
-    display: grid;
-    column-count: 4;
-    column-gap: 15px;
+    width: 90%;
+    margin: auto;
+    column-count: 6;
+    column-gap: 20px;
 }
 
 
 .user-pin-photo {
-    width: 100px;
+    display: inline-block;
     height: 100px;
 
     padding-bottom: 15px;
 
 }
 
-.pin-photo img {
+.user-pin-photo img {
     display: block;
     width: 100%;
     border-radius: 10px;

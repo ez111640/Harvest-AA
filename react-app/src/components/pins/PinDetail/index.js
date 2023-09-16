@@ -95,6 +95,12 @@ export const PinDetail = () => {
 	}
 
 
+	const goBack = (e) => {
+		e.preventDefault();
+		window.location = ("/boards")
+	}
+
+
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -123,8 +129,10 @@ export const PinDetail = () => {
 
 	return (
 		<div className="pin-detail-div" >
+
 			<div>{
 				<div className="button-container">
+					<div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
 					<div></div>
 					{user && <div className="pin-detail-buttons">
 
@@ -247,20 +255,20 @@ export const PinDetail = () => {
 													modalComponent={<DeleteCommentModal commentId={comment.id} />}
 												/>}
 											<div className="comment-content">
-												<div className="make-bold">{comment.user.firstName? comment.user.firstName : comment.user.username}</div>
+												<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
 												{comment.commentText}
 
-												</div>
+											</div>
 										</div>)}
 
 								</div>
 								: <div>Be the first to leave a comment!</div>}
 							<div className="sticky-comment">
-								<div>{pinComments?.length} comment{pinComments.length > 1? "s":""}</div>
+								<div>{pinComments?.length} comment{pinComments.length > 1 ? "s" : ""}</div>
 
 								<div className="leave-a-comment-area">
 									<div className="user-letter">{firstLetter}</div>
-									<AddComment pinId={thisPin.id} />
+									<div><AddComment pinId={thisPin.id} /></div>
 								</div>
 							</div>
 

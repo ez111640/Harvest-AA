@@ -3,7 +3,7 @@ import { Redirect, useHistory } from "react-router-dom"
 import { useState } from "react"
 import { useModal } from "../../../context/Modal"
 import { deletePin, getAllPins } from "../../../store/pinsReducer"
-import "./deletePinModal.css"
+import "./SelectImageSourceModal.css"
 import OpenModalButton from "../../OpenModalButton"
 import CreatePinAWSModal from "../CreatePinAWSModal"
 import CreatePinModal from "../CreatePinModal"
@@ -66,11 +66,13 @@ const SelectImageSourceModal = ({ pinId, lastPage }) => {
 
         <div className="select-image-type">
             {page === 1 &&
-                <div>
+                <div className="create-pin-page-one">
                     <h1>Create New Pin</h1>
                     <p>What type of image are you using?</p>
-                    <button onClick={() => setPage(2)}>Upload Image from Computer</button>
-                    <button onClick={() => setPage(3)}>Enter Image URL</button>
+                    <div className="create-pin-option-div">
+                        <button className="create-pin-option" onClick={() => setPage(2)}>Upload Image from Computer</button>
+                        <button className="create-pin-option" onClick={() => setPage(3)}>Enter Image URL</button>
+                    </div>
                 </div>
             }
             {

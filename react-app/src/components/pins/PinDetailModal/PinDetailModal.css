@@ -60,16 +60,32 @@
     margin-left: 10px;
 }
 
+.pin-dm-desc{
+    font-size: 10px;
+}
+
+.pin-dm-link{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.pin-dm-link>div{
+    justify-self: flex-end;
+}
 
 .pin-detail-modal-right {
     display: grid;
-    grid-template-rows: 2fr 2fr 1fr 3fr .5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr auto;
     row-gap: 5px;
     position: relative;
     top: -50px;
     width: auto;
-    min-width: 300px;
+    min-width: 350px;
     height: 400px;
+
     background-color: white;
     align-items: flex-start;
     border-top-right-radius: 20px;
@@ -80,11 +96,16 @@
     font-weight: bold;
 }
 
+.pin-comment-header{
+    font-size: 14px;
+}
+
+.comments{
+    margin: 0px 10px;
+}
 
 .pin-detail-modal-grid-right {
     margin: 20px;
-    padding-right: 20px;
-    padding-top: 0px;
 
 }
 
@@ -92,13 +113,47 @@
     font-size: 14px;
 }
 
+.enter-comment-input{
+
+    background-color: #E9E9E9;
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: auto 20px;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+.enter-comment-input>button{
+    border: none;
+    background-color: transparent;
+}
+
+.enter-comment-input>input{
+    border: none;
+    background-color: #E9E9E9;
+    width: 100px;
+}
+
+.enter-comment-input>input:focus{
+    outline: none
+}
+
+.input:focus{
+    outline: none;
+}
+
+.pin-detail-comment-content{
+    display: flex;
+    font-size: 10px;
+}
 
 .save-pin-from-main>button {
     background-color: goldenrod;
     width: min-content;
     border: none;
     color: white;
-    padding: 5px 10px;
     border-radius: 20px;
     font-size: 16px;
 }
@@ -106,7 +161,6 @@
 .save-pin-from-main {
     display: flex;
     justify-content: flex-end;
-    margin-right: 20px;
     margin-bottom: 20px;
 
 

@@ -4,7 +4,7 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 20px;
     width: fit-content;
     max-width: 900px;
     height: fit-content;
@@ -13,7 +13,7 @@
 
 #pin-detail-right {
     display: grid;
-    grid-template-rows: auto auto auto 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto 3fr 1px 1px;
     padding: 10px;
     width: inherit;
     margin-top: 40px;
@@ -228,6 +228,8 @@ font-size: 12px;
 .leave-a-comment-area {
     margin-bottom: 20px;
     display: flex;
+    align-items: space-between;
+    justify-content: space-between;
     margin-left: 10px;
     column-gap: 5px;
 }
@@ -242,14 +244,16 @@ font-size: 12px;
 }
 
 .sticky-comment{
-    position: fixed;
-    bottom: 40px;
+    position: sticky;
     display: grid;
     align-items: flex-end;
     justify-content: flex-end;
     margin-left: auto;
     margin-right: auto;
-}
+
+    height: 100%;
+    
+    }
 
 .sticky-comment>div{
     margin: 0px 20px 20px 20px;

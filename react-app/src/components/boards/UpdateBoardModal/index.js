@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal"
-import "./SignupForm.css";
+import "./UpdateBoardModal.css";
 import { updateBoardThunk, getUserBoards } from "../../../store/boardsReducer";
 
 function UpdateBoardModal({ board }) {
@@ -31,18 +31,18 @@ function UpdateBoardModal({ board }) {
 
 
 	return (
-		<div>
+		<div className="edit-board-modal">
 			<form onSubmit={handleSubmit}>
-				<label className='board-name-field'>
-					Name:
-					<input
-						type="text"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						required
-					/>
+				<label className='edit-board-name-field'>
+					Board Name:
 				</label>
-				<button type="submit">Save Changes</button>
+				<input
+					type="text"
+					value={name}
+					onChange={(e) => setName(e.target.value)}
+					required
+				/>
+				<button className="signup-button" type="submit">Save Changes</button>
 			</form>
 		</div>
 	);

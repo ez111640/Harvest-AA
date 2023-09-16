@@ -74,7 +74,8 @@ def add_new_pin():
         db.session.add(pin)
         db.session.commit()
 
-    return pin.to_dict()
+        return pin.to_dict()
+    return {"Error":"Form didn't validate"}
 
 
 @pin_routes.route("/upload", methods=["POST"])

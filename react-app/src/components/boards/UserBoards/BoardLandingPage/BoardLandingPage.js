@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
 import { useParams, NavLink } from "react-router-dom"
@@ -13,6 +13,7 @@ import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
 import DeletePinModal from "../../../pins/DeletePinModal"
 import { updateBoardThunk } from "../../../../store/boardsReducer"
 import { PageHeader } from "../../../auth/User/PageHeader"
+import SelectEditBoardOption from "./SelectEditBoardOption"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
@@ -44,6 +45,46 @@ export const BoardLandingPage = () => {
         dispatch(getBoardPins(boardId))
 
     }, [dispatch, boardId])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let newBoard = {}
+        name ? newBoard.name = name : newBoard.name = thisBoard.name
+        newBoard.id = thisBoard.id
+        const data = await dispatch(updateBoardThunk(newBoard));
+        await dispatch(getUserBoards())
+        if (data) {
+            setErrors(data);
+        } else {
+            setEditBoard(false)
+        }
+    };
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
+
+
+    const openMenu = () => {
+        dispatch(getUserBoards())
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    const ulClassName = "select-edit-board-type-dropdown" + (showMenu ? "" : " hidden");
+
+    useEffect(() => {
+
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+            if (!ulRef.current.contains(e.target)) {
+                setShowMenu(false);
+            }
+        };
+
+        document.addEventListener("click", closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [dispatch, showMenu]);
 
     const [editBoard, setEditBoard] = useState(false)
 
@@ -108,19 +149,7 @@ export const BoardLandingPage = () => {
 
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let newBoard = {}
-        name ? newBoard.name = name : newBoard.name = thisBoard.name
-        newBoard.id = thisBoard.id
-        const data = await dispatch(updateBoardThunk(newBoard));
-        await dispatch(getUserBoards())
-        if (data) {
-            setErrors(data);
-        } else {
-            setEditBoard(false)
-        }
-    };
+
 
     if (!boards) return null
     if (!boardTopics) return null
@@ -139,32 +168,45 @@ export const BoardLandingPage = () => {
                     </div> */}
 
             {/* <div className="header-main"> */}
-            {/*      {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :
+            {/*      {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :*/}
 
-                            // <div className="edit-board-name">
-                                {/* Edit board name under construction. Please test this feature
-                            <NavLink to="/boards">here</NavLink>
-                            by hovering over the board you'd like to edit */}
-            {/* <form onSubmit={handleSubmit}> */}
-            {/* <label className='board-name-field'>
-                                        Board Name:
-                                        </label>
-                                        <input
-                                        className="edit-board-name-input"
-                                            type="text"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
-                                            required
-                                        /> */}
-            {/* <button className="edit-confirm-button submit-button" type="submit">Save</button>
-                                </form> */}
-            {/* </div>} */}
+            {/* <div className="edit-board-name">
+                Edit board name under construction. Please test this feature
+                <NavLink to="/boards">here</NavLink>
+                by hovering over the board you'd like to edit
+                <form onSubmit={handleSubmit}>
+                    <label className='board-name-field'>
+                        Board Name:
+                    </label>
+                    <input
+                        className="edit-board-name-input"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                    <button className="edit-confirm-button submit-button" type="submit">Save</button>
+                </form>
+            </div> */}
             {/* {!editBoard && <button  onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button> */}
 
 
             {/* } */}
-            {/* <OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                            modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
+            <div className="update-board-button">
+                {/* {<OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+                    modalComponent={<UpdateBoardModal board={thisBoard} />} />} */}
+                <button className="select-edit-board-button" onClick={openMenu}>
+                    <i className="fa-solid fa-ellipsis"></i>
+                </button>
+                <ul className={ulClassName} ref={ulRef}>
+                    <div id='profile-dropdown-profile-butt' className="create-dropdown-options">
+                        <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal />} />
+                        <button onClick={clickEditBoardButton}>Edit Pins</button>
+                    </div>
+
+                </ul>
+                {/* <SelectEditBoardOption /> */}
+            </div>
             {/* </div> */}
             {/* </div> */}
             {/* </div> */}
@@ -181,6 +223,7 @@ export const BoardLandingPage = () => {
                         buttonText="Add Topics"
                         modalComponent={<EditBoardTopics boardId={thisBoard.id} />}
                     /> */}
+                    <div className="board-name">{thisBoard.name}</div>
                 </div>
 
             </div>
