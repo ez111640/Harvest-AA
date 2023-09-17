@@ -16,7 +16,7 @@ const DeletePinModal = ({ pinId, lastPage, boardId }) => {
         dispatch(getAllPins())
         if(boardId) dispatch(getBoardPins(boardId))
         closeModal()
-        window.location.reload();
+        // window.location.reload();
 
     }
 

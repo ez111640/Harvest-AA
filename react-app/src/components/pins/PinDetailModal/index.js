@@ -1,17 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import "./PinDetailModal.css"
 import { useEffect, useState } from "react";
-import { getAllPins, getOnePin, getOnePinThunk, updatePinThunk } from "../../../store/pinsReducer";
+import { getOnePinThunk } from "../../../store/pinsReducer";
 import OpenModalButton from "../../OpenModalButton";
-import UpdatePinModal from "../UpdatePinModal";
-import DeletePinModal from "../DeletePinModal";
 import { deleteCommentThunk, getAllComments } from "../../../store/commentsReducer";
-import DeleteCommentModal from "../../comments/DeleteCommentModal";
 import AddPinToBoardModal from "../AddPinToBoardModal";
 import { addCommentThunk } from "../../../store/commentsReducer";
-import ProfileButton from "../../Navigation/ProfileButton";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 export const PinDetailModal = ({ pinId }) => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)
@@ -34,8 +29,8 @@ export const PinDetailModal = ({ pinId }) => {
 
 	let firstLetter
 	if (user) {
-		if (user.firstName) firstLetter = user.firstName[0]
-		else firstLetter = user.username[0]
+		if (user.firstName) firstLetter = user.firstName[0].toUpperCase()
+		else firstLetter = user.username[0].toUpperCase()
 	}
 
 	const handleSubmit = (e) => {
@@ -77,7 +72,6 @@ export const PinDetailModal = ({ pinId }) => {
 	}
 
 	const onSubmit = (e) => {
-		console.log("COMMENTID", commentId)
 		e.preventDefault();
 		dispatch(deleteCommentThunk(commentId))
 		setDeleteOption(false)
@@ -87,7 +81,7 @@ export const PinDetailModal = ({ pinId }) => {
 
 	return (
 		<div className="pin-detail-modal-main">
-
+			
 			<div className="pin-detail-modal-left">
 				<img className="pin-detail-modal-image" src={thisPin.url}></img>
 				<div className="link-area">

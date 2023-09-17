@@ -6,6 +6,7 @@ import CreateBoardModal from "../boards/UserBoards/CreateBoardModal";
 import SelectImageSourceModal from "../pins/SelectImageSourceModal";
 import './navigation.css'
 import { getUserBoards } from "../../store/boardsReducer";
+import { Link } from "react-router-dom";
 
 function CreateButton() {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function CreateButton() {
       <ul className={ulClassName} ref={ulRef}>
         <div id='profile-dropdown-profile-butt' className="create-dropdown-options">
           <OpenModalButton buttonText="Create Board" modalComponent={<CreateBoardModal />} />
-          <OpenModalButton buttonText="Create Pin" modalComponent={<SelectImageSourceModal />} />
+          <Link to="/pins/new" onClick={closeMenu}>Create Pin</Link>
         </div>
 
       </ul>

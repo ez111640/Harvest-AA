@@ -90,8 +90,8 @@ export const PinDetail = () => {
 
 	let firstLetter
 	if (user) {
-		if (user.firstName) firstLetter = user.firstName[0]
-		else firstLetter = user.username[0]
+		if (user.firstName) firstLetter = user.firstName[0].toUpperCase()
+		else firstLetter = user.username[0].toUpperCase()
 	}
 
 

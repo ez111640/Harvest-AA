@@ -12,12 +12,18 @@ const AddPinToBoardModal = ({ pin }) => {
     const history = useHistory();
     const { closeModal } = useModal();
     const userBoards = useSelector((state) => state.boardsReducer.boards)
+    const allPins = useSelector((state) => state.pinsReducer.pins)
+    const allPinArr = Object.values(allPins)
+    let urlParts = window.location.href.split("/")
+    console.log("URLPARTS", urlParts[urlParts.length - 1])
 
+
+    const newestPin = allPinArr[allPinArr.length - 1]
+
+    console.log(newestPin)
     const handleSubmit = (e) => {
         let boardId = document.getElementById("board-selector")
-        console.log("ISTHISIT", boardId.value)
         e.preventDefault();
-        console.log("NTHSIDF", pin.id)
         dispatch(addPinToBoardThunk(boardId.value, pin))
         history.push("/")
         closeModal();

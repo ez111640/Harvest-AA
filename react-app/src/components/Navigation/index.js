@@ -7,7 +7,7 @@ import CreateButton from "./CreateButton";
 
 function Navigation({ isLoaded }) {
   // const dispatch = useDispatch()
-  const sessionUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const pins = useSelector((state) => state.pinsReducer.pins)
   const [searchInput, setSearchInput] = useState("")
   const history = useHistory()
@@ -37,13 +37,22 @@ function Navigation({ isLoaded }) {
   return (
     <div className="main-nav-bar">
       <div className="nav-bar-left">
-        <NavLink exact to="/">
+        {user ? <NavLink exact to="/">
           <img src="https://i.ibb.co/rbztcLh/HAR-1.png" className="harvest-logo" alt="HAR-1" border="0"></img>
-        </NavLink>
-        <div className="nav-bar-text-links">
-          <NavLink exact to="/">Home</NavLink>
-          <CreateButton />
-        </div>
+        </NavLink> :
+          <div></div>
+        }
+        {user ?
+          <div className="nav-bar-text-links">
+            <NavLink exact to="/">Home</NavLink>
+            <CreateButton />
+          </div> :
+          <div className="no-user-nav-links">
+            <NavLink exact to="/">
+              <img src="https://i.ibb.co/rbztcLh/HAR-1.png" className="harvest-logo" alt="HAR-1" border="0"></img>
+            </NavLink>
+          </div>
+        }
       </div>
       <div className="search-bar">
         <button className="hide-that-button" onClick={onClick} >
@@ -59,11 +68,11 @@ function Navigation({ isLoaded }) {
         />
       </div>
       <div>
-        <ProfileButton className="nav-link profile-button" user={sessionUser} />
+        <ProfileButton className="nav-link profile-button" user={user} />
 
 
       </div>
-    </div>
+    </div >
   );
 }
 

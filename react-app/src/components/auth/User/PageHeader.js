@@ -17,6 +17,7 @@ export const PageHeader = () => {
     const allBoardArr = Object.values(allBoards)
     const allPinArr = Object.values(allPins)
 
+
     const userBoards = allBoardArr.filter((board) => board.userId === user.id)
     const userPins = allPinArr.filter((pin) => pin.userId === user.id)
 
@@ -27,25 +28,25 @@ export const PageHeader = () => {
     if (!user) history.push("/login")
     let firstLetter;
 
-    if (user.firstName) firstLetter = user.firstName[0]
-    else firstLetter = user.username[0]
+    if (user.firstName) firstLetter = user.firstName[0].toUpperCase()
+    else firstLetter = user.username[0].toUpperCase()
 
     const goBack = (e) => {
         e.preventDefault();
         window.location = ("/boards")
     }
 
-let currentPage =  window.location.href.split("/")
-let showArrow = true;
+    let currentPage = window.location.href.split("/")
+    let showArrow = true;
 
-if(currentPage[currentPage.length-1] === "boards"){
-    showArrow = false;
-}
+    if (currentPage[currentPage.length - 1] === "boards") {
+        showArrow = false;
+    }
 
     return (
         <div className="profile-header">
-{   showArrow &&
-            <div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
+            {showArrow &&
+                <div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
             }
             <div className="profile-div-left">
                 <div className="user-spot">

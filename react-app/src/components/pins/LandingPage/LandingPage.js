@@ -35,7 +35,13 @@ export const LandingPage = () => {
 
     return (
         <div>
-            {user && <div className="greeting-banner" >Welcome back, {user.firstName ? user.firstName : user.username}!</div>}
+            {user ?
+            <div className="greeting-banner" >
+                Welcome back, {user.firstName ? user.firstName : user.username}!
+                </div>
+                    :
+                    <div className="greeting-banner-no-user"></div>
+                }
             {allPinArray ? <div id="all-pins">
                 {sortedPins.map((pin) => (
                     <div id={pin.id}>

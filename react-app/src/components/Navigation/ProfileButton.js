@@ -18,15 +18,16 @@ function ProfileButton({ user }) {
   const boards = useSelector((state) => state.boardsReducer.boards)
 
   const openMenu = () => {
-    dispatch(getUserBoards())
+    if (user)
+      dispatch(getUserBoards())
     if (showMenu) return;
     setShowMenu(true);
   };
 
   let firstLetter
   if (user) {
-    if (user.firstName) firstLetter = user.firstName[0]
-    else firstLetter = user.username[0]
+    if (user.firstName) firstLetter = user.firstName[0].toUpperCase()
+    else firstLetter = user.username[0].toUpperCase()
   }
 
   useEffect(() => {

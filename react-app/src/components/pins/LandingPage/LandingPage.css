@@ -1,7 +1,7 @@
 #all-pins {
     width: 90%;
     margin: auto;
-    
+
     column-count: 6;
     column-gap: 5px;
 }
@@ -18,6 +18,10 @@
     width: 80%;
     align-items: center;
     justify-content: center;
+}
+
+.greeting-banner-no-user{
+    margin-top: 80px
 }
 
 .pin-from-home>button {

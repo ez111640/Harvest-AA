@@ -29,7 +29,7 @@ export const BoardLandingPage = () => {
     const user = useSelector((state) => state.session.user)
     const history = useHistory()
     let firstLetter
-    if (user) firstLetter = user.username[0]
+    if (user) firstLetter = user.username[0].toUpperCase()
     if (!user) history.push("/")
 
     const thisBoard = Object.values(boards).find((board) => board.id == boardId)
@@ -228,7 +228,7 @@ export const BoardLandingPage = () => {
 
             </div>
             <div>
-                {thisBoardPins ?
+                {thisBoardPins.length ?
                     <div id="all-pins">
                         {thisBoardPins.map((pin) => (
                             <div id={pin.id} className="pin-photo">
@@ -240,7 +240,7 @@ export const BoardLandingPage = () => {
                         ))}
                     </div>
                     :
-                    <div></div>
+                    <div className="new-user-no-boards">This board is empty. Pin some new ideas by clicking the pin button</div>
                 }
             </div>
         </div >

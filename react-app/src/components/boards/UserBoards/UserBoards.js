@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { getBoardDetails, getUserBoards } from "../../../store/boardsReducer"
+import { getUserBoards } from "../../../store/boardsReducer"
 import { BoardCard } from "./BoardCard/BoardCard";
 import "./UserBoards.css"
 import { PageHeader } from "../../auth/User/PageHeader";
-
-import { NavLink } from "react-router-dom"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import { UserPins } from "../../pins/UserPins";
 import { getAllPins } from "../../../store/pinsReducer";
 
@@ -19,11 +17,11 @@ export const UserBoards = () => {
     const user = useSelector((state) => state.session.user)
     if (!user) history.push("/")
     const pins = useSelector((state) => state.pinsReducer.pins)
-    const userBoards = useSelector((state) => state.boardsReducer.boards)
+    const allBoards = useSelector((state) => state.boardsReducer.boards)
+
     const dispatch = useDispatch()
 
 
-    console.log("USERBOARDS", userBoards)
     const [viewType, setViewType] = useState('boards')
     const [pinsActive, setPinsActive] = useState('inactive-option')
     const [boardsActive, setBoardsActive] = useState('active-option')
@@ -54,20 +52,20 @@ export const UserBoards = () => {
     }
 
     useEffect(() => {
+
         dispatch(getUserBoards())
         dispatch(getAllPins())
     }, [dispatch])
 
 
-    let userBoardArray;
-    if (userBoards) userBoardArray = Object.values(userBoards)
+    let allBoardArray;
+    if (allBoards) allBoardArray = Object.values(allBoards)
+    const userBoardArray = allBoardArray.filter((board)=> board.userId === user.id)
+
     const pinArray = Object.values(pins)
     let userPins = pinArray.filter((pin) => pin.userId === user.id)
-    console.log(userBoardArray)
-    console.log("userPins", userPins)
 
     if (!pins) return null
-    if (!userBoardArray.length) return null;
     return (
         <div>
             <PageHeader />
@@ -78,8 +76,11 @@ export const UserBoards = () => {
                 </div>
             </div>
             {viewType === "boards" ?
-                <div className="user-board-listing">
-                    {userBoardArray?.length ? userBoardArray.map(
+                <div>
+                    {userBoardArray?.length ?
+
+                                    <div className="user-board-listing">
+                    {userBoardArray.map(
                         (board) => (
                             <div value={board.id}>
 
@@ -87,7 +88,13 @@ export const UserBoards = () => {
                             </div>
                         )
 
-                    ) : <div></div>}
+                    )}
+                            </div>
+                    : <div className="new-user-no-boards">
+                        You haven't created any boards yet. Create one to get started!
+                    </div>
+
+                    }
                 </div> :
                 <UserPins />
             }
