@@ -20,7 +20,7 @@ export const SearchResults = () => {
 
     let sortedPins = []
     if (allPinArray.length) allPinArray.map((pin) => sortedPins[pin.id] = pin)
-    console.log(sortedPins)
+   
 
     useEffect(() => {
         dispatch(getAllPins())

@@ -25,11 +25,9 @@ export const deleteComment = (commentId) => ({
 })
 
 export const getPinComments = (pinId) => async (dispatch) => {
-    console.log("COMMENTS", pinId)
     let res = await fetch(`/api/pins/${pinId}/comments`)
 
     if (res.ok) {
-        console.log("RES", res)
         const pinComments = await res.json();
         const pcArray = Object.values(pinComments)
         await dispatch(loadPinComments(pcArray))
@@ -44,7 +42,6 @@ export const getAllComments = () => async (dispatch) => {
     let res = await fetch(`/api/comments`)
     if (res.ok) {
         const allComments = await res.json();
-        console.log("ALLCOMMENTS", allComments)
         await dispatch(loadAllComments(allComments.Comments))
     } else {
         const errors = await res.json();
@@ -53,7 +50,6 @@ export const getAllComments = () => async (dispatch) => {
 }
 
 export const addCommentThunk = (comment) => async (dispatch) => {
-    console.log("COMMENT", comment)
     try {
         const res = await fetch(`/api/pins/${comment.pinId}/comments`, {
             method: "POST",
@@ -63,7 +59,6 @@ export const addCommentThunk = (comment) => async (dispatch) => {
 
 
         const commentResponse = await res.json()
-        console.log("COMMENTRESPONSE", commentResponse)
         await dispatch(addNewComment(commentResponse))
     } catch (error) {
         const errors = await error.json();
@@ -72,12 +67,10 @@ export const addCommentThunk = (comment) => async (dispatch) => {
 }
 
 export const deleteCommentThunk = (commentId) => async (dispatch) => {
-    console.log("IN DELETE COMMENT THUNK", commentId)
     const res = await fetch(`/api/comments/${commentId}`, {
         method: 'DELETE'
     })
     if (res.ok) {
-        console.log("RESPONSE FROM THUNK", res)
         await dispatch(deleteComment(commentId))
         return null
     } else {

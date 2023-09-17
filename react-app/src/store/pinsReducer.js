@@ -44,7 +44,6 @@ export const getAllPins = () => async (dispatch) => {
 
     const allPins = await res.json();
 
-    console.log("GETALLPINS", allPins)
     await dispatch(loadPins(allPins.Pins))
 }
 
@@ -52,11 +51,7 @@ export const getOnePinThunk = (pinId) => async (dispatch) => {
     const res = await fetch(`/api/pins/${pinId}`)
 
     const pin = await res.json()
-    console.log(pin)
     if (res.ok) await dispatch(getOnePin(pin))
-    else {
-        console.log("PROBLEM WITH RESPONSE FROM BACKEND")
-    }
 
 
 }
@@ -65,7 +60,6 @@ export const getBoardPins = (id) => async (dispatch) => {
     const res = await fetch(`/api/boards/${id}/pins/all`)
 
     const btps = await res.json();
-    console.log("BTPS", btps)
     if (btps == "No pins") {
         console.log("NO PINS FOR THAT BOARD")
     } else {
@@ -75,7 +69,7 @@ export const getBoardPins = (id) => async (dispatch) => {
 }
 
 export const updatePinThunk = (updatedPin) => async (dispatch) => {
-    console.log(updatedPin)
+
     const res = await fetch(`/api/pins/${updatedPin.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -108,7 +102,6 @@ export const addPinThunk = (pin) => async (dispatch) => {
 }
 
 export const addPinAWSThunk = (pin) => async (dispatch) => {
-    console.log("MADEITTOTHUNK", pin)
     const formData = new FormData()
 
 
@@ -117,7 +110,6 @@ export const addPinAWSThunk = (pin) => async (dispatch) => {
     formData.append('link', pin.link)
     formData.append('title', pin.title)
 
-    console.log("FORMDATA", formData)
     const response = await fetch(`/api/pins/upload`, {
         method: "POST",
         body: formData
@@ -135,11 +127,9 @@ export const addPinAWSThunk = (pin) => async (dispatch) => {
 
 export const deletePin = (pinId) => async (dispatch) => {
 
-    console.log("PD", pinId)
     const res = await fetch(`/api/pins/${pinId}`, {
         method: 'DELETE'
     })
-    console.log("RESPONSE FROM THUNK", res)
     if (res.ok) {
         //     await dispatch(deletePin(pinId))
         return null

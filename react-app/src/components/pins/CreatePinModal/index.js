@@ -1,13 +1,10 @@
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addPinToBoardThunk } from "../../../store/boardsReducer";
-import { addPinThunk, getAllPins } from "../../../store/pinsReducer";
-import { addPinAWSThunk } from "../../../store/pinsReducer";
 import "./SignupForm.css"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { addPinToBoardThunk, getUserBoards } from "../../../store/boardsReducer";
+import { addPinThunk, getAllPins, addPinAWSThunk } from "../../../store/pinsReducer";
 import AddPinToBoardModal from "../AddPinToBoardModal";
-import { getUserBoards } from "../../../store/boardsReducer";
 import OpenModalButton from "../../OpenModalButton";
 
 const CreatePinModal = () => {
@@ -26,7 +23,6 @@ const CreatePinModal = () => {
     const dispatch = useDispatch()
     const [imageLoading, setImageLoading] = useState(false)
     const [viewClearMenu, setViewClearMenu] = useState(false)
-    console.log("USERPINS", userPins)
     const history = useHistory()
 
     let firstLetter;
@@ -36,7 +32,6 @@ const CreatePinModal = () => {
 
     const handleSubmit = async (e) => {
 
-        console.log("FILETYPE", fileType)
         e.preventDefault();
         if (fileType === "AWS") {
             const formData = new FormData();
@@ -56,9 +51,9 @@ const CreatePinModal = () => {
             dispatch(getAllPins())
             const newestPin = allPinArr[allPinArr.length - 1]
             const boardId = document.getElementById("board-selector-input").value
-            console.log("BOARDID", boardId)
+
             if (boardId) await dispatch(addPinToBoardThunk(boardId, newestPin))
-            console.log(newestPin)
+
             history.push("/pins/current")
 
         } else {
@@ -68,7 +63,6 @@ const CreatePinModal = () => {
             if (boardId) await dispatch(addPinToBoardThunk(boardId, newestPin))
             if (data) {
                 setErrors(data);
-                console.log(data)
             } else {
             }
             history.push("/pins/current")
@@ -101,7 +95,6 @@ const CreatePinModal = () => {
 
 
     const openClearMenu = () => {
-        console.log("HERE")
         setViewClearMenu(true)
     }
 
@@ -121,14 +114,10 @@ const CreatePinModal = () => {
     const changefontsize = () => {
 
         let titleInput = document.getElementById('create-pin-title');
-        console.log("CPT", titleInput)
         let currentfont = titleInput.style.fontSize
         let indexOfPx = currentfont.indexOf("px")
-        console.log("CF", currentfont)
-        console.log(indexOfPx)
         let currentfontsize = currentfont.split("").slice(0, indexOfPx).join("")
 
-        console.log("CFS", currentfontsize)
         if (isOverflown(titleInput)) {
             while (isOverflown(titleInput)) {
                 currentfontsize--;
@@ -148,9 +137,6 @@ const CreatePinModal = () => {
         return element.scrollWidth > element.clientWidth;
     }
 
-    const createNewBoard = (e) => {
-        return <OpenModalButton buttonText="" modalComponent={<CreatePinModal />} />
-    }
 
     return (
         <div className="create-pin-page-div">
@@ -171,12 +157,13 @@ const CreatePinModal = () => {
                 </div>
                 <div>
                     <select id="board-selector">
+                        <option id="" value="">Add pin to board upon creation</option>
                         {
                             userBoardArr.map((board) =>
                                 <option id="board-selector-input" value={board.id}>{board.name}</option>
                             )
                         }
-                        <option onClick={createNewBoard} id="board-selector-new-board">Create new board</option>
+
                     </select>
                 </div>
             </div>

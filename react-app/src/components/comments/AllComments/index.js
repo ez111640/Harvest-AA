@@ -5,8 +5,7 @@ import { getAllComments } from "../../../store/commentsReducer"
 export const AllComments = () => {
     const dispatch = useDispatch()
     const comments = useSelector((state) => state.commentsReducer.comments)
-    console.log(comments)
-
+    
 
     useEffect(() => {
         dispatch(getAllComments())

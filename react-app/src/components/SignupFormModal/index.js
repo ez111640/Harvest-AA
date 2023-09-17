@@ -1,9 +1,9 @@
+import "./SignupFormModal.css";
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
-import "./SignupFormModal.css";
-
 function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
@@ -19,8 +19,6 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			console.log("FIRSTNAME", firstName)
-			console.log("LASTNAME", lastName)
 			const data = await dispatch(signUp(username, email, password, firstName, lastName));
 			if (data) {
 				setErrors(data);

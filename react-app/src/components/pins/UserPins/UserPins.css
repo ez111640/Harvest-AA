@@ -1,9 +1,13 @@
 #all-user-pins {
     width: 80%;
     margin: auto;
-    column-count: 4;
+    column-count: 6;
     column-gap: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
+
+.new-pin-created{
+    margin-top: 80px;
+}

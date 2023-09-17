@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import ProfileButton from "./ProfileButton";
 import "./navigation.css";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
+import ProfileButton from "./ProfileButton";
 import CreateButton from "./CreateButton";
 
 function Navigation({ isLoaded }) {
@@ -13,9 +13,7 @@ function Navigation({ isLoaded }) {
   const history = useHistory()
   let searchPins = []
   let pinArray = []
-  console.log("PINS", pins)
   if (pins) pinArray = Object.values(pins)
-  console.log("PINARRAY", pinArray)
 
 
   const handleChange = (e) => {

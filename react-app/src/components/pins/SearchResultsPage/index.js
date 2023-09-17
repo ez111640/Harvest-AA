@@ -1,31 +1,24 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom"
-import { getAllPins } from "../../../store/pinsReducer";
 import './SearchResultsPage.css'
-import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import OpenModalButton from "../../OpenModalButton";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory, NavLink } from "react-router-dom"
+import { getAllPins } from "../../../store/pinsReducer";
 import { PinDetailModal } from "../PinDetailModal";
+import OpenModalButton from "../../OpenModalButton";
 
 
 export const SearchResultsPage = () => {
     const search = useParams().searchInput
 
-    console.log("SEARCH", search)
     const dispatch = useDispatch()
     let searchpins = []
     const history = useHistory()
 
     const pins = useSelector((state) => state.pinsReducer.pins)
-    console.log("PINS", pins)
     const pinArray = Object.values(pins)
-    console.log("PINARRAY====", pinArray)
 
     if (search && pinArray.length) {
         pinArray.filter((pin) => {
-            console.log("pin", pin.description)
-            console.log("Search", search)
             if (pin.description.toLowerCase().search(search) !== -1) {
                 searchpins.push(pin)
             } else if (pin.title.toLowerCase().search(search) !== -1) {

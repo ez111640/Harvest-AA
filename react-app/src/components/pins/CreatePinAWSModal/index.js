@@ -16,7 +16,6 @@ function CreatePinAWSModal() {
 	const { closeModal } = useModal();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("HANDLINGSUBMIT")
 		const formData = new FormData();
 		formData.append("url", url)
 		formData.append("title", title)

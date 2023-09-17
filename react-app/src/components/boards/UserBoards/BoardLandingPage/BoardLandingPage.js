@@ -1,19 +1,15 @@
+import "./BoardLandingPage.css"
 import { useEffect, useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams, NavLink, useHistory } from "react-router-dom"
 import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
-import { useParams, NavLink } from "react-router-dom"
-import "./BoardLandingPage.css"
-import { addNewBoardTopicThunk, deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
-import EditBoardTopics from "../../EditBoardTopics"
+import { updateBoardThunk, getUserBoards } from "../../../../store/boardsReducer"
+import {deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
+import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
+import { PageHeader } from "../../../auth/User/PageHeader"
 import OpenModalButton from "../../../OpenModalButton"
 import UpdateBoardModal from "../../UpdateBoardModal"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { getUserBoards } from "../../../../store/boardsReducer"
-import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
 import DeletePinModal from "../../../pins/DeletePinModal"
-import { updateBoardThunk } from "../../../../store/boardsReducer"
-import { PageHeader } from "../../../auth/User/PageHeader"
-import SelectEditBoardOption from "./SelectEditBoardOption"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
@@ -25,7 +21,6 @@ export const BoardLandingPage = () => {
     const topics = useSelector((state) => state.topicsReducer.boardTopics)
     const pins = useSelector((state) => state.pinsReducer.boardPins)
     const allPins = useSelector((state) => state.pinsReducer.pins)
-    console.log("TOPICS", boardId)
     const user = useSelector((state) => state.session.user)
     const history = useHistory()
     let firstLetter
@@ -88,8 +83,6 @@ export const BoardLandingPage = () => {
 
     const [editBoard, setEditBoard] = useState(false)
 
-    console.log("THISBOARD", thisBoard)
-
     const [name, setName] = useState("");
     if (!thisBoard) return null
 
@@ -139,12 +132,10 @@ export const BoardLandingPage = () => {
 
     const deleteButtonClick = async (e) => {
         e.preventDefault()
-        console.log("E", e.target.value)
-        console.log("BOARDTOPICS", boardTopics)
         let topic = allTopArr.filter((topic) => topic.id == e.target.value)
-        console.log("E", topic)
+
         const data = dispatch(deleteBoardTopicThunk(topic[0], boardId))
-        console.log("DATA", data)
+      
         dispatch(getBoardTopicsThunk(boardId))
 
     }

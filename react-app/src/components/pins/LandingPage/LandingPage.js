@@ -1,19 +1,15 @@
+import "./LandingPage.css"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllPins } from "../../../store/pinsReducer"
-import "./LandingPage.css"
-import { PinCard } from "../PinCard/PinCard"
 import { getAllComments } from "../../../store/commentsReducer"
 import { getUserBoards } from "../../../store/boardsReducer"
-import { NavLink } from "react-router-dom"
-import OpenModalButton from "../../OpenModalButton"
-import AddPinToBoardModal from "../AddPinToBoardModal"
 import { PinDetailModal } from "../PinDetailModal"
+import OpenModalButton from "../../OpenModalButton"
 
 export const LandingPage = () => {
     const dispatch = useDispatch()
     const allPins = useSelector((state) => state.pinsReducer.pins)
-    const boards = useSelector((state) => state.boardsReducer.boards)
     const user = useSelector((state) => state.session.user)
 
 
@@ -23,7 +19,7 @@ export const LandingPage = () => {
 
     let sortedPins = []
     if (allPinArray.length) allPinArray.map((pin) => sortedPins[pin.id] = pin)
-    console.log(sortedPins)
+
 
     useEffect(() => {
         dispatch(getAllPins())

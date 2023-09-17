@@ -39,7 +39,7 @@ export const getAllTopics = () => async (dispatch) => {
 
 
 export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
-    console.log("TOPIC THUNK")
+
     const res = await fetch(`/api/boards/${boardId}/topics`,
         {
             method: "POST",
@@ -60,9 +60,7 @@ export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
 }
 
 export const deleteBoardTopicThunk = (topic, boardId) => async (dispatch) => {
-    console.log("IN DELETEBOARDTOPIC THUNK")
-    console.log("TOPIC", topic)
-    console.log("BOARDID", boardId)
+
     const res = await fetch(`/api/boards/${boardId}/topics`,
         {
             method: "DELETE",
@@ -79,10 +77,9 @@ export const deleteBoardTopicThunk = (topic, boardId) => async (dispatch) => {
 }
 
 export const getBoardTopicsThunk = (boardId) => async (dispatch) => {
-    console.log("BOARDID", boardId)
+
     const res = await fetch(`/api/boards/${boardId}/topics`)
     let topics = await res.json()
-    console.log("TOPICS", topics)
     if (topics.ok) {
         await dispatch(getBoardTopics(topics.Board_Topics))
         return null

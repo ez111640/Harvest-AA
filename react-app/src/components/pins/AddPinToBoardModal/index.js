@@ -15,12 +15,9 @@ const AddPinToBoardModal = ({ pin }) => {
     const allPins = useSelector((state) => state.pinsReducer.pins)
     const allPinArr = Object.values(allPins)
     let urlParts = window.location.href.split("/")
-    console.log("URLPARTS", urlParts[urlParts.length - 1])
-
 
     const newestPin = allPinArr[allPinArr.length - 1]
 
-    console.log(newestPin)
     const handleSubmit = (e) => {
         let boardId = document.getElementById("board-selector")
         e.preventDefault();

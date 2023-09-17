@@ -1,17 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import "./PinDetail.css"
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { getAllPins, getOnePin, getOnePinThunk, updatePinThunk } from "../../../store/pinsReducer";
+import { getAllComments } from "../../../store/commentsReducer";
+import { AddComment } from "../../comments/AddComment";
+import { AllComments } from "../../comments/AllComments";
 import OpenModalButton from "../../OpenModalButton";
 import UpdatePinModal from "../UpdatePinModal";
 import DeletePinModal from "../DeletePinModal";
-import { getAllComments } from "../../../store/commentsReducer";
-import { AddComment } from "../../comments/AddComment";
 import DeleteCommentModal from "../../comments/DeleteCommentModal";
 import AddPinToBoardModal from "../AddPinToBoardModal";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
-import { AllComments } from "../../comments/AllComments";
 
 export const PinDetail = () => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)

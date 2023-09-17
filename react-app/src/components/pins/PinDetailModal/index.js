@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./PinDetailModal.css"
 import { useEffect, useState } from "react";
-import { getOnePinThunk } from "../../../store/pinsReducer";
-import OpenModalButton from "../../OpenModalButton";
-import { deleteCommentThunk, getAllComments } from "../../../store/commentsReducer";
-import AddPinToBoardModal from "../AddPinToBoardModal";
-import { addCommentThunk } from "../../../store/commentsReducer";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { getOnePinThunk } from "../../../store/pinsReducer";
+import { deleteCommentThunk, getAllComments } from "../../../store/commentsReducer";
+import { addCommentThunk } from "../../../store/commentsReducer";
+import OpenModalButton from "../../OpenModalButton";
+import AddPinToBoardModal from "../AddPinToBoardModal";
 
 export const PinDetailModal = ({ pinId }) => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)
@@ -16,7 +16,6 @@ export const PinDetailModal = ({ pinId }) => {
 	const dispatch = useDispatch()
 	const [commentText, setCommentText] = useState("")
 	const [deleteOption, setDeleteOption] = useState(false)
-	const history = useHistory()
 	const [commentId, setCommentId] = useState("")
 
 	let domain;
@@ -36,7 +35,6 @@ export const PinDetailModal = ({ pinId }) => {
 	const handleSubmit = (e) => {
 
 		e.preventDefault()
-		console.log(pinId, pinId)
 		let comment = { commentText, pinId }
 		dispatch(addCommentThunk(comment))
 
@@ -66,7 +64,6 @@ export const PinDetailModal = ({ pinId }) => {
 	let openDelete = false;
 
 	const openDeleteMenu = (e) => {
-		console.log(e)
 		e.preventDefault();
 		openDelete = true;
 	}
@@ -81,7 +78,7 @@ export const PinDetailModal = ({ pinId }) => {
 
 	return (
 		<div className="pin-detail-modal-main">
-			
+
 			<div className="pin-detail-modal-left">
 				<img className="pin-detail-modal-image" src={thisPin.url}></img>
 				<div className="link-area">

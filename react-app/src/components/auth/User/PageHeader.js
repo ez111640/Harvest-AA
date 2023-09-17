@@ -21,9 +21,6 @@ export const PageHeader = () => {
     const userBoards = allBoardArr.filter((board) => board.userId === user.id)
     const userPins = allPinArr.filter((pin) => pin.userId === user.id)
 
-    console.log("USERBOARDS", userBoards)
-    console.log("USERPINS", userPins)
-
     const history = useHistory()
     if (!user) history.push("/login")
     let firstLetter;

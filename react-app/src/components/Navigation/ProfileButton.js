@@ -1,13 +1,12 @@
+import './navigation.css'
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom/";
+import { getUserBoards } from "../../store/boardsReducer";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { Link } from "react-router-dom/";
-import './navigation.css'
-import { getUserBoards } from "../../store/boardsReducer";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -35,8 +34,6 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      console.log("PB ULREF", ulRef)
-      console.log("PB", e.target)
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }

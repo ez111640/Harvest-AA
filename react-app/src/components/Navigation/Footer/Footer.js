@@ -1,6 +1,6 @@
-import OpenModalButton from "../../OpenModalButton"
-import { About } from "./About/About"
 import "./Footer.css"
+import { About } from "./About/About"
+import OpenModalButton from "../../OpenModalButton"
 
 export const Footer = () => {
 

@@ -1,12 +1,12 @@
+import './navigation.css'
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { logout } from "../../store/session";
+import { getUserBoards } from "../../store/boardsReducer";
 import OpenModalButton from "../OpenModalButton";
 import CreateBoardModal from "../boards/UserBoards/CreateBoardModal";
 import SelectImageSourceModal from "../pins/SelectImageSourceModal";
-import './navigation.css'
-import { getUserBoards } from "../../store/boardsReducer";
-import { Link } from "react-router-dom";
 
 function CreateButton() {
   const dispatch = useDispatch();
