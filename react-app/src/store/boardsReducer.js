@@ -5,6 +5,7 @@ export const DELETE_BOARD = "boardsReducer/deleteBoards"
 export const ADD_BOARD = "/boardsReducer/addNewBoard"
 export const UPDATE_BOARD = "/boardsReducer/updateBoard"
 export const ADD_PIN_TO_BOARD = "/boardsReducer/addPinToBoard"
+export const REMOVE_PIN_FROM_BOARD = "/boardReducer/removePinFromBoard"
 
 
 export const loadBoards = (boards) => ({
@@ -36,6 +37,11 @@ export const putBoard = (board) => ({
 
 export const addPinToBoard = (pinId) => ({
     type: ADD_PIN_TO_BOARD,
+    pinId
+})
+
+export const removePinFromBoard = (pinId) => ({
+    type: REMOVE_PIN_FROM_BOARD,
     pinId
 })
 
@@ -123,6 +129,16 @@ export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
 
 }
 
+export const removePinFromBoardThunk = (boardId, pin) => async (dispatch) => {
+    const res = await fetch(`/api/boards/${boardId}/pins`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pin)
+    })
+    const response = await res.json()
+
+}
+
 const initialState = {
     boards: {},
     board: {}
@@ -131,7 +147,7 @@ const initialState = {
 export const boardsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_BOARDS:
-            let loadState = { ...state, boards: { ...state.boards }, board: {...state.board} }
+            let loadState = { ...state, boards: { ...state.boards }, board: { ...state.board } }
             action.boards.forEach((board) =>
                 loadState.boards[board.id] = board
             )
@@ -152,6 +168,7 @@ export const boardsReducer = (state = initialState, action) => {
             let thisState = { ...state, boards: { ...state.boards } }
             thisState.boards[action.board.id] = action.board
             return thisState
+
         default:
             return state;
     }

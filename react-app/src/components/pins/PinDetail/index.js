@@ -65,6 +65,10 @@ export const PinDetail = () => {
 			domain = splitUrl[2].split(".")[0]
 		}
 	}
+
+	console.log("PINUSER", thisPin.userId)
+	console.log("USER", user.id)
+	console.log("USERS", user)
 	const pinComments = commentArr.filter((comment) => comment.pinId == pinId)
 	const clickEditUrlButton = (e) => {
 		e.preventDefault()
@@ -142,7 +146,7 @@ export const PinDetail = () => {
 							<OpenModalButton
 								type="button"
 								buttonText={<i className="fa-solid fa-trash"></i>}
-								modalComponent={<DeletePinModal pinId={thisPin.id} />}
+								modalComponent={<DeletePinModal pinId={thisPin.id}/>}
 
 							/>}
 						<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
@@ -180,7 +184,22 @@ export const PinDetail = () => {
 
 					</div>}
 				<div id="pin-detail-right">
+					<div>
+						{user && <div className="pin-detail-buttons">
 
+							{thisPin.userId === user.id && <button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
+							}
+							{thisPin.userId === user.id &&
+								<OpenModalButton
+									type="button"
+									buttonText={<i className="fa-solid fa-trash"></i>}
+									modalComponent={<DeletePinModal pinId={thisPin.id} />}
+
+								/>}
+							<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+						</div>}
+
+					</div>
 					{editTitleValue ? <div className="pin-details pin-detail-title">
 						<label className='url-field'>
 							Edit Title:

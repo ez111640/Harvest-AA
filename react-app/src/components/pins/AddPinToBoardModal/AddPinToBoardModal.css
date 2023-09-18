@@ -30,3 +30,26 @@ select#board-selector {
     outline: none;
 }
 
+
+
+.display-success{
+    margin: 25px 30px 0px 0px;
+    height: 50px;
+    display: flex;
+}
+
+.close-success{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 15px 10px 15px;
+    border-radius: 20px;
+    position: relative;
+    left: 180px;
+    top: -40px;
+    background-color: whitesmoke;
+    width: 10px;
+    height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+
+}

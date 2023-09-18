@@ -14,10 +14,9 @@
 
 #pin-detail-right {
     display: grid;
-    grid-template-rows: auto auto auto 3fr 1px 1px;
+    grid-template-rows: 20px auto auto auto 3fr 1px 1px;
     padding: 10px;
     width: inherit;
-    margin-top: 40px;
     row-gap: 10px;
 
 }

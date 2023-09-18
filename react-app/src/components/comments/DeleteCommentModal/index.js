@@ -16,7 +16,6 @@ const DeleteCommentModal = ({ commentId }) => {
         e.preventDefault();
         dispatch(deleteCommentThunk(commentId))
         closeModal()
-        history.back();
     }
 
 

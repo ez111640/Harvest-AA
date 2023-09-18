@@ -144,6 +144,14 @@ def add_pin_to_board(id):
 
     return pin.to_dict()
 
+@board_routes.route("/<int:id>/pins", methods=["DELETE"])
+def remove_pin_from_board(id):
+    req = request.get_json(force=True)
+    board_pin = Pins_To_Boards.query.filter(Pins_To_Boards.pinId == req["id"], Pins_To_Boards.boardId == id).first()
+    db.session.delete(board_pin)
+    db.session.commit()
+    return { "Success":"Item deleted"}
+
 @board_routes.route("/<int:id>/topics")
 def get_all_board_topics(id):
     board_topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()

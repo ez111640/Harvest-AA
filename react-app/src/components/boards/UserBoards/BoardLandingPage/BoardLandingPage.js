@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams, NavLink, useHistory } from "react-router-dom"
 import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
 import { updateBoardThunk, getUserBoards } from "../../../../store/boardsReducer"
-import {deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
+import { deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
 import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
 import { PageHeader } from "../../../auth/User/PageHeader"
 import OpenModalButton from "../../../OpenModalButton"
 import UpdateBoardModal from "../../UpdateBoardModal"
 import DeletePinModal from "../../../pins/DeletePinModal"
+import RemovePinFromBoard from "../../../pins/RemovePinFromBoard"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
@@ -135,7 +136,7 @@ export const BoardLandingPage = () => {
         let topic = allTopArr.filter((topic) => topic.id == e.target.value)
 
         const data = dispatch(deleteBoardTopicThunk(topic[0], boardId))
-      
+
         dispatch(getBoardTopicsThunk(boardId))
 
     }
@@ -190,8 +191,8 @@ export const BoardLandingPage = () => {
                     <i className="fa-solid fa-ellipsis"></i>
                 </button>
                 <ul className={ulClassName} ref={ulRef}>
-                    <div id='profile-dropdown-profile-butt' className="create-dropdown-options">
-                        <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal />} />
+                    <div className="edit-bn-lp">
+                        <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} />
                         <button onClick={clickEditBoardButton}>Edit Pins</button>
                     </div>
 
@@ -224,7 +225,7 @@ export const BoardLandingPage = () => {
                         {thisBoardPins.map((pin) => (
                             <div id={pin.id} className="pin-photo">
                                 {editBoard && <div className="edit-board-delete-pin">
-                                    <OpenModalButton buttonText="X" modalComponent={<DeletePinModal pinId={pin.id} lastPage={`/boards/`} boardId={boardId} />} />
+                                    <OpenModalButton buttonText="X" modalComponent={<RemovePinFromBoard pinId={pin.id} lastPage={`/boards/`} boardId={boardId} />} />
                                 </div>}
                                 <NavLink to={`/pins/${pin.id}`}><img alt="pin" src={pin.url}></img></NavLink>
                             </div>
