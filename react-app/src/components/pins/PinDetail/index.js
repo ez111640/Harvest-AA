@@ -273,7 +273,10 @@ export const PinDetail = () => {
 					}
 					</div>
 					{showEditForm &&
+
 						<button className="submit-button save-edits" type="submit">Save Changes</button>
+
+						
 					}
 
 

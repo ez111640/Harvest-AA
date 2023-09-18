@@ -28,6 +28,7 @@ export const AddComment = ({ pinId }) => {
                         type="text"
                         value={commentText}
                         onChange={(e) => setCommentText(e.target.value)}
+                        placeholder="Leave a comment"
                         required
                     />
                     {commentText.length && <button onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button>}

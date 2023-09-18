@@ -7,6 +7,7 @@ import { deleteCommentThunk, getAllComments } from "../../../store/commentsReduc
 import { addCommentThunk } from "../../../store/commentsReducer";
 import OpenModalButton from "../../OpenModalButton";
 import AddPinToBoardModal from "../AddPinToBoardModal";
+import SignupFormModal from "../../SignupFormModal";
 
 export const PinDetailModal = ({ pinId }) => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)
@@ -101,7 +102,11 @@ export const PinDetailModal = ({ pinId }) => {
 				<div className="pin-detail-modal-grid-right pin-dm-link font-size-14px">
 					<div className="save-pin-from-main">{domain}</div>
 					<div className="save-pin-from-main">
-						<OpenModalButton buttonText="Save" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+						{user ?
+							<OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+							:
+							<div className="prompt-signup"><OpenModalButton buttonText="Signup To Pin" modalComponent={<SignupFormModal />} /></div>
+						}
 					</div>
 
 				</div>
@@ -162,7 +167,7 @@ export const PinDetailModal = ({ pinId }) => {
 								value={commentText}
 								onChange={(e) => setCommentText(e.target.value)}
 								required
-
+								placeholder="Leave a comment"
 							/>
 							{commentText && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
 						</div>

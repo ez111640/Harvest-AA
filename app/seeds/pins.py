@@ -108,7 +108,7 @@ def seed_pins():
     )
     pin15= Pin (
 
-        url="https://thecafesucrefarine.com/wp-content/uploads/Ridiculously-Easy-Rosemary-Bread-3.jpg",
+        url="https://i.pinimg.com/564x/35/7a/cf/357acf42f2ff1ab29b693e36290c7855.jpg",
         link="https://www.trialandeater.com/wp-content/uploads/2014/02/Rosemary-bread-1.jpg.webp",
         description="Fresh rosemary bread. Not only delicious but will make your kitchen smell wonderful while your herb dough is baking in the oven. Especially great to bake if you have a bunch of fresh rosemary sprigs.",
         title="Fresh Rosemary Bread Recipe",
