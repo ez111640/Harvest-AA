@@ -50,8 +50,10 @@ const CreatePinModal = () => {
             await dispatch(addPinAWSThunk(newPin))
             dispatch(getAllPins())
             const newestPin = allPinArr[allPinArr.length - 1]
-            const boardId = document.getElementById("board-selector-input").value
-
+            let boardId
+            if (document.getElementById("board-selector-input")) {
+                boardId = document.getElementById("board-selector-input").value
+            }
             if (boardId) await dispatch(addPinToBoardThunk(boardId, newestPin))
 
             history.push("/pins/current")
@@ -79,12 +81,14 @@ const CreatePinModal = () => {
 
     const isUrl = (url) => {
         try {
-            let validated = new URL(url)
-            return true;
+            let validated;
+            if (validated = new URL(url) || typeof (url) === "File")
+                return true
         }
         catch (e) {
             return false;
         }
+        return true;
     }
 
     const hasPhoto = (e) => {
@@ -186,11 +190,11 @@ const CreatePinModal = () => {
                             <div className="image-prompt"><span className="span-image-prompt">We recommend using high quality .jpg files less than 20mb</span></div>
                         </div>
                     </div>
-                    {title && link && description && !url && <div className="need-photo-error error">You must include a photo when creating a pin</div>}
                     <div className="create-pin-url-option">
                         <input
                             type="text"
                             placeholder={url ? "" : "Save photo url from site"}
+                            value={fileType === "AWS" ? "" : url}
                             onChange={(e) => {
                                 setFileType("URL")
                                 setUrl(e.target.value)
@@ -198,6 +202,10 @@ const CreatePinModal = () => {
 
                         />
 
+                    </div>
+                    <div clasName="show-photo-errors">
+                        {title && link && description && !url && <div className="need-photo-error error">You must include a photo when creating a pin</div>}
+                        {fileType !== "AWS" && <div className={url ? "" : isUrl(url) ? "show-error-create no-error" : "show-error-create error"}>{url ? isUrl(url) ? "" : <div className="show-error-create error ">Invalid url entered</div> : ""}</div>}
                     </div>
                 </div>
                 <div className=" create-pin-page-right">
@@ -251,8 +259,8 @@ const CreatePinModal = () => {
                     <div className={link ? "" : isUrl(link) ? "show-error-create-link no-error" : "show-error-create-link error"}>{link ? isUrl(link) ? "" : <div className="show-error-create-link error ">Invalid url entered</div> : ""}</div>
                     {url && isUrl(link) && hasPhoto ?
                         <div>
-                            <button type="submit">Create</button>
-                        </div> : <div><button disabled type="submit">Create</button></div>}
+                            <button className="submit-new-pin" type="submit">Create</button>
+                        </div> : <div><button disabled className="submit-new-pin-disabled" type="submit">Create</button></div>}
                 </div>
             </form>
 

@@ -36,11 +36,17 @@
 .create-pin-aws-option {
     background-color: whitesmoke;
     border-radius: 20px;
-    height: 380px;
+    height: 360px;
     width: 260px;
     padding: 20px;
     display: flex;
     justify-content: center;
+}
+
+
+.show-photo-errors{
+    position: relative;
+
 }
 
 .need-photo-error {
@@ -144,8 +150,42 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+.show-error-create{
+    padding-top: 5px;
+    width: 90%;
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end;
     position: relative;
-    left: -6px;
+    top: -30px;
+    min-height: 20px;
+
+}
+
+.submit-new-pin{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    position: relative;
+    bottom: 10px;
+    cursor: pointer;
+
+}
+
+.submit-new-pin-disabled{
+    background-color: gray;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    position: relative;
+    bottom: 10px;
+}
+
+.submit-new-pin:hover{
+    background-color: goldenrod;
 }
 
 .create-pin-url-option>input {
