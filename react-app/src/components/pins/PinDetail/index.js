@@ -37,7 +37,6 @@ export const PinDetail = () => {
 	const [commentId, setCommentId] = useState("")
 
 
-
 	useEffect(() => {
 		dispatch(getAllComments())
 		dispatch(getOnePinThunk(pinId))
@@ -180,7 +179,7 @@ export const PinDetail = () => {
 							<input className="no-placeholder"
 								type="text"
 								placeholder={thisPin.url}
-								value={photoUrl? photoUrl : thisPin.url}
+								value={photoUrl ? photoUrl : thisPin.url}
 								onChange={(e) => setPhotoUrl(e.target.value)}
 							/>
 							<button className="hide-that-button edit-url-close" type="button" onClick={clickEditUrlButton}><i className="fa-solid fa-xmark"></i></button>
@@ -276,7 +275,7 @@ export const PinDetail = () => {
 
 						<button className="submit-button save-edits" type="submit">Save Changes</button>
 
-						
+
 					}
 
 
@@ -359,6 +358,9 @@ export const PinDetail = () => {
 
 											</div> */}
 					</div>}
+					<div className="add-comment">
+						{!pinComments.find((comment) => comment.userId === user.id) && <AddComment pinId={thisPin.id} />}
+					</div>
 				</div>
 
 			</form>

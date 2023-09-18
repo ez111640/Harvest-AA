@@ -24,7 +24,7 @@ const AddPinToBoardModal = ({ pin }) => {
         let boardId = document.getElementById("board-selector")
         e.preventDefault();
         dispatch(addPinToBoardThunk(boardId.value, pin))
-        history.push("/")
+        history.push(`/boards/${boardId.value}`)
         setPage(2)
     }
 

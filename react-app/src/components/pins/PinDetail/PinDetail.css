@@ -303,3 +303,9 @@ font-size: 12px;
 .back-arrow{
     background-color: rgba(0,0,0,rgba(17, 17, 26, 0.1))
 }
+
+.add-comment{
+    position: relative;
+
+    bottom: 30px;
+  }

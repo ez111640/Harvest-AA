@@ -6,7 +6,7 @@ import { getAllPins } from "../../../store/pinsReducer"
 import { getUserBoards } from "../../../store/boardsReducer"
 import { getAllComments } from "../../../store/commentsReducer"
 import { PinCard } from "../PinCard/PinCard"
-import {PageHeader} from "../../auth/User/PageHeader"
+import { PageHeader } from "../../auth/User/PageHeader"
 
 export const UserPins = () => {
     const dispatch = useDispatch()
@@ -29,8 +29,8 @@ export const UserPins = () => {
 
     return (
         <div >
-           {!location.includes("boards" ) && <PageHeader />}
-           {!location.includes("boards") ? <div className="new-pin-created">Success! Pin created!</div>:<div></div>}
+            {!location.includes("boards") && <PageHeader />}
+            {!location.includes("boards") ? <div className="new-pin-created">Success! Pin created!</div> : <div></div>}
 
             {allPinArray ? <div id="all-user-pins">
                 {userPins.map((pin) => (
@@ -55,6 +55,10 @@ export const UserPins = () => {
                 ))}
             </div> :
                 <div></div>
+            }
+            {userPins.length === 0 &&
+                <div className="new-user-no-boards">You haven't created any pins yet. Click "New Pin" to get started.</div>
+
             }
         </div>
     )

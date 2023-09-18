@@ -232,7 +232,7 @@ export const BoardLandingPage = () => {
                         ))}
                     </div>
                     :
-                    <div className="new-user-no-boards">This board is empty. Pin some new ideas by clicking the pin button</div>
+                    <div className="new-user-no-boards">This board is empty. Start browsing and save the ideas you like! Click home to get started.</div>
                 }
             </div>
         </div >

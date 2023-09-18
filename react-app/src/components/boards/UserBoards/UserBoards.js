@@ -91,7 +91,7 @@ export const UserBoards = () => {
                     )}
                             </div>
                     : <div className="new-user-no-boards">
-                        You haven't created any boards yet. Create one to get started!
+                        You haven't created any boards yet. Click "New Board" to get started!
                     </div>
 
                     }

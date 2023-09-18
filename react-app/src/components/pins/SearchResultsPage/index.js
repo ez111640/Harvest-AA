@@ -43,15 +43,20 @@ export const SearchResultsPage = () => {
 
     if (!pinArray.length) return null
 
+    const goBack = (e) => {
+        e.preventDefault();
+        window.location = ("/")
+    }
 
     // if (!searchpins.length) return null
 
     return (
 
-        <div>
+        <div className="search-pins">
 
             <div id="filter-reset" className="reset-filter-search-results" onClick={goLandingPage}>
-                See All pins
+                <div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
+
             </div>
 
 
@@ -59,11 +64,6 @@ export const SearchResultsPage = () => {
             {
                 searchpins.length ? null : <div id='no-search-results'>No Search Results</div>
             }
-            <div className='center-all-outer'>
-                {
-                    searchpins.length ? null : <NavLink id='no-search-link' to='/'>See all pins</NavLink>
-                }
-            </div>
 
             <div id='pinCard-holder-Allpins'>
                 {/* {pins} */}

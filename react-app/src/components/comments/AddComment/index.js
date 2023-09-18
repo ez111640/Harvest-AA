@@ -31,7 +31,7 @@ export const AddComment = ({ pinId }) => {
                         placeholder="Leave a comment"
                         required
                     />
-                    {commentText.length && <button onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button>}
+                    {commentText.length ? <button onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button> : <div></div>}
                 </div>
             </label>
         </div>
