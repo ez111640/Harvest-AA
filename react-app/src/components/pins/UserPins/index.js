@@ -6,6 +6,7 @@ import { getAllPins } from "../../../store/pinsReducer"
 import { getUserBoards } from "../../../store/boardsReducer"
 import { getAllComments } from "../../../store/commentsReducer"
 import { PinCard } from "../PinCard/PinCard"
+import {PageHeader} from "../../auth/User/PageHeader"
 
 export const UserPins = () => {
     const dispatch = useDispatch()
@@ -28,6 +29,7 @@ export const UserPins = () => {
 
     return (
         <div >
+           {!location.includes("boards" ) && <PageHeader />}
            {!location.includes("boards") ? <div className="new-pin-created">Success! Pin created!</div>:<div></div>}
 
             {allPinArray ? <div id="all-user-pins">

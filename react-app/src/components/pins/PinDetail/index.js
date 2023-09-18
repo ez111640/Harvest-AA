@@ -12,6 +12,7 @@ import DeletePinModal from "../DeletePinModal";
 import DeleteCommentModal from "../../comments/DeleteCommentModal";
 import AddPinToBoardModal from "../AddPinToBoardModal";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
+import { deleteCommentThunk } from "../../../store/commentsReducer";
 
 export const PinDetail = () => {
 	const allPins = useSelector((state) => state.pinsReducer.pins)
@@ -32,6 +33,9 @@ export const PinDetail = () => {
 	const [photoTitle, setPhotoTitle] = useState("")
 	const [photoDesc, setPhotoDesc] = useState("")
 	const [photoLink, setPhotoLink] = useState("")
+	const [deleteOption, setDeleteOption] = useState(false)
+	const [commentId, setCommentId] = useState("")
+
 
 
 	useEffect(() => {
@@ -61,8 +65,10 @@ export const PinDetail = () => {
 		const url = thisPin?.link
 		let splitUrl
 		if (url) splitUrl = url.split("/")
-		if (splitUrl[0] === "https:") {
+		console.log('URL', splitUrl)
+		if (splitUrl[0] === "https:" || splitUrl[0] === "http:") {
 			domain = splitUrl[2].split(".")[0]
+			console.log("DOMAIN", domain)
 		}
 	}
 
@@ -116,6 +122,8 @@ export const PinDetail = () => {
 		const updatedPin = {}
 
 
+
+
 		photoUrl ? updatedPin.url = photoUrl : updatedPin.url = thisPin.url
 		photoLink ? updatedPin.link = photoLink : updatedPin.link = thisPin.link
 		photoTitle ? updatedPin.title = photoTitle : updatedPin.title = thisPin.title
@@ -131,10 +139,17 @@ export const PinDetail = () => {
 		if (!user) return null;
 	}
 
+	const onSubmit = (e) => {
+		e.preventDefault();
+		dispatch(deleteCommentThunk(commentId))
+		setDeleteOption(false)
+		// history.push()
+	}
+
 	return (
 		<div className="pin-detail-div" >
 
-			<div>{
+			{/* <div>{
 				<div className="button-container">
 					<div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
 					<div></div>
@@ -155,7 +170,7 @@ export const PinDetail = () => {
 					}
 				</div>
 
-			}</div>
+			}</div> */}
 
 			<form id="pin-detail-container" onSubmit={handleSubmit}>
 				{editUrlValue ?
@@ -261,8 +276,56 @@ export const PinDetail = () => {
 					{showEditForm &&
 						<button className="submit-button save-edits" type="submit">Save Changes</button>
 					}
+
+
 					{!showEditForm && <div>
-						<div>
+
+						<div className="pin-detail-modal-grid-right comments">
+							<div className="pin-comment-header">Comments: </div>
+							{pinComments.length ?
+								<div className="comment-div-container" id="comment-list">
+									{pinComments.map((comment) =>
+
+										<div className="comment-div" id={comment.id}>
+											<div className="pin-detail-comment-content">
+												<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
+												<div className="margin-left-10px">{comment.commentText}</div>
+
+											</div>
+											{user && comment.userId === user.id &&
+												<div>
+													{!deleteOption && <button className="hide-that-button delete-comment-button" type="button"
+														onClick={() => {
+															setDeleteOption(!deleteOption)
+															setCommentId(comment.id)
+														}
+														}>X</button>}
+													{ /*<OpenModalButton
+											buttonText="X"
+
+											modalComponent={<DeleteCommentModal commentId={comment.id} />}
+										/> */}
+
+													{deleteOption === true && <div className="delete-comment">
+														<div>Are you sure you want to remove this comment?</div>
+														<button className="hide-that-button" onClick={() => setDeleteOption(false)}><i className="fa-solid fa-x"> No (keep comment)</i></button>
+														<button className="hide-that-button" onClick={
+															onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
+													</div>}
+												</div>
+												// <div>
+												// 	<DeleteCommentModal className="fix-z" commentId={comment.id} />
+												// </div>
+											}
+
+										</div>)}
+
+								</div>
+								: <div className="pin-detail-comment-content">Be the first to leave a comment!</div>}
+
+							< hr />
+						</div>
+						{/*}	<div>
 							<div>Comments: </div>
 							{pinComments.length ?
 								<div>
@@ -292,7 +355,7 @@ export const PinDetail = () => {
 							</div>}
 
 
-						</div>
+											</div> */}
 					</div>}
 				</div>
 
