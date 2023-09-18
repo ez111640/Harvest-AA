@@ -16,7 +16,7 @@ const DeletePinModal = ({ pinId, lastPage, boardId }) => {
         dispatch(getAllPins())
         if (boardId) dispatch(getBoardPins(boardId))
         closeModal()
-        history.push("/pins/current")
+        history.push("/boards")
         window.location.reload();
 
     }

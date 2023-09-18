@@ -29,9 +29,9 @@ export const PinDetail = () => {
 	const [errors, setErrors] = useState([]);
 
 	let domain;
-	const [photoUrl, setPhotoUrl] = useState("")
-	const [photoTitle, setPhotoTitle] = useState("")
-	const [photoDesc, setPhotoDesc] = useState("")
+	const [photoUrl, setPhotoUrl] = useState(thisPin?.url)
+	const [photoTitle, setPhotoTitle] = useState(thisPin?.title)
+	const [photoDesc, setPhotoDesc] = useState(thisPin?.description)
 	const [photoLink, setPhotoLink] = useState("")
 	const [deleteOption, setDeleteOption] = useState(false)
 	const [commentId, setCommentId] = useState("")
@@ -224,8 +224,7 @@ export const PinDetail = () => {
 							<textarea className="no-placeholder title-edit-area"
 								id="title-input"
 								type="text"
-								value={photoTitle ? photoTitle : ""}
-								placeholder={thisPin.title}
+								value={photoTitle}
 								onChange={(e) => setPhotoTitle(e.target.value)}>
 							</textarea>
 							<button className="exit-edit-title hide-that-button" type="button" onClick={clickEditTitleButton}><i className="fa-solid fa-xmark"></i></button>
@@ -246,8 +245,7 @@ export const PinDetail = () => {
 								</label>
 								<textarea className="no-placeholder pin-detail-input" id="pin-detail-description"
 									type="textarea"
-									placeholder={thisPin.description}
-									value={photoDesc ? photoDesc : ""}
+									value={photoDesc}
 									onChange={(e) => setPhotoDesc(e.target.value)}>
 
 								</textarea>
