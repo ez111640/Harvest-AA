@@ -12,6 +12,22 @@
     height: fit-content;
 }
 
+.start-over>button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.and-add-to-board{
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.start-over{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
 .create-pin-page-sub {
     display: grid;
     grid-template-columns: auto 1fr;

@@ -143,11 +143,11 @@ const CreatePinModal = () => {
             <div className="create-pin-page-header">
                 <div>
                     {viewClearMenu ?
-                        <div>
+                        <div className="start-over">
+                            <button onClick={closeClearMenu}>X</button>
                             <button onClick={clearNewPin} className="clear" >
                                 Clear and Start Over
                             </button>
-                            <button onClick={closeClearMenu}>X</button>
                         </div>
                         :
                         <div>
@@ -155,7 +155,7 @@ const CreatePinModal = () => {
                         </div>
                     }
                 </div>
-                <div>
+                <div className="and-add-to-board">
                     <select id="board-selector">
                         <option id="" value="">Add pin to board upon creation</option>
                         {
