@@ -38,7 +38,8 @@ function UpdateBoardModal({ board }) {
 				</label>
 				<input
 					type="text"
-					value={name}
+					value={name ? name : board.name}
+					
 					onChange={(e) => setName(e.target.value)}
 					required
 				/>

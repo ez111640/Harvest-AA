@@ -22,10 +22,11 @@ function CreateBoardModal() {
 		setNewBoard(data)
 		await dispatch(getUserBoards())
 
-		setPage(2)
+		// setPage(2)
 		if (data) {
 			setErrors(data);
 		}
+		closeModal()
 	};
 
 
@@ -69,7 +70,7 @@ function CreateBoardModal() {
 					/>
 				{name.length > 0 && <button className="create-board-button font-bold" type="submit">Create</button>}
 			</form>}
-			{page === 2 && <form onSubmit={handleSubmitPageTwo}>
+			{/* {page === 2 && <form onSubmit={handleSubmitPageTwo}>
 				<label className='board-name-field'>
 					Topic:
 					<select id="topic-selector">{topicArr.map((topic) =>
@@ -77,7 +78,7 @@ function CreateBoardModal() {
 					</select>
 				</label>
 				<button type="submit">Create</button>
-			</form>}
+			</form>} */}
 		</div>
 	);
 }

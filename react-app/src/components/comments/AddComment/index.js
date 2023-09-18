@@ -3,8 +3,10 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { addCommentThunk, getAllComments } from "../../../store/commentsReducer"
 
+
 export const AddComment = ({ pinId }) => {
     const [commentText, setCommentText] = useState("")
+    const [error, setError] = useState("")
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
@@ -28,7 +30,7 @@ export const AddComment = ({ pinId }) => {
                         onChange={(e) => setCommentText(e.target.value)}
                         required
                     />
-                    <button  onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button>
+                    {commentText.length && <button onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button>}
                 </div>
             </label>
         </div>

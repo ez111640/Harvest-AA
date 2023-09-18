@@ -171,7 +171,7 @@ export const PinDetail = () => {
 				</div>
 
 			}</div> */}
-
+			<div onClick={goBack} className="back-arrow"><i className="fa-solid fa-arrow-left-long"></i></div>
 			<form id="pin-detail-container" onSubmit={handleSubmit}>
 				{editUrlValue ?
 					<div id="pin-detail-left">
@@ -180,6 +180,7 @@ export const PinDetail = () => {
 							<input className="no-placeholder"
 								type="text"
 								placeholder={thisPin.url}
+								value={photoUrl? photoUrl : thisPin.url}
 								onChange={(e) => setPhotoUrl(e.target.value)}
 							/>
 							<button className="hide-that-button edit-url-close" type="button" onClick={clickEditUrlButton}><i className="fa-solid fa-xmark"></i></button>

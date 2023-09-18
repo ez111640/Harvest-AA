@@ -25,6 +25,8 @@ export const PinDetailModal = ({ pinId }) => {
 		dispatch(getOnePinThunk(pinId))
 	}, [dispatch])
 
+	console.log("COMMENTEXT1", commentText)
+
 
 	let firstLetter
 	if (user) {
@@ -69,8 +71,10 @@ export const PinDetailModal = ({ pinId }) => {
 	}
 
 	const onSubmit = (e) => {
+		console.log("COMMENTEXT", commentText)
 		e.preventDefault();
 		dispatch(deleteCommentThunk(commentId))
+		dispatch(getAllComments())
 		setDeleteOption(false)
 		// history.push()
 	}
@@ -110,7 +114,7 @@ export const PinDetailModal = ({ pinId }) => {
 								<div className="comment-div" id={comment.id}>
 									<div className="pin-detail-comment-content">
 										<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
-										{comment.commentText}
+										<div className="margin-left-10px">{comment.commentText}</div>
 
 									</div>
 									{user && comment.userId === user.id &&
@@ -130,8 +134,10 @@ export const PinDetailModal = ({ pinId }) => {
 											{deleteOption === true && <div className="delete-comment">
 												<div>Are you sure you want to remove this comment?</div>
 												<button className="hide-that-button" onClick={() => setDeleteOption(false)}><i className="fa-solid fa-x"> No (keep comment)</i></button>
-												<button className="hide-that-button" onClick={
-													onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
+												<button
+													className="hide-that-button"
+													onClick={
+														onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
 											</div>}
 										</div>
 										// <div>
@@ -156,8 +162,9 @@ export const PinDetailModal = ({ pinId }) => {
 								value={commentText}
 								onChange={(e) => setCommentText(e.target.value)}
 								required
+
 							/>
-							<button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>
+							{commentText && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
 						</div>
 					</label>
 				</div>}
