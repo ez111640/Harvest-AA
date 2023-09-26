@@ -11,6 +11,7 @@ import OpenModalButton from "../../../OpenModalButton"
 import UpdateBoardModal from "../../UpdateBoardModal"
 import DeletePinModal from "../../../pins/DeletePinModal"
 import RemovePinFromBoard from "../../../pins/RemovePinFromBoard"
+import { BoardTopicModal } from "./BoardTopicModal"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
@@ -152,7 +153,7 @@ export const BoardLandingPage = () => {
     if (!thisBoard) return null;
     return (
         <div>
-            <PageHeader />
+            {thisBoard.userId === user.id ? <PageHeader /> : <div className="bump-down"></div>}
             {/* <div className="profile-header"> */}
             {/* <div className="profile-div-left"> */}
             {/* <div className="user-spot">
@@ -194,6 +195,7 @@ export const BoardLandingPage = () => {
                     <div className="edit-bn-lp">
                         <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} />
                         <button onClick={clickEditBoardButton}>Edit Pins</button>
+                        <OpenModalButton buttonText="Edit Topics" modalComponent={<BoardTopicModal board={thisBoard} />} />
                     </div>
 
                 </ul>
@@ -202,23 +204,23 @@ export const BoardLandingPage = () => {
             {/* </div> */}
             {/* </div> */}
             {/* </div> */}
-            <div className="topics-container">
+            {/* <div className="topics-container">
                 <div className="topics-div">
                     {boardTopics?.map((topic) =>
                         <div className="each-option">
                             < IndividualTopic topic={topic} editBoard={editBoard} boardId={boardId} />
-                            {/* <div className="topic-option tagged">{topic.topicName}</div> */}
+                            <div className="topic-option tagged">{topic.topicName}</div>
                             {editBoard && <button type="button" onClick={deleteButtonClick} value={topic.topicId} className="topic-delete-button hide-that-button" >X</button>}
                         </div>)}
 
-                    {/* <OpenModalButton
+                    <OpenModalButton
                         buttonText="Add Topics"
                         modalComponent={<EditBoardTopics boardId={thisBoard.id} />}
-                    /> */}
+                    />
                     <div className="board-name">{thisBoard.name}</div>
                 </div>
 
-            </div>
+            </div> */}
             <div>
                 {thisBoardPins.length ?
                     <div id="all-pins">

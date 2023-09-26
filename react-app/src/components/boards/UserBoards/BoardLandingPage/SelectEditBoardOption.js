@@ -50,7 +50,8 @@ function SelectEditBoardOption() {
       <ul className={ulClassName} ref={ulRef}>
         <div id='profile-dropdown-profile-butt' className="create-dropdown-options">
           <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal />} />
-          <button>Edit Pins</button>
+          <button type="button">Edit Pins</button>
+          <button type="button">Edit Topics</button>
         </div>
 
       </ul>

@@ -43,6 +43,7 @@ function Navigation({ isLoaded }) {
         {user ?
           <div className="nav-bar-text-links">
             <NavLink exact to="/">Home</NavLink>
+            <NavLink exact to="/explore">Explore</NavLink>
             <CreateButton />
           </div> :
           <div className="no-user-nav-links">

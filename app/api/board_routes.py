@@ -107,7 +107,7 @@ def delete_board_topic(id):
     print("REQID",req["id"] )
     topicId = req["id"]
     print("TOPICID", topicId)
-    thisTTB = Topics_To_Boards.query.get(req["id"])
+    thisTTB = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id, Topics_To_Boards.topicId == topicId ).first()
     # checkDuplicates = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == topicToBoard.boardId.all()
     # topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).first()
     print("@@@@@@@@@@@@@@topics", thisTTB)
@@ -157,6 +157,15 @@ def get_all_board_topics(id):
     board_topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
     print("BOARDTOPICS", board_topics)
     return{"board_topics": [ttb.to_dict() for ttb in board_topics]}
+
+
+@board_routes.route("/all")
+def get_all_boards():
+    boards = Board.query.all()
+
+    response = [board.to_dict() for board in boards]
+
+    return json.dumps(response)
 
 @board_routes.route("")
 def get_user_boards():

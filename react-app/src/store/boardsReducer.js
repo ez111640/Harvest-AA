@@ -58,6 +58,15 @@ export const deleteBoard = (boardId) => async (dispatch) => {
     }
 }
 
+export const getAllBoardsThunk = () => async (dispatch) => {
+    let res = await fetch(`/api/boards/all`)
+    if (res.ok) {
+        const allBoards = await res.json();
+        console.log("ALLBOARDS", allBoards)
+        await dispatch(loadBoards(allBoards))
+    }
+}
+
 export const getUserBoards = () => async (dispatch) => {
     let res = await fetch(`/api/boards`)
     if (res.ok) {

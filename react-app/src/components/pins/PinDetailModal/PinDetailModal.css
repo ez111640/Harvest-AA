@@ -185,8 +185,7 @@
 
 
 .leave-a-comment-area{
-    position: fixed;
-    bottom: 130px;
+    position: relative;
 }
 
 .comment-div-container{

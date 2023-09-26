@@ -39,7 +39,7 @@ export const getAllTopics = () => async (dispatch) => {
 
 
 export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
-
+    console.log("POSTING")
     const res = await fetch(`/api/boards/${boardId}/topics`,
         {
             method: "POST",
@@ -80,13 +80,8 @@ export const getBoardTopicsThunk = (boardId) => async (dispatch) => {
 
     const res = await fetch(`/api/boards/${boardId}/topics`)
     let topics = await res.json()
-    if (topics.ok) {
-        await dispatch(getBoardTopics(topics.Board_Topics))
-        return null
-    } else {
-        console.log("RESPONSE FROM THUNK", topics)
-    }
-
+    await dispatch(getBoardTopics(topics.Board_Topics))
+    return null
 }
 
 
@@ -109,6 +104,10 @@ export const topicsReducer = (state = initialState, action) => {
             action.topics.forEach((topic) => (
                 newState.boardTopics[topic.id] = topic
             ))
+            return newState;
+        case ADD_NEW_BOARD_TOPIC:
+            newState = { ...state, boardTopics: { ...state.boardTopics }, allTopics: { ...state.allTopics } }
+            newState.boardTopics[action.topicId] = action.topic
             return newState;
         case DELETE_BOARD_TOPIC:
             newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics } }

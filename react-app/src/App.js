@@ -15,6 +15,7 @@ import { AllComments } from "./components/comments/AllComments";
 import { SearchResultsPage } from "./components/pins/SearchResultsPage";
 import CreatePinModal from "./components/pins/CreatePinModal";
 import { Footer } from "./components/Navigation/Footer/Footer";
+import { ExploreBoards } from "./components/boards/ExploreBoards/ExploreBoards";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route exact path="/pins/new">
             <CreatePinModal />
+          </Route>
+          <Route exact path="/explore">
+            <ExploreBoards />
           </Route>
           <Route exact path="/pins/:pinId">
             <PinDetail />

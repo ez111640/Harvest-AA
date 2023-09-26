@@ -92,7 +92,7 @@ const CreatePinModal = () => {
     }
 
     const hasPhoto = (e) => {
-        if (url || link) return true
+        if (url) return true
         return false;
     }
 
