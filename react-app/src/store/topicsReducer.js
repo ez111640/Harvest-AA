@@ -2,6 +2,7 @@ export const LOAD_TOPICS = "/topicsReducer/loadTopics"
 export const ADD_NEW_BOARD_TOPIC = "/topicsReducer/addNewBoardTopic"
 export const GET_BOARD_TOPICS = "/topicsReducer/getBoardTopics"
 export const DELETE_BOARD_TOPIC = "/topicsReducer/deleteBoardTopic"
+export const GET_TOPIC_BOARDS = "/topicsReducer/getTopicBoards"
 
 export const loadTopics = (topics) => ({
     type: LOAD_TOPICS,
@@ -16,6 +17,11 @@ export const addNewBoardTopic = (topic) => ({
 export const getBoardTopics = (topics) => ({
     type: GET_BOARD_TOPICS,
     topics
+})
+
+export const getTopicBoards = (boardIds, topicId) => ({
+    type: GET_TOPIC_BOARDS,
+    boardIds, topicId
 })
 
 export const deleteBoardTopic = (topicId) => ({
@@ -84,33 +90,45 @@ export const getBoardTopicsThunk = (boardId) => async (dispatch) => {
     return null
 }
 
+export const getTopicBoardsThunk = (topicId) => async (dispatch) => {
+    const res = await fetch(`/api/topics/${topicId}/boards`)
+    let topics = await res.json()
+    await dispatch(getTopicBoards(topics.BoardIds, topicId))
+    return null
+}
+
 
 const initialState = {
     boardTopics: {},
-    allTopics: {}
+    allTopics: {},
+    topicBoards: {}
 }
 
 export const topicsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_TOPICS:
-            newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics } }
+            newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics }, topicBoards: { ...state.topicBoards } }
             action.topics.forEach((topic) => {
                 newState.allTopics[topic.id] = topic
             })
             return newState
         case GET_BOARD_TOPICS:
-            newState = { ...state, boardTopics: {}, allTopics: { ...state.allTopics } }
+            newState = { ...state, boardTopics: {}, allTopics: { ...state.allTopics }, topicBoards: { ...state.topicBoards } }
             action.topics.forEach((topic) => (
                 newState.boardTopics[topic.id] = topic
             ))
             return newState;
+        case GET_TOPIC_BOARDS:
+            newState = { ...state, boardTopics: { ...state.boardTopics }, allTopics: { ...state.allTopics }, topicBoards: { ...state.topicBoards } }
+            newState.topicBoards[action.topicId] = action.boardIds
+            return newState
         case ADD_NEW_BOARD_TOPIC:
-            newState = { ...state, boardTopics: { ...state.boardTopics }, allTopics: { ...state.allTopics } }
+            newState = { ...state, boardTopics: { ...state.boardTopics }, allTopics: { ...state.allTopics }, topicBoards: { ...state.topicBoards } }
             newState.boardTopics[action.topicId] = action.topic
             return newState;
         case DELETE_BOARD_TOPIC:
-            newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics } }
+            newState = { ...state, allTopics: { ...state.allTopics }, boardTopics: { ...state.boardTopics }, topicBoards: { ...state.topicBoards } }
             delete newState.boardTopics[action.topicId]
             return newState;
         default:

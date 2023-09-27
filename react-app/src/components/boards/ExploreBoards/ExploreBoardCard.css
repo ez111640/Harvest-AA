@@ -3,14 +3,32 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-auto-flow: row;
-    column-gap: 30px;
+    column-gap: 0px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
+    margin-top: 40px;
+
 
 }
 
+.explore-div{
+    display: grid;
+    margin-top: 80px;
+}
+
+.topic-name{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.each-board{
+    height: 250px;
+}
 
 .explore-photo-div {
     height: 250px;

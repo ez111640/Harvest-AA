@@ -27,17 +27,25 @@ export const LandingPage = () => {
         dispatch(getUserBoards())
     }, [dispatch])
 
+    const showButton = () => {
+        return (<div>Save</div>)
+    }
+
+    const dontShowButton = () => {
+        return (<div></div>)
+    }
+
     if (!allPins) return null;
 
     return (
         <div>
             {user ?
-            <div className="greeting-banner" >
-                Welcome back, {user.firstName ? user.firstName : user.username}!
+                <div className="greeting-banner" >
+                    Welcome back, {user.firstName ? user.firstName : user.username}!
                 </div>
-                    :
-                    <div className="greeting-banner-no-user"></div>
-                }
+                :
+                <div className="greeting-banner-no-user"></div>
+            }
             {allPinArray ? <div id="all-pins">
                 {sortedPins.map((pin) => (
                     <div id={pin.id}>

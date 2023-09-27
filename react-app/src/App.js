@@ -16,6 +16,7 @@ import { SearchResultsPage } from "./components/pins/SearchResultsPage";
 import CreatePinModal from "./components/pins/CreatePinModal";
 import { Footer } from "./components/Navigation/Footer/Footer";
 import { ExploreBoards } from "./components/boards/ExploreBoards/ExploreBoards";
+import { UserProfilePage } from "./components/auth/User/UserProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,7 +61,9 @@ function App() {
           <Route exact path="/pins/search/:searchInput">
             <SearchResultsPage />
           </Route>
-
+          <Route exact path="/profile">
+            <UserProfilePage />
+          </Route>
           <Route exact path="/">
             <LandingPage />
           </Route>

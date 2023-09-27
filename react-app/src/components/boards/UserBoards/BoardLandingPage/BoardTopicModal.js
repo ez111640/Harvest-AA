@@ -14,8 +14,6 @@ export const BoardTopicModal = (board) => {
     let match = []
     const { closeModal } = useModal;
 
-    console.log("boardArr", allTopics)
-
     for (let i = 0; i < allTopics.length; i++) {
         for (let j = 0; j < boardArr.length; j++) {
 
@@ -27,27 +25,20 @@ export const BoardTopicModal = (board) => {
         }
     }
 
-    const toggleMatch = async (topic) => {
-        console.log("INTOGGLE")
-        console.log("MATCH", match)
-        console.log("match", match.indexOf(topic.id))
+    const toggleMatch = (topic) => {
         let index = match.indexOf(topic.id)
         if (index === -1) {
             let newIndex = noMatch.indexOf(topic.id)
             noMatch = noMatch.slice(0, newIndex).concat(noMatch.slice(newIndex + 1))
             match.push(topic.id)
-            await dispatch(addNewBoardTopicThunk(topic, board.board.id))
-            await dispatch(getBoardTopicsThunk(board.board.id))
-            await dispatch(getAllTopics())
+            dispatch(addNewBoardTopicThunk(topic, board.board.id))
+            dispatch(getBoardTopicsThunk(board.board.id))
         } else {
             match = match.slice(0, index).concat(match.slice(index + 1))
             noMatch.push(topic.id)
-            await dispatch(deleteBoardTopicThunk(topic, board.board.id))
-            await dispatch(getBoardTopicsThunk(board.board.id))
-            await dispatch(getAllTopics())
+            dispatch(deleteBoardTopicThunk(topic, board.board.id))
+            dispatch(getBoardTopicsThunk(board.board.id))
         }
-        // if (document.getElementById(topic.id).className === "match") document.getElementById(topic.id).className = "noMatch"
-        // else document.getElementById(topic.id).className = "match"
     }
 
 

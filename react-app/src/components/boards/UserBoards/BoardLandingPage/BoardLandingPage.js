@@ -5,19 +5,16 @@ import { useParams, NavLink, useHistory } from "react-router-dom"
 import { getAllPins, getBoardPins } from "../../../../store/pinsReducer"
 import { updateBoardThunk, getUserBoards } from "../../../../store/boardsReducer"
 import { deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../../../store/topicsReducer"
-import { IndividualTopic } from "../../EditBoardTopics/IndividualTopic"
 import { PageHeader } from "../../../auth/User/PageHeader"
+import { BoardTopicModal } from "./BoardTopicModal"
 import OpenModalButton from "../../../OpenModalButton"
 import UpdateBoardModal from "../../UpdateBoardModal"
-import DeletePinModal from "../../../pins/DeletePinModal"
 import RemovePinFromBoard from "../../../pins/RemovePinFromBoard"
-import { BoardTopicModal } from "./BoardTopicModal"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
     const { boardId } = useParams()
     const [showEditTopics, setShowEditTopics] = useState(false)
-    const [errors, setErrors] = useState([]);
     const boards = useSelector((state) => state.boardsReducer.boards)
     const allTopics = useSelector((state) => state.topicsReducer.allTopics)
     const topics = useSelector((state) => state.topicsReducer.boardTopics)
@@ -43,19 +40,19 @@ export const BoardLandingPage = () => {
 
     }, [dispatch, boardId])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let newBoard = {}
-        name ? newBoard.name = name : newBoard.name = thisBoard.name
-        newBoard.id = thisBoard.id
-        const data = await dispatch(updateBoardThunk(newBoard));
-        await dispatch(getUserBoards())
-        if (data) {
-            setErrors(data);
-        } else {
-            setEditBoard(false)
-        }
-    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     let newBoard = {}
+    //     name ? newBoard.name = name : newBoard.name = thisBoard.name
+    //     newBoard.id = thisBoard.id
+    //     const data = await dispatch(updateBoardThunk(newBoard));
+    //     await dispatch(getUserBoards())
+    //     if (data) {
+    //         setErrors(data);
+    //     } else {
+    //         setEditBoard(false)
+    //     }
+    // };
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
@@ -85,7 +82,6 @@ export const BoardLandingPage = () => {
 
     const [editBoard, setEditBoard] = useState(false)
 
-    const [name, setName] = useState("");
     if (!thisBoard) return null
 
     let this_board_pinIds
