@@ -26,6 +26,18 @@ def seed_boards():
     board8 = Board(
         userId='4', name="User 4's Cooking Board", public=True
     )
+    board9 = Board(
+        userId='3', name="User 3's Energy Board", public=True
+    )
+    board10 = Board(
+        userId="1", name="User 1's Self Care Board", public=True
+    )
+    board11 = Board(
+        userId="1", name="User 1's Household Products Board", public=True
+    )
+    board12 = Board(
+        userId="2", name="User 2's Livestock Board", public=True
+    )
 
     db.session.add(board1)
     db.session.add(board2)
@@ -35,6 +47,10 @@ def seed_boards():
     db.session.add(board6)
     db.session.add(board7)
     db.session.add(board8)
+    db.session.add(board9)
+    db.session.add(board10)
+    db.session.add(board11)
+    db.session.add(board12)
 
 def undo_boards():
     if environment == "production":

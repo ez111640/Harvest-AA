@@ -92,8 +92,8 @@
 .edit-bn-lp{
     display: grid;
     position: relative;
-    right: 200px;
-    border-radius: 20px;
+    right: 290px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .edit-bn-lp>button{

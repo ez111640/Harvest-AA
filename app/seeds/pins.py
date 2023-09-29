@@ -138,6 +138,183 @@ def seed_pins():
         title="Staple Homestead Kitchen Items fr rfrom Scratch Cooking",
         creatorId="4"
     )
+    pin19= Pin (
+
+        url="https://i.pinimg.com/564x/96/1d/f7/961df7e73074e44cb0da84b0b9d5aa92.jpg",
+        link="https://oldworldgardenfarms.com/2019/07/18/install-off-grid-solar-power/",
+        description="How To Install Solar Power to a shed, barn or cabin with ease",
+        title="How To Install Off-Grid Solar Power To A Cabin, Shed Or Barn With Ease",
+        creatorId="4"
+    )
+    pin20= Pin (
+
+        url="https://i.pinimg.com/564x/70/d1/8a/70d18a3e0d8f0da05ec0d147183d4f68.jpg",
+        link="https://www.epicurious.com/recipes/food/views/homemade-ginger-ale-358033?epik=dj0yJnU9U2kzTHo4UUxPd1BlMWlTZl93ckZ0NHE2Z05rWllxXzcmcD0wJm49SkZqMF9HZGdNNk5KenJ1VkxyQ2c3ZyZ0PUFBQUFBR1VXUTFr",
+        description="Carefully simmering fresh ginger in water for a good, long while is the key to deep, rounded flavor. ",
+        title="Homemade Ginger Ale",
+        creatorId="4"
+    )
+    pin21= Pin (
+
+        url="https://i.pinimg.com/564x/d4/62/e1/d462e10489c1a3c44c45720d60b700b8.jpg",
+        link="https://www.yourbeautyblog.com/2015/06/amish-drawing-salve-with-activated.html",
+        description="Use this Amish black drawing salve on cuts, scrapes, splinters, and boils to naturally pull toxins and debris from the skin.",
+        title="Amish Black Drawing Salve",
+        creatorId="2"
+    )
+    pin22= Pin (
+
+        url="https://i.pinimg.com/564x/06/ba/aa/06baaa9c3b17c510ad5aca71b400018f.jpg",
+        link="https://www.motherearthnews.com/sustainable-living/renewable-energy/solar-air-heater-zmaz06djzraw/",
+        description="This low-cost solar air heater plan lets you turn any south wall into a source of free heat. ",
+        title="Build a Simple Solar Air Heater",
+        creatorId="2"
+    )
+
+
+    pin23= Pin (
+
+        url="https://i.pinimg.com/564x/2b/f4/1f/2bf41fae0725b16ada80cb5c58f8bd12.jpg",
+        link="https://www.farmhouseonboone.com/diy-laundry-soap",
+        description="Learn how to make homemade laundry soap with all natural ingredients for under 5 dollars. This DIY Laundry Detergent is an effective way to clean clothes and fight stains.",
+        title="Homemade Laundry Soap Orange Scented",
+        creatorId="2"
+    )
+    pin24= Pin (
+
+        url="https://i.pinimg.com/564x/42/9d/3f/429d3fe4c19a58ea308dc9bf9efb7bde.jpg",
+        link="https://www.newlifeonahomestead.com/how-to-light-your-home-without-electricity/",
+        description="In todays world, it is hard to imagine living without electricity. One of the biggest advantages you'd lose is electric lighting, something most of us take for granted.",
+        title="How To Light Your Home Without Electricity",
+        creatorId="2"
+    )
+    pin25= Pin (
+
+        url="https://i.pinimg.com/564x/6d/25/27/6d2527ed40ee761ace891753346dd008.jpg",
+        link="https://brownthumbmama.com/make-soap-without-lye/?utm_medium=social&utm_source=pinterest&utm_campaign=tailwind_tribes&utm_content=tribes&utm_term=1082350260_51794048_196824&ssp_iabi=1677431479649",
+        description="This is a fantastic, easy way to make soap without using lye-and it's safe to do with kids around. Customize your homemade soap with any scents or colors you like!",
+        title="Make Soap Without Using Lye",
+        creatorId="1"
+    )
+    pin26= Pin (
+
+        url="https://i.pinimg.com/564x/99/78/19/997819d213f13afe03b9202b08c9c492.jpg",
+        link="https://www.marthastewart.com/1536685/lever-knitting-method-explained?utm_source=pinterest.com&utm_medium=social&utm_campaign=marthastewartliving_8471977&utm_content=textoverlay_toppinterest_powerpin_diy&utm_term=knittingandcrochetprojects_202201",
+        description="The lever knitting method, also known as the Irish cottage style, has the reputation of being the 'fastest knitting method in the world.' We share why this easy knitting method is quick, efficient, and is painless for those who suffer from hand problems but still want to knit. #marthastewart #crafts #hobby #knitting #diyideas #knittingprojects",
+        title="Lever Knitting Is the Fastest Knitting Technique in the World",
+        creatorId="2"
+    )
+    pin27= Pin (
+
+        url="https://i.pinimg.com/564x/27/8d/f5/278df5a4d14d117494c6ebb27e999a78.jpg",
+        link="https://premeditatedleftovers.com/naturally-frugal-living/homemade-lavender-rosemary-shampoo/",
+        description="Learn how to make homemade Lavender Rosemary Shampoo with this easy recipe and tutorial.",
+        title="How to Make Homemade Lavender Rosemary Shampoo",
+        creatorId="3"
+    )
+    pin28= Pin (
+
+        url="https://i.pinimg.com/564x/6c/85/ac/6c85ac74287b0d2efe1b13c6e1c35d11.jpg",
+        link="https://reusegrowenjoy.com/how-to-heat-greenhouse-in-winter-without-electricity/",
+        description="Have a small greenhouse or larger greenhouses that do not have power and wondering if you can heat greenhouse in winter without electricity?",
+        title="How To Heat Greenhouse In Winter Without Electricity",
+        creatorId="2"
+    )
+    pin29= Pin (
+
+        url="https://i.pinimg.com/564x/4e/d6/6a/4ed66a35d9a78502cb7c51e655903d45.jpg",
+        link="https://www.butterforall.com/traditional-cooking-traditional-living/whitening-remineralizing-detoxifying-coconut-oil-toothpaste/",
+        description="This is the best Coconut Oil Toothpaste! It is great for whitening and remineralizing teeth while it works to detoxify the entire mouth! ",
+        title="Whitening, Remineralizing, and Detoxifying Coconut Oil Toothpaste",
+        creatorId="2"
+    )
+    pin30= Pin (
+
+        url="https://i.pinimg.com/564x/cf/7c/4a/cf7c4a9f5850da6866a6ce769dc87dfc.jpg",
+        link="https://homesteadandchill.com/homemade-lemon-vinegar-cleaning-spray/?utm_medium=social&utm_source=pinterest&utm_campaign=tailwind_tribes&utm_content=tribes&utm_term=818088892_34108348_346935",
+        description="Don't throw out those lemon rinds or citrus scraps! Instead, turn them into a refreshing, natural, effective vinegar cleaning spray!",
+        title="How to Make Homemade Lemon Vinegar Cleaning Spray",
+        creatorId="1"
+    )
+    pin31= Pin (
+
+        url="https://i.pinimg.com/564x/ff/2a/bf/ff2abf31cb0c6a32c9535607bdb27f76.jpg",
+        link="https://homesteadsurvivalsite.com/how-to-make-homemade-neosporin-with-pics/",
+        description="This “natural Neosporin” is perfect for cuts, scrapes, and burns. ",
+        title="How To Make Homemade Neosporin",
+        creatorId="1"
+    )
+    pin31= Pin (
+
+        url="https://i.pinimg.com/564x/78/e3/70/78e3707e6249464e2a88e909e7b278f6.jpg",
+        link="https://www.crystalized-designs.com/lucet-fork-tutorial/",
+        description="The purpose of a Lucet Fork is easy. Cords and braiding.",
+        title="How to Use a Lucet Fork ~ A Tutorial",
+        creatorId="1"
+    )
+    pin32= Pin (
+
+        url="https://i.pinimg.com/564x/60/9f/3a/609f3a0a5b0bba7079b9ce1b47865996.jpg",
+        link="https://hillsborough-homesteading.com/homesteaders-guide-to-sewing-the-tools-of-the-trade/?utm_medium=social&utm_source=pinterest&utm_campaign=tailwind_tribes&utm_content=tribes&utm_term=372374598_12059926_204380",
+        description="One of the most essential homesteading skills is sewing. This beginner's post starts with the details on what tools you'll need to get started sewing on your homestead",
+        title="Homesteader's Guide to Sewing: The Tools of the Trade",
+        creatorId="1"
+    )
+    pin33= Pin (
+
+        url="https://i.pinimg.com/564x/8b/40/7b/8b407b8be1fc3bbba1c4c8b77839d75f.jpg",
+        link="https://www.littleyellowwheelbarrow.com/free-diy-basket-pattern/",
+        description="A quick and easy DIY basket you can knit up no time flat. These small baskets are soft and flexible and can be folded down for storage",
+        title="Free DIY Basket Pattern",
+        creatorId="2"
+    )
+    pin34= Pin (
+
+        url="https://i.pinimg.com/564x/8a/ff/ca/8affcadba984e61d2fecf45520369d5a.jpg",
+        link="https://foodcrumbles.com/the-scientific-guide-to-choosing-pectin/",
+        description="An in-depth article about pectin! Learn everything you need to know. What is it? Types of pectin. How and when to use it?",
+        title="The (Scientific) Guide to Choosing Pectin",
+        creatorId="2"
+    )
+    pin35= Pin (
+
+        url="https://i.pinimg.com/564x/86/bd/0c/86bd0cf6241ead22873662c842acadb8.jpg",
+        link="https://www.thepurposefulpantry.com/how-to-dehydrate-caramelized-onions/",
+        description="These easy instructions will help you learn how to dehydrate your own onions, and make your own onion powder. Bonus recipe for making French Onion Dip powder for snacking anytime!",
+        title="How to Dehydrate Caramelized Onions + Onion Powder",
+        creatorId="2"
+    )
+    pin36= Pin (
+
+        url="https://i.pinimg.com/564x/3d/73/be/3d73be59f17398a91f444c7c7e9f30a3.jpg",
+        link="https://homesteadersofamerica.com/homestead-cold-room/?ml_subscriber=1618115185426306128&ml_subscriber_hash=a6y4",
+        description="Supercharge your root cellar and turn it into a homestead cold room instead! ",
+        title="Homestead Cold Room: 9 Reasons to Go Beyond a Root Cellar",
+        creatorId="2"
+    )
+    pin37= Pin (
+
+        url="https://i.pinimg.com/564x/20/45/4c/20454c05e94e933f690226b159c3a47c.jpg",
+        link="https://designlifehacks.com/2016/04/20/types-of-sewing-stitches/",
+        description="Although I do enjoy using a sewing machine to stitch together projects,",
+        title="Hand Sewn Repairs",
+        creatorId="2"
+    )
+    pin38=Pin(
+        url="https://i.pinimg.com/564x/46/9c/e9/469ce9f90af674645e3f109ab316fb48.jpg",
+        link="https://www.homestead-acres.com/planting-potatoes-in-the-fall/",
+        description="Planting potatoes in the fall is a great way to get a head start on the growing season. Learn everything you need to know about fall planting potatoes",
+        title="Planting Potatoes: How To Plant Potatoes In The Fall",
+        creatorId="4"
+    )
+    pin39=Pin(
+        url="https://i.pinimg.com/564x/30/59/3d/30593de2657943ab48e04837a35bc402.jpg",
+        link="https://www.imperfectlyhappy.com/plant-in-september/",
+        description="Are you wondering what you can plant in September? Depending on your zone, you might be surprised at all that you'll be able to grow this fall.",
+        title="What to Plant in September",
+        creatorId="4"
+    )
+
 
     db.session.add(pin1)
     db.session.add(pin2)
@@ -157,6 +334,27 @@ def seed_pins():
     db.session.add(pin16)
     db.session.add(pin17)
     db.session.add(pin18)
+    db.session.add(pin19)
+    db.session.add(pin20)
+    db.session.add(pin21)
+    db.session.add(pin22)
+    db.session.add(pin23)
+    db.session.add(pin24)
+    db.session.add(pin25)
+    db.session.add(pin26)
+    db.session.add(pin27)
+    db.session.add(pin28)
+    db.session.add(pin29)
+    db.session.add(pin30)
+    db.session.add(pin31)
+    db.session.add(pin32)
+    db.session.add(pin33)
+    db.session.add(pin34)
+    db.session.add(pin35)
+    db.session.add(pin36)
+    db.session.add(pin37)
+    db.session.add(pin38)
+    db.session.add(pin39)
 
 def undo_pins():
     if environment == "production":

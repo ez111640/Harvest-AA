@@ -1,0 +1,48 @@
+.edit-profile-div{
+    margin-top: 80px;
+}
+
+.edit-interests{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.topic-list-item{
+    margin: 0px 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 300px;
+    height: 20px;
+}
+
+.edit-profile-header{
+font-size: 24px;
+width: fit-content;
+margin: 10px auto;
+}
+
+.edit-interest-subtitle{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+.edit-interest{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+
+}
+
+input{
+    border: 1px solid black;
+}
+
+
+.edit-category{
+    margin-bottom: 10px;
+}

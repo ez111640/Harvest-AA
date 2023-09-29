@@ -14,6 +14,7 @@ const AddPinToBoardModal = ({ pin }) => {
     const { closeModal } = useModal();
     const userBoards = useSelector((state) => state.boardsReducer.boards)
     const allPins = useSelector((state) => state.pinsReducer.pins)
+    const user = useSelector((state)=> state.session.user)
     const allPinArr = Object.values(allPins)
     const [page, setPage] = useState(1)
     let urlParts = window.location.href.split("/")
@@ -39,6 +40,8 @@ const AddPinToBoardModal = ({ pin }) => {
     if (!userBoards) return null;
 
     const boardArr = Object.values(userBoards)
+    const filteredArr = boardArr.filter((board)=> board.userId === user.id)
+    console.log("FILTERED", filteredArr)
     if (!boardArr) return null;
     return (
         <div>
@@ -46,7 +49,8 @@ const AddPinToBoardModal = ({ pin }) => {
                 <form onSubmit={handleSubmit}>
                     <select id="board-selector">
                         {
-                            boardArr.map((board) =>
+                            filteredArr.map((board) =>
+
                                 <option id="board-selector-input" value={board.id}>{board.name}</option>
                             )
                         }

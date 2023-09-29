@@ -358,9 +358,9 @@ export const PinDetail = () => {
 
 											</div> */}
 					</div>}
-					<div className="add-comment">
+				{!showEditForm &&	<div className="add-comment">
 						{!pinComments.find((comment) => comment.userId === user.id) && <AddComment pinId={thisPin.id} />}
-					</div>
+					</div>}
 				</div>
 
 			</form>

@@ -14,7 +14,6 @@ import OpenModalButton from "../../OpenModalButton";
 
 export const UserBoards = () => {
     const history = useHistory()
-    const board = useSelector((state) => state.boardsReducer.boards)
     const user = useSelector((state) => state.session.user)
     if (!user) history.push("/")
     const pins = useSelector((state) => state.pinsReducer.pins)
@@ -76,9 +75,7 @@ export const UserBoards = () => {
         if (!showMenu) return;
 
         const closeMenu = (e) => {
-            if (!ulRef.current.contains(e.target)) {
                 setShowMenu(false);
-            }
         };
 
         document.addEventListener("click", closeMenu);

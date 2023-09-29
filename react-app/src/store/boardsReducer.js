@@ -93,7 +93,12 @@ export const getBoardDetails = (board) => async (dispatch) => {
     }
 }
 
-export const addBoardThunk = (board) => async (dispatch) => {
+export const addBoardThunk = (paramBoard) => async (dispatch) => {
+    console.log("BOARD", paramBoard)
+    const board = {
+        name: paramBoard.name,
+        public: paramBoard.publicStatus
+    }
     try {
         const res = await fetch(`/api/boards`, {
             method: "POST",

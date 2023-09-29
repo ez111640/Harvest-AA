@@ -72,11 +72,12 @@ def add_board():
     """
     form = BoardForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-
+    print("FORM", form.data["public"])
     if form.validate_on_submit():
         board = Board(
             name=form.data["name"],
-            userId = current_user.id
+            userId = current_user.id,
+            public=form.data["public"]
         )
 
         db.session.add(board)
@@ -95,7 +96,7 @@ def add_board_topic(id):
     topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
     if checkDuplicates:
         db.session.commit()
-        return "Attempted to add duplicated board"
+        return "Attempted to add duplicate board"
     else:
         db.session.add(topicToBoard)
         db.session.commit()
@@ -108,12 +109,13 @@ def delete_board_topic(id):
     topicId = req["id"]
     print("TOPICID", topicId)
     thisTTB = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id, Topics_To_Boards.topicId == topicId ).first()
+    thisTTBId= thisTTB.id
     # checkDuplicates = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == topicToBoard.boardId.all()
     # topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).first()
     print("@@@@@@@@@@@@@@topics", thisTTB)
     db.session.delete(thisTTB)
     db.session.commit()
-    return {"Success": "Item deleted"}
+    return {"deleteId": thisTTBId}
 
 @board_routes.route("/<int:id>/topics")
 def get_board_topics(id):

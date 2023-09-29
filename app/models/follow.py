@@ -22,5 +22,6 @@ class Follow(db.Model, UserMixin):
         return {
             'id': self.id,
             'userId': self.userId,
-            'topicId': self.topicId
+            'topicId': self.topicId,
+            'topicName': self.topics.name
         }

@@ -19,6 +19,7 @@ const CreatePinModal = () => {
     const userBoards = useSelector((state) => state.boardsReducer.boards)
     const allPinArr = Object.values(allPins)
     const userBoardArr = Object.values(userBoards)
+    const filteredArr = userBoardArr.filter((board) => board.userId === user.id)
     const userPins = allPinArr.filter((pin) => pin.userId === user.id)
     const dispatch = useDispatch()
     const [imageLoading, setImageLoading] = useState(false)
@@ -163,7 +164,7 @@ const CreatePinModal = () => {
                     <select id="board-selector">
                         <option id="" value="">Add pin to board upon creation</option>
                         {
-                            userBoardArr.map((board) =>
+                            filteredArr.map((board) =>
                                 <option id="board-selector-input" value={board.id}>{board.name}</option>
                             )
                         }

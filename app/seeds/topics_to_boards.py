@@ -26,6 +26,18 @@ def seed_topics_to_boards():
     topics_to_board8 = Topics_To_Boards(
         topicId="3", boardId="8"
     )
+    topics_to_board9= Topics_To_Boards(
+        topicId="8", boardId="9"
+    )
+    topics_to_board10= Topics_To_Boards(
+        topicId="4", boardId="10"
+    )
+    topics_to_board11= Topics_To_Boards(
+        topicId="6", boardId="11"
+    )
+    topics_to_board12= Topics_To_Boards(
+        topicId="5", boardId="12"
+    )
 
     db.session.add(topics_to_board1)
     db.session.add(topics_to_board2)
@@ -35,6 +47,10 @@ def seed_topics_to_boards():
     db.session.add(topics_to_board6)
     db.session.add(topics_to_board7)
     db.session.add(topics_to_board8)
+    db.session.add(topics_to_board9)
+    db.session.add(topics_to_board10)
+    db.session.add(topics_to_board11)
+    db.session.add(topics_to_board12)
 
     db.session.commit()
 

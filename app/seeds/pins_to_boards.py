@@ -10,7 +10,7 @@ def seed_pins_to_boards():
         boardId="1"
     )
     pb2 = Pins_To_Boards(
-        pinId='1',
+        pinId='38',
         boardId="2"
     )
     pb3 = Pins_To_Boards(
@@ -129,6 +129,38 @@ def seed_pins_to_boards():
         pinId='18',
         boardId="8"
     )
+    pb32 = Pins_To_Boards(
+        pinId='25',
+        boardId="10"
+    )
+    pb33 = Pins_To_Boards(
+        pinId='27',
+        boardId="10"
+    )
+    pb34 = Pins_To_Boards(
+        pinId='29',
+        boardId="10"
+    )
+    pb35 = Pins_To_Boards(
+        pinId='23',
+        boardId="11"
+    )
+    pb36 = Pins_To_Boards(
+        pinId='30',
+        boardId="11"
+    )
+    pb37 = Pins_To_Boards(
+        pinId='18',
+        boardId="11"
+    )
+    pb37 = Pins_To_Boards(
+        pinId='13',
+        boardId="12"
+    )
+    pb38 = Pins_To_Boards(
+        pinId='39',
+        boardId="2"
+    )
     db.session.add(pb1)
     db.session.add(pb2)
     db.session.add(pb3)
@@ -160,6 +192,13 @@ def seed_pins_to_boards():
     db.session.add(pb29)
     db.session.add(pb30)
     db.session.add(pb31)
+    db.session.add(pb32)
+    db.session.add(pb33)
+    db.session.add(pb34)
+    db.session.add(pb35)
+    db.session.add(pb36)
+    db.session.add(pb37)
+    db.session.add(pb38)
 
     db.session.commit()
 
