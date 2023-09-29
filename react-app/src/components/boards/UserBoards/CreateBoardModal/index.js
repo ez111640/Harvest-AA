@@ -6,6 +6,7 @@ import { addBoardThunk, getAllBoardsThunk, getUserBoards } from "../../../../sto
 import { addNewBoardTopicThunk, getAllTopics } from "../../../../store/topicsReducer";
 import { getBoardTopicsThunk } from "../../../../store/topicsReducer";
 import { deleteBoardTopicThunk } from "../../../../store/topicsReducer";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function CreateBoardModal() {
 	const topics = useSelector((state) => state.topicsReducer.allTopics)
@@ -22,6 +23,7 @@ function CreateBoardModal() {
 	const allTopics = Object.values(topics)
 	const boardArr = Object.values(boardTopics)
 	const allBoardArr = Object.values(boards)
+	const history = useHistory()
 	let noMatch = []
 	let match = []
 
@@ -91,6 +93,7 @@ function CreateBoardModal() {
 	const handleClick = (e) => {
 		e.preventDefault();
 		closeModal();
+		history.push("/boards")
 	}
 
 	// const handleSubmitPageTwo = async (e) => {

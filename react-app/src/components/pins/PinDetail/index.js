@@ -144,6 +144,7 @@ export const PinDetail = () => {
 		setDeleteOption(false)
 		// history.push()
 	}
+	
 
 	return (
 		<div className="pin-detail-div" >

@@ -14,7 +14,7 @@ def seed_pins_to_boards():
         boardId="2"
     )
     pb3 = Pins_To_Boards(
-        pinId='1',
+        pinId='40',
         boardId="4"
     )
     pb4 = Pins_To_Boards(
@@ -74,7 +74,7 @@ def seed_pins_to_boards():
         boardId="5"
     )
     pb18 = Pins_To_Boards(
-        pinId='9',
+        pinId='41',
         boardId="6"
     )
     pb19 = Pins_To_Boards(

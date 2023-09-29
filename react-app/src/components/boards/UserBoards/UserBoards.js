@@ -123,10 +123,9 @@ export const UserBoards = () => {
                     {userBoardArray?.length ?
 
                         <div className="user-board-listing">
-                            {userBoardArray.map(
+                            {userBoardArray?.map(
                                 (board) => (
                                     <div value={board.id}>
-
                                         <BoardCard board={board} />
                                     </div>
                                 )

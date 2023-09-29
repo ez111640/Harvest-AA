@@ -27,7 +27,7 @@ const DeletePinModal = ({ pinId, lastPage, boardId }) => {
             <h1>Confirm Delete</h1>
             <p>Are you sure you want to remove this pin? This action cannot be undone</p>
             <button className="yes-delete-button" onClick={onSubmit} type="submit">Yes (Delete Pin)</button>
-            <button className="no-delete-button">No (Keep Pin)</button>
+            <button className="no-delete-button" onClick={closeModal}>No (Keep Pin)</button>
         </div>
     )
 }

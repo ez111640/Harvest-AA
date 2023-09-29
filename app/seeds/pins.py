@@ -314,6 +314,20 @@ def seed_pins():
         title="What to Plant in September",
         creatorId="4"
     )
+    pin40=Pin(
+        url="https://i.pinimg.com/564x/ee/8d/43/ee8d43140d26ba9b5eb79784bfaad065.jpg",
+        link="https://theownerbuildernetwork.co/easy-diy-projects/easy-to-build-rain-barrel-system/?utm_content=buffer77047&utm_medium=social&utm_source=pinterest.com&utm_campaign=buffer",
+        description="Build a homemade rain barrel system with this 7 easy steps guide and take advantage of the rainy days with this rainwater harvester!",
+        title="7 Easy Steps To Build A Rain Barrel System",
+        creatorId="2"
+    )
+    pin41=Pin(
+        url="https://i.pinimg.com/564x/08/10/79/0810792a36256f3d4e95e7f68b7cf4e7.jpg",
+        link="https://www.amodernhomestead.com/simple-diy-raised-garden-beds/",
+        description="Learn how to build super easy, fast, and attractive raised garden beds! This is a 30-minute DIY project & is perfect for growing your own vegetable garden!",
+        title="Simple DIY Raised Garden Beds",
+        creatorId="2"
+    )
 
 
     db.session.add(pin1)
@@ -355,6 +369,8 @@ def seed_pins():
     db.session.add(pin37)
     db.session.add(pin38)
     db.session.add(pin39)
+    db.session.add(pin40)
+    db.session.add(pin41)
 
 def undo_pins():
     if environment == "production":
