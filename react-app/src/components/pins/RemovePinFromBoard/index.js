@@ -21,7 +21,6 @@ const RemovePinFromBoard = ({ pinId, boardId }) => {
         if (boardId) dispatch(getBoardPins(boardId))
         closeModal()
         history.push(`/boards/${boardId}`)
-        window.location.reload();
 
     }
 

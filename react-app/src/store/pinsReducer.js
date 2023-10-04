@@ -6,6 +6,12 @@ export const ADD_PIN = "/pinsReducer/addNewPin"
 export const UPDATE_PIN = "/pinsReducer/putPin"
 export const DELETE_PIN = "/pinsReducer/deletePins"
 export const GET_ONE_PIN = "/pinsReducer/getOnePin"
+export const ADD_PIN_TO_BOARD = "/pinsReduceer/addPinToBoard"
+
+export const addPinToBoard = (pin) => ({
+    type: ADD_PIN_TO_BOARD,
+    pin
+})
 
 export const loadPins = (pins) => ({
     type: LOAD_PINS,
@@ -85,6 +91,7 @@ export const updatePinThunk = (updatedPin) => async (dispatch) => {
 
 export const addPinThunk = (pin) => async (dispatch) => {
     console.log("PININTHUNK", pin)
+
     try {
         const res = await fetch(`/api/pins`, {
             method: "POST",
@@ -94,15 +101,18 @@ export const addPinThunk = (pin) => async (dispatch) => {
 
 
         const pinResponse = await res.json()
-        dispatch(addNewPin(pinResponse))
+        await dispatch(addNewPin(pinResponse))
     } catch (error) {
+
         const errors = await error.json();
+        console.log("ERRORS", errors)
         return errors;
     }
 }
 
 export const addPinAWSThunk = (pin) => async (dispatch) => {
     const formData = new FormData()
+
 
 
     formData.append('url', pin.url)
@@ -114,12 +124,16 @@ export const addPinAWSThunk = (pin) => async (dispatch) => {
         method: "POST",
         body: formData
     })
+    console.log("RESPONSE", response)
     if (response.ok) {
+
         const newPin = await response.json();
         await dispatch(addNewPin(newPin))
         return newPin
     } else {
+
         const errors = await response.json()
+        console.log("ERRORS", errors)
         return errors;
     }
 
@@ -138,6 +152,16 @@ export const deletePin = (pinId) => async (dispatch) => {
         return errors
     }
 }
+
+export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
+    const res = await fetch(`/api/boards/${boardId}/pins`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pin)
+    })
+    const response = await res.json()
+}
+
 
 const initialState = {
     pins: {},
@@ -165,7 +189,7 @@ export const pinsReducer = (state = initialState, action) => {
             return newState
         case UPDATE_PIN:
             newState = { ...state, pins: { ...state.pins }, boardPins: { ...state.boardPins } }
-            newState.pins[action.pin.id] = action.pin
+            newState.pins[action.pin.id] = action.pinId
             newState.pin = action.pin
             return newState
         case DELETE_PIN:

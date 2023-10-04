@@ -107,12 +107,10 @@ def delete_board_topic(id):
     req = request.get_json(force=True)
     print("REQID",req["id"] )
     topicId = req["id"]
-    print("TOPICID", topicId)
     thisTTB = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id, Topics_To_Boards.topicId == topicId ).first()
     thisTTBId= thisTTB.id
     # checkDuplicates = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == topicToBoard.boardId.all()
     # topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).first()
-    print("@@@@@@@@@@@@@@topics", thisTTB)
     db.session.delete(thisTTB)
     db.session.commit()
     return {"deleteId": thisTTBId}
@@ -128,8 +126,13 @@ def get_board_topics(id):
 def update_board(id):
     req = request.get_json(force=True)
     board = Board.query.get(id)
+    if(req["public"] == 'true'):
+        public = True
+    else:
+        public = False
 
     board.name = req["name"]
+    board.public = public
 
     db.session.commit()
     return board.to_dict()
@@ -157,7 +160,6 @@ def remove_pin_from_board(id):
 @board_routes.route("/<int:id>/topics")
 def get_all_board_topics(id):
     board_topics = Topics_To_Boards.query.filter(Topics_To_Boards.boardId == id).all()
-    print("BOARDTOPICS", board_topics)
     return{"board_topics": [ttb.to_dict() for ttb in board_topics]}
 
 

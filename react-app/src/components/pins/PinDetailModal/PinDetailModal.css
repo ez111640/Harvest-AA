@@ -19,7 +19,7 @@
     display: flex;
     column-gap: 10px;
     position: relative;
-    right: 15px;
+    right: 5px;
     bottom: 50px;
     justify-content: flex-end;
 
@@ -30,7 +30,7 @@
     display: flex;
     flex-wrap: nowrap;
     column-gap: 10px;
-    padding: 10px;
+    padding: 0px;
     border-radius: 20px;
     font-size: 12px;
 }
@@ -217,6 +217,10 @@
     border: 1px solid rgb(222, 222, 222);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
       rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.domain-link{
+    margin-left: 30px;
 }
 
 .delete-comment>button{

@@ -2,10 +2,11 @@ import "./SignupForm.css"
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addPinToBoardThunk, getUserBoards } from "../../../store/boardsReducer";
-import { addPinThunk, getAllPins, addPinAWSThunk } from "../../../store/pinsReducer";
+import { getUserBoards } from "../../../store/boardsReducer";
+import { addPinThunk, getAllPins, addPinAWSThunk, getBoardPins } from "../../../store/pinsReducer";
 import AddPinToBoardModal from "../AddPinToBoardModal";
 import OpenModalButton from "../../OpenModalButton";
+import { addPinToBoardThunk } from "../../../store/pinsReducer";
 
 const CreatePinModal = () => {
     const [link, setLink] = useState("");
@@ -14,6 +15,7 @@ const CreatePinModal = () => {
     const [title, setTitle] = useState("")
     const [errors, setErrors] = useState([]);
     const [fileType, setFileType] = useState("")
+    const [boardChoice, setBoardChoice] = useState()
     const user = useSelector((state) => state.session.user)
     const allPins = useSelector((state) => state.pinsReducer.pins)
     const userBoards = useSelector((state) => state.boardsReducer.boards)
@@ -53,23 +55,35 @@ const CreatePinModal = () => {
             const newestPin = allPinArr[allPinArr.length - 1]
             let boardId
             if (document.getElementById("board-selector-input")) {
+                console.log("DOC", document.getElementById("board-selector-input"))
                 boardId = document.getElementById("board-selector-input").value
             }
-            if (boardId) await dispatch(addPinToBoardThunk(boardId, newestPin))
-
+            console.log("BOARDID", boardId)
+            let data2;
+            if (boardId) data2 = await dispatch(addPinToBoardThunk(boardId, newestPin))
+            if (boardId) await dispatch(getBoardPins(boardId))
+            console.log("DATA2", data2)
             history.push("/pins/current")
 
         } else {
             const data = await dispatch(addPinThunk({ url, link, description, title }));
             const newestPin = allPinArr[allPinArr.length - 1]
             const boardId = document.getElementById("board-selector-input").value
-            if (boardId) await dispatch(addPinToBoardThunk(boardId, newestPin))
+            console.log("BOARDID", boardId)
+            let data2
+            if (boardId) data2 = await dispatch(addPinToBoardThunk(boardId, newestPin))
+            console.log("DATA2", data2)
             if (data) {
                 setErrors(data);
             } else {
             }
             history.push("/pins/current")
         }
+    }
+
+    const verifyImage = (url) => {
+        console.log("URL", url)
+
     }
 
 
@@ -160,34 +174,41 @@ const CreatePinModal = () => {
                         </div>
                     }
                 </div>
-                <div className="and-add-to-board">
+                {/* <div className="and-add-to-board" onChange={(e)=> setBoardChoice(e.target.value)}>
                     <select id="board-selector">
                         <option id="" value="">Add pin to board upon creation</option>
                         {
                             filteredArr.map((board) =>
-                                <option id="board-selector-input" value={board.id}>{board.name}</option>
+                                <option
+                                    id="board-selector-input"
+                                    value={board.id}
+                                >{board.name}</option>
                             )
                         }
 
                     </select>
-                </div>
+                </div> */}
             </div>
             <form className="create-pin-page-sub" method="POST" encType="multipart/form-data" onSubmit={handleSubmit} >
                 <div className="create-pin-page-left">
                     <div className={fileType === "AWS" ? "photo-uploaded" : "create-pin-aws-option "} >
                         <div className={fileType === "AWS" ? "" : "create-pin-add-border"}>
                             <div className="upload-photo-image"><i className="fa-solid fa-circle-arrow-up"></i></div>
-                            {fileType === "AWS" ? <div className="photo-ready">Success! Photo ready</div> : <label className="file-input">
+                            {fileType === "AWS" && verifyImage(url) ? <div className="photo-ready">Success! Photo ready</div> : <label className="file-input">
 
                                 <input
                                     type="file"
-                                    accept="image/*"
+                                    accept="image/jpg, image/png"
                                     onChange={(e) => {
-                                        setFileType("AWS")
-                                        setUrl(e.target.files[0])
+
+                                            console.log("SET!")
+                                            setFileType("AWS")
+                                            setUrl(e.target.files[0])
+
                                     }}
                                 />
                             </label>}
+
                             <div className="image-prompt"><span className="span-image-prompt">We recommend using high quality .jpg files less than 20mb</span></div>
                         </div>
                     </div>
@@ -257,8 +278,10 @@ const CreatePinModal = () => {
                         />
 
                     </div>
+
                     <div className={link ? "" : isUrl(link) ? "show-error-create-link no-error" : "show-error-create-link error"}>{link ? isUrl(link) ? "" : <div className="show-error-create-link error ">Invalid url entered</div> : ""}</div>
-                    {url && isUrl(link) && hasPhoto ?
+                    <div>{ url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div>Invalid File Type. Please upload a .png or .jpg type image</div>: <div></div> }</div>
+                    {url && (url.name.includes(".png") || url.name.includes(".jpg")) && isUrl(link) && hasPhoto ?
                         <div>
                             <button className="submit-new-pin" type="submit">Create</button>
                         </div> : <div><button disabled className="submit-new-pin-disabled" type="submit">Create</button></div>}

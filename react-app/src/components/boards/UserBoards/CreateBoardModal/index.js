@@ -39,6 +39,7 @@ function CreateBoardModal() {
 		if (data) {
 			setErrors(data);
 		}
+
 		// closeModal()
 	};
 
@@ -91,9 +92,13 @@ function CreateBoardModal() {
 	}
 
 	const handleClick = (e) => {
+
 		e.preventDefault();
+		const board = allBoardArr[allBoardArr.length -1]
+		console.log("ALLBOARDS", allBoardArr)
+		console.log("BOARDS", board)
+		history.push(`/boards`)
 		closeModal();
-		history.push("/boards")
 	}
 
 	// const handleSubmitPageTwo = async (e) => {

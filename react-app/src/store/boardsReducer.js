@@ -120,6 +120,10 @@ export const addBoardThunk = (paramBoard) => async (dispatch) => {
 }
 
 export const updateBoardThunk = (updatedBoard) => async (dispatch) => {
+    console.log("UPDATEDBOARD", updatedBoard)
+    if(updatedBoard.public === "true") updatedBoard.public = true
+    else updatedBoard.public = false
+    console.log("AFTERFIX", updatedBoard)
     const res = await fetch(`/api/boards/${updatedBoard.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -140,7 +144,8 @@ export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
         body: JSON.stringify(pin)
     })
     const response = await res.json()
-
+    console.log("RESPONSE", response)
+    await dispatch(addPinToBoard(response))
 }
 
 export const removePinFromBoardThunk = (boardId, pin) => async (dispatch) => {

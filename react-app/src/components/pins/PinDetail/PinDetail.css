@@ -12,6 +12,11 @@
 
 }
 
+.addpin-dropdown{
+    position: relative;
+    top: -30px;
+}
+
 #pin-detail-right {
     display: grid;
     grid-template-rows: 20px auto auto auto 3fr 1px 1px;

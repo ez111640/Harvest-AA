@@ -15,6 +15,7 @@ export const BoardLandingPage = () => {
     const dispatch = useDispatch()
     const { boardId } = useParams()
     const [showEditTopics, setShowEditTopics] = useState(false)
+
     const boards = useSelector((state) => state.boardsReducer.boards)
     const allTopics = useSelector((state) => state.topicsReducer.allTopics)
     const topics = useSelector((state) => state.topicsReducer.boardTopics)
@@ -81,6 +82,7 @@ export const BoardLandingPage = () => {
     }, [dispatch, showMenu]);
 
     const [editBoard, setEditBoard] = useState(false)
+    const [editBoardName, setEditBoardName] = useState(false)
 
     if (!thisBoard) return null
 
@@ -126,6 +128,11 @@ export const BoardLandingPage = () => {
     const clickEditBoardButton = (e) => {
         e.preventDefault()
         setEditBoard(!editBoard)
+    }
+
+    const clickEditBoardName = (e) => {
+        e.preventDefault()
+        setEditBoardName(!editBoardName)
     }
 
     const deleteButtonClick = async (e) => {
@@ -189,7 +196,8 @@ export const BoardLandingPage = () => {
                 </button>
                 <ul className={ulClassName} ref={ulRef}>
                     <div className="edit-bn-lp">
-                        <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} />
+                        {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
+                        <button onClick={clickEditBoardName}>Edit Board Name</button>
                         <button onClick={clickEditBoardButton}>Edit Pins</button>
                         <OpenModalButton buttonText="Edit Topics" modalComponent={<BoardTopicModal board={thisBoard} />} />
                     </div>
@@ -217,6 +225,9 @@ export const BoardLandingPage = () => {
                 </div>
 
             </div> */}
+            <div className="edit-board-name-input">
+            {editBoardName ? <UpdateBoardModal board={thisBoard} /> : <div className="board-name">{thisBoard.name}</div>}
+            </div>
             <div>
                 {thisBoardPins.length ?
                     <div id="all-pins">

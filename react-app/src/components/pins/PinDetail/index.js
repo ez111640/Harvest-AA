@@ -26,6 +26,7 @@ export const PinDetail = () => {
 	const [editTitleValue, setEditTitleValue] = useState(false)
 	const [editDescValue, setEditDescValue] = useState(false)
 	const [editLinkValue, setEditLinkValue] = useState(false)
+	const [openPinButton, setOpenPinButton] = useState(false)
 	const [errors, setErrors] = useState([]);
 
 	let domain;
@@ -108,6 +109,11 @@ export const PinDetail = () => {
 		e.preventDefault();
 		window.location = ("/boards")
 	}
+	const onButtonClick = async (e) => {
+		e.preventDefault()
+		setOpenPinButton(!openPinButton)
+	}
+
 
 
 
@@ -144,7 +150,7 @@ export const PinDetail = () => {
 		setDeleteOption(false)
 		// history.push()
 	}
-	
+
 
 	return (
 		<div className="pin-detail-div" >
@@ -212,7 +218,11 @@ export const PinDetail = () => {
 									modalComponent={<DeletePinModal pinId={thisPin.id} />}
 
 								/>}
-							<OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+							<button onClick={onButtonClick}><i className="fa-solid fa-wheat-awn"></i></button>
+							{
+								openPinButton ? <div className="addpin-dropdown"><AddPinToBoardModal /></div> : <div></div>
+							}
+							{/* <OpenModalButton type="button" buttonText={<i className="fa-solid fa-wheat-awn"></i>} modalComponent={<AddPinToBoardModal pin={thisPin} />} /> */}
 						</div>}
 
 					</div>
@@ -359,9 +369,16 @@ export const PinDetail = () => {
 
 											</div> */}
 					</div>}
-				{!showEditForm &&	<div className="add-comment">
-						{!pinComments.find((comment) => comment.userId === user.id) && <AddComment pinId={thisPin.id} />}
-					</div>}
+					{!showEditForm &&
+
+						<div className="add-comment">
+
+							{pinComments.find((comment) => comment.userId === user.id) ?
+								<div>Thank you for your comment!</div> :
+
+
+								<AddComment pinId={thisPin.id} />}
+						</div>}
 				</div>
 
 			</form>

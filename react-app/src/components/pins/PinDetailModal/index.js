@@ -18,6 +18,7 @@ export const PinDetailModal = ({ pinId }) => {
 	const [commentText, setCommentText] = useState("")
 	const [deleteOption, setDeleteOption] = useState(false)
 	const [commentId, setCommentId] = useState("")
+	const [openAddPin, setOpenAddPin] = useState("")
 
 	let domain;
 
@@ -103,7 +104,14 @@ export const PinDetailModal = ({ pinId }) => {
 					<div className="save-pin-from-main">{domain}</div>
 					<div className="save-pin-from-main">
 						{user ?
-							<OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
+
+							openAddPin ?
+								<AddPinToBoardModal pin={thisPin} />
+								:
+								<button onClick={setOpenAddPin}>Save</button>
+
+
+							// <OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
 							:
 							<div className="prompt-signup"><OpenModalButton buttonText="Signup To Pin" modalComponent={<SignupFormModal />} /></div>
 						}
@@ -158,21 +166,26 @@ export const PinDetailModal = ({ pinId }) => {
 					< hr />
 				</div>
 
-				{user && !pinComments.find((comment) => comment.userId === user.id) && <div className="leave-a-comment-area">
-					<div className="user-letter">{firstLetter}</div>
-					<label className='comment-text-fields'>
-						<div className="enter-comment-input">
-							<input
-								type="text"
-								value={commentText}
-								onChange={(e) => setCommentText(e.target.value)}
-								required
-								placeholder="Leave a comment"
-							/>
-							{commentText && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
-						</div>
-					</label>
-				</div>}
+				{user &&
+					pinComments.find((comment) => comment.userId === user.id) ?
+					<div>Thank you for your comment!</div> :
+					<div className="leave-a-comment-area">
+						<div className="user-letter">{firstLetter}</div>
+						<label className='comment-text-fields'>
+							<div className="enter-comment-input">
+								<input
+									type="text"
+									value={commentText}
+									onChange={(e) => setCommentText(e.target.value)}
+									required
+									placeholder="Leave a comment"
+								/>
+								{commentText && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
+							</div>
+						</label>
+					</div>
+
+				}
 
 
 

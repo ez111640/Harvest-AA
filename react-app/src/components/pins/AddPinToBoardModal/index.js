@@ -61,8 +61,8 @@ const AddPinToBoardModal = ({ pin }) => {
             {
                 page === 2 &&
                 <div className="display-success" onClick={handleSuccess}>
-                    <div className="close-success">X</div>
-                    <div>Success! Pin added</div>
+                    {/* <div className="close-success">X</div> */}
+                    <div>Pinned!</div>
                 </div>
             }
         </div>

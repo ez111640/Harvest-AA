@@ -31,6 +31,13 @@
     right: 200px;
 }
 
+
+.edit-board-name-input{
+    position: relative;
+    left: 300px;
+    top: -40px;
+}
+
 .submit-button-topic{
     background-color: black;
     color: white;
@@ -83,11 +90,20 @@
 }
 
 .edit-board-name-input {
-    height: 20px;
+    /* height: 20px; */
     align-self: center;
     justify-self: center;
     margin: 0px 10px;
 }
+
+.board-input{
+    height: 20px;
+}
+
+.submit-board-name{
+    margin-left: 10px;
+}
+
 
 .edit-bn-lp{
     display: grid;
@@ -160,6 +176,8 @@
     font-size: 32px;
     display: flex;
     column-gap: 20px;
+    position: relative;
+    right: 300px;
 }
 
 
