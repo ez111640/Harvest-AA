@@ -212,7 +212,7 @@ const CreatePinModal = () => {
                             <div className="image-prompt"><span className="span-image-prompt">We recommend using high quality .jpg files less than 20mb</span></div>
                         </div>
                     </div>
-                    <div className="create-pin-url-option">
+                    {/* <div className="create-pin-url-option">
                         <input
                             type="text"
                             placeholder={url ? "" : "Save photo url from site"}
@@ -224,7 +224,7 @@ const CreatePinModal = () => {
 
                         />
 
-                    </div>
+                    </div> */}
                     <div clasName="show-photo-errors">
                         {title && link && description && !url && <div className="need-photo-error error">You must include a photo when creating a pin</div>}
                         {fileType !== "AWS" && <div className={url ? "" : isUrl(url) ? "show-error-create no-error" : "show-error-create error"}>{url ? isUrl(url) ? "" : <div className="show-error-create error ">Invalid url entered</div> : ""}</div>}

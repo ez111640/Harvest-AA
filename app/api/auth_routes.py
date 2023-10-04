@@ -77,6 +77,31 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@auth_routes.route('/<int:id>', methods=['PUT'])
+def update_user(id):
+    # form = SignUpForm()
+    # form["csrf_token"].data = request.cookies["csrf_token"]
+    req = request.get_json(force =True)
+    user = User.query.get(id)
+    print("FORM", req)
+    print("USER", user)
+    # if form.validate_on_submit():
+    #  if(form.data["password"]):
+    # if(req["password"]):
+    #     user.password = req["password"]
+    user.username=req['username'],
+    user.email=req['email'],
+    user.firstName = req['firstName'],
+    user.lastName = req['lastName'],
+    #  if(form.data["city"]):
+    # user.city=req['city'],
+    #  if(form.data["state"]):
+    # user.state=req['state']
+
+    # db.session.commit()
+    return user.to_dict()
+
+
 
 @auth_routes.route('/unauthorized')
 def unauthorized():

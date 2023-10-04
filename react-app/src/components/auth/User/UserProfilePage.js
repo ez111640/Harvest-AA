@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { getAllTopics } from "../../../store/topicsReducer"
 import { useHistory } from "react-router-dom"
 import { addUserFollowThunk, deleteUserFollowThunk } from "../../../store/topicsReducer"
+import { updateUserThunk } from "../../../store/session"
 
 
 export const UserProfilePage = () => {
@@ -44,6 +45,19 @@ export const UserProfilePage = () => {
         dispatch(getUserTopicsThunk())
     }, [dispatch, userTopArr.length])
 
+    const updateUser = async (e) =>{
+        e.preventDefault()
+        let newUser = {}
+        firstName ? newUser.firstName = firstName : newUser.firstName = user.firstName
+        lastName ? newUser.lastName = lastName : newUser.lastName = user.lastName
+        username ? newUser.username = username : newUser.username = user.username
+        password ? newUser.password = password : newUser.password = user.password
+        email ? newUser.email = email : newUser.email = user.email
+        newUser.id = user.id
+
+        await dispatch(updateUserThunk(newUser))
+
+       }
 
 
     const toggleMatch = async (topic) => {
@@ -99,7 +113,7 @@ export const UserProfilePage = () => {
                     </div>
                 </div>
             </div>
-            <form className="edit-interests">
+            <form className="edit-interests" onSubmit={updateUser}>
                 <div className="edit-interest-subtitle">Edit Profile Info</div>
 
                 <div className="edit-category">
@@ -144,7 +158,7 @@ export const UserProfilePage = () => {
                         ></input>
                     </label>
                 </div>
-                <div className="edit-category">
+                {/* <div className="edit-category">
                     <div className="edit-interest-subtitle">Change Password</div>
                     <label>
                         Password:
@@ -162,7 +176,7 @@ export const UserProfilePage = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         ></input>
                     </label>
-                </div>
+                </div> */}
                 <button className="submit-button" type="submit">Submit</button>
 
             </form>

@@ -46,3 +46,7 @@ input{
 .edit-category{
     margin-bottom: 10px;
 }
+
+.edit-category>label{
+    margin-right: 10px;
+}

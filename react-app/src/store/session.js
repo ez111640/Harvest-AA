@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+export const UPDATE_USER = "/session/UPDATE_USER"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -10,6 +11,11 @@ const setUser = (user) => ({
 const removeUser = () => ({
 	type: REMOVE_USER,
 });
+
+export const putUser = (user) => ({
+	type: UPDATE_USER,
+	payload: user
+})
 
 const initialState = { user: null };
 
@@ -96,9 +102,33 @@ export const signUp = (username, email, password, firstName, lastName) => async 
 	}
 };
 
+export const updateUserThunk = (userInfo) => async (dispatch) => {
+	const { username,
+		email,
+		password,
+		firstName,
+		lastName } = userInfo
+	const response = await fetch(`/api/auth/${userInfo.id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(username, email, password, firstName, lastName)
+	})
+	const oldUser = await response.json()
+	if (response.ok) {
+		await dispatch(putUser(userInfo))
+	} else {
+		console.log("ERROR IN UPDATE USER THUNK")
+	}
+}
+
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
+			return { user: action.payload };
+		case UPDATE_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
