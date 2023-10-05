@@ -2,3 +2,13 @@
 html {
     font-family: Mooli;
 }
+
+
+button, a, .domain-link{
+    cursor: pointer
+}
+
+button{
+    font-family: Mooli;
+    
+}
