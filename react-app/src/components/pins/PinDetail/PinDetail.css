@@ -238,10 +238,6 @@ font-size: 12px;
 .leave-a-comment-area {
     margin-bottom: 20px;
     display: flex;
-    align-items: space-between;
-    justify-content: space-between;
-    margin-left: 10px;
-    column-gap: 5px;
 }
 
 .leave-a-comment-area>div{
@@ -250,7 +246,7 @@ font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 20px;
 }
 
 .sticky-comment{

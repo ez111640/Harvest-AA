@@ -101,15 +101,17 @@ export const PinDetailModal = ({ pinId }) => {
 				<div className="pin-detail-modal-grid-right font-bold">{thisPin.title}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-desc">{thisPin.description}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-link font-size-14px">
-					<div className="save-pin-from-main">{domain}</div>
 					<div className="save-pin-from-main">
 						{user ?
 
 							openAddPin ?
 								<AddPinToBoardModal pin={thisPin} />
-								:
-								<button onClick={setOpenAddPin}>Save</button>
 
+								:
+								<div>
+									<div className="save-pin-from-main">{domain}</div>
+									<button onClick={setOpenAddPin}>Save</button>
+								</div>
 
 							// <OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
 							:

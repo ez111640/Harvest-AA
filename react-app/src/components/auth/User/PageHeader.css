@@ -33,7 +33,7 @@
 }
 
 .profile-div-left-buttons>div{
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .user-stats {
@@ -90,6 +90,7 @@
     padding: 10px 10px;
     margin-left: 10px;
     border-radius: 20px;
+    font-size: 16px;
 }
 
 .page-header-modals>a{

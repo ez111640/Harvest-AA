@@ -4,6 +4,8 @@
     margin-right: auto;
     justify-content: center;
     margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .submit-button {
@@ -19,10 +21,12 @@
 .select-board>form {
     display: flex;
     column-gap: 10px;
+
 }
 
 #board-selector-input {
     border: none;
+
 }
 
 select#board-selector {
@@ -32,13 +36,13 @@ select#board-selector {
 
 
 
-.display-success{
+.display-success {
     margin: 25px 30px 0px 0px;
     height: 50px;
     display: flex;
 }
 
-.close-success{
+.close-success {
     display: flex;
     justify-content: flex-end;
     padding: 10px 15px 10px 15px;
