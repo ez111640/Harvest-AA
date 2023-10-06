@@ -88,18 +88,20 @@
 }
 
 .file-input {
-    margin-left: 50px;
+    margin-left: 40px;
 
 }
 
 
 .file-input>input {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 40px;
+    width: 180px;
+
 }
 
 .image-prompt {
-    font-size: 10px;
+    font-size: 14px;
     display: table;
 
     width: 250px;
@@ -172,7 +174,11 @@
     position: relative;
     bottom: 10px;
     cursor: pointer;
+    font-size: 16px;
+}
 
+.create-pin-add-link>input{
+    font-size: 20px;
 }
 
 .submit-new-pin-disabled{
@@ -182,6 +188,7 @@
     border: none;
     position: relative;
     bottom: 10px;
+    font-size: 16px;
 }
 
 .submit-new-pin:hover{
@@ -205,7 +212,8 @@
 .create-pin-user-info {
     display: flex;
     column-gap: 20px;
-    font-size: 12px;
+    font-size: 16px;
+
 }
 
 .create-pin-user-spot {
@@ -218,7 +226,7 @@
     justify-content: center;
     position: relative;
     left: 10px;
-    bottom: 5px;
+    bottom: 2px;
 }
 
 .create-pin-page-right {
@@ -230,11 +238,29 @@
 .create-pin-add-description {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    width: 120%;
+    width: 110%;
+    margin-left: 15px;
     word-wrap: normal;
-
     overflow: hidden;
 }
+
+.create-pin-add-description>textarea{
+    font-size: 18px;
+}
+
+.required-fields{
+    width: 100%;
+    position: relative;
+    right: -500px;
+}
+
+.create-pin-page-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 input[type=textarea] {
     word-wrap: break-word;

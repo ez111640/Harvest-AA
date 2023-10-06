@@ -23,11 +23,11 @@ function Navigation({ isLoaded }) {
   }
   const onClick = (e) => {
     e.preventDefault();
-    if (searchInput) history.push(`/pins/search/${searchInput}`)
+    if (searchInput) history.push(`/pins/search/${searchInput.toLowerCase()}`)
   }
 
   const onEnter = () => {
-    if (searchInput) history.push(`/pins/search/${searchInput}`)
+    if (searchInput) history.push(`/pins/search/${searchInput.toLowerCase()}`)
   }
 
 

@@ -110,7 +110,7 @@ export const PinDetailModal = ({ pinId }) => {
 								:
 								<div>
 									<div className="save-pin-from-main">{domain}</div>
-									<button onClick={setOpenAddPin}>Save</button>
+									<button className="submit-button" onClick={setOpenAddPin}>Save</button>
 								</div>
 
 							// <OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />

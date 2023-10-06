@@ -169,11 +169,12 @@ const CreatePinModal = () => {
                             </button>
                         </div>
                         :
-                        <div>
+                        <div >
                             <i onClick={openClearMenu} className="create-pin-ellipsis fa-solid fa-ellipsis"></i>
                         </div>
                     }
                 </div>
+                <div className="required-fields">*Field Required</div>
                 {/* <div className="and-add-to-board" onChange={(e)=> setBoardChoice(e.target.value)}>
                     <select id="board-selector">
                         <option id="" value="">Add pin to board upon creation</option>
@@ -201,15 +202,15 @@ const CreatePinModal = () => {
                                     accept="image/jpg, image/png"
                                     onChange={(e) => {
 
-                                            console.log("SET!")
-                                            setFileType("AWS")
-                                            setUrl(e.target.files[0])
+                                        console.log("SET!")
+                                        setFileType("AWS")
+                                        setUrl(e.target.files[0])
 
                                     }}
                                 />
                             </label>}
 
-                            <div className="image-prompt"><span className="span-image-prompt">We recommend using high quality .jpg files less than 20mb</span></div>
+                            <div className="image-prompt"><span className="span-image-prompt">We recommend using high quality .jpg files less than 20mb*</span></div>
                         </div>
                     </div>
                     {/* <div className="create-pin-url-option">
@@ -234,7 +235,7 @@ const CreatePinModal = () => {
                     <div className="create-pin-form-field create-pin-add-title" >
                         <input type="text"
                             value={title && title}
-                            placeholder={title ? title : "Add your title"}
+                            placeholder={title ? title : "Add your title*"}
                             onChange={(e) => {
                                 setTitle(e.target.value)
                                 changefontsize()
@@ -243,7 +244,7 @@ const CreatePinModal = () => {
                             id="create-pin-title"
                             required
                         />
-                        <div className={title.length > 50 ? "show-error-create-pin error" : "show-error-create-pin no-error"}>{title.length <= 50 ? 50 - title.length : "Oops! This title is getting long. Try trimming it down."}</div>
+                        <div className={title.length > 50 ? "show-error-create-pin error" : "show-error-create-pin no-error"}>{title.length <= 50 ? (50 - title.length) : "Oops! This title is getting long. Try trimming it down."}</div>
                     </div>
                     <div className="create-pin-form-field create-pin-user-info">
                         <div className="create-pin-user-spot">{firstLetter}</div>
@@ -259,7 +260,7 @@ const CreatePinModal = () => {
 
                         <textarea
                             rows="6"
-                            placeholder={description ? "" : "Tell everyone what your pin is about"}
+                            placeholder={description ? "" : "Tell everyone what your pin is about*"}
                             value={description && description}
                             onChange={(e) => setDescription(e.target.value)}
                             required
@@ -271,7 +272,7 @@ const CreatePinModal = () => {
                     <div className="create-pin-form-field create-pin-add-link">
                         <input
                             type="text"
-                            placeholder={link ? "" : "Add a destination link"}
+                            placeholder={link ? "" : "Add a destination link*"}
                             value={link && link}
                             onChange={(e) => setLink(e.target.value)}
 
@@ -280,7 +281,7 @@ const CreatePinModal = () => {
                     </div>
 
                     <div className={link ? "" : isUrl(link) ? "show-error-create-link no-error" : "show-error-create-link error"}>{link ? isUrl(link) ? "" : <div className="show-error-create-link error ">Invalid url entered</div> : ""}</div>
-                    <div>{ url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div>Invalid File Type. Please upload a .png or .jpg type image</div>: <div></div> }</div>
+                    <div>{url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div>Invalid File Type. Please upload a .png or .jpg type image</div> : <div></div>}</div>
                     {url && (url.name.includes(".png") || url.name.includes(".jpg")) && isUrl(link) && hasPhoto ?
                         <div>
                             <button className="submit-new-pin" type="submit">Create</button>
