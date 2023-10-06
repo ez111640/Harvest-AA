@@ -20,6 +20,8 @@ flask seed all
 flask run
 To run the React App in development, checkout the README inside the react-app directory.
 
+# Notes
+
 Thank you for looking at my project! This project is called Harvest. It is a Pinterest clone that allows users to browse, save, and create ideas (pins), then organize those pins by board. A user can specify which topics the board is associated with. The user can also follow specific topics, which creates a list of recommended boards that match the user's followed topics. When creating a board, the user is prompted to set the board's status as public or 'secret', and only the public boards are given as suggestions to other users.  Users can also comment on pins, as well as view other comments left by other users.
 
 ![harvest-landing-page](https://github.com/ez111640/Harvest-AA/assets/126621503/0ac2f46a-4212-4a61-b7c1-f73f928a5951)
