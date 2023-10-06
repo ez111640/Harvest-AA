@@ -1,5 +1,25 @@
 # Flask React Project
 
+Getting started
+Clone this repository (only this branch)
+
+Install dependencies
+
+pipenv install -r requirements.txt
+Create a .env file based on the example with proper settings for your development environment
+
+Make sure the SQLite3 database connection URL is in the .env file
+
+This starter organizes all tables inside the flask_schema schema, defined by the SCHEMA environment variable. Replace the value for SCHEMA with a unique name, making sure you use the snake_case convention.
+
+Get into your pipenv, migrate your database, seed your database, and run your Flask app
+
+pipenv shell
+flask db upgrade
+flask seed all
+flask run
+To run the React App in development, checkout the README inside the react-app directory.
+
 Thank you for looking at my project! This project is called Harvest. It is a Pinterest clone that allows users to browse, save, and create ideas (pins), then organize those pins by board. A user can specify which topics the board is associated with. The user can also follow specific topics, which creates a list of recommended boards that match the user's followed topics. When creating a board, the user is prompted to set the board's status as public or 'secret', and only the public boards are given as suggestions to other users.  Users can also comment on pins, as well as view other comments left by other users.
 
 ![harvest-landing-page](https://github.com/ez111640/Harvest-AA/assets/126621503/0ac2f46a-4212-4a61-b7c1-f73f928a5951)
