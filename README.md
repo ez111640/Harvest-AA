@@ -45,6 +45,7 @@ Landing Page
 ![harvest-landing-page](https://github.com/ez111640/Harvest-AA/assets/126621503/551b1cf0-8d25-4269-99dd-8257b18fbfb6)
 
 User Profile Page
+![edit-user](https://github.com/ez111640/Harvest-AA/assets/126621503/fbaecbfe-b0fe-44b2-8563-77e00f8a7ad5)
 
 Board Landing Page
 ![harvest-user-page](https://github.com/ez111640/Harvest-AA/assets/126621503/f87d4a4e-9e4a-41b7-b81b-83adceb89ede)
