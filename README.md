@@ -57,7 +57,7 @@ Edit Board Page- Edit Topics
 ![edit-topics](https://github.com/ez111640/Harvest-AA/assets/126621503/2c7a0eee-4812-4c5e-af11-5817738c2c1d)
 
 Create Pin Page
-![harvest-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/a96f0c28-18b1-4e69-a3eb-19a6724b6f95)
+![add-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/43549b70-9751-4ee1-a6ce-f429082f8a33)
 
 Pin Detail Page
 ![harvest-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/504caf79-a1b0-452c-a7b7-d1052ee29f7f)
