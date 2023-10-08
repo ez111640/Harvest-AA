@@ -37,35 +37,44 @@ This project is called Harvest. It is a Pinterest clone that allows users to bro
  - The user's chosen topics are used to generate an 'explore' page of boards that fit one or more of the topics the user chose
  
 ## Database Schema
-
+![266090894-f9e26185-e9df-490b-bd1b-edbbf055af71](https://github.com/ez111640/Harvest-AA/assets/126621503/0732e3e8-6a82-42ba-ac5d-4fd0e1955d1d)
 
 ## Components
 
 Landing Page
+![harvest-landing-page](https://github.com/ez111640/Harvest-AA/assets/126621503/551b1cf0-8d25-4269-99dd-8257b18fbfb6)
 
 User Profile Page
 
 Board Landing Page
+![harvest-user-page](https://github.com/ez111640/Harvest-AA/assets/126621503/f87d4a4e-9e4a-41b7-b81b-83adceb89ede)
 
-Create Board Page
-
-Edit Board Page- Edit Name
+Create or edit board name 
+![edit-board-name](https://github.com/ez111640/Harvest-AA/assets/126621503/2361abff-87b4-4e37-b26e-44a548235d95)
 
 Edit Board Page- Edit Topics
+![edit-topics](https://github.com/ez111640/Harvest-AA/assets/126621503/2c7a0eee-4812-4c5e-af11-5817738c2c1d)
+
+Create Pin Page
+![harvest-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/a96f0c28-18b1-4e69-a3eb-19a6724b6f95)
 
 Pin Detail Page
+![harvest-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/504caf79-a1b0-452c-a7b7-d1052ee29f7f)
 
 Edit Pin Page
+![edit-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/f05f7d55-3cac-44ef-93db-06bb5efb9213)
 
 Delete Pin Page- from Board Page
+![boardpins](https://github.com/ez111640/Harvest-AA/assets/126621503/83d9a01c-cdf9-4fa9-ab14-77dcc29be563)
 
 Edit Profile Page
+![edit-user](https://github.com/ez111640/Harvest-AA/assets/126621503/65e3fc8a-c382-44c4-9226-3fa08df4c6b7)
 
-View Comments
-
-Create Comments
+View and Create Comments
+![add-comment-page](https://github.com/ez111640/Harvest-AA/assets/126621503/83d4e15e-b072-4d11-961c-644cf878506a)
 
 Delete Comments
+![delete-comment](https://github.com/ez111640/Harvest-AA/assets/126621503/66f909a4-e0f7-480f-b725-fcf5acee7c71)
 
 ## Endpoints
 
