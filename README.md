@@ -71,12 +71,6 @@ Delete Pin Page- from Board Page
 Edit Profile Page
 ![edit-user](https://github.com/ez111640/Harvest-AA/assets/126621503/65e3fc8a-c382-44c4-9226-3fa08df4c6b7)
 
-View and Create Comments
-![add-comment-page](https://github.com/ez111640/Harvest-AA/assets/126621503/83d4e15e-b072-4d11-961c-644cf878506a)
-
-Delete Comments
-![delete-comment](https://github.com/ez111640/Harvest-AA/assets/126621503/66f909a4-e0f7-480f-b725-fcf5acee7c71)
-
 ## Endpoints
 
 | Request | Purpose |
