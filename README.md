@@ -44,17 +44,8 @@ This project is called Harvest. It is a Pinterest clone that allows users to bro
 Landing Page
 ![harvest-landing-page](https://github.com/ez111640/Harvest-AA/assets/126621503/551b1cf0-8d25-4269-99dd-8257b18fbfb6)
 
-User Profile Page
-![edit-user](https://github.com/ez111640/Harvest-AA/assets/126621503/fbaecbfe-b0fe-44b2-8563-77e00f8a7ad5)
-
 Board Landing Page
 ![harvest-user-page](https://github.com/ez111640/Harvest-AA/assets/126621503/f87d4a4e-9e4a-41b7-b81b-83adceb89ede)
-
-Create or edit board name 
-![edit-board-name](https://github.com/ez111640/Harvest-AA/assets/126621503/2361abff-87b4-4e37-b26e-44a548235d95)
-
-Edit Board Page- Edit Topics
-![edit-topics](https://github.com/ez111640/Harvest-AA/assets/126621503/2c7a0eee-4812-4c5e-af11-5817738c2c1d)
 
 Create Pin Page
 ![add-pin-page](https://github.com/ez111640/Harvest-AA/assets/126621503/43549b70-9751-4ee1-a6ce-f429082f8a33)
