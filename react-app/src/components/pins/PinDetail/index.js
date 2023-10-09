@@ -272,7 +272,7 @@ export const PinDetail = () => {
 								<button type="button" onClick={clickEditDescButton} className="regular-edit-button entered-edit-form"><i className="fa-solid fa-pen-to-square"></i></button>
 							}
 						</div>}
-					<div className="pin-details">{domain === "www" ? "Visit Site" :
+					<div className="pin-details">{domain === "www" ? <a href={`${thisPin.link}`}>Visit Site</a> :
 						// <div>{ domain }</div>
 						<div>
 							<div className="photo-link-edit" >

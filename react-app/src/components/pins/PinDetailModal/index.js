@@ -100,6 +100,7 @@ export const PinDetailModal = ({ pinId }) => {
 			<div className="pin-detail-modal-right">
 				<div className="pin-detail-modal-grid-right font-bold">{thisPin.title}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-desc">{thisPin.description}</div>
+					<div className="pin-detail-modal-grid-right">{domain}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-link font-size-14px">
 					<div className="save-pin-from-main">
 						{user ?
@@ -109,7 +110,6 @@ export const PinDetailModal = ({ pinId }) => {
 
 								:
 								<div>
-									<div className="save-pin-from-main">{domain}</div>
 									<button className="submit-button" onClick={setOpenAddPin}>Save</button>
 								</div>
 
@@ -165,7 +165,7 @@ export const PinDetailModal = ({ pinId }) => {
 						</div>
 						: <div className="pin-detail-comment-content">Be the first to leave a comment!</div>}
 
-					< hr />
+
 				</div>
 
 				{user &&
