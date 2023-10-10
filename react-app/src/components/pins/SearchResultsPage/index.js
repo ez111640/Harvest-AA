@@ -26,7 +26,6 @@ export const SearchResultsPage = () => {
             } else if (pin.link.toLowerCase().search(search) !== -1) {
                 searchpins.push(pin)
             } else {
-                console.log("NOTFOUND")
             }
         })
     }

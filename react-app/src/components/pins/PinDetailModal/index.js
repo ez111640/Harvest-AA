@@ -27,8 +27,6 @@ export const PinDetailModal = ({ pinId }) => {
 		dispatch(getOnePinThunk(pinId))
 	}, [dispatch])
 
-	console.log("COMMENTEXT1", commentText)
-
 
 	let firstLetter
 	if (user) {
@@ -73,7 +71,6 @@ export const PinDetailModal = ({ pinId }) => {
 	}
 
 	const onSubmit = (e) => {
-		console.log("COMMENTEXT", commentText)
 		e.preventDefault();
 		dispatch(deleteCommentThunk(commentId))
 		dispatch(getAllComments())

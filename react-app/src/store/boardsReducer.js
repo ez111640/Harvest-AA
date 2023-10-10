@@ -62,7 +62,6 @@ export const getAllBoardsThunk = () => async (dispatch) => {
     let res = await fetch(`/api/boards/all`)
     if (res.ok) {
         const allBoards = await res.json();
-        console.log("ALLBOARDS", allBoards)
         await dispatch(loadBoards(allBoards))
     }
 }
@@ -94,7 +93,6 @@ export const getBoardDetails = (board) => async (dispatch) => {
 }
 
 export const addBoardThunk = (paramBoard) => async (dispatch) => {
-    console.log("BOARD", paramBoard)
     const board = {
         name: paramBoard.name,
         public: paramBoard.publicStatus
@@ -120,10 +118,8 @@ export const addBoardThunk = (paramBoard) => async (dispatch) => {
 }
 
 export const updateBoardThunk = (updatedBoard) => async (dispatch) => {
-    console.log("UPDATEDBOARD", updatedBoard)
     if(updatedBoard.public === "true") updatedBoard.public = true
     else updatedBoard.public = false
-    console.log("AFTERFIX", updatedBoard)
     const res = await fetch(`/api/boards/${updatedBoard.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -133,7 +129,6 @@ export const updateBoardThunk = (updatedBoard) => async (dispatch) => {
     if (res.ok) {
         await dispatch(putBoard(updatedBoard))
     } else {
-        console.log("ERROR IN UPDATE BOARD THUNK")
     }
 }
 
@@ -144,7 +139,6 @@ export const addPinToBoardThunk = (boardId, pin) => async (dispatch) => {
         body: JSON.stringify(pin)
     })
     const response = await res.json()
-    console.log("RESPONSE", response)
     await dispatch(addPinToBoard(response))
 }
 

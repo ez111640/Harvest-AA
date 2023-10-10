@@ -35,7 +35,6 @@ const SelectImageSourceModal = ({ pinId, lastPage }) => {
         const data = await dispatch(addPinThunk({ url, link, description, title }));
         if (data) {
             setErrors(data);
-            console.log(errors)
         } else {
             closeModal();
         }
@@ -43,7 +42,6 @@ const SelectImageSourceModal = ({ pinId, lastPage }) => {
 
     const handleSubmitAWS = async (e) => {
         e.preventDefault();
-        console.log("HANDLINGSUBMIT")
         const formData = new FormData();
         formData.append("url", url)
         formData.append("title", title)

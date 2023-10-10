@@ -67,7 +67,6 @@ export const getBoardPins = (id) => async (dispatch) => {
 
     const btps = await res.json();
     if (btps == "No pins") {
-        console.log("NO PINS FOR THAT BOARD")
     } else {
         await dispatch(loadBoardPins(btps))
     }
@@ -85,13 +84,10 @@ export const updatePinThunk = (updatedPin) => async (dispatch) => {
     if (res.ok) {
         await dispatch(putPin(updatedPin))
     } else {
-        console.log("THERE WAS A PROBLEM WITH RES")
     }
 }
 
 export const addPinThunk = (pin) => async (dispatch) => {
-    console.log("PININTHUNK", pin)
-
     try {
         const res = await fetch(`/api/pins`, {
             method: "POST",
@@ -105,7 +101,6 @@ export const addPinThunk = (pin) => async (dispatch) => {
     } catch (error) {
 
         const errors = await error.json();
-        console.log("ERRORS", errors)
         return errors;
     }
 }
@@ -124,7 +119,6 @@ export const addPinAWSThunk = (pin) => async (dispatch) => {
         method: "POST",
         body: formData
     })
-    console.log("RESPONSE", response)
     if (response.ok) {
 
         const newPin = await response.json();
@@ -133,7 +127,6 @@ export const addPinAWSThunk = (pin) => async (dispatch) => {
     } else {
 
         const errors = await response.json()
-        console.log("ERRORS", errors)
         return errors;
     }
 

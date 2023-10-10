@@ -17,9 +17,7 @@ export const ExploreBoards = () => {
     const topicBoards = useSelector((state) => state.topicsReducer.topicBoards)
     const dispatch = useDispatch()
 
-    const userBoards = boardArr.filter((board) => board.userId === user.id)
-
-    console.log("topicb", topicBoards)
+    // const userBoards = boardArr.filter((board) => board.userId === user.id)
 
     const returnBoardArr = (topicId) => {
         let arr = topicBoards[topicId]

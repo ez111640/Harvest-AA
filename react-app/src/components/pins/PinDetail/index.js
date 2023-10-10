@@ -65,16 +65,10 @@ export const PinDetail = () => {
 		const url = thisPin?.link
 		let splitUrl
 		if (url) splitUrl = url.split("/")
-		console.log('URL', splitUrl)
 		if (splitUrl[0] === "https:" || splitUrl[0] === "http:") {
 			domain = splitUrl[2].split(".")[0]
-			console.log("DOMAIN", domain)
 		}
 	}
-
-	console.log("PINUSER", thisPin.userId)
-	console.log("USER", user.id)
-	console.log("USERS", user)
 	const pinComments = commentArr.filter((comment) => comment.pinId == pinId)
 	const clickEditUrlButton = (e) => {
 		e.preventDefault()

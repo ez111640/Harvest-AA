@@ -41,7 +41,6 @@ const AddPinToBoardModal = ({ pin }) => {
 
     const boardArr = Object.values(userBoards)
     const filteredArr = boardArr.filter((board)=> board.userId === user.id)
-    console.log("FILTERED", filteredArr)
     if (!boardArr) return null;
     return (
         <div>

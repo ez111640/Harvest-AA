@@ -9,20 +9,19 @@ function EditBoardTopics(boardId) {
 	const topics = useSelector((state) => state.topicsReducer.allTopics)
 	const boardTopics = useSelector((state) => state.topicsReducer.boardTopics)
 
-	const history = useHistory();
+	// const history = useHistory();
 	const [topic, setTopic] = useState()
 
 	// const boardId = useParams()
 	const thisBoardId = boardId.boardId
 
-	const topArr = Object.values(topics)
+	// const topArr = Object.values(topics)
 
 	let topicIds = []
 
 	let boardTopArr = []
 
 	if (boardTopics) boardTopArr = Object.values(boardTopics)
-	console.log("BOARDID", boardTopArr)
 
 	if (boardTopArr) {
 		boardTopArr.forEach((topic) => {
@@ -31,20 +30,16 @@ function EditBoardTopics(boardId) {
 	}
 
 	const dispatch = useDispatch();
-	const [name, setName] = useState("");
-	const [errors, setErrors] = useState([]);
-	const [page, setPage] = useState(1)
+	// const [name, setName] = useState("");
+	// const [errors, setErrors] = useState([]);
+	// const [page, setPage] = useState(1)
 	const { closeModal } = useModal();
 
-	const [checked, setChecked] = useState("")
-
-	console.log("TOPARR", topArr)
+	// const [checked, setChecked] = useState("")
 
 	let topicId = null;
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("E", e.target)
-		console.log("TOPICID", topic)
 		dispatch(addNewBoardTopicThunk(topic, thisBoardId))
 		dispatch(getBoardTopicsThunk(thisBoardId))
 		closeModal()
@@ -60,8 +55,6 @@ function EditBoardTopics(boardId) {
 	const topicArr = Object.values(topics)
 
 	const checkBoardTopics = (topicId) => {
-		console.log(topicIds)
-		console.log("TYPE", typeof (topicId))
 		if (topicIds.indexOf(topicId) === -1) return false
 		else return true
 	}

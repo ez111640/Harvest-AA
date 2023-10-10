@@ -55,24 +55,19 @@ const CreatePinModal = () => {
             const newestPin = allPinArr[allPinArr.length - 1]
             let boardId
             if (document.getElementById("board-selector-input")) {
-                console.log("DOC", document.getElementById("board-selector-input"))
                 boardId = document.getElementById("board-selector-input").value
             }
-            console.log("BOARDID", boardId)
             let data2;
             if (boardId) data2 = await dispatch(addPinToBoardThunk(boardId, newestPin))
             if (boardId) await dispatch(getBoardPins(boardId))
-            console.log("DATA2", data2)
             history.push("/pins/current")
 
         } else {
             const data = await dispatch(addPinThunk({ url, link, description, title }));
             const newestPin = allPinArr[allPinArr.length - 1]
             const boardId = document.getElementById("board-selector-input").value
-            console.log("BOARDID", boardId)
             let data2
             if (boardId) data2 = await dispatch(addPinToBoardThunk(boardId, newestPin))
-            console.log("DATA2", data2)
             if (data) {
                 setErrors(data);
             } else {
@@ -82,7 +77,6 @@ const CreatePinModal = () => {
     }
 
     const verifyImage = (url) => {
-        console.log("URL", url)
 
     }
 
@@ -202,7 +196,6 @@ const CreatePinModal = () => {
                                     accept="image/jpg, image/png"
                                     onChange={(e) => {
 
-                                        console.log("SET!")
                                         setFileType("AWS")
                                         setUrl(e.target.files[0])
 

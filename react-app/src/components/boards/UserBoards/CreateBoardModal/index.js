@@ -29,7 +29,6 @@ function CreateBoardModal() {
 
 	const handleSubmitPageOne = async (e) => {
 		e.preventDefault();
-		console.log("PUBLICSTATUS", publicStatus)
 		const data = await dispatch(addBoardThunk({ name, publicStatus }));
 		setNewBoard(data)
 		await dispatch(getUserBoards())
@@ -52,8 +51,6 @@ function CreateBoardModal() {
 				if (!noMatch.includes(allTopics[i].id))
 					noMatch.push(allTopics[i].id)
 			} else {
-				console.log("BOARDID", boardId)
-				console.log("BOARDARRHERE", boardArr[j])
 				if (boardArr[j].boardId === boardId.id)
 					match.push(allTopics[i].id)
 			}
@@ -65,18 +62,14 @@ function CreateBoardModal() {
 
 
 	const toggleMatch = (topic) => {
-		console.log("MATCH", match)
-		console.log("NOMATCH", noMatch)
 		let index = match.indexOf(topic.id)
 		if (index === -1) {
-			console.log("BOARDID", boardId)
 			let newIndex = noMatch.indexOf(topic.id)
 			if (noMatch.length) noMatch = noMatch.slice(0, newIndex).concat(noMatch.slice(newIndex + 1))
 			match.push(topic.id)
 			dispatch(addNewBoardTopicThunk(topic, boardId.id))
 			dispatch(getBoardTopicsThunk(boardId.id))
 		} else {
-			console.log("BOARDID", boardId)
 			match = match.slice(0, index).concat(match.slice(index + 1))
 			noMatch.push(topic.id)
 			dispatch(deleteBoardTopicThunk(topic, boardId.id))
@@ -95,8 +88,6 @@ function CreateBoardModal() {
 
 		e.preventDefault();
 		const board = allBoardArr[allBoardArr.length -1]
-		console.log("ALLBOARDS", allBoardArr)
-		console.log("BOARDS", board)
 		history.push(`/boards`)
 		closeModal();
 	}

@@ -11,10 +11,7 @@ function UpdateBoardModal({ board }) {
 	const [publicStatus, setPublicStatus] = useState()
 
 	const url = window.location.href;
-	console.log("URL", url.split("/"))
-
-
-
+	
 	const { closeModal } = useModal();
 	const handleSubmit = async (e) => {
 		e.preventDefault();

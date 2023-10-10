@@ -15,9 +15,9 @@ export const UserProfilePage = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [city, setCity] = useState("")
-    const [state, setState] = useState("")
+    // const [confirmPassword, setConfirmPassword] = useState("")
+    // const [city, setCity] = useState("")
+    // const [state, setState] = useState("")
     const topics = useSelector((state) => state.topicsReducer.allTopics)
     const userTopics = useSelector((state) => state.topicsReducer.userTopics)
     const topArr = Object.values(topics)
@@ -27,12 +27,8 @@ export const UserProfilePage = () => {
     let noMatch = []
     let match = []
 
-    console.log("TOPARR", topArr)
-
     for (let i = 0; i < topArr.length; i++) {
         for (let j = 0; j < userTopArr.length; j++) {
-            console.log("topARR", topArr[i])
-            console.log("USETOP", userTopArr[j])
             if (userTopArr[j].topicId !== topArr[i].id) {
                 noMatch.push(topArr[i].id)
             } else {
@@ -61,18 +57,14 @@ export const UserProfilePage = () => {
 
 
     const toggleMatch = async (topic) => {
-        console.log("!!TOPIC", topic)
         let index = match.indexOf(topic.id)
-        console.log("INDEX", index)
         if (index === -1) {
-            console.log("ADDING", topic)
             let newIndex = noMatch.indexOf(topic.id)
             noMatch = noMatch.slice(0, newIndex).concat(noMatch.slice(newIndex + 1))
             match.push(topic.id)
             await dispatch(addUserFollowThunk(topic.id))
             await dispatch(getUserTopicsThunk())
         } else {
-            console.log("DELETING", topic)
             match = match.slice(0, index).concat(match.slice(index + 1))
             noMatch.push(topic.id)
             let follow;
@@ -81,15 +73,12 @@ export const UserProfilePage = () => {
                     follow = userTopArr[i]
                 }
             }
-            console.log("FOLLOW", follow)
             await dispatch(deleteUserFollowThunk(topic, follow))
             await dispatch(getUserTopicsThunk())
         }
     }
 
     const checkTopic = (topicId) => {
-        console.log("MATCH", match)
-        console.log("TOPICID", topicId)
         if (match.includes(topicId)) return "match"
         else return "noMatch"
     }

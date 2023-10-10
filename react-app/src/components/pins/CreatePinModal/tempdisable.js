@@ -18,7 +18,6 @@ function CreatePinModal2() {
 		const data = await dispatch(addPinThunk({ url, link, description, title }));
 		if (data) {
 			setErrors(data);
-			console.log(errors)
 		} else {
 			closeModal();
 		}

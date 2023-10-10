@@ -63,7 +63,6 @@ export const getAllTopics = () => async (dispatch) => {
 
 
 export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
-    console.log("POSTING")
     const res = await fetch(`/api/boards/${boardId}/topics`,
         {
             method: "POST",
@@ -71,7 +70,6 @@ export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
             body: JSON.stringify(topic)
         })
     const response = await res.json()
-    console.log("RESPONSE", response)
     // if (response.ok) {
         await dispatch(addNewBoardTopic(response))
 
@@ -85,8 +83,6 @@ export const addNewBoardTopicThunk = (topic, boardId) => async (dispatch) => {
 }
 
 export const deleteBoardTopicThunk = (topic, boardId) => async (dispatch) => {
-    console.log("topic", topic)
-    console.log("BOARDID", boardId)
     const res = await fetch(`/api/boards/${boardId}/topics`,
         {
             method: "DELETE",
@@ -95,7 +91,6 @@ export const deleteBoardTopicThunk = (topic, boardId) => async (dispatch) => {
         }
     )
     const response = await res.json()
-    console.log("RESPONSE", response)
     // if (response.ok) {
         await dispatch(deleteBoardTopic(response.deleteId))
         return null
@@ -126,7 +121,6 @@ export const getUserTopicsThunk = () => async (dispatch) => {
 }
 
 export const addUserFollowThunk = (topicId) => async (dispatch) => {
-    console.log("ADDING", topicId)
     const res = await fetch(`/api/topics/current`,
         {
             method: "POST",
@@ -135,14 +129,11 @@ export const addUserFollowThunk = (topicId) => async (dispatch) => {
         }
     )
     let response = await res.json()
-    console.log("ADDING", response)
     await dispatch(addUserTopic(response))
     return null
 }
 
 export const deleteUserFollowThunk = (topic, follow) => async (dispatch) => {
-    console.log("INTHUNK", topic)
-    console.log("AND", follow)
     const res = await fetch(`/api/topics/current`, {
         method: "DELETE",
         headers: { 'Content-Type': "application/json" },
@@ -150,7 +141,6 @@ export const deleteUserFollowThunk = (topic, follow) => async (dispatch) => {
     }
     )
     const response = await res.json()
-    console.log("RESPONSE", response)
     await dispatch(deleteUserTopic(follow.id))
     return null
 }

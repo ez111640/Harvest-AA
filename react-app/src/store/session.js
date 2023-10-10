@@ -119,7 +119,6 @@ export const updateUserThunk = (userInfo) => async (dispatch) => {
 	if (response.ok) {
 		await dispatch(putUser(userInfo))
 	} else {
-		console.log("ERROR IN UPDATE USER THUNK")
 	}
 }
 

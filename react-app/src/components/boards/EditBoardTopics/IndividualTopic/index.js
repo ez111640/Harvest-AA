@@ -11,16 +11,10 @@ export const IndividualTopic = ({ topic }, editBoard, boardId) => {
     if (allTopics) allTopArr = Object.values(allTopics)
 
     const board = useParams().boardId
-    console.log("BOARD", board)
-    console.log("BOARDID in IT", boardId)
-
     const deleteButtonClick = async (e) => {
         e.preventDefault()
-        console.log("E", e.target.value)
         let topic = allTopArr.filter((topic) => topic.id == e.target.value)
-        console.log("E", topic)
         const data = await dispatch(deleteBoardTopicThunk(topic[0], board))
-        console.log("DATA", data)
         await dispatch(getBoardTopicsThunk(board))
 
 

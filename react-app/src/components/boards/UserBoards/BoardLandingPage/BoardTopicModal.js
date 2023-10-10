@@ -28,7 +28,6 @@ export const BoardTopicModal = (board) => {
     const toggleMatch = async (topic) => {
         let index = match.indexOf(topic.id)
         if (index === -1) {
-            console.log("ADDING")
             let newIndex = noMatch.indexOf(topic.id)
             noMatch = noMatch.slice(0, newIndex).concat(noMatch.slice(newIndex + 1))
             match.push(topic.id)
@@ -36,7 +35,6 @@ export const BoardTopicModal = (board) => {
             await dispatch(addNewBoardTopicThunk(topic, board.board.id))
             await dispatch(getBoardTopicsThunk(board.board.id))
         } else {
-            console.log("DELETING")
             match = match.slice(0, index).concat(match.slice(index + 1))
             noMatch.push(topic.id)
             await dispatch(deleteBoardTopicThunk(topic, board.board.id))
