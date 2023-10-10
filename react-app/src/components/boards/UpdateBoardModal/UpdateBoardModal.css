@@ -22,3 +22,9 @@
     background-color: goldenrod;
     cursor: pointer;
 }
+
+.show-error-create-name{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+}

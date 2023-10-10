@@ -132,6 +132,7 @@ function CreateBoardModal() {
 					onChange={(e) => setName(e.target.value)}
 					required
 				/>
+				<div className={name.length > 50 ? "show-error-create-name error": "show-error-create-name no-error"}>{name.length <= 50 ? 50-name.length : "Oops! Board names must be 50 characters or less"}</div>
 				<div className="private-board">
 					<input className="create-board-private-input"
 						type="checkbox"

@@ -15,6 +15,8 @@
 .signup-modal-container {
     display: grid;
     margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -24,7 +26,6 @@
     margin-right: auto;
 }
 
-.signup-form {}
 
 .signup-form-button-field>button {
     border: none;
@@ -82,7 +83,7 @@
 }
 
 .signup-form-field>input{
-    width: 100%;
+    width: 90%;
     padding: 8px;
     border-radius: 10px;
     border: 1px solid gray;

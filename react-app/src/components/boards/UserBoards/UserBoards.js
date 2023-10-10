@@ -63,7 +63,6 @@ export const UserBoards = () => {
 
 
     const openMenu = () => {
-        dispatch(getUserBoards())
         if (showMenu) return;
         setShowMenu(true);
     };
@@ -125,7 +124,7 @@ export const UserBoards = () => {
                         <div className="user-board-listing">
                             {userBoardArray?.map(
                                 (board) => (
-                                    <div value={board.id}>
+                                    <div value={board.id} >
                                         <BoardCard board={board} />
                                     </div>
                                 )

@@ -160,7 +160,10 @@ export const PinDetailModal = ({ pinId }) => {
 								</div>)}
 
 						</div>
-						: <div className="pin-detail-comment-content">Be the first to leave a comment!</div>}
+						:
+						<div className="pin-detail-comment-content">{user ? "Be the first to leave a comment!" : "Sign in to share your thoughts!"}</div>
+
+						}
 
 
 				</div>
@@ -169,8 +172,8 @@ export const PinDetailModal = ({ pinId }) => {
 					pinComments.find((comment) => comment.userId === user.id) ?
 					<div>Thank you for your comment!</div> :
 					<div className="leave-a-comment-area">
-						<div className="user-letter">{firstLetter}</div>
-						<label className='comment-text-fields'>
+						{user && <div className="user-letter">{firstLetter}</div>}
+						{user && <label className='comment-text-fields'>
 							<div className="enter-comment-input">
 								<input
 									type="text"
@@ -181,7 +184,7 @@ export const PinDetailModal = ({ pinId }) => {
 								/>
 								{commentText && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
 							</div>
-						</label>
+						</label>}
 					</div>
 
 				}

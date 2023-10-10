@@ -1,21 +1,20 @@
 .explore-boards {
 
     display: grid;
-
-    grid-auto-flow: column;
+    grid-template-columns: repeat(5, 1fr);
     column-gap: 0px;
-    width: 100%;
+    width: 90%;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
-
-
 }
 
 .explore-div{
     display: grid;
     margin-top: 80px;
+    grid-auto-flow: row;
 }
+
 
 .topic-name{
     width: fit-content;
@@ -59,14 +58,15 @@
 .explore-board-name{
     position: relative;
     bottom: 65px;
-    width: 250px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, .7);
+    width: 246px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, .6);
+    padding: 2px;
     z-index: 1;
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    font-size: 18px;
+    font-size: 15px;
     display: flex;
     align-items: center;
 }

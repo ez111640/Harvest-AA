@@ -11,7 +11,7 @@ function UpdateBoardModal({ board }) {
 	const [publicStatus, setPublicStatus] = useState()
 
 	const url = window.location.href;
-	
+
 	const { closeModal } = useModal();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -42,14 +42,16 @@ function UpdateBoardModal({ board }) {
 					</label>
 					<input
 						type="text"
-						value={name ? name : board.name}
+						value={name && name}
+						placeholder={name ? name : board.name}
 						className="board-input"
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>
-					{url.split("/").length !== 4 &&
+					<div className={name.length > 50 ? "show-error-create-name error": "show-error-create-name no-error"}>{name.length <= 50 ? 50-name.length : "Oops! Board names must be 50 characters or less"}</div>
+					{/* {url.split("/").length !== 4 &&
 						<button className="submit-board-name signup-button" type="submit">Save</button>
-					}
+					} */}
 				</div>
 
 				{url.split("/").length === 4 &&
@@ -65,7 +67,7 @@ function UpdateBoardModal({ board }) {
 						</div>
 					</div>}
 				{url.split("/").length === 4 &&
-					<button className="signup-button" type="submit">Save</button>
+					<button className="submit-button" type="submit">Save</button>
 				}
 
 			</form>

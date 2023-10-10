@@ -13,7 +13,7 @@ export const ExploreBoards = () => {
     const topics = useSelector((state) => state.topicsReducer.userTopics)
     const topArr = Object.values(topics)
     const boardArr = Object.values(boards.boards)
-
+    const allPins = useSelector((state) => state.pinsReducer.pins)
     const topicBoards = useSelector((state) => state.topicsReducer.topicBoards)
     const dispatch = useDispatch()
 
@@ -23,6 +23,11 @@ export const ExploreBoards = () => {
         let arr = topicBoards[topicId]
         if (arr?.length) return boardArr.filter((board) => board.public !== "false" && arr.includes(board.id))
     }
+
+    const revBoardArr = boardArr.reverse().slice(0, 10)
+
+
+    console.log("pinARr", revBoardArr)
 
     useEffect(() => {
         dispatch(getAllBoardsThunk())
@@ -43,15 +48,14 @@ export const ExploreBoards = () => {
     if (!topics) return null
     if (!boards) return null
     if (!topicBoards) return null
-    if (!topArr.length) return null
     if (!boardArr.length) return null
     if (!returnBoardArr.length) return null
     return (
 
         <div className="explore-div">
-            {
+            {topArr.length ?
                 topArr?.map((topic) => (
-                    <div >
+                    <div className="explore-board-type">
                         <div className="topic-name">{topic.topicName}</div>
                         <div className="explore-boards">
                             {
@@ -64,14 +68,20 @@ export const ExploreBoards = () => {
                             }
                         </div>
                     </div>
-                ))
-                // boardArr.map(
-                //     (board) => (
-                //         <div value={board.id} className="each-board">
-                //             <ExploreBoardCard board={board} />
-                //         </div>
-                //     )
-                // )
+                )) :
+                <div className="explore-board-type">
+                    <div className="topic-name">
+                        Newest Boards</div>
+                    <div className="explore-boards">
+                        {
+                            revBoardArr.map((board) => (
+                                <div key={board.id} className="each-board">
+                                    <ExploreBoardCard board={board} />
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             }
         </div>
     )

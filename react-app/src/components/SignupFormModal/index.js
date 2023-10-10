@@ -14,15 +14,24 @@ function SignupFormModal() {
 	const [lastName, setLastName] = useState("")
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
-
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		const validEmail = /^.+@.+$/;
+		setErrors([])
+		if(!validEmail.test(email)) {
+			setErrors((error)=> [...errors, "Invalid email format"])
+			return;
+		}
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password, firstName, lastName));
+
 			if (data) {
 				setErrors(data);
 			} else {
+				console.log("EMAIL", email)
+				if(!email.includes("@")){
+					setErrors(["Invalid Email format"])
+				}
 				closeModal();
 			}
 		} else {
@@ -30,6 +39,7 @@ function SignupFormModal() {
 				"Confirm Password field must be the same as the Password field",
 			]);
 		}
+
 
 
 	};
