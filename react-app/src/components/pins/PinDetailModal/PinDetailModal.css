@@ -85,7 +85,6 @@
     width: auto;
     min-width: 350px;
     height: 420px;
-    padding-right: 10px;
     background-color: white;
     align-items: flex-start;
     border-top-right-radius: 20px;
@@ -93,12 +92,16 @@
 }
 
 .pin-detail-modal-right>div{
-    width: 70%;
     height: fit-content;
     margin: 10px 20px 0px 20px
+
 }
 
 .font-bold {
+    font-weight: bold;
+}
+
+.pin-dm-link{
     font-weight: bold;
 }
 
@@ -153,7 +156,10 @@
 }
 
 .pin-detail-comment-content{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 8px;
+    max-width: 350px;
+
     font-size: 12px;
 }
 
@@ -194,7 +200,9 @@
 .comment-div-container{
     height: fit-content;
     max-height: 170px;
-    overflow: auto;
+    overflow: hidden;
+    width: 100%;
+    max-width: 320px;
 }
 
 .comment-div{
@@ -233,7 +241,9 @@
 .delete-comment-button{
     float: right;
     background-color: transparent;
-
+    position: relative;
+    right: -10px;
+    font-weight: bold;
 
 
 }

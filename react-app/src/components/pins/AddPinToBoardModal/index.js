@@ -45,7 +45,9 @@ const AddPinToBoardModal = ({ pin }) => {
     return (
         <div>
             {page === 1 && <div className="select-board">
+              {filteredArr.length ?
                 <form onSubmit={handleSubmit}>
+
                     <select id="board-selector">
                         {
                             filteredArr.map((board) =>
@@ -54,8 +56,12 @@ const AddPinToBoardModal = ({ pin }) => {
                             )
                         }
                     </select>
+
                     <button className="submit-button" type="submit">Save</button>
                 </form>
+            :
+            <div className="create-board-prompt">Create a board to save this pin!</div>
+                }
             </div>}
             {
                 page === 2 &&

@@ -34,11 +34,11 @@ export const PinDetailModal = ({ pinId }) => {
 		else firstLetter = user.username[0].toUpperCase()
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 
 		e.preventDefault()
 		let comment = { commentText, pinId }
-		dispatch(addCommentThunk(comment))
+		await dispatch(addCommentThunk(comment))
 
 	}
 
@@ -97,7 +97,7 @@ export const PinDetailModal = ({ pinId }) => {
 			<div className="pin-detail-modal-right">
 				<div className="pin-detail-modal-grid-right font-bold">{thisPin.title}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-desc">{thisPin.description}</div>
-					<div className="pin-detail-modal-grid-right">{domain}</div>
+					<div className="pin-detail-modal-grid-right pin-link">{domain}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-link font-size-14px">
 					<div className="save-pin-from-main">
 						{user ?
@@ -128,7 +128,6 @@ export const PinDetailModal = ({ pinId }) => {
 										<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
 										<div className="margin-left-10px">{comment.commentText}</div>
 
-									</div>
 									{user && comment.userId === user.id &&
 										<div>
 											{!deleteOption && <button className="hide-that-button delete-comment-button" type="button"
@@ -156,6 +155,7 @@ export const PinDetailModal = ({ pinId }) => {
 										// 	<DeleteCommentModal className="fix-z" commentId={comment.id} />
 										// </div>
 									}
+									</div>
 
 								</div>)}
 

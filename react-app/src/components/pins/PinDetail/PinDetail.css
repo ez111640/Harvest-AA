@@ -13,7 +13,6 @@
 }
 .comments{
     border-bottom: 1px solid grey;
-    width: 80%;
 }
 
 .addpin-dropdown{
@@ -286,11 +285,17 @@ a{
     font-size: 20px;
 }
 
+.enter-comment-input-field{
+    position: relative;
+    left: 140px;
+}
+
 .comment-div{
     margin: 5px 10px 0px 10px ;
     padding: 10px 20px 10px 20px;
     background-color: whitesmoke;
-    width: 70%;
+    max-width: 300px;
+    text-wrap: wrap;
 }
 
 .comment-user-name{
@@ -320,6 +325,9 @@ a{
 
 .margin-left-10px{
     margin-left: 10px;
+    max-width: 210px;
+    height: auto;
+    word-wrap:break-word;
 }
 
 

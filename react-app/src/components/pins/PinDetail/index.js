@@ -134,9 +134,9 @@ export const PinDetail = () => {
 		if (!user) return null;
 	}
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-		dispatch(deleteCommentThunk(commentId))
+		await dispatch(deleteCommentThunk(commentId))
 		setDeleteOption(false)
 		// history.push()
 	}
@@ -208,7 +208,9 @@ export const PinDetail = () => {
 									modalComponent={<DeletePinModal pinId={thisPin.id} />}
 
 								/>}
-							<button onClick={onButtonClick}><i className="fa-solid fa-wheat-awn"></i></button>
+							<button onClick={onButtonClick}>
+								{!openPinButton && <i className="fa-solid fa-wheat-awn"></i>}
+								</button>
 							{
 								openPinButton ? <div className="addpin-dropdown"><AddPinToBoardModal /></div> : <div></div>
 							}
@@ -325,7 +327,6 @@ export const PinDetail = () => {
 								</div>
 								: <div className="pin-detail-comment-content">Be the first to leave a comment!</div>}
 
-							< hr />
 						</div>
 						{/*}	<div>
 							<div>Comments: </div>
@@ -365,9 +366,13 @@ export const PinDetail = () => {
 
 							{pinComments.find((comment) => comment.userId === user.id) ?
 								<div>Thank you for your comment!</div> :
-
-
-								<AddComment pinId={thisPin.id} />}
+								<div className="leave-a-comment-area">
+									<div className="user-letter">{firstLetter}</div>
+									<div className="enter-comment-input-field">
+									<AddComment pinId={thisPin.id} />
+									</div>
+								</div>
+							}
 						</div>}
 				</div>
 
