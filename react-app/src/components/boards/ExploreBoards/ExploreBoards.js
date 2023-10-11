@@ -27,7 +27,6 @@ export const ExploreBoards = () => {
     const revBoardArr = boardArr.reverse().slice(0, 10)
 
 
-    console.log("pinARr", revBoardArr)
 
     useEffect(() => {
         dispatch(getAllBoardsThunk())

@@ -28,7 +28,6 @@ function SignupFormModal() {
 			if (data) {
 				setErrors(data);
 			} else {
-				console.log("EMAIL", email)
 				if(!email.includes("@")){
 					setErrors(["Invalid Email format"])
 				}
