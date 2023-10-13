@@ -50,7 +50,22 @@ def seed_comments():
     comment10=Comment(
         userId="2",
         pinId="10",
-        commentText="I haven't tried any of these projects yet, but will upload photos when I do!"
+        commentText="This looks really cool! I haven't tried any of these projects yet, but will upload photos when I do!"
+    )
+    comment11=Comment(
+        userId="1",
+        pinId="10",
+        commentText="I think this is a great idea. I'd definitely recommend giving it a shot and seeing how well it works for you!"
+    )
+    comment12=Comment(
+        userId="3",
+        pinId="10",
+        commentText="We did a couple of these projects last weekend. They took a lot of work, but it was totally worth it!"
+    )
+    comment13=Comment(
+        userId="4",
+        pinId="10",
+        commentText="This was a great beginner project! I was able to make it just like the picture with just the tools I had on hand."
     )
 
 
@@ -64,6 +79,9 @@ def seed_comments():
     db.session.add(comment8)
     db.session.add(comment9)
     db.session.add(comment10)
+    db.session.add(comment11)
+    db.session.add(comment12)
+    db.session.add(comment13)
 
 
     db.session.commit()

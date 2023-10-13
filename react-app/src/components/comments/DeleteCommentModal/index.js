@@ -23,7 +23,7 @@ const DeleteCommentModal = ({ commentId }) => {
     return (
 
         <div className="confirm-delete-comment">
-            <p>Are you sure you want to remove this comment?</p>
+            <p>Remove this comment?</p>
             <button className="yes-delete-button-comment" onClick={onSubmit} type="submit">Yes (Delete Comment)</button>
             <button className="no-delete-button-comment">No (Keep Comment)</button>
         </div>

@@ -137,6 +137,7 @@ export const PinDetail = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		await dispatch(deleteCommentThunk(commentId))
+		await dispatch(getAllComments())
 		setDeleteOption(false)
 		// history.push()
 	}
@@ -311,10 +312,13 @@ export const PinDetail = () => {
 										/> */}
 
 													{deleteOption === true && <div className="delete-comment">
-														<div>Are you sure you want to remove this comment?</div>
+														<div>Remove this comment?</div>
 														<button className="hide-that-button" onClick={() => setDeleteOption(false)}><i className="fa-solid fa-x"> No (keep comment)</i></button>
-														<button className="hide-that-button" onClick={
-															onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
+														<button className="hide-that-button" onClick={onSubmit}>
+															<i className="confirm-delete-check fa-solid fa-check">
+															Yes (delete comment)
+															</i>
+															</button>
 													</div>}
 												</div>
 												// <div>

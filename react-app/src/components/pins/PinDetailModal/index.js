@@ -106,9 +106,10 @@ export const PinDetailModal = ({ pinId }) => {
 								<AddPinToBoardModal pin={thisPin} />
 
 								:
-								<div>
-									<button className="submit-button" onClick={setOpenAddPin}>Save</button>
-								</div>
+								<AddPinToBoardModal pin={thisPin} />
+								// <div>
+								// 	<button className="submit-button" onClick={setOpenAddPin}>Save</button>
+								// </div>
 
 							// <OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
 							:
@@ -143,7 +144,7 @@ export const PinDetailModal = ({ pinId }) => {
 										/> */}
 
 											{deleteOption === true && <div className="delete-comment">
-												<div>Are you sure you want to remove this comment?</div>
+												<div>Remove this comment?</div>
 												<button className="hide-that-button" onClick={() => setDeleteOption(false)}><i className="fa-solid fa-x"> No (keep comment)</i></button>
 												<button
 													className="hide-that-button"
