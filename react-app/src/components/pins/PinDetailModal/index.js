@@ -70,10 +70,10 @@ export const PinDetailModal = ({ pinId }) => {
 		openDelete = true;
 	}
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-		dispatch(deleteCommentThunk(commentId))
-		dispatch(getAllComments())
+		await dispatch(deleteCommentThunk(commentId))
+		await dispatch(getAllComments())
 		setDeleteOption(false)
 		// history.push()
 	}
@@ -185,6 +185,7 @@ export const PinDetailModal = ({ pinId }) => {
 								/>
 								{commentText && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
 							</div>
+								<span className="float-right">{commentText ? commentText.length <= 100 ? 100 - commentText.length : <span className="error">Your comment must be 100 characters or less</span> : 100}</span>
 						</label>}
 					</div>
 

@@ -371,7 +371,7 @@ export const PinDetail = () => {
 							{pinComments.find((comment) => comment.userId === user.id) ?
 								<div>Thank you for your comment!</div> :
 								<div className="leave-a-comment-area">
-									<div className="user-letter">{firstLetter}</div>
+									<div className="user-letter move-down">{firstLetter}</div>
 									<div className="enter-comment-input-field">
 									<AddComment pinId={thisPin.id} />
 									</div>

@@ -31,8 +31,9 @@ export const AddComment = ({ pinId }) => {
                         placeholder="Leave a comment"
                         required
                     />
-                    {commentText.length ? <button onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button> : <div></div>}
+                    {commentText.length && commentText.length <=100 ? <button onClick={handleSubmit} type="Submit"><i className="check-all-comments fa-solid fa-check"></i></button> : <div></div>}
                 </div>
+                    	<span className="float-right">{commentText ? commentText.length <= 100 ? 100 - commentText.length : <span className="error">Your comment must be 100 characters or less</span> : 100}</span>
             </label>
         </div>
     )

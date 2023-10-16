@@ -30,6 +30,10 @@
 
 }
 
+.move-down{
+    margin-bottom: 14px;
+}
+
 .fa-solid {
     cursor: pointer
 }
