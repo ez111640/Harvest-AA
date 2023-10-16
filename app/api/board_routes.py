@@ -26,7 +26,7 @@ def get_board_pins(id):
         first_pin = Pin.query.filter(Pin.id == pin_to_board.pinId).first()
         return first_pin.to_dict()
     else:
-        return "No pins"
+        return {"Error": "No pins"}
 
 
 @board_routes.route("/<int:id>/pins/all")
