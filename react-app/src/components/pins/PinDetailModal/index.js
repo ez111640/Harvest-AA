@@ -183,7 +183,7 @@ export const PinDetailModal = ({ pinId }) => {
 									required
 									placeholder="Leave a comment"
 								/>
-								{commentText && commentText.length <100 && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
+								{commentText && commentText.length <=100 && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
 							</div>
 								<span className="float-right">{commentText ? commentText.length <= 100 ? 100 - commentText.length : <span className="error">Your comment must be 100 characters or less</span> : 100}</span>
 						</label>}

@@ -12,6 +12,8 @@
     justify-content: center;
 }
 
+
+
 .signup-modal-container {
     display: grid;
     margin-top: 0px;
@@ -94,8 +96,10 @@
     list-style-type: none;
 }
 
+
 .error-ul{
-    width: 70%;
+    max-width: 200px;
     margin: 0px auto;
     margin-top: 10px;
+    min-height: 20px;
 }

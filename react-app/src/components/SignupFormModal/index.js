@@ -1,7 +1,7 @@
 import "./SignupFormModal.css";
 
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 function SignupFormModal() {
@@ -13,33 +13,64 @@ function SignupFormModal() {
 	const [firstName, setFirstName] = useState("")
 	const [lastName, setLastName] = useState("")
 	const [errors, setErrors] = useState([]);
+	const [passwordError, setPasswordError] = useState("")
+	const [repeatEmailError, setRepeatEmailError] = useState("")
+	const [repeatUserError, setRepeatUserError] = useState("")
+	const [validEmailError, setValidEmailError ] = useState("")
 	const { closeModal } = useModal();
 
 	const clearErrors = async (e) => {
 		e.preventDefault()
-		setErrors("")
+		const validEmail = /^.+@.+$/;
+		if (validEmail.test(email) && errors == "Invalid email format") {
+			setErrors("")
+
+		} else if (password == confirmPassword && errors == "Confirm Password field must be the same as the Password field") {
+			setErrors("")
+		} else if(e.target.value.includes("@") && errors[0] === "Email address is already in use.") {
+			setErrors("")
+		}
+	}
+
+	const clearEmailErrors = async(e) => {
+		for(let i = 0;i< errors.length;i++){
+			if(errors[i][0] === "E") {
+				console.log("HERE")
+			}
+		}
 	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const validEmail = /^.+@.+$/;
-		setErrors([])
+
 		if (!validEmail.test(email)) {
-			setErrors((error) => [...errors, "Invalid email format"])
+			setValidEmailError("Invalid email address")
 			return;
 		}
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password, firstName, lastName));
 
 			if (data) {
-				setErrors(data);
+				for(let i =0;i< data.length;i++){
+					let tempData = data[i].split(" ")
+					for(let j = 0;j< tempData.length;j++){
+						if(tempData[j] == "Email"){
+							setRepeatEmailError("Email address already in use")
+						} else if (tempData[j] == "Username") {
+							setRepeatUserError("Username already in use")
+						}
+					}
+				}
+			} else {
+				closeModal();
 			}
-			closeModal();
 
 		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
+			setPasswordError("Confirm Password field must be the same as the Password field")
+			setPassword("")
+			setConfirmPassword("")
 		}
 
 
@@ -52,11 +83,14 @@ function SignupFormModal() {
 			<div className="signup-modal-divs signup-modal-div-title">Welcome to Harvest</div>
 			<div className="signup-modal-divs font-size-14px">Find new ideas to try</div>
 			<div className="signup-modal-divs">
-				{errors.length > 0 && <ul className="error error-ul">
-					{errors.map((error, idx) => (
-						<li className="error-li" key={idx}>{error}</li>
-					))}
-				</ul>}
+
+					<ul className="error error-ul">
+						{repeatEmailError && <li className="error-li">{repeatEmailError}</li>}
+						{repeatUserError && <li className="error-li">{repeatUserError}</li>}
+						{passwordError && <li className="error-li">{passwordError}</li>}
+						{validEmailError && <li className="error-li">{validEmailError}</li>}
+					</ul>
+
 				<form className="signup-form-container" onSubmit={handleSubmit}>
 					<div className="signup-form-field">
 						<label>
@@ -66,13 +100,11 @@ function SignupFormModal() {
 							placeholder="Email"
 							type="text"
 							value={email}
-							onFocus={
-								clearErrors
-							}
 							onChange={(e) => {
 								setEmail(e.target.value)
+								repeatEmailError && setRepeatEmailError("")
+								validEmailError && setValidEmailError("")
 							}}
-
 							required
 						/>
 					</div><div className="signup-form-field">
@@ -83,7 +115,10 @@ function SignupFormModal() {
 							placeholder="Choose a username"
 							type="text"
 							value={username}
-							onChange={(e) => setUsername(e.target.value)}
+							onChange={(e) => {setUsername(e.target.value)
+								repeatUserError && setRepeatUserError("")
+}
+							}
 							required
 						/>
 					</div>
@@ -96,7 +131,10 @@ function SignupFormModal() {
 							placeholder="Create a password"
 							type="password"
 							value={password}
-							onChange={(e) => setPassword(e.target.value)}
+							onChange={(e) => {
+								setPassword(e.target.value)
+							}}
+
 							required
 						/>
 					</div><div className="signup-form-field">
@@ -107,7 +145,11 @@ function SignupFormModal() {
 							placeholder="Confirm password"
 							type="password"
 							value={confirmPassword}
-							onChange={(e) => setConfirmPassword(e.target.value)}
+							onChange={(e) => {setConfirmPassword(e.target.value)
+								passwordError && setPasswordError("")
+							}}
+
+
 							required
 						/>
 					</div>

@@ -189,10 +189,10 @@ export const PinDetail = () => {
 					</div>
 					:
 					<div id="pin-detail-left">
-						{
+						{/* {
 							showEditForm &&
 							<button type="button" onClick={clickEditUrlButton} className="photo-edit-button entered-edit-form"><i className="fa-solid fa-pen-to-square"></i></button>
-						}
+						} */}
 						<img alt="pin" src={thisPin?.url}></img>
 
 					</div>}
@@ -236,6 +236,7 @@ export const PinDetail = () => {
 						</div>
 					</div> : <div className="pin-details pin-detail-title-bottom">
 						<div className="clear-right">{thisPin.title}</div>
+
 						{
 							showEditForm &&
 							<button type="button" onClick={clickEditTitleButton} className="regular-edit-button entered-edit-form"><i className="fa-solid fa-pen-to-square"></i></button>
@@ -283,9 +284,9 @@ export const PinDetail = () => {
 					}
 
 
-					{!showEditForm && <div>
+					{!showEditForm && <div className="comments-div">
 
-						<div className="pin-detail-modal-grid-right comments">
+						<div className="pin-detail-modal-grid-right pin-page comments">
 							<div className="pin-comment-header">Comments: </div>
 							{pinComments.length ?
 								<div className="comment-div-container" id="comment-list">
