@@ -14,12 +14,18 @@ function SignupFormModal() {
 	const [lastName, setLastName] = useState("")
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
+
+	const clearErrors = async (e) => {
+		e.preventDefault()
+		setErrors("")
+	}
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const validEmail = /^.+@.+$/;
 		setErrors([])
-		if(!validEmail.test(email)) {
-			setErrors((error)=> [...errors, "Invalid email format"])
+		if (!validEmail.test(email)) {
+			setErrors((error) => [...errors, "Invalid email format"])
 			return;
 		}
 		if (password === confirmPassword) {
@@ -27,12 +33,9 @@ function SignupFormModal() {
 
 			if (data) {
 				setErrors(data);
-			} else {
-				if(!email.includes("@")){
-					setErrors(["Invalid Email format"])
-				}
-				closeModal();
 			}
+			closeModal();
+
 		} else {
 			setErrors([
 				"Confirm Password field must be the same as the Password field",
@@ -49,11 +52,11 @@ function SignupFormModal() {
 			<div className="signup-modal-divs signup-modal-div-title">Welcome to Harvest</div>
 			<div className="signup-modal-divs font-size-14px">Find new ideas to try</div>
 			<div className="signup-modal-divs">
-					{errors.length > 0 && <ul className="error error-ul">
-						{errors.map((error, idx) => (
-							<li className="error-li" key={idx}>{error}</li>
-						))}
-					</ul>}
+				{errors.length > 0 && <ul className="error error-ul">
+					{errors.map((error, idx) => (
+						<li className="error-li" key={idx}>{error}</li>
+					))}
+				</ul>}
 				<form className="signup-form-container" onSubmit={handleSubmit}>
 					<div className="signup-form-field">
 						<label>
@@ -63,7 +66,13 @@ function SignupFormModal() {
 							placeholder="Email"
 							type="text"
 							value={email}
-							onChange={(e) => setEmail(e.target.value)}
+							onFocus={
+								clearErrors
+							}
+							onChange={(e) => {
+								setEmail(e.target.value)
+							}}
+
 							required
 						/>
 					</div><div className="signup-form-field">
