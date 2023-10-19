@@ -79,18 +79,18 @@ def sign_up():
 
 @auth_routes.route('/<int:id>', methods=['PUT'])
 def update_user(id):
+    req = request.get_json(force =True)
     # form = SignUpForm()
     # form["csrf_token"].data = request.cookies["csrf_token"]
-    req = request.get_json(force =True)
     user = User.query.get(id)
-    print("FORM", req)
-    print("USER", user)
+    print("FORM", request.get_json(force=True))
+    # print("USER", user)
     # if form.validate_on_submit():
     #  if(form.data["password"]):
-    # if(req["password"]):
-    #     user.password = req["password"]
+
     user.username=req['username'],
     user.email=req['email'],
+
     user.firstName = req['firstName'],
     user.lastName = req['lastName'],
     #  if(form.data["city"]):
@@ -98,7 +98,7 @@ def update_user(id):
     #  if(form.data["state"]):
     # user.state=req['state']
 
-    # db.session.commit()
+    db.session.commit()
     return user.to_dict()
 
 

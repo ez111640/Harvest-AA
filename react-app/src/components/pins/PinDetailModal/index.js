@@ -171,7 +171,7 @@ export const PinDetailModal = ({ pinId }) => {
 
 				{user &&
 					pinComments.find((comment) => comment.userId === user.id) ?
-					<div>Thank you for your comment!</div> :
+					<div className="thanks">Thank you for your comment!</div> :
 					<div className="leave-a-comment-area">
 						{user && <div className="user-letter">{firstLetter}</div>}
 						{user && <label className='comment-text-fields'>

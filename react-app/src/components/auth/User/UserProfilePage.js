@@ -6,9 +6,10 @@ import { getAllTopics } from "../../../store/topicsReducer"
 import { useHistory } from "react-router-dom"
 import { addUserFollowThunk, deleteUserFollowThunk } from "../../../store/topicsReducer"
 import { updateUserThunk } from "../../../store/session"
+import { useModal } from "../../../context/Modal"
 
 
-export const UserProfilePage = () => {
+function UserProfilePage() {
     const user = useSelector((state) => state.session.user)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -27,6 +28,8 @@ export const UserProfilePage = () => {
     let noMatch = []
     let match = []
 
+    const { closeModal } = useModal();
+
     for (let i = 0; i < topArr.length; i++) {
         for (let j = 0; j < userTopArr.length; j++) {
             if (userTopArr[j].topicId !== topArr[i].id) {
@@ -41,20 +44,25 @@ export const UserProfilePage = () => {
         dispatch(getUserTopicsThunk())
     }, [dispatch, userTopArr.length])
 
-    const updateUser = async (e) =>{
+    const updateUser = async (e) => {
+        e.preventDefault();
+        // console.log("HERE")
+        // e.preventDefault()
+        // let newUser = {}
+        // firstName ? newUser.firstName = firstName : newUser.firstName = user.firstName
+        // lastName ? newUser.lastName = lastName : newUser.lastName = user.lastName
+        // username ? newUser.username = username : newUser.username = user.username
+        // email ? newUser.email = email : newUser.email = user.email
+        // newUser.id = user.id
+        // console.log("newUser", newUser)
+        // await dispatch(updateUserThunk(newUser))
+        // closeModal()
+    }
+
+    const onSubmit = (e) => {
         e.preventDefault()
-        let newUser = {}
-        firstName ? newUser.firstName = firstName : newUser.firstName = user.firstName
-        lastName ? newUser.lastName = lastName : newUser.lastName = user.lastName
-        username ? newUser.username = username : newUser.username = user.username
-        password ? newUser.password = password : newUser.password = user.password
-        email ? newUser.email = email : newUser.email = user.email
-        newUser.id = user.id
-
-        await dispatch(updateUserThunk(newUser))
-
-       }
-
+        closeModal()
+    }
 
     const toggleMatch = async (topic) => {
         let index = match.indexOf(topic.id)
@@ -90,22 +98,23 @@ export const UserProfilePage = () => {
     return (
         <div className="edit-profile-div">
             <div>
-                <div className="edit-profile-header">Edit Your Interests</div>
                 <div className="edit-interests">
+                    {/* <div className="edit-profile-header">Edit Your Interests</div> */}
                     <div className="edit-interest-subtitle">Select the topics you want to follow for personalized recommendations</div>
                     <div className="edit-interest">
                         {
                             topArr.map((topic) => (
-                                <div id={topic.id} onClick={() => toggleMatch(topic)} className={"topic-list-item " + checkTopic(topic.id)}>{topic.name}</div>
+                                <div id={topic.id} onClick={() => toggleMatch(topic)} className={"ind-topic topic-list-item " + checkTopic(topic.id)}>{topic.name}</div>
                             ))
                         }
                     </div>
+                    <button onClick={onSubmit} className="user-topic-button submit-button" type="submit">Submit</button>
                 </div>
             </div>
-            <form className="edit-interests" onSubmit={updateUser}>
-                <div className="edit-interest-subtitle">Edit Profile Info</div>
+            {/* <form className="edit-interests" onSubmit={updateUser}> */}
+            {/* <div className="edit-interest-subtitle">Edit Profile Info</div> */}
 
-                <div className="edit-category">
+            {/* <div className="edit-category">
                     <label>
                         First Name:
                         <input
@@ -124,9 +133,9 @@ export const UserProfilePage = () => {
                             onChange={(e) => setLastName(e.target.value)}
                         ></input>
                     </label>
-                </div>
+                </div> */}
 
-                <div  className="edit-category">
+            {/* <div  className="edit-category">
                     <div className="edit-interest-subtitle">Edit Login Credentials</div>
                     <label>
                         Username:
@@ -146,8 +155,8 @@ export const UserProfilePage = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         ></input>
                     </label>
-                </div>
-                {/* <div className="edit-category">
+                </div> */}
+            {/* <div className="edit-category">
                     <div className="edit-interest-subtitle">Change Password</div>
                     <label>
                         Password:
@@ -166,9 +175,10 @@ export const UserProfilePage = () => {
                         ></input>
                     </label>
                 </div> */}
-                <button className="submit-button" type="submit">Submit</button>
 
-            </form>
+            {/* </form> */}
         </div>
     )
 }
+
+export default UserProfilePage;

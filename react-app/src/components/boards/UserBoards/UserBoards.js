@@ -8,6 +8,8 @@ import { useHistory } from "react-router-dom";
 import { UserPins } from "../../pins/UserPins";
 import { getAllPins } from "../../../store/pinsReducer";
 import OpenModalButton from "../../OpenModalButton";
+import UserProfilePage from "../../auth/User/UserProfilePage";
+
 
 
 
@@ -105,7 +107,9 @@ export const UserBoards = () => {
                 </button>
                 <ul className={ulClassName} ref={ulRef}>
                     <div className="edit-bn-lp">
-                        <button onClick={clickEditProfileButton}>Edit Profile</button>
+                        <OpenModalButton buttonText="Edit Your Topics" modalComponent={<UserProfilePage/>}/>
+                        {/* <button onClick={clickEditProfileButton}>Edit Profile</button> */}
+
                     </div>
 
                 </ul>

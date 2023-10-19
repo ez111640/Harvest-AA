@@ -8,6 +8,7 @@ import DeleteBoardModal from "../../DeleteBoardModal"
 import UpdateBoardModal from "../../UpdateBoardModal"
 
 
+
 export const BoardCard = ({ board }) => {
     const dispatch = useDispatch()
     const boards = useSelector((state) => state.boardsReducer.boards)

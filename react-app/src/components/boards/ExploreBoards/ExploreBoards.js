@@ -56,14 +56,17 @@ export const ExploreBoards = () => {
                 topArr?.map((topic) => (
                     <div className="explore-board-type">
                         <div className="topic-name">{topic.topicName}</div>
-                        <div className="explore-boards">
+                        <div >
                             {
-                                returnBoardArr(topic.topicId)?.map((board) => (
-                                    <div value={board.id} className="each-board">
+                                returnBoardArr(topic.topicId) ?
+                                    <div className="explore-boards">
+                                        {returnBoardArr(topic?.topicId).map((board) => (
+                                            <div value={board.id} className="each-board">
 
-                                        <ExploreBoardCard board={board} />
-                                    </div>
-                                ))
+                                                <ExploreBoardCard board={board} />
+                                            </div>
+                                        ))}</div> :
+                                    <div className="no-boards-yet">No boards for this topic yet!</div>
                             }
                         </div>
                     </div>

@@ -16,7 +16,7 @@ import { SearchResultsPage } from "./components/pins/SearchResultsPage";
 import CreatePinModal from "./components/pins/CreatePinModal";
 import { Footer } from "./components/Navigation/Footer/Footer";
 import { ExploreBoards } from "./components/boards/ExploreBoards/ExploreBoards";
-import { UserProfilePage } from "./components/auth/User/UserProfilePage";
+import  UserProfilePage  from "./components/auth/User/UserProfilePage";
 
 function App() {
   const dispatch = useDispatch();

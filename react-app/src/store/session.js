@@ -103,17 +103,12 @@ export const signUp = (username, email, password, firstName, lastName) => async 
 };
 
 export const updateUserThunk = (userInfo) => async (dispatch) => {
-	const { username,
-		email,
-		password,
-		firstName,
-		lastName } = userInfo
 	const response = await fetch(`/api/auth/${userInfo.id}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(username, email, password, firstName, lastName)
+		body: JSON.stringify(userInfo)
 	})
 	const oldUser = await response.json()
 	if (response.ok) {

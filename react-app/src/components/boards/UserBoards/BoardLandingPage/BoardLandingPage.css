@@ -33,11 +33,14 @@
 .submit-button-topic{
     background-color: black;
     color: white;
-    position: relative;
-    left: 280px;
-    bottom: -10px;
     padding: 10px 20px;
     border-radius: 10px;
+    width: auto;
+    border: none;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
 
 .update-board-button>button {
@@ -224,9 +227,8 @@
     padding: 20px 0px 20px 20px;
     display: flex;
     flex-wrap: wrap;
-    width: 300px;
+    width: 320px;
     row-gap: 20px;
-    align-items: space-evenly;
 }
 
 .topic-list{
