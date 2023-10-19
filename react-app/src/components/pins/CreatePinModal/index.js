@@ -1,4 +1,4 @@
-import "./SignupForm.css"
+import "./CreatePinModal.css"
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -158,7 +158,7 @@ const CreatePinModal = () => {
                     {viewClearMenu ?
                         <div className="start-over">
                             <button onClick={closeClearMenu}>X</button>
-                            <button onClick={clearNewPin} className="clear" >
+                            <button onClick={clearNewPin} className="clear-pin-button clear" >
                                 Clear and Start Over
                             </button>
                         </div>

@@ -16,6 +16,8 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    
+
 }
 
 .and-add-to-board{
@@ -26,6 +28,7 @@
 .start-over{
     margin-top: 10px;
     margin-left: 20px;
+    width: 200px;
 }
 
 .create-pin-page-sub {
@@ -250,8 +253,9 @@
 
 .required-fields{
     width: 100%;
-    position: relative;
-    right: -500px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
 }
 
 .create-pin-page-header{
