@@ -36,19 +36,21 @@ function UpdateBoardModal({ board }) {
 	return (
 		<div className="edit-board-modal">
 			<form onSubmit={handleSubmit}>
-				<div>
-					<label className='edit-board-name-field'>
+				<div className="board-name">
+					<div className='edit-board-name-field'>
 						Board Name:
-					</label>
-					<input
-						type="text"
-						value={name && name}
-						placeholder={name ? name : board.name}
-						className="board-input"
-						onChange={(e) => setName(e.target.value)}
-						required
-					/>
-					<div className={name.length > 50 ? "show-error-create-name error": "show-error-create-name no-error"}>{name.length <= 50 ? 50-name.length : "Oops! Board names must be 50 characters or less"}</div>
+					</div>
+					<div className="input-new-board-name">
+						<input
+							type="text"
+							value={name && name}
+							placeholder={name ? name : board.name}
+							className="board-input"
+							onChange={(e) => setName(e.target.value)}
+							required
+						/>
+						<div className={name.length > 50 ? "show-error-create-name error" : "show-error-create-name no-error"}>{name.length <= 50 ? 50 - name.length : "Oops! Board names must be 50 characters or less"}</div>
+					</div>
 					{/* {url.split("/").length !== 4 &&
 						<button className="submit-board-name signup-button" type="submit">Save</button>
 					} */}

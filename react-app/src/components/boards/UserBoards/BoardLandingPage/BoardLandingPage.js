@@ -199,7 +199,10 @@ export const BoardLandingPage = () => {
                         {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
                         <button onClick={clickEditBoardName}>Edit Board Name</button>
                         <button onClick={clickEditBoardButton}>Edit Pins</button>
-                        <OpenModalButton buttonText="Edit Topics" modalComponent={<BoardTopicModal board={thisBoard} />} />
+                        <OpenModalButton
+                            buttonText="Edit Topics"
+                            modalComponent={<BoardTopicModal board={thisBoard} />}
+                        />
                     </div>
 
                 </ul>
@@ -226,7 +229,8 @@ export const BoardLandingPage = () => {
 
             </div> */}
             <div className="edit-board-name-input">
-            {editBoardName ? <UpdateBoardModal board={thisBoard} /> : <div className="board-name">{thisBoard.name}</div>}
+                {editBoardName ? <UpdateBoardModal board={thisBoard} /> :
+                <div className="board-name">{thisBoard.name}</div>}
             </div>
             <div>
                 {thisBoardPins.length ?

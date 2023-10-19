@@ -188,7 +188,10 @@ const CreatePinModal = () => {
                 <div className="create-pin-page-left">
                     <div className={fileType === "AWS" ? "photo-uploaded" : "create-pin-aws-option "} >
                         <div className={fileType === "AWS" ? "" : "create-pin-add-border"}>
-                            <div className="upload-photo-image"><i className="fa-solid fa-circle-arrow-up"></i></div>
+                            <div className="upload-photo-image">
+                            <div className="photo-prompt">Harvest will resize your photo to fit. However, images should be taller than they are wide to display best.</div>
+                                <i className="fa-solid fa-circle-arrow-up"></i>
+                                </div>
                             {fileType === "AWS" && verifyImage(url) ? <div className="photo-ready">Success! Photo ready</div> : <label className="file-input">
 
                                 <input
@@ -219,9 +222,10 @@ const CreatePinModal = () => {
                         />
 
                     </div> */}
-                    <div clasName="show-photo-errors">
+                    <div className="show-photo-errors">
                         {title && link && description && !url && <div className="need-photo-error error">You must include a photo when creating a pin</div>}
                         {fileType !== "AWS" && <div className={url ? "" : isUrl(url) ? "show-error-create no-error" : "show-error-create error"}>{url ? isUrl(url) ? "" : <div className="show-error-create error ">Invalid url entered</div> : ""}</div>}
+
                     </div>
                 </div>
                 <div className=" create-pin-page-right">

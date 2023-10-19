@@ -16,14 +16,18 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    
 
+}
+
+.start-over>button:hover{
+    transform: scale(1.1);
 }
 
 .and-add-to-board{
     margin-top: 15px;
     margin-right: 10px;
 }
+
 
 .start-over{
     margin-top: 10px;
@@ -47,9 +51,19 @@
 }
 
 
-.show-photo-errors{
-    position: relative;
+.photo-prompt{
+    font-size: 15px;
+    margin: 10px;
+    text-align: center;
+}
 
+.upload-photo-image{
+    text-align: center;
+    font-size: 30px;
+}
+
+.upload-photo-image>i{
+    cursor: unset;
 }
 
 .need-photo-error {
@@ -81,13 +95,17 @@
     border-radius: 10px;
     border: 2px dashed lightgray;
     margin: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr min-content;
 }
 
+
+
 .upload-photo-image {
-    width: min-content;
+
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+
 }
 
 .file-input {
@@ -108,16 +126,9 @@
     display: table;
 
     width: 250px;
-    height: 180px;
     text-align: center;
 }
 
-.span-image-prompt {
-    display: table-cell;
-    vertical-align: middle;
-    position: relative;
-    top: 50px;
-}
 
 .show-error-create-pin {
     border-top: 1px solid grey;
@@ -192,6 +203,7 @@
     position: relative;
     bottom: 10px;
     font-size: 16px;
+    cursor: unset;
 }
 
 .submit-new-pin:hover{

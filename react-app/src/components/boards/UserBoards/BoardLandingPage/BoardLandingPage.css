@@ -26,17 +26,9 @@
     margin-top: 80px;
 }
 
-.edit-board-name-from-lp{
-    position: relative;
-    right: 200px;
-}
 
 
-.edit-board-name-input{
-    position: relative;
-    left: 300px;
-    top: -40px;
-}
+
 
 .submit-button-topic{
     background-color: black;
@@ -85,20 +77,10 @@
     margin: 10px;
 }
 
-.edit-board-name>form {
-    display: flex;
-    margin-right: 80px;
-}
 
-.edit-board-name-input {
-    /* height: 20px; */
-    align-self: center;
-    justify-self: center;
-    margin: 0px 10px;
-}
 
-.board-input{
-    height: 20px;
+.board-input>input{
+    font-size: 22px;
 }
 
 .submit-board-name{
@@ -173,12 +155,11 @@
 }
 
 .board-name {
-    background-color: transparent;
     font-size: 32px;
     display: flex;
     column-gap: 20px;
-    position: relative;
-    right: 300px;
+    height: 52px;
+    margin-bottom: 40px;
 }
 
 
