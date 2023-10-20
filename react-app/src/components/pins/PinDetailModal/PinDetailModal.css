@@ -28,7 +28,7 @@
     column-gap: 10px;
     position: relative;
     right: 5px;
-    bottom: 50px;
+    bottom: 7vw;
     justify-content: flex-end;
 
 }
@@ -42,8 +42,8 @@
     display: flex;
     flex-wrap: nowrap;
     column-gap: 10px;
-    padding: 0px;
-    border-radius: 20px;
+    padding: 1vw 1vw 1vw 0px;
+    border-radius: 2vw;
     font-size: 12px;
 }
 
@@ -131,7 +131,7 @@
 }
 
 .pin-detail-modal-grid-right {
-    margin: 20px;
+    margin: 1vw 1vw 1vw 1vw;
 
 }
 
@@ -211,8 +211,7 @@
     justify-content: flex-start;
     margin-bottom: 20px;
     font-weight: bold;
-    font-size: 1.8vw;
-    width: 70%;
+    font-size: 1.6vw;
 }
 
 
@@ -254,7 +253,8 @@
 }
 
 .domain-link {
-    margin-left: 30px;
+    margin-left: 2vw;
+    font-size: 1.8vw;
 }
 
 .delete-comment>button {
