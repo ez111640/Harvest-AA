@@ -98,7 +98,7 @@ export const PinDetailModal = ({ pinId }) => {
 				<div className="pin-detail-modal-grid-right font-bold">{thisPin.title}</div>
 				<div className="pin-detail-modal-grid-right pin-dm-desc">{thisPin.description}</div>
 					<div className="pin-detail-modal-grid-right pin-link">{domain}</div>
-				<div className="pin-detail-modal-grid-right pin-dm-link font-size-14px">
+				<div className="pin-detail-modal-grid-right pin-dm-link ">
 					<div className="save-pin-from-main">
 						{user ?
 

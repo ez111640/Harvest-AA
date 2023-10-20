@@ -4,16 +4,18 @@
 
 .main-nav-bar {
   display: grid;
-  grid-template-columns: min-content auto 80px;
-  column-gap: 10px;
-  padding-left: 0px;
-  margin: 0px 10px 10px 0px;
+  grid-template-columns: auto 60vw 5vw;
+  column-gap: 2%;
+  margin-top: 0%;
+  margin-left: auto;
+  margin-right: auto;
   position: fixed;
   top: 0px;
   background-color: white;
-  width: 100%;
-  padding: 10px 0px;
+  width: 90%;
   z-index: 1;
+  height: 4.0vw;
+  padding-left: 2%;
 }
 
 .create-dropdown-options>a{
@@ -21,34 +23,39 @@
   color: black;
   margin-left: 10px;
   margin-top: 5px;
+  font-size: 1.6vw;
 }
 
 
 .nav-bar-left {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  width: 100%;
+  margin: 5% auto;
 }
 
 
 .search-bar-input {
   border: none;
   font-weight: 300;
-  font-size: 15px;
-  width: 96%;
-  height: 100%;
+  font-size: 2.1vw;
+  padding: 0px;
+  width: 80%;
+  height: 80%;
   outline: none;
 }
 
 .nav-bar-text-links {
   display: flex;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 4%;
   padding-left: 10px;
-  font-size: 14px;
+  font-size: 1.4vw;
   margin-right: 10px;
 }
 
 .nav-bar-text-links>button {
-  font-size: 14px;
+  font-size: 1.4vw;
 }
 
 .fa-chevron-down {
@@ -57,22 +64,41 @@
   margin-left: 4px;
 }
 
+.harvest-logo{
+  width: 10.0vw;
+  display: flex;
+}
+
+.create-button>i{
+  display: flex;
+  align-items: center;
+  font-size: 1.2vw;
+}
+
 .nav-bar-text-links>a {
   text-decoration: none;
   color: black;
   display: flex;
 }
 
+.no-user-nav-links{
+  margin-top: 2.0vw;
+}
+
 .search-bar {
   border: 1px solid black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 5px 30px;
-  border-radius: 30px;
+  margin: 2% 0%;
+  padding: 2% 4%;
+  border-radius: 2.4vw;
   display: flex;
-  justify-content: space-between;
+  column-gap: 1vw;
   align-items: center;
+  height: 25%;
+}
 
+.fa-magnifying-glass{
+  font-size: 2.1vw;
+  margin-bottom: .2vw;
 }
 
 .nav-link {
@@ -92,14 +118,17 @@
   border: none;
   margin-right: 9px;
   color: black;
-  margin-top: 4px;
+  margin-top: 2.0vw;
 }
 
 .user-letter{
   background-color: #E9E9E9;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 20px;
+  width: 100%;
+  padding: 30% 90%;
+  border-radius: 100%;
+  font-size: 3.0vw;
+  position: relative;
+  top: -1.0vw;
 
 }
 
@@ -118,6 +147,7 @@
 .create-dropdown-options>button {
   background-color: transparent;
   border: none;
+  font-size: 1.5vw;
 }
 
 .create-dropdown-options>button:hover {
@@ -133,14 +163,15 @@
   color: white;
   background-color: black;
   cursor: pointer;
-  border-radius: 4px;
-  padding: 10px 20px;
+  border-radius: 2vw;
+  padding: 1vw 2vw;
   border: none;
   margin-right: 10px;
   margin-top: 8px;
   margin-bottom: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  font-weight: 600;
+  font-weight: 300;
+  font-size: 2.1vw;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -157,6 +188,7 @@
 
 .profile-dropdown-li{
   margin-top: 10px;
+  font-size: 2.0vw;
 }
 
 
@@ -170,9 +202,7 @@
 }
 
 .fa-user-circle {
-  font-size: 22px;
-  margin-left: -3px;
-  margin-right: -3px;
+  font-size: 4.0vw;
 }
 
 .create-button {
@@ -184,11 +214,11 @@
   position: absolute;
   background-color: white;
   position: absolute;
-  padding: 20px 20px 20px 40px;
-  top: 60px;
-  right: 50px;
+  padding: 1vw 1vw 1vw 2vw;
+  top: 4.5vw;
+  right: .1vw;
   z-index: 1;
-  border-radius: 10px;
+  border-radius: 1vw;
   border: 1px solid rgb(222, 222, 222);
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
@@ -198,8 +228,8 @@
   background-color: white;
   position: absolute;
   padding-right: 20px;
-  top: 40px;
-  left: 190px;
+  top: 4.0vw;
+  left: 18.0vw;
   z-index: 1;
   border-radius: 10px;
   border: 1px solid rgb(222, 222, 222);
@@ -208,11 +238,6 @@
 }
 
 
-.harvest-logo {
-  width: 100px;
-  padding-top: 7px;
-  padding-left: 10px;
-}
 
 .hide-that-button {
   background-color: white;

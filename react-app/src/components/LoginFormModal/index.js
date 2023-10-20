@@ -29,15 +29,15 @@ function LoginFormModal() {
   }
 
   return (
-    <div className="signup-modal-container">
-      <div className="signup-modal-divs login-modal-div-title">Log In</div>
+    <div className="login-modal-container">
+      <div className="login-modal-divs login-modal-div-title">Log In</div>
       <ul className="error error-ul">
         {errors.map((error, idx) => (
           <li className="error-li" key={idx}>{error}</li>
         ))}
       </ul>
       <form className="login-form-container" onSubmit={handleSubmit}>
-        <div className="signup-form-field">
+        <div className="login-form-field">
           <label>
             Email
           </label>
@@ -49,7 +49,7 @@ function LoginFormModal() {
             required
           />
         </div>
-        <div className="signup-form-field">
+        <div className="login-form-field">
           <label>
             Password
           </label>
@@ -61,10 +61,10 @@ function LoginFormModal() {
             required
           />
         </div>
-          <div className="signup-form-field">
+          <div className="login-form-field">
       <button className="demo-user-button hide-that-button" onClick={handleDemoUser}>Log in as demo user</button>
           </div>
-        <div className="signup-form-button-field">
+        <div className="login-form-button-field">
           <button type="submit">Log In</button>
         </div>
       </form>

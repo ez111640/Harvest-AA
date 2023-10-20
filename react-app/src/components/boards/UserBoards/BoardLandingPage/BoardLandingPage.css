@@ -6,11 +6,13 @@
 } */
 
 .update-board-button {
-    position: relative;
-    left: 150px;
-    top: -200px;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    font-size: 2.0vw;
+    position:absolute;
+    left: 60vw;
+    top: 18vw;
 }
 
 .close-edit-topic{
@@ -40,21 +42,18 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
+
 }
 
 .update-board-button>button {
     border: none;
     background-color: transparent;
+
 }
 
 .select-edit-board-type-dropdown {
-    position: absolute;
-    right: 400px;
-    top: 20px;
     padding-left: 10px;
     cursor: pointer;
-
 }
 
 @media only screen and (min-width: 200px){
@@ -93,9 +92,8 @@
 
 .edit-bn-lp{
     display: grid;
-    position: relative;
-    right: 290px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .edit-bn-lp>button{
@@ -124,21 +122,22 @@
 
 
 .edit-board-delete-pin {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .2);
     position: relative;
     display: flex;
     float: right;
     width: fit-content;
-    top: 10px;
-    left: 10px;
-    padding: 0px 5px;
-    border-radius: 20px;
+    top: 1.5vw;
+    left: 1.3vw;
+    padding: 1% 4%;
+    border-radius: 100%;
 }
 
 .edit-board-delete-pin>button {
     border: none;
     background-color: transparent;
-    padding: 5px;
+    padding: 1.0vw;
+    font-size: 2.0vw;
 }
 
 .topic-delete-button {
@@ -158,11 +157,10 @@
 }
 
 .board-name {
-    font-size: 32px;
+    font-size: 2.8vw;
     display: flex;
-    column-gap: 20px;
-    height: 52px;
-    margin-bottom: 40px;
+    width: 100%;
+    margin-bottom: 3vw;
 }
 
 
@@ -173,11 +171,12 @@
 
 
 .select-edit-board-button>i {
-    padding: 5px;
-    border-radius: 20px;
+    padding: 1.0vw;
+    border-radius: 100%;
     color: black;
     background-color: #E4E4E4;
-    font-size: 18px;
+    font-size: 2.0vw    ;
+
 }
 
 

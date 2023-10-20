@@ -1,8 +1,8 @@
 #all-user-pins {
-    width: 80%;
+    width: 90%;
     margin: auto;
     column-count: 6;
-    column-gap: 15px;
+    column-gap: 1.0vw;
     margin-left: auto;
     margin-right: auto;
 }
@@ -10,7 +10,7 @@
 
 .new-pin-created{
     margin-top: 80px;
-    font-size: 30px;
+    font-size: 2.0vw;
     width: 30%;
     margin: 20px auto 30px auto;
     padding-left: 30px;

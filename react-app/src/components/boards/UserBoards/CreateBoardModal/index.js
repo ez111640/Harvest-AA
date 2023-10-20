@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../../context/Modal"
-import "./SignupForm.css";
+import "./CreateBoardModal.css";
 import { addBoardThunk, getAllBoardsThunk, getUserBoards } from "../../../../store/boardsReducer";
 import { addNewBoardTopicThunk, getAllTopics } from "../../../../store/topicsReducer";
 import { getBoardTopicsThunk } from "../../../../store/topicsReducer";
@@ -124,7 +124,7 @@ function CreateBoardModal() {
 					Create Board
 				</label>
 				<div className="board-name-div">
-					<div>Name</div>
+					<div>Name:</div>
 				</div>
 				<input className="create-board-input"
 					type="text"
@@ -140,8 +140,8 @@ function CreateBoardModal() {
 						onChange={(e) => setPublicStatus(e.target.value)}
 					/>
 					<div>
-						<div className="make-bold">Keep this board secret</div>
-						<div className="font-size-14">So only you can see it</div>
+						<div className="keep-this make-bold">Keep this board secret</div>
+						<div className="only-you">So only you can see it</div>
 					</div>
 				</div>
 				{name.length > 0 && <button className="create-board-button font-bold" type="submit">Create</button>}

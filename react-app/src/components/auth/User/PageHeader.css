@@ -2,14 +2,14 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-flow: row;
-    column-gap: 30px;
+    column-gap: 1.0vw;
     width: 80%;
-    margin-left: auto;
+    margin-left: 1.0vw;
     margin-right: auto;
 }
 
 .board-name {
-    font-size: 18px;
+    font-size: 2.0vw;
     display: flex;
     justify-content: center;
 }
@@ -20,7 +20,7 @@
     position: fixed;
     left: 20px;
     top: 180px;
-    font-size: 40px;
+    font-size: 4.0vw;
 
 }
 
@@ -29,11 +29,11 @@
     height: fit-content;
     width: 80%;
     padding: 20px 20px 10px 20px;
-    margin: 70px auto 0px auto;
+    margin: 10% auto 0% auto;
 }
 
 .profile-div-left-buttons>div{
-    font-size: 16px;
+    font-size: 2.0vw;
 }
 
 .user-stats {
@@ -60,10 +60,10 @@
 }
 
 .user-spot {
-    height: 150px;
-    width: 150px;
+    height: 15.0vw;
+    width: 15.0vw;
     background-color: whitesmoke;
-    border-radius: 80px;
+    border-radius: 100%;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -74,7 +74,7 @@
 }
 
 .fl-div {
-    font-size: 60px;
+    font-size: 5.0vw;
     color: black;
 }
 
@@ -87,10 +87,10 @@
 
 .page-header-modals>button, .page-header-modals>a{
     border: none;
-    padding: 10px 10px;
+    padding: 1.0vw 1.0vw;
     margin-left: 10px;
-    border-radius: 20px;
-    font-size: 16px;
+    border-radius: 2.0vw;
+    font-size: 2.0vw;
 }
 
 .page-header-modals>a{
@@ -127,7 +127,7 @@
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin-bottom: 3.0vw;
+    font-size: 2.0vw;
     align-items: center;
 }

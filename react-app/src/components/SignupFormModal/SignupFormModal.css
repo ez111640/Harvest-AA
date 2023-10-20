@@ -1,12 +1,13 @@
 .harvest-symbol {
-    height: 120px;
-    width: 120px;
+    height: 18vw;
+    width: 18vw;
     object-fit: cover;
+    padding: 0px;
 }
 
 .symbol-div {
-    height: 70px;
-    width: 70px;
+    height: 8vw;
+    width: 8vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,9 +17,8 @@
 
 .signup-modal-container {
     display: grid;
-    margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 5% auto;
+
 }
 
 
@@ -31,27 +31,31 @@
 
 .signup-form-button-field>button {
     border: none;
-
+    font-size: 1.8vw;
     background-color: transparent;
 }
 
 .signup-form-field {
-    width: 60%;
+    width: 90%;
     display: grid;
     height: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0px auto
 }
 
 
 .signup-form-button-field {
-    width: 300px;
+    width: 100%;
     background-color: whitesmoke;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 2.0vw;
+    border-bottom-right-radius: 2.0vw;
     display: grid;
-    height: auto;
+    height: 5.0vw;
     font-weight: bold;
+    position: relative;
+    left: -2.0vw;
+    bottom: -1vw;
+    padding-left: 2.0vw;
+    padding-right: 2.0vw;
 }
 
 .signup-form-button-field:hover {
@@ -68,27 +72,38 @@
 
 .signup-modal-div-title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 2.0vw    ;
 }
 
 .signup-form-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(7, 1fr);
-    grid-row-gap: 10px;
-    row-gap: 10px;
-    margin-top: 20px;
+    grid-row-gap: 2%;
+    width: 25vw;
+    padding-left: 2.0vw;
+    padding-right: 2.0vw;
 }
 
 .signup-form-field>label{
-    font-size: 12px;
+    font-size: 1.8vw;
+    width: 90%;
+}
+
+.signup-error-ul{
+    max-width: 25.0vw;
+}
+
+.signup-prompt{
+    font-size: 1.5vw;
 }
 
 .signup-form-field>input{
-    width: 90%;
-    padding: 8px;
+    width: 100%;
+    padding: 1%;
     border-radius: 10px;
     border: 1px solid gray;
+    font-size: 1.5vw;
 }
 
 
@@ -98,8 +113,6 @@
 
 
 .error-ul{
-    max-width: 200px;
-    margin: 0px auto;
-    margin-top: 10px;
-    min-height: 20px;
+    font-size: 1.4vw;
+    text-align: center;
 }

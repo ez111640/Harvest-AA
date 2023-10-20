@@ -81,10 +81,10 @@ function SignupFormModal() {
 		<div className='signup-modal-container'>
 			<div className="signup-modal-divs symbol-div"><img className="harvest-symbol" src="https://i.ibb.co/vmgZQ9N/HARSymbol.png" alt="HARSymbol" border="0"></img></div>
 			<div className="signup-modal-divs signup-modal-div-title">Welcome to Harvest</div>
-			<div className="signup-modal-divs font-size-14px">Find new ideas to try</div>
+			<div className="signup-modal-divs signup-prompt">Find new ideas to try</div>
 			<div className="signup-modal-divs">
 
-					<ul className="error error-ul">
+					<ul className="error error-ul signup-error-ul">
 						{repeatEmailError && <li className="error-li">{repeatEmailError}</li>}
 						{repeatUserError && <li className="error-li">{repeatUserError}</li>}
 						{passwordError && <li className="error-li">{passwordError}</li>}

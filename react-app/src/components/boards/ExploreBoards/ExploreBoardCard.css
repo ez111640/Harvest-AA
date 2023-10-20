@@ -11,12 +11,12 @@
 
 .explore-div{
     display: grid;
-    margin-top: 80px;
+    margin-top: 5%;
     grid-auto-flow: row;
 }
 
 .no-boards-yet{
-    font-size: 20px;
+    font-size: 2.0vw;
     margin-left: auto;
     margin-right: auto;
     width: max-content;
@@ -30,17 +30,17 @@
     margin-right: auto;
     margin-top: 50px;
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 3.0vw;
 }
 
 .each-board{
-    height: 250px;
+    height: 18.0vw;
     padding: 0px 5px;
 }
 
 .explore-photo-div {
-    height: 250px;
-    width: 250px;
+    height: 18.0vw;
+    width: 18.0vw;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
@@ -51,9 +51,8 @@
 
 
 .explore-board-cover-photo {
-    width: 250px;
-    height: auto;
-    max-height: 200px;
+    width: 18.0vw;
+    height: 18.0vw;
     object-fit: cover;
     object-position: 100% 20%;
     overflow: hidden;
@@ -65,16 +64,16 @@
 
 .explore-board-name{
     position: relative;
-    bottom: 65px;
-    width: 246px;
-    height: 35px;
+    bottom: 4.1vw;
+    width: 18.0vw;
+    height: 4.0vw;
     background-color: rgba(0, 0, 0, .6);
     padding: 2px;
     z-index: 1;
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    font-size: 15px;
+    font-size: 1.3vw;
     display: flex;
     align-items: center;
 }

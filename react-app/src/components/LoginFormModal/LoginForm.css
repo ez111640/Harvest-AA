@@ -1,12 +1,16 @@
 .login-form-container{
-
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-    grid-row-gap: 10px;
-    grid-row-gap: 10px;
-    row-gap: 10px;
-    margin-top: 20px;
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 1.0vw;
+    margin-top: 2.0vw
+
+
+}
+
+.demo-user-button{
+    font-size: 1.6vw;
+    width: 110%;
 }
 
 .demo-user-button:hover{
@@ -15,6 +19,84 @@
 
 .login-modal-div-title{
     font-weight: bold;
-    font-size: 20px;
-    margin-top: 20px;
+    font-size: 2.5vw;
+    margin-top: 2.0vw;
+}
+
+
+.login-modal-container {
+    display: grid;
+    margin: 5% auto;
+
+}
+
+
+.login-modal-divs {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.login-form-button-field>button {
+    border: none;
+    font-size: 1.8vw;
+    background-color: transparent;
+}
+
+.login-form-field {
+    width: 60%;
+    display: grid;
+    height: auto;
+    margin: 0px auto
+}
+
+
+.login-form-button-field {
+    width: 100%;
+    background-color: whitesmoke;
+    border-bottom-left-radius: 2.0vw;
+    border-bottom-right-radius: 2.0vw;
+    display: grid;
+    height: 5.0vw;
+    font-weight: bold;
+    position: relative;
+    bottom: -1.3vw;
+}
+
+.login-form-button-field:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.login-form-button-field>button:hover {
+    color: white;
+
+}
+
+
+
+
+.login-form-field>label{
+    font-size: 1.8vw;
+}
+
+.login-form-field>input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 2.0vw;
+}
+
+
+.error-li{
+    list-style-type: none;
+}
+
+
+.error-ul{
+    font-size: 1.4vw;
+    text-align: center;
 }

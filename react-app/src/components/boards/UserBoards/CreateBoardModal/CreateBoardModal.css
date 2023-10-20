@@ -1,27 +1,26 @@
 .create-board-input{
-    width: 300px;
-    height: 30px;
     border-radius: 10px;
     border: 1px solid grey;
     margin-bottom: 0px;
+    font-size: 2.0vw;
 }
 
 
 .new-board-form{
     display: grid;
-    margin: 40px 30px 10px 30px;
-    row-gap: 5px;
+    margin: 4.0vw 3.0vw 3.0vw 3.0vw;
+    row-gap: 1.0vw;
 }
 
 .board-name-field{
     display: flex;
     justify-content: center;
-    font-size: 22px;
+    font-size: 3.0vw;
 
 }
 
 .board-name-div{
-    font-size: 12px;
+    font-size: 2.0vw;
 }
 
 .create-board-button{
@@ -30,22 +29,31 @@
     background-color:goldenrod;
     color: white;
     border:none;
-    padding: 15px 15px;
-    border-radius: 25px;
+    padding: 1.0vw 1.0vw;
+    border-radius: 1.9vw;
+    font-size: 1.8vw;
 }
 
 .private-board{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
     column-gap: 20px;
     padding-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.keep-this{
+    font-size: 1.8vw;
 }
 
 .create-board-private-input{
-    height: 20px;
-    width: 20px;
-    margin-top: 10px;
+    height: 60%;
+    width: 60%;
+    margin-left: 1.0vw;
+
 }
 
-.font-size-14{
-    font-size: 14px;
+.only-you{
+    font-size: 1.5vw;
 }

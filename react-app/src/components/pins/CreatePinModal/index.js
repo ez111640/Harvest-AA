@@ -133,14 +133,14 @@ const CreatePinModal = () => {
 
         if (isOverflown(titleInput)) {
             while (isOverflown(titleInput)) {
-                currentfontsize-=.1;
+                currentfontsize -= .1;
                 titleInput.style.fontSize = currentfontsize + 'vw';
             }
         } else {
             currentfontsize = 1.8;
             titleInput.style.fontSize = currentfontsize + 'vw';
             while (isOverflown(titleInput)) {
-                currentfontsize-=.1;
+                currentfontsize -= .1;
                 titleInput.style.fontSize = currentfontsize + 'vw';
             }
         }
@@ -158,10 +158,10 @@ const CreatePinModal = () => {
                     <div id="create-pin-left-clear-option">
                         {viewClearMenu ?
                             <div id="create-pin-left-clear-submit">
-                                <button onClick={closeClearMenu}>
+                                <button className="hide-that-button" onClick={closeClearMenu}>
                                     X
                                 </button>
-                                <button onClick={clearNewPin} >
+                                <button className="hide-that-button" onClick={clearNewPin} >
                                     Clear and Start Over
                                 </button>
                             </div>
@@ -188,6 +188,7 @@ const CreatePinModal = () => {
                                     <label>
                                         <input
                                             type="file"
+                                            id="create-pin-left-upload-input"
                                             accept="image/jpg, image/png"
                                             onChange={(e) => {
                                                 setFileType("AWS")
@@ -200,6 +201,24 @@ const CreatePinModal = () => {
                                 We recommend using high quality .jpg files less than 20mb*
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        {title && link && description && !url && <div className="need-photo-error error">You must include a photo when creating a pin</div>}
+                        {fileType !== "AWS" &&
+                            <div className={url
+                                ?
+                                ""
+                                : isUrl(url)
+                                    ? "show-error-create no-error"
+                                    : "show-error-create error"}>
+                                {url
+                                    ? isUrl(url)
+                                        ? ""
+                                        :
+                                        <div className="show-error-create error ">
+                                            Invalid url entered</div>
+                                    : ""}
+                            </div>}
                     </div>
                 </div>
                 <div id="create-pin-right-column">
@@ -257,13 +276,13 @@ const CreatePinModal = () => {
                     </div>
                     <div id="create-pin-right-form-errors">
                         <div className={link ? "" : isUrl(link) ? "show-error-create-link no-error" : "show-error-create-link error"}>{link ? isUrl(link) ? "" : <div className="show-error-create-link error ">Invalid url entered</div> : ""}</div>
-                        <div>{url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div>Invalid File Type. Please upload a .png or .jpg type image</div> : <div></div>}</div>
+                        <div>{url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div className="error">Invalid File Type. Please upload a .png or .jpg type image</div> : <div>.</div>}</div>
                     </div>
                     <div id="create-pin-right-form-submit-button-field-row">
                         {url && (url.name.includes(".png") || url.name.includes(".jpg")) && isUrl(link) && hasPhoto ?
-                            <button className="submit-new-pin" type="submit">Create</button> :
+                            <button className="create-pin-right-button submit-new-pin" type="submit">Create</button> :
 
-                             <button disabled className="submit-new-pin-disabled" type="submit">Create</button>}
+                            <button disabled className="create-pin-right-button submit-new-pin-disabled" type="submit">Create</button>}
 
 
                     </div>

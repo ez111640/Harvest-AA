@@ -12,14 +12,14 @@
 .edit-board-modal{
 
     display: flex;
+    margin: 0vw auto;
 }
 
 .input-new-board-name>input{
-    height: 60px;
-    width: 300px;
-    padding: 0px 10px;
-    font-size: 20px;
-    margin-bottom: 5px;
+    width: 90%;
+    padding: 1vw 1vw;
+    font-size: 1.8vw;
+    margin-left: 10px;
 }
 
 .input-new-board-name{
@@ -31,9 +31,12 @@
 }
 
 .edit-board-name-input{
-    width: fit-content;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    margin-top: 2%;
+
 }
 
 
@@ -44,6 +47,6 @@
 
 .show-error-create-name{
     display: flex;
-    justify-content: flex-end;
-    font-size: 12px;
+    font-size: 1.3vw;
+
 }

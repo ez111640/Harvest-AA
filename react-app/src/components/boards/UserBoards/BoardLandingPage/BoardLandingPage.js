@@ -188,26 +188,7 @@ export const BoardLandingPage = () => {
 
 
             {/* } */}
-            <div className="update-board-button">
-                {/* {<OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                    modalComponent={<UpdateBoardModal board={thisBoard} />} />} */}
-                <button className="select-edit-board-button" onClick={openMenu}>
-                    <i className="fa-solid fa-ellipsis"></i>
-                </button>
-                <ul className={ulClassName} ref={ulRef}>
-                    <div className="edit-bn-lp">
-                        {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
-                        <button onClick={clickEditBoardName}>Edit Board Name</button>
-                        <button onClick={clickEditBoardButton}>Edit Pins</button>
-                        <OpenModalButton
-                            buttonText="Edit Topics"
-                            modalComponent={<BoardTopicModal board={thisBoard} />}
-                        />
-                    </div>
 
-                </ul>
-                {/* <SelectEditBoardOption /> */}
-            </div>
             {/* </div> */}
             {/* </div> */}
             {/* </div> */}
@@ -231,6 +212,26 @@ export const BoardLandingPage = () => {
             <div className="edit-board-name-input">
                 {editBoardName ? <UpdateBoardModal board={thisBoard} /> :
                 <div className="board-name">{thisBoard.name}</div>}
+                <div className="update-board-button">
+                {/* {<OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+                    modalComponent={<UpdateBoardModal board={thisBoard} />} />} */}
+                <button className="select-edit-board-button" onClick={openMenu}>
+                    <i className="fa-solid fa-ellipsis"></i>
+                </button>
+                <ul className={ulClassName} ref={ulRef}>
+                    <div className="edit-bn-lp">
+                        {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
+                        <button onClick={clickEditBoardName}>Edit Board Name</button>
+                        <button onClick={clickEditBoardButton}>Edit Pins</button>
+                        <OpenModalButton
+                            buttonText="Edit Topics"
+                            modalComponent={<BoardTopicModal board={thisBoard} />}
+                        />
+                    </div>
+
+                </ul>
+                {/* <SelectEditBoardOption /> */}
+            </div>
             </div>
             <div>
                 {thisBoardPins.length ?

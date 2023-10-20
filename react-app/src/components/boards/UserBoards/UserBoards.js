@@ -8,8 +8,6 @@ import { useHistory } from "react-router-dom";
 import { UserPins } from "../../pins/UserPins";
 import { getAllPins } from "../../../store/pinsReducer";
 import OpenModalButton from "../../OpenModalButton";
-import UserProfilePage from "../../auth/User/UserProfilePage";
-
 
 
 
@@ -102,17 +100,15 @@ export const UserBoards = () => {
         <div>
             <PageHeader />
             <div className="update-board-button">
-                <button className="select-edit-board-button" onClick={openMenu}>
+                {/* <button className="select-edit-board-button" onClick={openMenu}>
                     <i className="fa-solid fa-ellipsis"></i>
                 </button>
                 <ul className={ulClassName} ref={ulRef}>
                     <div className="edit-bn-lp">
-                        <OpenModalButton buttonText="Edit Your Topics" modalComponent={<UserProfilePage/>}/>
-                        {/* <button onClick={clickEditProfileButton}>Edit Profile</button> */}
-
+                        <button onClick={clickEditProfileButton}>Edit Profile</button>
                     </div>
 
-                </ul>
+                </ul> */}
                 {/* <SelectEditBoardOption /> */}
             </div>
             <div className="view-type-button-div">
@@ -122,7 +118,7 @@ export const UserBoards = () => {
                 </div>
             </div>
             {viewType === "boards" ?
-                <div>
+                <div className='board-listing-outer'>
                     {userBoardArray?.length ?
 
                         <div className="user-board-listing">

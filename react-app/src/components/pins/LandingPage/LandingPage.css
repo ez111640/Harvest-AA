@@ -1,9 +1,9 @@
 #all-pins {
     width: 90%;
-    margin: auto;
+    margin: 0% auto;
 
     column-count: 6;
-    column-gap: 5px;
+    column-gap: 1vw    ;
 }
 
 
@@ -20,9 +20,6 @@
     justify-content: center;
 }
 
-.greeting-banner-no-user{
-    margin-top: 80px
-}
 
 .pin-from-home>button {
     background-color: transparent;
