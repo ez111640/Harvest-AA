@@ -125,6 +125,7 @@ textarea {
 
 #create-pin-right-description-field-row>textarea {
     font-size: 1.8vw;
+    border: 3px solid grey;
 }
 
 #create-pin-right-link-field-row>input {

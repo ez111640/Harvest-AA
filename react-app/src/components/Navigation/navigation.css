@@ -12,13 +12,13 @@
   position: fixed;
   top: 0px;
   background-color: white;
-  width: 90%;
+  width: 95%;
   z-index: 1;
-  height: 4.0vw;
+  height: 6.0vw;
   padding-left: 2%;
 }
 
-.create-dropdown-options>a{
+.create-dropdown-options>a {
   text-decoration: none;
   color: black;
   margin-left: 10px;
@@ -41,7 +41,7 @@
   font-size: 2.1vw;
   padding: 0px;
   width: 80%;
-  height: 80%;
+  height: 90%;
   outline: none;
 }
 
@@ -64,12 +64,13 @@
   margin-left: 4px;
 }
 
-.harvest-logo{
+.harvest-logo {
   width: 10.0vw;
   display: flex;
+  margin-top: .5vw;
 }
 
-.create-button>i{
+.create-button>i {
   display: flex;
   align-items: center;
   font-size: 1.2vw;
@@ -81,7 +82,7 @@
   display: flex;
 }
 
-.no-user-nav-links{
+.no-user-nav-links {
   margin-top: 2.0vw;
 }
 
@@ -96,7 +97,7 @@
   height: 25%;
 }
 
-.fa-magnifying-glass{
+.fa-magnifying-glass {
   font-size: 2.1vw;
   margin-bottom: .2vw;
 }
@@ -118,21 +119,35 @@
   border: none;
   margin-right: 9px;
   color: black;
-  margin-top: 2.0vw;
+  margin-top: 1.0vw;
 }
 
-.user-letter{
+.user-letter {
   background-color: #E9E9E9;
   width: 100%;
-  padding: 30% 90%;
+  height: 70%;
   border-radius: 100%;
   font-size: 3.0vw;
-  position: relative;
-  top: -1.0vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vw;
 
 }
 
-.greeting-banner{
+.a-user-letter {
+  background-color: #E9E9E9;
+  width: 100%;
+  height: 70%;
+  border-radius: 100%;
+  font-size: 3.0vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .6vw .8vw;
+}
+
+.greeting-banner {
   padding-top: 40px;
 }
 
@@ -186,17 +201,17 @@
 
 }
 
-.profile-dropdown-li{
+.profile-dropdown-li {
   margin-top: 10px;
   font-size: 2.0vw;
 }
 
 
-.view-profile-button:hover{
+.view-profile-button:hover {
   transform: scale(1.1);
 }
 
-.profile-dropdown-li>a{
+.profile-dropdown-li>a {
   text-decoration: none;
   color: black;
 }

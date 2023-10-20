@@ -1,33 +1,37 @@
 #pin-detail-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 40% 60%;
     border-radius: 15px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
-    width: fit-content;
-    max-width: 900px;
-    height: fit-content;
-    max-height: 500px;
+    margin-top: 10%;
+    width: 70%;
+    height: auto;
+
 
 }
-.comments{
+
+.pin-click{
+    height: min-content
+}
+
+.comments {
     border-bottom: 1px solid grey;
-
+    width: 90%;
 }
 
-.addpin-dropdown{
+.addpin-dropdown {
     position: relative;
-    top: -30px;
+    top: -35px;
 }
 
 #pin-detail-right {
     display: grid;
-    grid-template-rows: 1fr min-content min-content 1fr 3fr 20px;
+    grid-template-rows: 8% 12% 20% 10% 20% 20%;
 
-    padding: 10px;
-    width: inherit;
-    row-gap: 0px;
+    padding: 2vw;
+    row-gap: 2%;
 
 }
 
@@ -37,9 +41,7 @@
     padding-bottom: 5px;
 } */
 
-.move-down{
-    margin-bottom: 14px;
-}
+
 
 .fa-solid {
     cursor: pointer
@@ -64,7 +66,7 @@
 .pin-detail-buttons>button {
     background-color: transparent;
     border: none;
-    font-size: 20px;
+    font-size: 1.8vw;
 
 }
 
@@ -73,21 +75,22 @@
     background-color: transparent;
     border: none;
     color: goldenrod;
-    font-size: 20px;
+    font-size: 1.8vw;
 }
 
 .clear-right {
-    margin-right: 50px;
+    margin-right: 5.0vw;
     display: flex;
-    font-size: 18px;
+    font-size: 2.0vw;
 }
 
-.entered-edit-form {
-    width: 10px;
-    height: 10px;
+.add-comment>div {
+    font-size: 1.8vw;
 }
 
-.background-light-grey{
+
+
+.background-light-grey {
     background-color: lightgray;
 }
 
@@ -125,13 +128,13 @@
     top: -7px;
 }
 
-.exit-edit-desc{
+.exit-edit-desc {
     margin-top: 28px;
-    font-size: 20px;
+    font-size: 1.8vw;
 }
 
-.exit-edit-title{
-    font-size: 20px;
+.exit-edit-title {
+    font-size: 1.8vw;
     align-self: flex-start;
 
 }
@@ -144,28 +147,29 @@
     top: -7px;
     margin-top: 10px;
     padding-top: 10px;
+    border: 1px solid grey;
 }
 
-.photo-link-edit{
+.photo-link-edit {
     color: black;
 }
 
-.photo-link-edit>a{
+.photo-link-edit>a {
     color: black;
     text-decoration: none;
 }
 
-.domain-link-from-main{
+.domain-link-from-main {
     width: max-content;
-background-color: black;
-font-size: 12px;
+    background-color: black;
+    font-size: 1.3vw;
     padding: 5px 5px;
     color: white;
     border-radius: 10px;
     margin-top: 10px;
 }
 
-.goldenrod-on-hover:hover{
+.goldenrod-on-hover:hover {
     background-color: goldenrod;
 }
 
@@ -173,7 +177,7 @@ font-size: 12px;
     position: fixed;
     top: 80px;
     left: 60px;
-    font-size: 14px;
+    font-size: 1.4vw;
     border-radius: 20px;
     background-color: white;
     padding: 20px;
@@ -183,14 +187,13 @@ font-size: 12px;
 }
 
 #pin-detail-left>img {
-    width: auto;
-    max-width: 400px;
+    width: 100%;
     height: auto;
-    min-height: 400px;
-    max-height: 500px;
-    display: block;
+    min-height: 50vw;
+    display: flex;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+
 }
 
 .pin-edit-delete-button {
@@ -200,29 +203,34 @@ font-size: 12px;
 }
 
 .pin-details {
-    width: 350px;
     display: flex;
     align-items: center;
-
+    column-gap: 3%;
+    width: 90%;
 }
 
-a{
+.pin-details>a {
+    font-size: 1.8vw;
+}
+
+a {
     text-decoration: none;
     color: black;
 }
 
-.edit-title-div{
-    display: flex;
-}
-.pin-detail-title-sub{
+.edit-title-div {
     display: flex;
 }
 
-.pin-comment-header{
+.pin-detail-title-sub {
+    display: flex;
+}
+
+.pin-comment-header {
     font-size: 1.8vw;
 }
 
-.pin-detail-comment-content{
+.pin-detail-comment-content {
     font-size: 1.6vw;
 }
 
@@ -230,30 +238,34 @@ a{
     display: flex;
 }
 
-.title-edit-area{
-    width: 91%
-}
+
 
 .pin-detail-title {
     display: grid;
 }
 
 .pin-detail-description {
-    font-size: 14px;
+    font-size: 1.4vw;
     padding-top: 10px;
 
 }
 
-.add-comment{
-   position: relative;
-   bottom: 17px;
+.add-comment {
+    position: relative;
+    bottom: 17px;
+    margin-top: 2vw;
 }
 
-.comments-div{
+.comments-div {
     margin-top: 0px;
     padding-top: 0px;
     position: relative;
     top: -10px;
+
+}
+
+.delete-button-area>button {
+    font-size: 1.8vw;
 }
 
 .regular-edit-button {
@@ -265,18 +277,21 @@ a{
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+    font-size: 2.0vw;
 }
 
-.save-edits{
+.save-edits {
     width: 30%;
-    height: 50px;
-    padding: 10px;
-    border-radius: 20px;
+    height: 60%;
+    border-radius: 2.0vw;
     justify-self: flex-end;
-    margin-right: 20px;
+    margin-right: 3vw;
     background-color: black;
     color: white;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .no-placeholder::placeholder {
@@ -288,17 +303,18 @@ a{
     display: flex;
 }
 
-.leave-a-comment-area>div{
+.leave-a-comment-area>div {
     font-size: 2.0vw;
-    padding: 0px 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+
+}
+
+.move-down {
     height: 3.2vw;
     width: 3.2vw;
 }
 
-.sticky-comment{
+.sticky-comment {
     position: sticky;
     display: grid;
     align-items: flex-end;
@@ -307,58 +323,79 @@ a{
     margin-right: auto;
 
     height: 100%;
+    width: 5.0vw;
+}
 
-    }
-
-.sticky-comment>div{
+.sticky-comment>div {
     margin: 0px 20px 20px 20px;
-    font-size: 20px;
+    font-size: 1.8vw;
 }
 
-.enter-comment-input-field{
-    position: relative;
-    left: 140px;
+.enter-comment-input-field {
+    width: 100%;
 }
 
-.comment-div{
-    margin: 5px 10px 0px 10px ;
+.comment-div {
+    margin: 5px 10px 0px 10px;
     padding: 10px 20px 10px 20px;
     background-color: whitesmoke;
     text-wrap: wrap;
+    scrollbar-width: 1vw;
+
 }
 
-.comment-user-name{
-    font-size: 12px;
+.pin-detail-comment-content{
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 1vw;
+}
+
+.comment-user-name {
+    font-size: 1.4vw;
     margin-left: 5px;
 }
 
+.user-letters{
+    background-color: #e9e9e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: .9vw 1vw;
 
-
-.comment-div>button{
-    float: right;
-    border: none;
-    font-size: 14px;
 }
 
-.comment-content{
+.user-letters>i{
+    font-size: 2.0vw;
+}
+
+
+.comment-div>button {
+    float: right;
+    border: none;
+    font-size: 1.4vw;
+}
+
+.comment-content {
     display: flex;
     column-gap: 5px;
-    font-size: 14px;
+    font-size: 1.4vw;
     align-items: center;
 }
 
-.make-bold{
+.make-bold {
     font-weight: bold;
 }
 
 
-.margin-left-10px{
+.margin-left-10px {
     margin-left: 10px;
     height: auto;
-    word-wrap:break-word;
+    word-wrap: break-word;
+    max-width: 24vw;
 }
 
 
-.back-arrow{
-    background-color: rgba(0,0,0,rgba(17, 17, 26, 0.1))
+.back-arrow {
+    background-color: rgba(0, 0, 0, rgba(17, 17, 26, 0.1))
 }

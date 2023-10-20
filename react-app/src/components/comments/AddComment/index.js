@@ -9,12 +9,12 @@ export const AddComment = ({ pinId }) => {
     const [error, setError] = useState("")
     const dispatch = useDispatch()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault()
         let comment = { commentText, pinId }
-        dispatch(addCommentThunk(comment))
-        dispatch(getAllComments())
+        await dispatch(addCommentThunk(comment))
+        await dispatch(getAllComments())
 
     }
 

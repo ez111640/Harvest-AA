@@ -197,7 +197,7 @@ export const PinDetail = () => {
 
 					</div>}
 				<div id="pin-detail-right">
-					<div>
+					<div className="pin-click">
 						{user && <div className="pin-detail-buttons">
 
 							{thisPin.userId === user.id && <button type="button" onClick={enterEditForm} className="pin-edit-delete-button"><i className="fa-solid fa-pen-to-square"></i></button>
@@ -219,7 +219,7 @@ export const PinDetail = () => {
 						</div>}
 
 					</div>
-					{editTitleValue ? <div className="pin-details pin-detail-title">
+					{editTitleValue ? <div className="pin-details pin-detail-title clear-right">
 						<label className='url-field'>
 							Edit Title:
 						</label>
@@ -278,7 +278,7 @@ export const PinDetail = () => {
 					</div>
 					{showEditForm &&
 
-						<button className="submit-button save-edits" type="submit">Save Changes</button>
+						<button className="submit-button save-edits" type="submit">Save</button>
 
 
 					}
@@ -299,8 +299,8 @@ export const PinDetail = () => {
 
 											</div>
 											{user && comment.userId === user.id &&
-												<div>
-													{!deleteOption && <button className="hide-that-button delete-comment-button" type="button"
+												<div className="delete-button-area">
+													{!deleteOption && <button className="hide-that-button comment-x delete-comment-button" type="button"
 														onClick={() => {
 															setDeleteOption(!deleteOption)
 															setCommentId(comment.id)
@@ -372,7 +372,7 @@ export const PinDetail = () => {
 							{pinComments.find((comment) => comment.userId === user.id) ?
 								<div>Thank you for your comment!</div> :
 								<div className="leave-a-comment-area">
-									<div className="user-letter move-down">{firstLetter}</div>
+									<div className="user-letters move-down">{firstLetter}</div>
 									<div className="enter-comment-input-field">
 									<AddComment pinId={thisPin.id} />
 									</div>

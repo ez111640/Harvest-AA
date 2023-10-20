@@ -8,17 +8,17 @@
 }
 
 .footer>div{
-    padding: 12px 16px;
-    border-radius: 40px;
+    padding: 1vw 2.1vw;
+    border-radius: 100%;
     background-color: white;
-    font-size: 28px;
+    font-size: 4.0vw;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     font-weight: bold;
 }
 
 .open-about>button{
     border: none;
-    font-size: 28px;
+    font-size: 4.0vw;
     background-color: transparent;
     cursor:pointer
 }

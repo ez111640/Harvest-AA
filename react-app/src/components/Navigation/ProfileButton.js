@@ -61,7 +61,7 @@ function ProfileButton({ user }) {
         </button> :
         <button className="user-button" onClick={openMenu}>
 
-          <div className="user-letter">{firstLetter}</div>
+          <div className="a-user-letter">{firstLetter}</div>
         </button>
       }
       <ul className={ulClassName} ref={ulRef}>

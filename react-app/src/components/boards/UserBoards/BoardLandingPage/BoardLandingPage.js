@@ -8,13 +8,15 @@ import { deleteBoardTopicThunk, getAllTopics, getBoardTopicsThunk } from "../../
 import { PageHeader } from "../../../auth/User/PageHeader"
 import { BoardTopicModal } from "./BoardTopicModal"
 import OpenModalButton from "../../../OpenModalButton"
-import UpdateBoardModal from "../../UpdateBoardModal"
+import UpdateBoardModal2 from "../../UpdateBoardModal2"
 import RemovePinFromBoard from "../../../pins/RemovePinFromBoard"
 
 export const BoardLandingPage = () => {
     const dispatch = useDispatch()
     const { boardId } = useParams()
     const [showEditTopics, setShowEditTopics] = useState(false)
+    const [name, setName] = useState("");
+    const [errors, setErrors] = useState([]);
 
     const boards = useSelector((state) => state.boardsReducer.boards)
     const allTopics = useSelector((state) => state.topicsReducer.allTopics)
@@ -109,6 +111,20 @@ export const BoardLandingPage = () => {
         e.preventDefault()
         setShowEditTopics(!showEditTopics)
     }
+
+    const handleSubmit = async (e) => {
+		e.preventDefault();
+		let newBoard = {}
+		name ? newBoard.name = name : newBoard.name = thisBoard.name
+		newBoard.public = thisBoard.public
+		newBoard.id = thisBoard.id
+		const data = await dispatch(updateBoardThunk(newBoard));
+		await dispatch(getUserBoards())
+        setEditBoardName(!editBoardName)
+		if (data) {
+			setErrors(data);
+		}
+	};
 
 
 
@@ -209,29 +225,59 @@ export const BoardLandingPage = () => {
                 </div>
 
             </div> */}
-            <div className="edit-board-name-input">
-                {editBoardName ? <UpdateBoardModal board={thisBoard} /> :
-                <div className="board-name">{thisBoard.name}</div>}
-                <div className="update-board-button">
-                {/* {<OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                    modalComponent={<UpdateBoardModal board={thisBoard} />} />} */}
-                <button className="select-edit-board-button" onClick={openMenu}>
-                    <i className="fa-solid fa-ellipsis"></i>
-                </button>
-                <ul className={ulClassName} ref={ulRef}>
-                    <div className="edit-bn-lp">
-                        {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
-                        <button onClick={clickEditBoardName}>Edit Board Name</button>
-                        <button onClick={clickEditBoardButton}>Edit Pins</button>
-                        <OpenModalButton
-                            buttonText="Edit Topics"
-                            modalComponent={<BoardTopicModal board={thisBoard} />}
-                        />
-                    </div>
+            <div className="f-edit-board-name-input">
+                {/* {editBoardName ? <UpdateBoardModal2 board={thisBoard} /> : */}
+                {editBoardName ?
+                    <div className="f-edit-board-modal">
+                        <form onSubmit={handleSubmit}>
+                            <div className="f-board-name">
+                                <div className='f-edit-board-name-field'>
+                                    Board Name:
+                                </div>
+                                <div className="f-input-new-board-name">
+                                    <input
+                                        type="text"
+                                        value={name && name}
+                                        placeholder={name ? name : thisBoard.name}
+                                        className="f-board-input"
+                                        onChange={(e) => setName(e.target.value)}
+                                        required
+                                    />
+                                    <div className={name.length > 50 ? "f-show-error-create-name error" : "f-show-error-create-name no-error"}>{name.length <= 50 ? 50 - name.length : "Oops! Board names must be 50 characters or less"}</div>
+                                </div>
+                                {/* {url.split("/").length !== 4 &&
+                            <button className="submit-board-name signup-button" type="submit">Save</button>
+                        } */}
+                            </div>
 
-                </ul>
-                {/* <SelectEditBoardOption /> */}
-            </div>
+
+                            {name.length > 0 &&<button className="submit-button f-change-size" type="submit">Save</button>}
+
+
+                        </form>
+                    </div>
+                    :
+                    <div className="board-name">{thisBoard.name}</div>}
+                <div className="update-board-button">
+                    {/* {<OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
+                    modalComponent={<UpdateBoardModal board={thisBoard} />} />} */}
+                    <button className="select-edit-board-button" onClick={openMenu}>
+                        <i className="fa-solid fa-ellipsis"></i>
+                    </button>
+                    <ul className={ulClassName} ref={ulRef}>
+                        <div className="edit-bn-lp">
+                            {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
+                            <button onClick={clickEditBoardName}>Edit Board Name</button>
+                            <button onClick={clickEditBoardButton}>Edit Pins</button>
+                            <OpenModalButton
+                                buttonText="Edit Topics"
+                                modalComponent={<BoardTopicModal board={thisBoard} />}
+                            />
+                        </div>
+
+                    </ul>
+                    {/* <SelectEditBoardOption /> */}
+                </div>
             </div>
             <div>
                 {thisBoardPins.length ?

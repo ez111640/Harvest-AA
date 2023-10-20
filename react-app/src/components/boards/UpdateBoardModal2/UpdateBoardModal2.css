@@ -9,28 +9,43 @@
     padding: 10px 10px;
 }
 
-.edit-board-modal{
+.f-edit-board-modal{
 
     display: flex;
-    margin: 3vw 2vw 2vw 2vw;
+    margin: 0vw auto;
 }
 
-.input-new-board-name>input{
+.f-change-size{
+    height: 40%;
+}
+
+.f-edit-board-modal>form{
+    display: flex;
+    column-gap: 1vw;
+}
+
+.f-input-new-board-name>input{
     width: 90%;
-    padding: .3vw 1vw;
+    padding: 1vw 1vw;
     font-size: 1.8vw;
     margin-left: 10px;
 }
 
-.input-new-board-name{
+.f-board-name {
+    font-size: 2.0vw;
+    display: flex;
+    justify-content: center;
+}
+
+.f-input-new-board-name{
     margin-bottom: 10px;
 }
 
-.board-input {
+.f-board-input {
     padding: 10px;
 }
 
-.edit-board-name-input{
+.f-edit-board-name-input{
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -38,12 +53,8 @@
     margin-top: 2%;
 
 }
-
-.u-board-name{
-    font-size: 2.0vw;
-    display: flex;
-    width: 100%;
-    margin-bottom: 3vw;
+.f-edit-board-name-field{
+    margin-top: 2%;
 }
 
 
@@ -52,14 +63,7 @@
     cursor: pointer;
 }
 
-.here-button{
-    margin-left: 17vw;
-    margin-right: auto;
-    padding: 1vw 1vw;
-    border-radius: 20%;
-}
-
-.show-error-create-name{
+.f-show-error-create-name{
     display: flex;
     font-size: 1.3vw;
 

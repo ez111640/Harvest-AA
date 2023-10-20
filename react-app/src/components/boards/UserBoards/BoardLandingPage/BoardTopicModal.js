@@ -66,7 +66,7 @@ export const BoardTopicModal = (board) => {
     if (!topics) return null
     if (!boardArr) return null
     return (
-        <div>
+        <div className="board-topic-modal">
             <form onSubmit={() => handleClick}>
                 <div className="edit-topic-title">Edit Topics</div>
                 <div className="topic-div">

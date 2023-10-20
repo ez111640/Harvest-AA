@@ -126,22 +126,24 @@ const CreatePinModal = () => {
 
     const changefontsize = () => {
 
-        let titleInput = document.getElementById('create-pin-');
-        let currentfont = titleInput.style.fontSize
-        let indexOfVw = currentfont.indexOf("vw")
-        let currentfontsize = currentfont.split("").slice(0, indexOfVw).join("")
+        if (title.length > 0) {
+            let titleInput = document.getElementById('create-pin-title');
+            let currentfont = titleInput.style.fontSize
+            let indexOfVw = currentfont.indexOf("vw")
+            let currentfontsize = currentfont.split("").slice(0, indexOfVw).join("")
 
-        if (isOverflown(titleInput)) {
-            while (isOverflown(titleInput)) {
-                currentfontsize -= .1;
+            if (isOverflown(titleInput)) {
+                while (isOverflown(titleInput)) {
+                    currentfontsize -= .1;
+                    titleInput.style.fontSize = currentfontsize + 'vw';
+                }
+            } else {
+                currentfontsize = 1.8;
                 titleInput.style.fontSize = currentfontsize + 'vw';
-            }
-        } else {
-            currentfontsize = 1.8;
-            titleInput.style.fontSize = currentfontsize + 'vw';
-            while (isOverflown(titleInput)) {
-                currentfontsize -= .1;
-                titleInput.style.fontSize = currentfontsize + 'vw';
+                while (isOverflown(titleInput)) {
+                    currentfontsize -= .1;
+                    titleInput.style.fontSize = currentfontsize + 'vw';
+                }
             }
         }
     }

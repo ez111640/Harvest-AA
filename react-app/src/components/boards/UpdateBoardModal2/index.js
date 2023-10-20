@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal"
-import "./UpdateBoardModal.css";
+import "./UpdateBoardModal2.css";
 import { updateBoardThunk, getUserBoards } from "../../../store/boardsReducer";
 
-function UpdateBoardModal({ board }) {
+function UpdateBoardModal2({ board }) {
 	const dispatch = useDispatch();
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -17,7 +17,7 @@ function UpdateBoardModal({ board }) {
 		e.preventDefault();
 		let newBoard = {}
 		name ? newBoard.name = name : newBoard.name = board.name
-		publicStatus ? newBoard.public = publicStatus : newBoard.public = board.public
+		newBoard.public = board.public
 		newBoard.id = board.id
 		const data = await dispatch(updateBoardThunk(newBoard));
 		await dispatch(getUserBoards())
@@ -36,7 +36,7 @@ function UpdateBoardModal({ board }) {
 	return (
 		<div className="edit-board-modal">
 			<form onSubmit={handleSubmit}>
-				<div className="u-board-name">
+				<div className="board-name">
 					<div className='edit-board-name-field'>
 						Board Name:
 					</div>
@@ -57,8 +57,7 @@ function UpdateBoardModal({ board }) {
 				</div>
 
 
-
-					<button className="here-button submit-button" type="submit">Save</button>
+					<button className="submit-button change-size" type="submit">Save</button>
 
 
 			</form>
@@ -66,4 +65,4 @@ function UpdateBoardModal({ board }) {
 	);
 }
 
-export default UpdateBoardModal;
+export default UpdateBoardModal2;

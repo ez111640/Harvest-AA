@@ -1,9 +1,13 @@
 .enter-comment>input{
     border: none;
     background-color: #E9E9E9;
-    width: 200px;
+    font-size: 1.8vw;
 
 
+}
+
+.enter-comment{
+    margin-top: .4vw;
 }
 
 .enter-comment>input:focus{
@@ -15,16 +19,15 @@
 }
 
 .enter-comment{
-    height: 23px;
     background-color: #E9E9E9;
-    border-radius: 20px;
-    padding: 5px 10px;
+    border-radius: 2.0vw;
+    padding: 1vw 3vw;
     display: grid;
     column-gap: 10px;
     grid-template-columns: auto 20px;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 80%;
 }
 .enter-comment>button{
     border: none;
@@ -34,9 +37,10 @@
 .check-all-comments{
     background-color: transparent;
     border: none;
-    font-size: 20px;
+    font-size: 2.0vw;
 }
 
 .leave-a-comment-area{
-    display: flex;
+    display: grid;
+    grid-template-columns: 20% 80%;
 }
