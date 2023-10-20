@@ -239,6 +239,10 @@
 }
 
 
+.submit-button-topic{
+    margin-bottom: 1vw;
+}
+
 .board-topic-modal{
     width: 30vw;
 }

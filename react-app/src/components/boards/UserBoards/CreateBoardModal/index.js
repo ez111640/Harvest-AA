@@ -22,7 +22,6 @@ function CreateBoardModal() {
 	const [newBoard, setNewBoard] = useState("")
 	const allTopics = Object.values(topics)
 	const boardArr = Object.values(boardTopics)
-	const allBoardArr = Object.values(boards)
 	const history = useHistory()
 	let noMatch = []
 	let match = []
@@ -35,24 +34,21 @@ function CreateBoardModal() {
 		await dispatch(getAllBoardsThunk())
 		setBoardId(data)
 		setPage(2)
-		if (data) {
-			setErrors(data);
-		}
-
-		// closeModal()
+		if (data) setErrors(data);
 	};
 
 
 
 	for (let i = 0; i < allTopics.length; i++) {
 		for (let j = 0; j < boardArr.length; j++) {
-
 			if (boardArr[j].topicId !== allTopics[i].id) {
-				if (!noMatch.includes(allTopics[i].id))
+				if (!noMatch.includes(allTopics[i].id)) {
 					noMatch.push(allTopics[i].id)
+				}
 			} else {
-				if (boardArr[j].boardId === boardId.id)
+				if (boardArr[j].boardId === boardId.id) {
 					match.push(allTopics[i].id)
+				}
 			}
 		}
 	}
@@ -79,15 +75,12 @@ function CreateBoardModal() {
 	}
 
 	const checkTopic = (topicId) => {
-
 		if (match.includes(topicId)) return "match"
 		else return "noMatch"
 	}
 
 	const handleClick = (e) => {
-
 		e.preventDefault();
-		const board = allBoardArr[allBoardArr.length - 1]
 		history.push(`/boards`)
 		closeModal();
 	}
@@ -99,23 +92,29 @@ function CreateBoardModal() {
 	}, [dispatch])
 
 	if (!topics) return null
-	const topicArr = Object.values(topics)
+
 	return (
 		<div>
 			{page === 1 &&
-				<form className="new-board-form" onSubmit={handleSubmitPageOne}>
+				<form
+					className="new-board-form"
+					onSubmit={handleSubmitPageOne}>
+
 					<label className='board-name-field'>
 						Create Board
 					</label>
+
 					<div className="board-name-div">
 						<div>Name:</div>
 					</div>
+
 					<input className="create-board-input"
 						type="text"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>
+
 					<div className={name.length > 50
 						? "show-error-create-name error"
 						: "show-error-create-name no-error"}>
@@ -123,6 +122,7 @@ function CreateBoardModal() {
 							? 50 - name.length
 							: "Oops! Board names must be 50 characters or less"}
 					</div>
+
 					<div className="private-board">
 						<input className="create-board-private-input"
 							type="checkbox"
@@ -134,12 +134,14 @@ function CreateBoardModal() {
 							<div className="only-you">So only you can see it</div>
 						</div>
 					</div>
+
 					{name.length > 0
 						&&
 						<button className="create-board-button font-bold"
 							type="submit">
 							Create
 						</button>}
+
 				</form>}
 			{page === 2 &&
 
@@ -148,12 +150,20 @@ function CreateBoardModal() {
 					<div className="topic-div">
 						{
 							allTopics.map((topic) => (
-								<div id={topic.id} onClick={() => toggleMatch(topic)} className={"topic-list " + checkTopic(topic.id)}>{topic.name}</div>
+								<div
+									id={topic.id}
+									onClick={() => toggleMatch(topic)}
+									className={"topic-list " + checkTopic(topic.id)}>
+									{topic.name}
+								</div>
 							))
 						}
-
 					</div>
-					<button className="submit-button-topic" type="submit">Save</button>
+					<button
+						className="submit-button-topic"
+						type="submit">
+						Save
+					</button>
 				</form>
 			}
 		</div>

@@ -88,40 +88,41 @@ export const PinDetailModal = ({ pinId }) => {
 					<div className="photo-link" >
 						<div onClick={() => { window.open(thisPin.link) }} className="domain-link">
 							{domain}
-							<i className="fa-solid fa-square-arrow-up-right">
-							</i></div>
-
+							<i className="fa-solid fa-square-arrow-up-right"></i>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div className="pin-detail-modal-right">
-				<div className="pin-detail-modal-grid-right font-bold">{thisPin.title}</div>
-				<div className="pin-detail-modal-grid-right pin-dm-desc">{thisPin.description}</div>
-					<div className="pin-detail-modal-grid-right pin-link">{domain}</div>
+				<div className="pin-detail-modal-grid-right font-bold">
+					{thisPin.title}
+				</div>
+				<div className="pin-detail-modal-grid-right pin-dm-desc">
+					{thisPin.description}
+				</div>
+				<div className="pin-detail-modal-grid-right pin-link">
+					{domain}
+				</div>
 				<div className="pin-detail-modal-grid-right pin-dm-link ">
 					<div className="save-pin-from-main">
 						{user ?
-
 							openAddPin ?
 								<AddPinToBoardModal pin={thisPin} />
-
 								:
 								<AddPinToBoardModal pin={thisPin} />
-								// <div>
-								// 	<button className="submit-button" onClick={setOpenAddPin}>Save</button>
-								// </div>
-
-							// <OpenModalButton buttonText="Pin" modalComponent={<AddPinToBoardModal pin={thisPin} />} />
 							:
 							<div className="prompt-signup"><OpenModalButton buttonText="Signup To Pin" modalComponent={<SignupFormModal />} /></div>
 						}
 					</div>
-
 				</div>
 				<div className="pin-detail-modal-grid-right comments">
-					<div className="pin-comment-header">Comments: </div>
+					<div className="pin-comment-header">
+						Comments:
+					</div>
 					{pinComments.length ?
-						<div className="comment-div-container" id="comment-list">
+						<div
+							className="comment-div-container"
+							id="comment-list">
 							{pinComments.map((comment) =>
 
 								<div className="comment-div" id={comment.id}>
@@ -129,64 +130,80 @@ export const PinDetailModal = ({ pinId }) => {
 										<div className="make-bold">{comment.user.firstName ? comment.user.firstName : comment.user.username}</div>
 										<div className="margin-left-10px">{comment.commentText}</div>
 
-									{user && comment.userId === user.id &&
-										<div>
-											{!deleteOption && <button className="hide-that-button delete-comment-button" type="button"
-												onClick={() => {
-													setDeleteOption(!deleteOption)
-													setCommentId(comment.id)
-												}
-												}>X</button>}
-											{ /*<OpenModalButton
-											buttonText="X"
-
-											modalComponent={<DeleteCommentModal commentId={comment.id} />}
-										/> */}
-
-											{deleteOption === true && <div className="delete-comment">
-												<div>Remove this comment?</div>
-												<button className="hide-that-button" onClick={() => setDeleteOption(false)}><i className="fa-solid fa-x"> No (keep comment)</i></button>
-												<button
-													className="hide-that-button"
-													onClick={
-														onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
-											</div>}
-										</div>
-										// <div>
-										// 	<DeleteCommentModal className="fix-z" commentId={comment.id} />
-										// </div>
-									}
+										{user && comment.userId === user.id &&
+											<div>
+												{!deleteOption &&
+													<button className="hide-that-button delete-comment-button" type="button"
+														onClick={() => {
+															setDeleteOption(!deleteOption)
+															setCommentId(comment.id)
+														}}>
+														X
+													</button>}
+												{deleteOption === true
+													&& <div className="delete-comment">
+														<div>Remove this comment?</div>
+														<button
+															className="hide-that-button"
+															onClick={() => setDeleteOption(false)}>
+															<i className="fa-solid fa-x">
+																No (keep comment)
+															</i>
+														</button>
+														<button
+															className="hide-that-button"
+															onClick={
+																onSubmit}><i className="confirm-delete-check fa-solid fa-check"> Yes (delete comment)</i></button>
+													</div>}
+											</div>
+										}
 									</div>
-
 								</div>)}
-
 						</div>
 						:
-						<div className="pin-detail-comment-content">{user ? "Be the first to leave a comment!" : "Sign in to share your thoughts!"}</div>
-
-						}
-
-
+						<div className="pin-detail-comment-options">
+							{user
+								? "Be the first to leave a comment!"
+								: "Sign in to share your thoughts!"}
+						</div>
+					}
 				</div>
-
 				{user &&
 					pinComments.find((comment) => comment.userId === user.id) ?
 					<div className="thanks">Thank you for your comment!</div> :
 					<div className="leave-a-comment-area">
-						{user && <div className="user-letter">{firstLetter}</div>}
-						{user && <label className='comment-text-fields'>
-							<div className="enter-comment-input">
-								<input
-									type="text"
-									value={commentText}
-									onChange={(e) => setCommentText(e.target.value)}
-									required
-									placeholder="Leave a comment"
-								/>
-								{commentText && commentText.length <=100 && <button onClick={handleSubmit} type="Submit"><i className="fa-solid fa-check"></i></button>}
-							</div>
-								<span className="float-right">{commentText ? commentText.length <= 100 ? 100 - commentText.length : <span className="error">Your comment must be 100 characters or less</span> : 100}</span>
-						</label>}
+						{user
+							&& <div className="user-letter">
+								{firstLetter}
+							</div>}
+						{user
+							&& <label className='comment-text-fields'>
+								<div className="enter-comment-input">
+									<input
+										type="text"
+										value={commentText}
+										onChange={(e) => setCommentText(e.target.value)}
+										required
+										placeholder="Leave a comment"
+									/>
+									{commentText
+										&& commentText.length <= 100
+										&& <button
+											onClick={handleSubmit}
+											type="Submit">
+											<i className="fa-solid fa-check"></i>
+										</button>}
+								</div>
+								<span className="float-right">
+									{commentText
+										? commentText.length <= 100
+											? 100 - commentText.length
+											: <span className="error">
+												Your comment must be 100 characters or less
+											</span>
+										: 100}
+								</span>
+							</label>}
 					</div>
 
 				}

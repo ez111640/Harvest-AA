@@ -113,18 +113,18 @@ export const BoardLandingPage = () => {
     }
 
     const handleSubmit = async (e) => {
-		e.preventDefault();
-		let newBoard = {}
-		name ? newBoard.name = name : newBoard.name = thisBoard.name
-		newBoard.public = thisBoard.public
-		newBoard.id = thisBoard.id
-		const data = await dispatch(updateBoardThunk(newBoard));
-		await dispatch(getUserBoards())
+        e.preventDefault();
+        let newBoard = {}
+        name ? newBoard.name = name : newBoard.name = thisBoard.name
+        newBoard.public = thisBoard.public
+        newBoard.id = thisBoard.id
+        const data = await dispatch(updateBoardThunk(newBoard));
+        await dispatch(getUserBoards())
         setEditBoardName(!editBoardName)
-		if (data) {
-			setErrors(data);
-		}
-	};
+        if (data) {
+            setErrors(data);
+        }
+    };
 
 
 
@@ -173,60 +173,8 @@ export const BoardLandingPage = () => {
     return (
         <div>
             {thisBoard.userId === user.id ? <PageHeader /> : <div className="bump-down"></div>}
-            {/* <div className="profile-header"> */}
-            {/* <div className="profile-div-left"> */}
-            {/* <div className="user-spot">
-                        <div className="fl-div">{firstLetter}</div>
-                    </div> */}
 
-            {/* <div className="header-main"> */}
-            {/*      {!editBoard && thisBoard ? <div className="board-name">{thisBoard.name}</div> :*/}
-
-            {/* <div className="edit-board-name">
-                Edit board name under construction. Please test this feature
-                <NavLink to="/boards">here</NavLink>
-                by hovering over the board you'd like to edit
-                <form onSubmit={handleSubmit}>
-                    <label className='board-name-field'>
-                        Board Name:
-                    </label>
-                    <input
-                        className="edit-board-name-input"
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                    <button className="edit-confirm-button submit-button" type="submit">Save</button>
-                </form>
-            </div> */}
-            {/* {!editBoard && <button  onClick={clickEditBoardButton}><i className="fa-solid fa-ellipsis"></i></button> */}
-
-
-            {/* } */}
-
-            {/* </div> */}
-            {/* </div> */}
-            {/* </div> */}
-            {/* <div className="topics-container">
-                <div className="topics-div">
-                    {boardTopics?.map((topic) =>
-                        <div className="each-option">
-                            < IndividualTopic topic={topic} editBoard={editBoard} boardId={boardId} />
-                            <div className="topic-option tagged">{topic.topicName}</div>
-                            {editBoard && <button type="button" onClick={deleteButtonClick} value={topic.topicId} className="topic-delete-button hide-that-button" >X</button>}
-                        </div>)}
-
-                    <OpenModalButton
-                        buttonText="Add Topics"
-                        modalComponent={<EditBoardTopics boardId={thisBoard.id} />}
-                    />
-                    <div className="board-name">{thisBoard.name}</div>
-                </div>
-
-            </div> */}
             <div className="f-edit-board-name-input">
-                {/* {editBoardName ? <UpdateBoardModal2 board={thisBoard} /> : */}
                 {editBoardName ?
                     <div className="f-edit-board-modal">
                         <form onSubmit={handleSubmit}>
@@ -243,30 +191,36 @@ export const BoardLandingPage = () => {
                                         onChange={(e) => setName(e.target.value)}
                                         required
                                     />
-                                    <div className={name.length > 50 ? "f-show-error-create-name error" : "f-show-error-create-name no-error"}>{name.length <= 50 ? 50 - name.length : "Oops! Board names must be 50 characters or less"}</div>
+                                    <div className={name.length > 50
+                                        ? "f-show-error-create-name error"
+                                        : "f-show-error-create-name no-error"}>
+                                        {name.length <= 50
+                                            ? 50 - name.length
+                                            : "Oops! Board names must be 50 characters or less"}
+                                    </div>
                                 </div>
-                                {/* {url.split("/").length !== 4 &&
-                            <button className="submit-board-name signup-button" type="submit">Save</button>
-                        } */}
                             </div>
-
-
-                            {name.length > 0 &&<button className="submit-button f-change-size" type="submit">Save</button>}
-
-
+                            {name.length > 0 &&
+                                <button
+                                    className="submit-button f-change-size"
+                                    type="submit">
+                                    Save
+                                </button>}
                         </form>
                     </div>
                     :
                     <div className="board-name">{thisBoard.name}</div>}
                 <div className="update-board-button">
-                    {/* {<OpenModalButton buttonText={<i className="fa-solid fa-ellipsis"></i>}
-                    modalComponent={<UpdateBoardModal board={thisBoard} />} />} */}
-                    <button className="select-edit-board-button" onClick={openMenu}>
+
+                    <button
+                        className="select-edit-board-button"
+                        onClick={openMenu}>
                         <i className="fa-solid fa-ellipsis"></i>
                     </button>
-                    <ul className={ulClassName} ref={ulRef}>
+                    <ul
+                        className={ulClassName}
+                        ref={ulRef}>
                         <div className="edit-bn-lp">
-                            {/* <OpenModalButton buttonText="Edit Board Name" modalComponent={<UpdateBoardModal board={thisBoard} />} /> */}
                             <button onClick={clickEditBoardName}>Edit Board Name</button>
                             <button onClick={clickEditBoardButton}>Edit Pins</button>
                             <OpenModalButton
@@ -283,11 +237,21 @@ export const BoardLandingPage = () => {
                 {thisBoardPins.length ?
                     <div id="all-pins">
                         {thisBoardPins.map((pin) => (
-                            <div id={pin.id} className="pin-photo">
-                                {editBoard && <div className="edit-board-delete-pin">
-                                    <OpenModalButton buttonText="X" modalComponent={<RemovePinFromBoard pinId={pin.id} lastPage={`/boards/`} boardId={boardId} />} />
+                            <div
+                                id={pin.id}
+                                className="pin-photo">
+                                {editBoard &&
+                                <div className="edit-board-delete-pin">
+                                    <OpenModalButton
+                                    buttonText="X"
+                                    modalComponent={<RemovePinFromBoard
+                                    pinId={pin.id}
+                                    lastPage={`/boards/`}
+                                    boardId={boardId} />} />
                                 </div>}
-                                <NavLink to={`/pins/${pin.id}`}><img alt="pin" src={pin.url}></img></NavLink>
+                                <NavLink to={`/pins/${pin.id}`}>
+                                    <img alt="pin" src={pin.url}></img>
+                                    </NavLink>
                             </div>
                         ))}
                     </div>
