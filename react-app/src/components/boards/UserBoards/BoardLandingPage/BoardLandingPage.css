@@ -222,14 +222,6 @@
 }
 
 
-.topic-div{
-    padding: 20px 0px 20px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 20px;
-    justify-content: space-evenly;
-}
-
 .topic-list{
     margin: 0px 10px;
     padding: 5px 10px;
@@ -237,6 +229,15 @@
     cursor: pointer;
     font-size: 1.5vw;
 }
+
+.topic-div{
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    justify-content: space-evenly;
+}
+
 
 .board-topic-modal{
     width: 30vw;

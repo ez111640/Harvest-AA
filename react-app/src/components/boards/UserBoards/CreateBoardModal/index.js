@@ -87,27 +87,10 @@ function CreateBoardModal() {
 	const handleClick = (e) => {
 
 		e.preventDefault();
-		const board = allBoardArr[allBoardArr.length -1]
+		const board = allBoardArr[allBoardArr.length - 1]
 		history.push(`/boards`)
 		closeModal();
 	}
-
-	// const handleSubmitPageTwo = async (e) => {
-	// 	e.preventDefault();
-	// 	let topic = document.getElementById("topic-selector")
-	// 	let value = topic.value
-	// 	let text = topic.options[topic.selectedIndex].text
-
-	// 	let newBT = {
-	// 		"id": value,
-	// 		"name": text
-	// 	}
-	// 	const data = await dispatch(addNewBoardTopicThunk(newBT, newBoard.id));
-
-	// 	if (data) {
-	// 		setErrors(data);
-	// 	}
-	// };
 
 	useEffect(() => {
 		dispatch(getAllTopics())
@@ -119,43 +102,47 @@ function CreateBoardModal() {
 	const topicArr = Object.values(topics)
 	return (
 		<div>
-			{page === 1 && <form className="new-board-form" onSubmit={handleSubmitPageOne}>
-				<label className='board-name-field'>
-					Create Board
-				</label>
-				<div className="board-name-div">
-					<div>Name:</div>
-				</div>
-				<input className="create-board-input"
-					type="text"
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-					required
-				/>
-				<div className={name.length > 50 ? "show-error-create-name error": "show-error-create-name no-error"}>{name.length <= 50 ? 50-name.length : "Oops! Board names must be 50 characters or less"}</div>
-				<div className="private-board">
-					<input className="create-board-private-input"
-						type="checkbox"
-						value={!publicStatus}
-						onChange={(e) => setPublicStatus(e.target.value)}
-					/>
-					<div>
-						<div className="keep-this make-bold">Keep this board secret</div>
-						<div className="only-you">So only you can see it</div>
+			{page === 1 &&
+				<form className="new-board-form" onSubmit={handleSubmitPageOne}>
+					<label className='board-name-field'>
+						Create Board
+					</label>
+					<div className="board-name-div">
+						<div>Name:</div>
 					</div>
-				</div>
-				{name.length > 0 && <button className="create-board-button font-bold" type="submit">Create</button>}
-			</form>}
+					<input className="create-board-input"
+						type="text"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+						required
+					/>
+					<div className={name.length > 50
+						? "show-error-create-name error"
+						: "show-error-create-name no-error"}>
+						{name.length <= 50
+							? 50 - name.length
+							: "Oops! Board names must be 50 characters or less"}
+					</div>
+					<div className="private-board">
+						<input className="create-board-private-input"
+							type="checkbox"
+							value={!publicStatus}
+							onChange={(e) => setPublicStatus(e.target.value)}
+						/>
+						<div>
+							<div className="keep-this make-bold">Keep this board secret</div>
+							<div className="only-you">So only you can see it</div>
+						</div>
+					</div>
+					{name.length > 0
+						&&
+						<button className="create-board-button font-bold"
+							type="submit">
+							Create
+						</button>}
+				</form>}
 			{page === 2 &&
-				// <form onSubmit={handleSubmitPageTwo}>
-				// 	<label className='board-name-field'>
-				// 		Topic:
-				// 		<select id="topic-selector">{topicArr.map((topic) =>
-				// 			<option value={topic.id}>{topic.name}</option>)}
-				// 		</select>
-				// 	</label>
-				// 	<button type="submit">Create</button>
-				// </form>
+
 				<form onSubmit={() => handleClick}>
 					<div className="edit-topic-title">Edit Topics</div>
 					<div className="topic-div">
