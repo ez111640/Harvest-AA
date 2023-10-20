@@ -111,6 +111,7 @@
 .profile-div-left-buttons>div{
     width: fit-content;
     margin: 5px auto;
+    font-size: 1.4vw;
 }
 
 .profile-div-left-buttons{
