@@ -35,9 +35,10 @@
 
 }
 
-#pin-detail-comment-options{
-    
+.pin-detail-comment-options{
+    font-size: 1.8vw;
 }
+
 
 /* #pin-detail-right>div, .pin-detail-title-bottom{
     padding-top: 0px;
