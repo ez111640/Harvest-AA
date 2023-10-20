@@ -200,7 +200,7 @@ def seed_pins():
 
         url="https://i.pinimg.com/564x/99/78/19/997819d213f13afe03b9202b08c9c492.jpg",
         link="https://www.marthastewart.com/1536685/lever-knitting-method-explained?utm_source=pinterest.com&utm_medium=social&utm_campaign=marthastewartliving_8471977&utm_content=textoverlay_toppinterest_powerpin_diy&utm_term=knittingandcrochetprojects_202201",
-        description="The lever knitting method, also known as the Irish cottage style, has the reputation of being the 'fastest knitting method in the world.' We share why this easy knitting method is quick, efficient, and is painless for those who suffer from hand problems but still want to knit. #marthastewart #crafts #hobby #knitting #diyideas #knittingprojects",
+        description="The lever knitting method, also known as the Irish cottage style, has the reputation of being the 'fastest knitting method in the world.'",
         title="Lever Knitting Is the Fastest Knitting Technique in the World",
         creatorId="2"
     )

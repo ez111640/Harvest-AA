@@ -304,7 +304,9 @@ export const PinDetail = () => {
 										</div>)}
 
 								</div>
-								: <div className="font-size-18 pin-detail-comment-options">Be the first to leave a comment!</div>}
+								: <div className="font-size-18 pin-detail-comment-options">
+									Be the first to leave a comment!
+									</div>}
 
 						</div>
 						{/*}	<div>

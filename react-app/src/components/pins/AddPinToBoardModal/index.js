@@ -14,7 +14,7 @@ const AddPinToBoardModal = ({ pin }) => {
     const { closeModal } = useModal();
     const userBoards = useSelector((state) => state.boardsReducer.boards)
     const allPins = useSelector((state) => state.pinsReducer.pins)
-    const user = useSelector((state)=> state.session.user)
+    const user = useSelector((state) => state.session.user)
     const allPinArr = Object.values(allPins)
     const [page, setPage] = useState(1)
     let urlParts = window.location.href.split("/")
@@ -40,27 +40,29 @@ const AddPinToBoardModal = ({ pin }) => {
     if (!userBoards) return null;
 
     const boardArr = Object.values(userBoards)
-    const filteredArr = boardArr.filter((board)=> board.userId === user.id)
+    const filteredArr = boardArr.filter((board) => board.userId === user.id)
     if (!boardArr) return null;
     return (
         <div>
             {page === 1 && <div className="select-board">
-              {filteredArr.length ?
-                <form onSubmit={handleSubmit}>
+                {filteredArr.length ?
+                    <form onSubmit={handleSubmit}>
 
-                    <select id="board-selector">
-                        {
-                            filteredArr.map((board) =>
+                        <select id="board-selector">
+                            <optgroup className="board-selector-input">
+                                {
+                                    filteredArr.map((board) =>
 
-                                <option id="board-selector-input" value={board.id}>{board.name}</option>
-                            )
-                        }
-                    </select>
+                                        <option  value={board.id}>{board.name}</option>
+                                    )
+                                }
+                            </optgroup>
+                        </select>
 
-                    <button className="submit-button" type="submit">Save</button>
-                </form>
-            :
-            <div className="create-board-prompt">Create a board to save this pin!</div>
+                        <button className="submit-button" type="submit">Save</button>
+                    </form>
+                    :
+                    <div className="create-board-prompt">Create a board to save this pin!</div>
                 }
             </div>}
             {

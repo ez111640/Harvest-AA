@@ -26,8 +26,9 @@
 
 }
 
-#board-selector-input {
+.board-selector-input>option {
     border: none;
+    font-size: 1.4vw;
 
 }
 
@@ -36,7 +37,7 @@ select#board-selector {
     outline: none;
     font-family: Mooli;
     font-weight: bold;
-    font-size: 1.8vw;
+    font-size: 1.6vw;
 
 }
 

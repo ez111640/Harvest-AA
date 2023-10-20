@@ -90,7 +90,7 @@
 
 .pin-detail-modal-right {
     display: grid;
-    grid-template-rows: 2fr auto 1fr 1fr 1fr 2fr;
+    grid-template-rows: 2fr auto 1fr 1fr 1fr 1fr;
     row-gap: 5px;
     width: 37vw;
     height: 45vw;
@@ -212,6 +212,7 @@
     margin-bottom: 20px;
     font-weight: bold;
     font-size: 1.8vw;
+    width: 70%;
 }
 
 
