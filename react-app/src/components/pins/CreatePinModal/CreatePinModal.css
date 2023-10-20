@@ -1,35 +1,69 @@
 /*Redoing the create pin page */
 
 .create-pin-page-div {
-    display: grid;
-    border-radius: 15px;
+
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 80px;
-    width: 700px;
-    max-width: 900px;
-    height: fit-content;
+
+    width: 80%;
+    max-width: 1700px;
+    height: 70rem;
 }
 
-.start-over>button{
+@media only screen and (min-width: 1800px){
+    .create-pin-page-div{
+        margin: 3% 1% 1% 1%;
+
+    }
+
+    .create-pin-aws-option {
+        width: 80%;
+        height: 130%;
+    }
+
+    .create-pin-page-sub {
+        display: grid;
+        grid-template-columns: 40% 50%;
+        border: 1px solid red;
+        width: 80%;
+        margin: auto;
+        height: 80vh;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+
+}
+
+@media only screen and (max-width: 1799px){
+
+    .create-pin-page-sub {
+        display: grid;
+        grid-template-columns: 40% 50%;
+        border: 1px solid red;
+        width: 80%;
+        margin: 10% auto auto auto;
+        height: 65vh;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+}
+.start-over>button {
     border: none;
     background-color: transparent;
     cursor: pointer;
 
 }
 
-.start-over>button:hover{
+.start-over>button:hover {
     transform: scale(1.1);
 }
 
-.and-add-to-board{
+.and-add-to-board {
     margin-top: 15px;
     margin-right: 10px;
 }
 
 
-.start-over{
+.start-over {
     margin-top: 10px;
     margin-left: 20px;
     width: 200px;
@@ -37,32 +71,31 @@
 
 .create-pin-page-sub {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 50% 50%;
+
 }
 
 .create-pin-aws-option {
     background-color: whitesmoke;
     border-radius: 20px;
-    height: 360px;
-    width: 260px;
     padding: 20px;
     display: flex;
     justify-content: center;
 }
 
 
-.photo-prompt{
-    font-size: 15px;
+.photo-prompt {
+    font-size: 70%;
     margin: 10px;
     text-align: center;
 }
 
-.upload-photo-image{
+.upload-photo-image {
     text-align: center;
     font-size: 30px;
 }
 
-.upload-photo-image>i{
+.upload-photo-image>i {
     cursor: unset;
 }
 
@@ -122,10 +155,10 @@
 }
 
 .image-prompt {
-    font-size: 14px;
+    font-size: 70%;
     display: table;
 
-    width: 250px;
+    width: 100%;
     text-align: center;
 }
 
@@ -139,13 +172,6 @@
     width: 90%;
 }
 
-.create-pin-page-header {
-    background-color: white;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-}
 
 .create-pin-ellipsis {
     padding-top: 4px;
@@ -157,6 +183,7 @@
 
 .create-pin-page-left {
     margin: 0px 20px 20px 20px;
+    height: 68%;
 }
 
 
@@ -168,7 +195,7 @@
     margin-top: 10px;
 }
 
-.show-error-create{
+.show-error-create {
     padding-top: 5px;
     width: 90%;
     font-size: 10px;
@@ -180,7 +207,7 @@
 
 }
 
-.submit-new-pin{
+.submit-new-pin {
     background-color: black;
     color: white;
     border: none;
@@ -191,11 +218,11 @@
     font-size: 16px;
 }
 
-.create-pin-add-link>input{
+.create-pin-add-link>input {
     font-size: 20px;
 }
 
-.submit-new-pin-disabled{
+.submit-new-pin-disabled {
     background-color: gray;
     color: white;
     padding: 10px 10px;
@@ -206,7 +233,7 @@
     cursor: unset;
 }
 
-.submit-new-pin:hover{
+.submit-new-pin:hover {
     background-color: goldenrod;
 }
 
@@ -232,8 +259,6 @@
 }
 
 .create-pin-user-spot {
-    height: 40px;
-    width: 40px;
     background-color: whitesmoke;
     border-radius: 80px;
     display: flex;
@@ -242,39 +267,53 @@
     position: relative;
     left: 10px;
     bottom: 2px;
+    font-size: 2.4rem;
+    margin-right: 15px;
+    padding: 1% 2% 1% 2%;
+}
+
+
+.create-pin-user-spot>i{
+
 }
 
 .create-pin-page-right {
     display: grid;
-    grid-template-rows: 1fr auto auto 1fr 1fr auto;
+    grid-template-rows: auto auto auto 1fr 1fr auto auto auto;
     row-gap: 20px;
 }
 
 .create-pin-add-description {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    width: 110%;
-    margin-left: 15px;
+    width: 90%;
+    margin-left: 1.5%;
     word-wrap: normal;
     overflow: hidden;
 }
 
-.create-pin-add-description>textarea{
-    font-size: 18px;
+
+.user-dets{
+    font-size: 2.2rem;
+
 }
 
-.required-fields{
+.create-pin-add-description>textarea {
+    font-size: 2.2rem;
+}
+
+.required-fields {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     padding-right: 10px;
+    font-size: 2.3rem;
 }
 
-.create-pin-page-header{
-    width: 100%;
+.create-pin-page-header {
+    width: 90%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 
@@ -284,7 +323,7 @@ input[type=textarea] {
 }
 
 .create-pin-add-link,
-.create-pin-add-description,
+
 .create-pin-add-title {
 
     height: fit-content;
@@ -295,6 +334,7 @@ input[type=textarea] {
 
 .create-pin-form-field>input {
     border: none;
+    font-size: 2.1rem;
 }
 
 .create-pin-add-title>input {
@@ -304,10 +344,8 @@ input[type=textarea] {
 }
 
 .show-error-create-description {
-    border-top: 1px solid grey;
-    padding-top: 5px;
     width: 90%;
-    font-size: 10px;
+    font-size: 2.1rem;
     display: flex;
     justify-content: flex-end;
 }
@@ -317,13 +355,12 @@ input[type=textarea] {
 }
 
 #create-pin-title {
-    padding:5px;
-    border-radius:3px;
-    font-family:Arial;
-    width:90%;
-    font-size:28px;
-    height:20px;
-  }
+    padding: 5px;
+    border-radius: 3px;
+    font-family: Arial;
+    width: 90%;
+    font-size: 3rem;
+}
 
 .show-error-create-link {
     border-top: 1px solid grey;
@@ -332,8 +369,6 @@ input[type=textarea] {
     font-size: 10px;
     display: flex;
     justify-content: flex-end;
-    position: relative;
-    top: -30px;
     min-height: 20px;
 }
 

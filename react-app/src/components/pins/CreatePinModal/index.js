@@ -1,4 +1,4 @@
-import "./CreatePinModal.css"
+import "./CreatePin2Modal.css"
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -126,22 +126,22 @@ const CreatePinModal = () => {
 
     const changefontsize = () => {
 
-        let titleInput = document.getElementById('create-pin-title');
+        let titleInput = document.getElementById('create-pin-');
         let currentfont = titleInput.style.fontSize
-        let indexOfPx = currentfont.indexOf("px")
-        let currentfontsize = currentfont.split("").slice(0, indexOfPx).join("")
+        let indexOfVw = currentfont.indexOf("vw")
+        let currentfontsize = currentfont.split("").slice(0, indexOfVw).join("")
 
         if (isOverflown(titleInput)) {
             while (isOverflown(titleInput)) {
-                currentfontsize--;
-                titleInput.style.fontSize = currentfontsize + 'px';
+                currentfontsize-=.1;
+                titleInput.style.fontSize = currentfontsize + 'vw';
             }
         } else {
-            currentfontsize = 28;
-            titleInput.style.fontSize = currentfontsize + 'px';
+            currentfontsize = 1.8;
+            titleInput.style.fontSize = currentfontsize + 'vw';
             while (isOverflown(titleInput)) {
-                currentfontsize--;
-                titleInput.style.fontSize = currentfontsize + 'px';
+                currentfontsize-=.1;
+                titleInput.style.fontSize = currentfontsize + 'vw';
             }
         }
     }
@@ -152,84 +152,59 @@ const CreatePinModal = () => {
 
 
     return (
-        <div className="create-pin-page-div">
-            <div className="create-pin-page-header">
-                <div>
-                    {viewClearMenu ?
-                        <div className="start-over">
-                            <button onClick={closeClearMenu}>X</button>
-                            <button onClick={clearNewPin} className="clear-pin-button clear" >
-                                Clear and Start Over
-                            </button>
-                        </div>
-                        :
-                        <div >
-                            <i onClick={openClearMenu} className="create-pin-ellipsis fa-solid fa-ellipsis"></i>
-                        </div>
-                    }
-                </div>
-                <div className="required-fields">*Field Required</div>
-                {/* <div className="and-add-to-board" onChange={(e)=> setBoardChoice(e.target.value)}>
-                    <select id="board-selector">
-                        <option id="" value="">Add pin to board upon creation</option>
-                        {
-                            filteredArr.map((board) =>
-                                <option
-                                    id="board-selector-input"
-                                    value={board.id}
-                                >{board.name}</option>
-                            )
+        <div id="create-pin-outermost-div">
+            <form id="create-pin-form" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
+                <div id="create-pin-left-column">
+                    <div id="create-pin-left-clear-option">
+                        {viewClearMenu ?
+                            <div id="create-pin-left-clear-submit">
+                                <button onClick={closeClearMenu}>
+                                    X
+                                </button>
+                                <button onClick={clearNewPin} >
+                                    Clear and Start Over
+                                </button>
+                            </div>
+                            :
+                            <div id="create-pin-left-clear-select">
+                                <i onClick={openClearMenu} className="fa-solid fa-ellipsis"></i>
+                            </div>
                         }
-
-                    </select>
-                </div> */}
-            </div>
-            <form className="create-pin-page-sub" method="POST" encType="multipart/form-data" onSubmit={handleSubmit} >
-                <div className="create-pin-page-left">
-                    <div className={fileType === "AWS" ? "photo-uploaded" : "create-pin-aws-option "} >
-                        <div className={fileType === "AWS" ? "" : "create-pin-add-border"}>
-                            <div className="upload-photo-image">
-                            <div className="photo-prompt">Harvest will resize your photo to fit. However, images should be taller than they are wide to display best.</div>
+                    </div>
+                    <div id="create-pin-left-image-upload">
+                        <div id="create-pin-left-border-only">
+                            <div id="create-pin-left-side-warning">
+                                Harvest will resize your photo to fit. However, images should be taller than they are wide to display best.
+                            </div>
+                            <div id="create-pin-left-upload-symbol">
                                 <i className="fa-solid fa-circle-arrow-up"></i>
-                                </div>
-                            {fileType === "AWS" && verifyImage(url) ? <div className="photo-ready">Success! Photo ready</div> : <label className="file-input">
-
-                                <input
-                                    type="file"
-                                    accept="image/jpg, image/png"
-                                    onChange={(e) => {
-
-                                        setFileType("AWS")
-                                        setUrl(e.target.files[0])
-
-                                    }}
-                                />
-                            </label>}
-
-                            <div className="image-prompt"><span className="span-image-prompt">We recommend using high quality .jpg files less than 20mb*</span></div>
+                            </div>
+                            <div id="create-pin-left-upload-field">
+                                {fileType === "AWS" && verifyImage(url) ?
+                                    <div >
+                                        Success! Photo ready
+                                    </div>
+                                    :
+                                    <label>
+                                        <input
+                                            type="file"
+                                            accept="image/jpg, image/png"
+                                            onChange={(e) => {
+                                                setFileType("AWS")
+                                                setUrl(e.target.files[0])
+                                            }}
+                                        />
+                                    </label>}
+                            </div>
+                            <div id="create-pin-left-size-reminder">
+                                We recommend using high quality .jpg files less than 20mb*
+                            </div>
                         </div>
                     </div>
-                    {/* <div className="create-pin-url-option">
-                        <input
-                            type="text"
-                            placeholder={url ? "" : "Save photo url from site"}
-                            value={fileType === "AWS" ? "" : url}
-                            onChange={(e) => {
-                                setFileType("URL")
-                                setUrl(e.target.value)
-                            }}
-
-                        />
-
-                    </div> */}
-                    <div className="show-photo-errors">
-                        {title && link && description && !url && <div className="need-photo-error error">You must include a photo when creating a pin</div>}
-                        {fileType !== "AWS" && <div className={url ? "" : isUrl(url) ? "show-error-create no-error" : "show-error-create error"}>{url ? isUrl(url) ? "" : <div className="show-error-create error ">Invalid url entered</div> : ""}</div>}
-
-                    </div>
                 </div>
-                <div className=" create-pin-page-right">
-                    <div className="create-pin-form-field create-pin-add-title" >
+                <div id="create-pin-right-column">
+                    <div id="create-pin-right-req-field-row">*Required Field</div>
+                    <div id="create-pin-right-title-field-row">
                         <input type="text"
                             value={title && title}
                             placeholder={title ? title : "Add your title*"}
@@ -237,55 +212,64 @@ const CreatePinModal = () => {
                                 setTitle(e.target.value)
                                 changefontsize()
                             }}
+
                             onKeyPress={changefontsize}
                             id="create-pin-title"
                             required
                         />
                         <div className={title.length > 50 ? "show-error-create-pin error" : "show-error-create-pin no-error"}>{title.length <= 50 ? (50 - title.length) : "Oops! This title is getting long. Try trimming it down."}</div>
+
                     </div>
-                    <div className="create-pin-form-field create-pin-user-info">
-                        <div className="create-pin-user-spot">{firstLetter}</div>
-                        <div>
-                            <div>{user.firstName ? user.firstName : user.username}</div>
-                            <div>
+                    <div id="create-pin-right-user-info-row">
+                        <div id="create-pin-user-info-user-spot-left">
+                            {firstLetter}
+                        </div>
+                        <div id="create-pin-user-info-right">
+                            <div id="create-pin-user-info-name">
+                                {user.firstName ? user.firstName : user.username}
+                            </div>
+                            <div id="create-pin-user-info-num-pins">
                                 {userPins.length} pins
                             </div>
                         </div>
                     </div>
-
-                    <div className="create-pin-form-field create-pin-add-description">
-
+                    <div id="create-pin-right-description-field-row">
                         <textarea
                             rows="6"
                             placeholder={description ? "" : "Tell everyone what your pin is about*"}
                             value={description && description}
-                            onChange={(e) => setDescription(e.target.value)}
+                            onChange={(e) =>
+                                setDescription(e.target.value)
+                            }
                             required
                         />
-
-
+                        <div className={description.length > 500 ? "show-error-create-description error" : "show-error-create-description no-error"}>{description.length <= 500 ? 500 - description.length : "Oops! That description is getting a little long. Try trimming it down."}</div>
                     </div>
-                    <div className={description.length > 500 ? "show-error-create-description error" : "show-error-create-description no-error"}>{description.length <= 500 ? 500 - description.length : "Oops! That description is getting a little long. Try trimming it down."}</div>
-                    <div className="create-pin-form-field create-pin-add-link">
+                    <div id="create-pin-right-link-field-row">
                         <input
                             type="text"
                             placeholder={link ? "" : "Add a destination link*"}
                             value={link && link}
-                            onChange={(e) => setLink(e.target.value)}
+                            onChange={(e) =>
+                                setLink(e.target.value)}
 
                         />
+                    </div>
+                    <div id="create-pin-right-form-errors">
+                        <div className={link ? "" : isUrl(link) ? "show-error-create-link no-error" : "show-error-create-link error"}>{link ? isUrl(link) ? "" : <div className="show-error-create-link error ">Invalid url entered</div> : ""}</div>
+                        <div>{url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div>Invalid File Type. Please upload a .png or .jpg type image</div> : <div></div>}</div>
+                    </div>
+                    <div id="create-pin-right-form-submit-button-field-row">
+                        {url && (url.name.includes(".png") || url.name.includes(".jpg")) && isUrl(link) && hasPhoto ?
+                            <button className="submit-new-pin" type="submit">Create</button> :
+
+                             <button disabled className="submit-new-pin-disabled" type="submit">Create</button>}
+
 
                     </div>
 
-                    <div className={link ? "" : isUrl(link) ? "show-error-create-link no-error" : "show-error-create-link error"}>{link ? isUrl(link) ? "" : <div className="show-error-create-link error ">Invalid url entered</div> : ""}</div>
-                    <div>{url.name && !(url.name.includes(".png") || url.name.includes(".jpg")) ? <div>Invalid File Type. Please upload a .png or .jpg type image</div> : <div></div>}</div>
-                    {url && (url.name.includes(".png") || url.name.includes(".jpg")) && isUrl(link) && hasPhoto ?
-                        <div>
-                            <button className="submit-new-pin" type="submit">Create</button>
-                        </div> : <div><button disabled className="submit-new-pin-disabled" type="submit">Create</button></div>}
                 </div>
             </form>
-
         </div>
     )
 }

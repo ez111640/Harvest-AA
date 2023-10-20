@@ -1,0 +1,118 @@
+#create-pin-outermost-div{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid red;
+    height: 80%;
+    width: 70%;
+    margin: 10% auto auto auto;
+}
+
+#create-pin-form{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+/* Styling for left column */
+#create-pin-left-column{
+    margin: 5% auto;
+    width: 90%;
+    font-size: 1.5vw;
+
+}
+
+#create-pin-left-image-upload{
+    background-color: #f5f5f5;
+    padding: 2%;
+    text-align: center;
+}
+
+
+#create-pin-left-clear-select{
+    padding-bottom: 10px;
+}
+#create-pin-left-clear-select>i{
+    font-size: 1.8vw;
+    border-radius: 20px;
+    padding: 3% 3% 2% 3%;
+    background-color: #E4E4E4;
+}
+
+#submit-new-pin
+
+
+#create-pin-left-upload-symbol>i {
+    font-size: 2.5vw;
+    margin: 15% auto;
+}
+
+
+#create-pin-left-size-reminder {
+    margin-top: 10%;
+}
+
+#create-pin-left-border-only{
+    margin: 5%;
+    border: 2px dashed lightgrey;
+    background-color: transparent;
+    display: grid;
+}
+
+#create-pin-left-upload-field{
+    width: 90%;
+    margin: auto auto 10% auto;
+}
+
+#create-pin-right-column{
+    margin: 2% auto 5% auto;
+    width: 90%;
+    display: grid;
+    font-size: 1.8vw;
+}
+
+#create-pin-right-req-field-row{
+    text-align:right
+}
+
+
+
+#create-pin-right-column>div{
+    width: 100%;
+}
+
+input, textarea{
+    width: 100%;
+
+}
+
+.show-error-create-pin{
+    font-size: 1.4vw;
+}
+
+.error{
+    color: red;
+}
+
+#create-pin-right-title-field-row>input{
+    font-size: 1.8vw;
+}
+
+#create-pin-right-description-field-row>textarea{
+    font-size: 1.8vw;
+}
+
+#create-pin-right-link-field-row>input{
+    font-size: 1.8vw;
+}
+
+
+#create-pin-right-user-info-row{
+    display: flex;
+}
+
+#create-pin-user-info-user-spot-left{
+
+}
+
+.no-error{
+    float: right;
+    font-size: 1.3vw;
+}
