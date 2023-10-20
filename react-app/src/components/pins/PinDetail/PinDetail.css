@@ -35,6 +35,10 @@
 
 }
 
+#pin-detail-comment-options{
+    
+}
+
 /* #pin-detail-right>div, .pin-detail-title-bottom{
     padding-top: 0px;
     margin-top: 0px;
@@ -394,4 +398,3 @@ a {
     word-wrap: break-word;
     max-width: 24vw;
 }
-
