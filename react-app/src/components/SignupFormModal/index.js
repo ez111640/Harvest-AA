@@ -35,7 +35,7 @@ function SignupFormModal() {
 	const clearEmailErrors = async(e) => {
 		for(let i = 0;i< errors.length;i++){
 			if(errors[i][0] === "E") {
-				console.log("HERE")
+				
 			}
 		}
 	}
