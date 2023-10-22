@@ -33,7 +33,7 @@ function Navigation({ isLoaded }) {
 
 
   return (
-    <div className="main-nav-bar">
+    <div className={user? "main-nav-bar" : "main-nav-bar-guest"}>
       <div className="nav-bar-left">
         {user ? <NavLink exact to="/">
           <img src="https://i.ibb.co/rbztcLh/HAR-1.png" className="harvest-logo" alt="HAR-1" border="0"></img>

@@ -44,27 +44,28 @@ const AddPinToBoardModal = ({ pin }) => {
     if (!boardArr) return null;
     return (
         <div>
-            {page === 1 && <div className="select-board">
-                {filteredArr.length ?
-                    <form onSubmit={handleSubmit}>
+            {page === 1 &&
+                <div className="select-board">
+                    {filteredArr.length ?
+                        <form onSubmit={handleSubmit}>
 
-                        <select id="board-selector">
-                            <optgroup className="board-selector-input">
+                            <select id="board-selector" data-mdb-option-height= "100">
+
                                 {
                                     filteredArr.map((board) =>
 
-                                        <option  value={board.id}>{board.name}</option>
+                                        <option className="board-selector-option" value={board.id}>{board.name}</option>
                                     )
                                 }
-                            </optgroup>
-                        </select>
 
-                        <button className="submit-button" type="submit">Save</button>
-                    </form>
-                    :
-                    <div className="create-board-prompt">Create a board to save this pin!</div>
-                }
-            </div>}
+                            </select>
+
+                            <button className="submit-button" type="submit">Save</button>
+                        </form>
+                        :
+                        <div className="create-board-prompt">Create a board to save this pin!</div>
+                    }
+                </div>}
             {
                 page === 2 &&
                 <div className="display-success" onClick={handleSuccess}>

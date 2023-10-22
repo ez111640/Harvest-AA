@@ -1,11 +1,10 @@
 .select-board {
-    display: grid;
-    justify-content: center;
-    margin-left: 3.6vw;
-    width: 70%;
+    display: flex;
+    width: fit-content;
     font-family: Mooli;
-    font-size: 1.6vw;
+    font-size: 1.2vw;
     padding-top: 1vw;
+
 }
 
 
@@ -21,7 +20,8 @@
 }
 
 .select-board>form {
-    display: flex;
+    display: grid;
+    grid-template-columns: 20vw 10vw;
     column-gap: 10px;
 
 }
@@ -39,6 +39,19 @@ select#board-selector {
     font-weight: bold;
     font-size: 1.6vw;
 
+}
+/* Styles for the select dropdown */
+select#board-selector {
+    border: none !important;
+    outline: none !important;
+    font-family: Mooli !important;
+    font-weight: bold !important;
+    font-size: 1.6vw !important;
+}
+
+/* Explicitly set the font size for the dropdown options */
+select#board-selector option {
+    font-size: 1.6vw !important; /* This can be adjusted as needed */
 }
 
 
